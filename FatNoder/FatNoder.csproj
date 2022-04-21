@@ -7,4 +7,11 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NodeNetwork" Version="6.0.0" />
+    <PackageReference Include="NodeNetworkToolkit" Version="6.0.0" />
+    <PackageReference Include="ReactiveUI" Version="18.0.7" />
+    <PackageReference Include="ReactiveUI.WPF" Version="18.0.7" />
+  </ItemGroup>
+
 </Project>

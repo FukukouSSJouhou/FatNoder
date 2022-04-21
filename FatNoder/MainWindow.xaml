@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FatNoder"
         mc:Ignorable="d"
+                xmlns:nodenetwork="clr-namespace:NodeNetwork.Views;assembly=NodeNetwork"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <nodenetwork:NetworkView x:Name="networkView" />
     </Grid>
 </Window>
