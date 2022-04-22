@@ -21,7 +21,6 @@ namespace FatNoder.ViewModels.Nodes
         public ValueNodeOutputViewModel<T?> Output { get; }
         public InputNodeViewModel()
         {
-            this.Name = "StringOut";
             Output = new ValueNodeOutputViewModel<T?> {
                 Name = "Value",
                 Editor = ValueEditor,

@@ -21,7 +21,6 @@ namespace FatNoder.ViewModels.Nodes
         public ValueNodeInputViewModel<T?> ReturnInput { get; }
         public ReturnNodeViewModel()
         {
-            Name = "Return";
             this.CanBeRemovedByUser = false;
             ReturnInput = new ValueNodeInputViewModel<T?>
             {

@@ -42,7 +42,7 @@ namespace FatNoder.Views
             InitializeComponent();
             numtextbox.Text = "0";
             this.WhenActivated(d => d(
-                this.Bind(ViewModel,vm=>vm.Value,v=>int.Parse(v.numtextbox.Text))
+                this.Bind(ViewModel,vm=>vm.Value,v=>v.numtextbox.Text)
             ));
         }
 

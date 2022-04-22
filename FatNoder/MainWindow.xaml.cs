@@ -51,12 +51,17 @@ namespace FatNoder
             node2Output.Name = "Node 2 output";
             node2.Outputs.Add(node2Output);
             var Node3Out = new ReturnNodeViewModel<string>();
+            Node3Out.Name = "ReturnString";
             network.Nodes.Add(Node3Out);
             var Node3Input = new InputNodeViewModel<string>();
+
+            Node3Input.Name = "InputString";
             network.Nodes.Add(Node3Input);
             var Node4Out = new ReturnNodeViewModel<int>();
+            Node4Out.Name = "ReturnInt";
             network.Nodes.Add(Node4Out);
             var Node4Input = new InputNodeViewModel<int>();
+            Node4Input.Name = "InputInt";
             network.Nodes.Add(Node4Input);
 
             //Assign the viewmodel to the view.
