@@ -52,6 +52,11 @@ namespace FatNoder.ViewModels
                 Network = new NetworkViewModel()
             });
 
+            //ReturnNpde eventNode = new ButtonEventNode { CanBeRemovedByUser = false };
+            //Network.Nodes.Add(eventNode);
+
+            //NodeList.AddNodeType(() => new ButtonEventNode());
+           // NodeList.AddNodeType(() => new ForLoopNode());
         }
 
     }
