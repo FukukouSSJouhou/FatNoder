@@ -13,7 +13,11 @@ namespace FatNoder.ViewModels
     {
         static HannyouValueEditorViewModel()
         {
-            Splat.Locator.CurrentMutable.Register(() => new HannyouValueEditorView(), typeof(IViewFor<HannyouValueEditorViewModel<T>>));
+
+            if (typeof(T) == typeof(string))
+            {
+                Splat.Locator.CurrentMutable.Register(() => new HannyouValueEditorView(), typeof(IViewFor<HannyouValueEditorViewModel<T>>));
+            }
 
         }
         public HannyouValueEditorViewModel()
