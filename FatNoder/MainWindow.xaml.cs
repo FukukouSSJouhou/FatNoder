@@ -1,4 +1,5 @@
 ﻿using DynamicData;
+using FatNoder.ViewModels.Nodes;
 using NodeNetwork.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,8 @@ namespace FatNoder
             var node2Output = new NodeOutputViewModel();
             node2Output.Name = "Node 2 output";
             node2.Outputs.Add(node2Output);
+            var Node3Out = new ReturnNodeViewModel<string>();
+            network.Nodes.Add(Node3Out);
 
             //Assign the viewmodel to the view.
             networkView.ViewModel = network;

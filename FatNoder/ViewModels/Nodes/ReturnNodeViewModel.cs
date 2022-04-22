@@ -25,7 +25,8 @@ namespace FatNoder.ViewModels.Nodes
             this.CanBeRemovedByUser = false;
             ReturnInput = new ValueNodeInputViewModel<T?>
             {
-                Name = "Value"
+                Name = "Value",
+                Editor=new HannyouValueEditorViewModel<T?>()
             };
             this.Inputs.Add(ReturnInput);
         }
