@@ -32,6 +32,7 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "entrypoint"
             };
+            
             this.Outputs.Add(Output);
         }
     }
