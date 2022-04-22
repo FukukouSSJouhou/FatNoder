@@ -1,8 +1,14 @@
 ﻿using DynamicData;
+using FatNoder.ViewModels;
+using FatNoder.ViewModels.Nodes;
+using Fluent;
 using NodeNetwork.ViewModels;
+using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,38 +26,50 @@ namespace FatNoder
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : RibbonWindow, IViewFor<MainViewModel>
     {
+        #region ViewModel
+
+        public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(nameof(ViewModel),
+            typeof(MainViewModel), typeof(MainWindow), new PropertyMetadata(null));
+
+        public MainViewModel ViewModel
+        {
+            get => (MainViewModel)GetValue(ViewModelProperty);
+            set => SetValue(ViewModelProperty, value);
+        }
+
+        object IViewFor.ViewModel
+        {
+            get => ViewModel;
+            set => ViewModel = (MainViewModel)value;
+        }
+        #endregion  
         public MainWindow()
         {
             InitializeComponent();
-            //Create a new viewmodel for the NetworkView
-            var network = new NetworkViewModel();
 
-            //Create the node for the first node, set its name and add it to the network.
-            var node1 = new NodeViewModel();
-            node1.Name = "Node 1";
-            network.Nodes.Add(node1);
+            this.WhenActivated(d =>
+            {
+                this.OneWayBind(ViewModel, vm => vm.Network, v => v.network.ViewModel).DisposeWith(d);
+                this.OneWayBind(ViewModel, vm => vm.NodeList, v => v.nodeList.ViewModel).DisposeWith(d);
+                this.OneWayBind(ViewModel, vm => vm.NetworkBreadcrumbBar, v => v.breadcrumbBar.ViewModel).DisposeWith(d);
 
-            //Create the viewmodel for the input on the first node, set its name and add it to the node.
-            var node1Input = new NodeInputViewModel();
-            node1Input.Name = "Node 1 input";
-            var node1Input2 = new NodeInputViewModel();
-            node1Input2.Name = "Node 1 input2";
-            node1.Inputs.Add(node1Input);
-            node1.Inputs.Add(node1Input2);
+                this.BindCommand(ViewModel, vm => vm.AutoLayout, v => v.autoLayoutButton);
 
-            //Create the second node viewmodel, set its name, add it to the network and add an output in a similar fashion.
-            var node2 = new NodeViewModel();
-            node2.Name = "Node 2";
-            network.Nodes.Add(node2);
 
-            var node2Output = new NodeOutputViewModel();
-            node2Output.Name = "Node 2 output";
-            node2.Outputs.Add(node2Output);
+                this.BindCommand(ViewModel, vm => vm.StartAutoLayoutLive, v => v.startAutoLayoutLiveButton);
+                this.WhenAnyObservable(v => v.ViewModel.StartAutoLayoutLive.IsExecuting)
+                    .Select((isRunning) => isRunning ? Visibility.Collapsed : Visibility.Visible)
+                    .BindTo(this, v => v.startAutoLayoutLiveButton.Visibility);
 
-            //Assign the viewmodel to the view.
-            networkView.ViewModel = network;
+                this.BindCommand(ViewModel, vm => vm.StopAutoLayoutLive, v => v.stopAutoLayoutLiveButton);
+                this.WhenAnyObservable(v => v.ViewModel.StartAutoLayoutLive.IsExecuting)
+                    .Select((isRunning) => isRunning ? Visibility.Visible : Visibility.Collapsed)
+                    .BindTo(this, v => v.stopAutoLayoutLiveButton.Visibility);
+            });
+
+            this.ViewModel = new MainViewModel();
         }
     }
 }
