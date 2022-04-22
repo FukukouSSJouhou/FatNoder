@@ -1,5 +1,6 @@
 ﻿using DynamicData;
 using FatNoder.ViewModels.Nodes;
+using Fluent;
 using NodeNetwork.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace FatNoder
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : RibbonWindow
     {
         public MainWindow()
         {
@@ -65,7 +66,7 @@ namespace FatNoder
             network.Nodes.Add(Node4Input);
 
             //Assign the viewmodel to the view.
-            networkView.ViewModel = network;
+            //networkView.ViewModel = network;
         }
     }
 }
