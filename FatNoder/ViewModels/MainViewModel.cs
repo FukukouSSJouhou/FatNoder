@@ -55,6 +55,8 @@ namespace FatNoder.ViewModels
 
             ReturnNodeViewModel<string> returnnodekun = new ReturnNodeViewModel<string> { CanBeRemovedByUser = false,Name="StringReturn" };
             Network.Nodes.Add(returnnodekun);
+            MethodEntryPointVIewModel mainnodekun = new MethodEntryPointVIewModel { CanBeRemovedByUser = false, Name = "MainEntryPoint" };
+            Network.Nodes.Add(mainnodekun);
             NodeList.AddNodeType(() => new InputNodeViewModel<int> { Name="IntInput"});
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name="StringInput"});
 

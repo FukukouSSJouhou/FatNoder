@@ -9,6 +9,6 @@ namespace FatNoder.Model.TransC
 {
     public interface IStateMent
     {
-        public NodeViewModel? ChiNode { get; set; }
+        public NodeViewModel ChiNode();
     }
 }
