@@ -20,7 +20,7 @@ namespace FatNoder.Views
     /// <summary>
     /// StringValueEditorView.xaml の相互作用ロジック
     /// </summary>
-    public partial class StringValueEditorView : UserControl,IViewFor<HannyouValueEditorViewModel>
+    public partial class StringValueEditorView : UserControl,IViewFor<HannyouValueEditorViewModel<string>>
     {
         #region ViewModel
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(nameof(ViewModel),
@@ -30,9 +30,18 @@ namespace FatNoder.Views
             get => (HannyouValueEditorViewModel<string>)GetValue(ViewModelProperty);
             set => SetValue(ViewModelProperty, value);
         }
+        object IViewFor.ViewModel
+        {
+            get=> ViewModel;
+            set=>ViewModel=(HannyouValueEditorViewModel<string>)value;
+        }
+        #endregion
         public StringValueEditorView()
         {
             InitializeComponent();
+            this.WhenActivated(d => d(
+                this.Bind(ViewModel,vm=>vm.Value,v=>v.StringValueText.Text)
+            ));
         }
     }
 }

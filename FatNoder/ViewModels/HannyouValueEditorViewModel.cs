@@ -16,7 +16,7 @@ namespace FatNoder.ViewModels
 
             if (typeof(T) == typeof(string))
             {
-                Splat.Locator.CurrentMutable.Register(() => new HannyouValueEditorView(), typeof(IViewFor<HannyouValueEditorViewModel<T>>));
+                Splat.Locator.CurrentMutable.Register(() => new StringValueEditorView(), typeof(IViewFor<HannyouValueEditorViewModel<T>>));
             }
 
         }
