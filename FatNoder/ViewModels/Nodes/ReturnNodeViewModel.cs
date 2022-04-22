@@ -1,4 +1,5 @@
 ﻿using DynamicData;
+using FatNoder.Model.TransC;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.ViewModels;
 using NodeNetwork.Views;
@@ -19,6 +20,7 @@ namespace FatNoder.ViewModels.Nodes
 
         }
         public ValueNodeInputViewModel<T?> ReturnInput { get; }
+        public ValueNodeOutputViewModel<IStateMent> Flow { get; }
         public ReturnNodeViewModel()
         {
             ReturnInput = new ValueNodeInputViewModel<T?>
@@ -27,6 +29,13 @@ namespace FatNoder.ViewModels.Nodes
                 Editor=new HannyouValueEditorViewModel<T?>()
             };
             this.Inputs.Add(ReturnInput);
+            Flow = new CoderOutputViewModel<IStateMent>(typeof(IStateMent))
+            {
+                Name = "",
+
+                Value = null
+            };
+            this.Outputs.Add(Flow);
         }
     }
 }
