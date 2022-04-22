@@ -1,4 +1,5 @@
 ﻿using DynamicData;
+using FatNoder.ViewModels.Nodes;
 using NodeNetwork.Toolkit.BreadcrumbBar;
 using NodeNetwork.Toolkit.NodeList;
 using NodeNetwork.ViewModels;
@@ -52,11 +53,11 @@ namespace FatNoder.ViewModels
                 Network = new NetworkViewModel()
             });
 
-            //ReturnNpde eventNode = new ButtonEventNode { CanBeRemovedByUser = false };
-            //Network.Nodes.Add(eventNode);
+            ReturnNodeViewModel<string> returnnodekun = new ReturnNodeViewModel<string> { CanBeRemovedByUser = false,Name="StringReturn" };
+            Network.Nodes.Add(returnnodekun);
+            NodeList.AddNodeType(() => new InputNodeViewModel<int> { Name="IntInput"});
+            NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name="StringInput"});
 
-            //NodeList.AddNodeType(() => new ButtonEventNode());
-           // NodeList.AddNodeType(() => new ForLoopNode());
         }
 
     }
