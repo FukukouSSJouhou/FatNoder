@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NodeNetwork.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace FatNoder.Model.TransC
 {
     public interface IStateMent
     {
+        public NodeViewModel ChiNode { get; set; }
     }
 }
