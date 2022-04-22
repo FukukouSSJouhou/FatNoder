@@ -42,6 +42,10 @@ namespace FatNoder.ViewModels
         public ReactiveCommand<Unit, Unit> GroupNodes { get; }
         public ReactiveCommand<Unit, Unit> UngroupNodes { get; }
         public ReactiveCommand<Unit, Unit> OpenGroup { get; }
+        public void add_project(String Name)
+        {
+
+        }
         public MainViewModel()
         {
             this.WhenAnyValue(vm => vm.NetworkBreadcrumbBar.ActiveItem).Cast<NetworkBreadcrumb>()
