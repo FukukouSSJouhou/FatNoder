@@ -18,6 +18,11 @@ namespace FatNoder.ViewModels
             {
                 Splat.Locator.CurrentMutable.Register(() => new StringValueEditorView(), typeof(IViewFor<HannyouValueEditorViewModel<T>>));
             }
+            else if(typeof(T) == typeof(int))
+            {
+                Splat.Locator.CurrentMutable.Register(() => new IntegerValueEditorView(), typeof(IViewFor<HannyouValueEditorViewModel<T>>));
+
+            }
 
         }
         public HannyouValueEditorViewModel()
