@@ -1,8 +1,8 @@
 ﻿using DynamicData;
 using FatNoder.ViewModels.Nodes;
-using NodeNetwork.Toolkit.BreadcrumbBar;
-using NodeNetwork.Toolkit.NodeList;
-using NodeNetwork.ViewModels;
+using NodeNetworkJH.Toolkit.BreadcrumbBar;
+using NodeNetworkJH.Toolkit.NodeList;
+using NodeNetworkJH.ViewModels;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;

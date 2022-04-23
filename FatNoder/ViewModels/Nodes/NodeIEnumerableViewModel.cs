@@ -1,5 +1,5 @@
-﻿using NodeNetwork.ViewModels;
-using NodeNetwork.Views;
+﻿using NodeNetworkJH.ViewModels;
+using NodeNetworkJH.Views;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;

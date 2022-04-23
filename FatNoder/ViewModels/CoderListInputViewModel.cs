@@ -1,6 +1,6 @@
 ﻿using FatNoder.Model.TransC;
-using NodeNetwork.Toolkit.ValueNode;
-using NodeNetwork.Views;
+using NodeNetworkJH.Toolkit.ValueNode;
+using NodeNetworkJH.Views;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace FatNoder.ViewModels
         {
             if (type == typeof(IStateMent))
             {
-                this.PortPosition = NodeNetwork.ViewModels.PortPosition.Left;
+                this.PortPosition = NodeNetworkJH.ViewModels.PortPosition.Left;
             }
         }
     }

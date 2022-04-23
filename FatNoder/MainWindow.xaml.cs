@@ -2,7 +2,7 @@
 using FatNoder.ViewModels;
 using FatNoder.ViewModels.Nodes;
 using Fluent;
-using NodeNetwork.ViewModels;
+using NodeNetworkJH.ViewModels;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;

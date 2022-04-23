@@ -6,9 +6,9 @@
         xmlns:Fluent="urn:fluent-ribbon"
         xmlns:local="clr-namespace:FatNoder"
         xmlns:nodes="clr-namespace:FatNoder.ViewModels.Nodes"
-        xmlns:views="clr-namespace:NodeNetwork.Views;assembly=NodeNetwork"
-        xmlns:nodeList="clr-namespace:NodeNetwork.Toolkit.NodeList;assembly=NodeNetworkToolkit"
-        xmlns:breadcrumbBar="clr-namespace:NodeNetwork.Toolkit.BreadcrumbBar;assembly=NodeNetworkToolkit"
+        xmlns:views="clr-namespace:NodeNetworkJH.Views;assembly=NodeNetworkJH"
+        xmlns:nodeList="clr-namespace:NodeNetworkJH.Toolkit.NodeList;assembly=NodeNetworkJHToolkit"
+        xmlns:breadcrumbBar="clr-namespace:NodeNetworkJH.Toolkit.BreadcrumbBar;assembly=NodeNetworkJHToolkit"
                      
         mc:Ignorable="d"
         Title="MainWindow" Height="668" Width="800">
