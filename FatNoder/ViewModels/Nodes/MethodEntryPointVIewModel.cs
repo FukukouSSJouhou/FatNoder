@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class MethodEntryPointVIewModel : NodeViewModel, IStateMent
+    public class MethodEntryPointVIewModel : IncluedUUIDNodeViewModel, IStateMent
     {
 
         public NodeViewModel ChiNode()

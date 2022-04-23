@@ -67,15 +67,8 @@ namespace FatNoder.ViewModels
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name="StringInput"});
             TestPhasekun = ReactiveCommand.Create(() =>
             {
-                foreach(NodeViewModel n in Network.Nodes.Items){
-                    foreach(NodeInputViewModel i in n.Inputs.Items)
-                    {
-                        Debug.Print(i.ToString());
-                    }
-                    foreach (NodeOutputViewModel o in n.Outputs.Items)
-                    {
-                        Debug.Print(o.ToString());
-                    }
+                foreach(IncluedUUIDNodeViewModel n in Network.Nodes.Items){
+                    Debug.Print(n.UUID.ToString());
                 }
             });
 

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class ReturnNodeViewModel<T> : NodeViewModel
+    public class ReturnNodeViewModel<T> : IncluedUUIDNodeViewModel
     {
         static ReturnNodeViewModel()
         {

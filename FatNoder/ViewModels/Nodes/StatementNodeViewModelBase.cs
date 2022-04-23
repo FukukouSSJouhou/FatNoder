@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class StatementNodeViewModelBase: NodeViewModel
+    public class StatementNodeViewModelBase: IncluedUUIDNodeViewModel
     {
 
         static StatementNodeViewModelBase()

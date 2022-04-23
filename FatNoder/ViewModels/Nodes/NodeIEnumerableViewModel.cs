@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class NodeIEnumerableViewModel<T>: NodeViewModel
+    public class NodeIEnumerableViewModel<T>: IncluedUUIDNodeViewModel
     {
 
         static NodeIEnumerableViewModel()
