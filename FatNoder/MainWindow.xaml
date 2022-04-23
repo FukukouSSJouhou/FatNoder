@@ -29,6 +29,11 @@
         </Grid.ColumnDefinitions>
 
         <Fluent:Ribbon Grid.Row="0" Grid.ColumnSpan="5" MinHeight="30">
+            <Fluent:RibbonTabItem Header="File">
+                <Fluent:RibbonGroupBox Header="A">
+                    <Fluent:Button Header="TestPhase" Name="testPhaseButton"></Fluent:Button>
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
         <breadcrumbBar:BreadcrumbBarView x:Name="breadcrumbBar" Grid.Row="1" Grid.ColumnSpan="5" MinHeight="30"/>
         <Grid Grid.Row="2" Grid.Column="0">

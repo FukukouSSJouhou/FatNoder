@@ -27,7 +27,8 @@ namespace FatNoder.ViewModels.Nodes
             ReturnInput = new ValueNodeInputViewModel<T?>
             {
                 Name = "Value",
-                Editor=new HannyouValueEditorViewModel<T?>()
+                Editor=new HannyouValueEditorViewModel<T?>(),
+                MaxConnections=1
             };
             ReturnInput.ValueChanged.Subscribe(newvalue =>
             {
@@ -36,7 +37,8 @@ namespace FatNoder.ViewModels.Nodes
             this.Inputs.Add(ReturnInput);
             Flow = new CoderListInputViewModel<IStateMent>(typeof(IStateMent))
             {
-                Name = ""
+                Name = "",
+                MaxConnections = 1
             };
             this.Inputs.Add(Flow);
         }

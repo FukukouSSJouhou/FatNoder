@@ -26,11 +26,13 @@ namespace FatNoder.ViewModels.Nodes
         {
             OutputFlow = new ValueNodeOutputViewModel<IStateMent>
             {
-                Name="Out"
+                Name="Out",
+                MaxConnections = 1
             };
             InputFlow = new ValueListNodeInputViewModel<IStateMent>
             {
-                Name = "In"
+                Name = "In",
+                MaxConnections = 1
             };
             this.Outputs.Add(OutputFlow);
             this.Inputs.Add(InputFlow);

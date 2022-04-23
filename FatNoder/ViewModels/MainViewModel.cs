@@ -6,6 +6,7 @@ using NodeNetwork.ViewModels;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
@@ -38,6 +39,7 @@ namespace FatNoder.ViewModels
         public ReactiveCommand<Unit, Unit> AutoLayout { get; }
         public ReactiveCommand<Unit, Unit> StartAutoLayoutLive { get; }
         public ReactiveCommand<Unit, Unit> StopAutoLayoutLive { get; }
+        public ReactiveCommand<Unit, Unit> TestPhasekun { get; }
 
         public ReactiveCommand<Unit, Unit> GroupNodes { get; }
         public ReactiveCommand<Unit, Unit> UngroupNodes { get; }
@@ -63,6 +65,19 @@ namespace FatNoder.ViewModels
             Network.Nodes.Add(mainnodekun);
             NodeList.AddNodeType(() => new InputNodeViewModel<int> { Name="IntInput"});
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name="StringInput"});
+            TestPhasekun = ReactiveCommand.Create(() =>
+            {
+                foreach(NodeViewModel n in Network.Nodes.Items){
+                    foreach(NodeInputViewModel i in n.Inputs.Items)
+                    {
+                        Debug.Print(i.ToString());
+                    }
+                    foreach (NodeOutputViewModel o in n.Outputs.Items)
+                    {
+                        Debug.Print(o.ToString());
+                    }
+                }
+            });
 
         }
 

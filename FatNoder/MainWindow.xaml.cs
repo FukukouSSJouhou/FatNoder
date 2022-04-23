@@ -67,6 +67,7 @@ namespace FatNoder
                 this.WhenAnyObservable(v => v.ViewModel.StartAutoLayoutLive.IsExecuting)
                     .Select((isRunning) => isRunning ? Visibility.Visible : Visibility.Collapsed)
                     .BindTo(this, v => v.stopAutoLayoutLiveButton.Visibility);
+                this.BindCommand(ViewModel, vm => vm.TestPhasekun, v => v.testPhaseButton);
             });
 
             this.ViewModel = new MainViewModel();

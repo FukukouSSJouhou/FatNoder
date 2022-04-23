@@ -30,7 +30,9 @@ namespace FatNoder.ViewModels.Nodes
 
             Output = new ValueNodeOutputViewModel<IStateMent>
             {
-                Name = "statement"
+                Name = "statement",
+
+                MaxConnections = 1
             };
             
             this.Outputs.Add(Output);
