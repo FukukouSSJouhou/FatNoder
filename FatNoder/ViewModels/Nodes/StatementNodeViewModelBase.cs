@@ -1,4 +1,5 @@
-﻿using FatNoder.Model.TransC;
+﻿using DynamicData;
+using FatNoder.Model.TransC;
 using NodeNetwork.Toolkit.ValueNode;
 using NodeNetwork.ViewModels;
 using NodeNetwork.Views;
@@ -21,6 +22,18 @@ namespace FatNoder.ViewModels.Nodes
 
         public ValueListNodeInputViewModel<IStateMent> InputFlow { get; }
         public ValueNodeOutputViewModel<IStateMent> OutputFlow { get; }
-
+        public StatementNodeViewModelBase()
+        {
+            OutputFlow = new ValueNodeOutputViewModel<IStateMent>
+            {
+                Name="Out"
+            };
+            InputFlow = new ValueListNodeInputViewModel<IStateMent>
+            {
+                Name = "In"
+            };
+            this.Outputs.Add(OutputFlow);
+            this.Inputs.Add(InputFlow);
+        }
     }
 }

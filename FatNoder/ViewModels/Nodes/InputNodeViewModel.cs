@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class InputNodeViewModel<T>:NodeViewModel
+    public class InputNodeViewModel<T>: StatementNodeViewModelBase
     {
         static InputNodeViewModel()
         {
