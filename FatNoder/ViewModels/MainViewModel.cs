@@ -1,7 +1,9 @@
 ﻿using DynamicData;
+using FatNoder.Model.Transc;
 using FatNoder.ViewModels.Nodes;
 using NodeNetworkJH.Toolkit.BreadcrumbBar;
 using NodeNetworkJH.Toolkit.NodeList;
+using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using ReactiveUI;
 using System;
@@ -67,14 +69,25 @@ namespace FatNoder.ViewModels
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name="StringInput"});
             TestPhasekun = ReactiveCommand.Create(() =>
             {
-                foreach(NodeViewModel n in Network.Nodes.Items){
+                string nm;
+
+                foreach (NodeViewModel n in Network.Nodes.Items){
                     Debug.Print(n.UUID.ToString());
                     foreach(NodeInputViewModel i in n.Inputs.Items)
                     {
-                        foreach(ConnectionViewModel c in i.Connections.Items)
+                        dynamic dyi = i as dynamic;
+                        if( dyi is ValueListNodeInputViewModel<StatementCls>)
                         {
-                            Debug.Print(c.ToString());
+                            IObservableList<StatementCls> valueskun;
+                            nm = dyi.Name as string;
+                            Debug.Print(nm);
+                            valueskun=dyi.Values as IObservableList<StatementCls>;
+                            foreach (StatementCls s in valueskun.Items)
+                            {
+                                Debug.Print(s.UUID.ToString());
+                            }
                         }
+
                     }
                 }
             });

@@ -29,14 +29,16 @@ namespace FatNoder.ViewModels.Nodes
             StatementIfce = StatementCls.GenStatementCls(this.UUID);
             OutputFlow = new ValueNodeOutputViewModel<StatementCls>
             {
-                Name="Out",
+                Name="In",
                 MaxConnections = 1,
-                Value= this.WhenAnyValue(vm => vm.StatementIfce)
+                Value= this.WhenAnyValue(vm => vm.StatementIfce),
+                PortPosition = PortPosition.Left
             };
             InputFlow = new ValueListNodeInputViewModel<StatementCls>
             {
-                Name = "In",
-                MaxConnections = 1
+                Name = "Out",
+                MaxConnections = 1,
+                PortPosition=PortPosition.Right
             };
             this.Outputs.Add(OutputFlow);
             this.Inputs.Add(InputFlow);
