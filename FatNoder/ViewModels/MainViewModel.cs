@@ -1,5 +1,6 @@
 ﻿using DynamicData;
 using FatNoder.Model.Transc;
+using FatNoder.ViewModels.Conv;
 using FatNoder.ViewModels.Nodes;
 using NodeNetworkJH.Toolkit.BreadcrumbBar;
 using NodeNetworkJH.Toolkit.NodeList;
@@ -46,6 +47,7 @@ namespace FatNoder.ViewModels
         public ReactiveCommand<Unit, Unit> GroupNodes { get; }
         public ReactiveCommand<Unit, Unit> UngroupNodes { get; }
         public ReactiveCommand<Unit, Unit> OpenGroup { get; }
+        public ReactiveCommand<Unit,Unit> CreateTest { get; }
         public void add_project(String Name)
         {
 
@@ -67,6 +69,40 @@ namespace FatNoder.ViewModels
             Network.Nodes.Add(mainnodekun);
             NodeList.AddNodeType(() => new InputNodeViewModel<int> { Name="IntInput"});
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name="StringInput"});
+            CreateTest = ReactiveCommand.Create(() =>
+            {
+                Console.WriteLine("Detamon");
+
+                string nm;
+                foreach (NodeViewModel n in Network.Nodes.Items)
+                {
+                    string uuid = n.UUID.ToString();
+
+                    Console.WriteLine($"Name:{n.Name} UUID:{uuid} ");
+                    foreach (NodeInputViewModel i in n.Inputs.Items)
+                    {
+                        dynamic dyi = i as dynamic;
+                        object objkun = dyi as object;
+                        Type t = objkun.GetType();
+                        Console.WriteLine($"Type:{t} ");
+                        if (dyi is ValueListNodeInputViewModel<StatementCls>)
+                        {
+                            IObservableList<StatementCls> valueskun;
+                            nm = dyi.Name as string;
+                            valueskun = dyi.Values as IObservableList<StatementCls>;
+                            foreach (StatementCls s in valueskun.Items)
+                            {
+                                Console.WriteLine($"\tChildUUID:{s.UUID} ");
+                            }
+                        }
+                        else
+                        {
+                            NodeTextConverter.conv(dyi);
+                        }
+
+                    }
+                }
+            });
             TestPhasekun = ReactiveCommand.Create(() =>
             {
                 string nm;
