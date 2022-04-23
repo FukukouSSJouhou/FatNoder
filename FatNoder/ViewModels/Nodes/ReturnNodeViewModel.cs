@@ -37,7 +37,6 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Debug.Print("Set : " + newvalue);
             });
-            this.Inputs.Add(ReturnInput);
             Flow = new ValueNodeOutputViewModel<StatementCls>
             {
                 Name = "",
@@ -46,6 +45,7 @@ namespace FatNoder.ViewModels.Nodes
                 PortPosition=PortPosition.Left
             };
             this.Outputs.Add(Flow);
+            this.Inputs.Add(ReturnInput);
         }
     }
 }

@@ -29,7 +29,12 @@
         </Grid.ColumnDefinitions>
 
         <Fluent:Ribbon Grid.Row="0" Grid.ColumnSpan="5" MinHeight="30">
-            <Fluent:RibbonTabItem Header="File">
+            <Fluent:Ribbon.Menu>
+                <Fluent:ApplicationMenu Header="File">
+                    <Fluent:MenuItem Header="CreateTest" Name="CreateTestRibbon"></Fluent:MenuItem>
+                </Fluent:ApplicationMenu>
+            </Fluent:Ribbon.Menu>
+            <Fluent:RibbonTabItem Header="Main">
                 <Fluent:RibbonGroupBox Header="A">
                     <Fluent:Button Header="TestPhase" Name="testPhaseButton"></Fluent:Button>
                 </Fluent:RibbonGroupBox>
