@@ -21,7 +21,7 @@ namespace FatNoder.ViewModels
         {
             if (type == typeof(IStateMent))
             {
-                this.PortPosition = NodeNetworkJH.ViewModels.PortPosition.Left;
+                this.PortPosition = NodeNetworkJH.ViewModels.PortPosition.Right;
             }
         }
     }

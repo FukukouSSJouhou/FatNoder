@@ -67,11 +67,14 @@ namespace FatNoder.ViewModels
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name="StringInput"});
             TestPhasekun = ReactiveCommand.Create(() =>
             {
-                foreach(IncluedUUIDNodeViewModel n in Network.Nodes.Items){
+                foreach(NodeViewModel n in Network.Nodes.Items){
                     Debug.Print(n.UUID.ToString());
                     foreach(NodeInputViewModel i in n.Inputs.Items)
                     {
-
+                        foreach(ConnectionViewModel c in i.Connections.Items)
+                        {
+                            Debug.Print(c.ToString());
+                        }
                     }
                 }
             });

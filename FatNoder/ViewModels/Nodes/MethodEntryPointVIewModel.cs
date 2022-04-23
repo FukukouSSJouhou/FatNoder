@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class MethodEntryPointVIewModel : IncluedUUIDNodeViewModel, IStateMent
+    public class MethodEntryPointVIewModel : NodeViewModel, IStateMent
     {
 
         public NodeViewModel ChiNode()
@@ -24,18 +24,18 @@ namespace FatNoder.ViewModels.Nodes
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<MethodEntryPointVIewModel>));
         }
 
-        public ValueNodeOutputViewModel<IStateMent> Output { get; }
+        public ValueListNodeInputViewModel<IStateMent> Input { get; }
         public MethodEntryPointVIewModel()
         {
 
-            Output = new ValueNodeOutputViewModel<IStateMent>
+            Input = new CoderListInputViewModel<IStateMent>(typeof(IStateMent))
             {
                 Name = "statement",
-
+                PortPosition=PortPosition.Right,
                 MaxConnections = 1
             };
             
-            this.Outputs.Add(Output);
+            this.Inputs.Add(Input);
         }
     }
 }

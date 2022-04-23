@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class ReturnNodeViewModel<T> : IncluedUUIDNodeViewModel
+    public class ReturnNodeViewModel<T> : NodeViewModel
     {
         static ReturnNodeViewModel()
         {
@@ -21,7 +21,7 @@ namespace FatNoder.ViewModels.Nodes
 
         }
         public ValueNodeInputViewModel<T?> ReturnInput { get; }
-        public ValueListNodeInputViewModel<IStateMent> Flow { get; }
+        public ValueNodeOutputViewModel<IStateMent> Flow { get; }
         public ReturnNodeViewModel()
         {
             ReturnInput = new ValueNodeInputViewModel<T?>
@@ -35,12 +35,13 @@ namespace FatNoder.ViewModels.Nodes
                 Debug.Print("Set : " + newvalue);
             });
             this.Inputs.Add(ReturnInput);
-            Flow = new CoderListInputViewModel<IStateMent>(typeof(IStateMent))
+            Flow = new ValueNodeOutputViewModel<IStateMent>
             {
                 Name = "",
-                MaxConnections = 1
+                MaxConnections = 1,
+                PortPosition=PortPosition.Left
             };
-            this.Inputs.Add(Flow);
+            this.Outputs.Add(Flow);
         }
     }
 }
