@@ -69,6 +69,10 @@ namespace FatNoder.ViewModels
             {
                 foreach(IncluedUUIDNodeViewModel n in Network.Nodes.Items){
                     Debug.Print(n.UUID.ToString());
+                    foreach(NodeInputViewModel i in n.Inputs.Items)
+                    {
+
+                    }
                 }
             });
 
