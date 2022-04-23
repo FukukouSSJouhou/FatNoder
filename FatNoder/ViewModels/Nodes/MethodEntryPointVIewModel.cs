@@ -30,7 +30,7 @@ namespace FatNoder.ViewModels.Nodes
 
             Output = new ValueNodeOutputViewModel<IStateMent>
             {
-                Name = "entrypoint"
+                Name = "statement"
             };
             
             this.Outputs.Add(Output);
