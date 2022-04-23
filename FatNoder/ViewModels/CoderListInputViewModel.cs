@@ -1,4 +1,4 @@
-﻿using FatNoder.Model.TransC;
+﻿using FatNoder.Model.Transc;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.Views;
 using ReactiveUI;
@@ -19,7 +19,7 @@ namespace FatNoder.ViewModels
         }
         public CoderListInputViewModel(Type type)
         {
-            if (type == typeof(IStateMent))
+            if (type == typeof(StatementCls))
             {
                 this.PortPosition = NodeNetworkJH.ViewModels.PortPosition.Right;
             }

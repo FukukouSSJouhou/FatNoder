@@ -1,5 +1,5 @@
 ﻿using DynamicData;
-using FatNoder.Model.TransC;
+using FatNoder.Model.Transc;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;
@@ -21,9 +21,12 @@ namespace FatNoder.ViewModels.Nodes
 
         }
         public ValueNodeInputViewModel<T?> ReturnInput { get; }
-        public ValueNodeOutputViewModel<IStateMent> Flow { get; }
+        public ValueNodeOutputViewModel<StatementCls> Flow { get; }
+        public StatementCls StatementIfce { get; }
         public ReturnNodeViewModel()
         {
+
+            StatementIfce = StatementCls.GenStatementCls(this.UUID);
             ReturnInput = new ValueNodeInputViewModel<T?>
             {
                 Name = "Value",
@@ -35,10 +38,11 @@ namespace FatNoder.ViewModels.Nodes
                 Debug.Print("Set : " + newvalue);
             });
             this.Inputs.Add(ReturnInput);
-            Flow = new ValueNodeOutputViewModel<IStateMent>
+            Flow = new ValueNodeOutputViewModel<StatementCls>
             {
                 Name = "",
                 MaxConnections = 1,
+                Value = this.WhenAnyValue(vm =>vm.StatementIfce),
                 PortPosition=PortPosition.Left
             };
             this.Outputs.Add(Flow);

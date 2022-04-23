@@ -1,5 +1,5 @@
 ﻿using DynamicData;
-using FatNoder.Model.TransC;
+using FatNoder.Model.Transc;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;
@@ -12,23 +12,19 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class MethodEntryPointVIewModel : NodeViewModel, IStateMent
+    public class MethodEntryPointVIewModel : NodeViewModel
     {
 
-        public NodeViewModel ChiNode()
-        {
-            return this;
-        }
         static MethodEntryPointVIewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<MethodEntryPointVIewModel>));
         }
 
-        public ValueListNodeInputViewModel<IStateMent> Input { get; }
+        public ValueListNodeInputViewModel<StatementCls> Input { get; }
         public MethodEntryPointVIewModel()
         {
 
-            Input = new CoderListInputViewModel<IStateMent>(typeof(IStateMent))
+            Input = new CoderListInputViewModel<StatementCls>(typeof(StatementCls))
             {
                 Name = "statement",
                 PortPosition=PortPosition.Right,

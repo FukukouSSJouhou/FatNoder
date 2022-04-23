@@ -1,5 +1,5 @@
 ﻿using DynamicData;
-using FatNoder.Model.TransC;
+using FatNoder.Model.Transc;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;
@@ -20,16 +20,20 @@ namespace FatNoder.ViewModels.Nodes
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<StatementNodeViewModelBase>));
         }
 
-        public ValueListNodeInputViewModel<IStateMent> InputFlow { get; }
-        public ValueNodeOutputViewModel<IStateMent> OutputFlow { get; }
+        public ValueListNodeInputViewModel<StatementCls> InputFlow { get; }
+        public ValueNodeOutputViewModel<StatementCls> OutputFlow { get; }
+        public StatementCls StatementIfce { get; }
         public StatementNodeViewModelBase()
         {
-            OutputFlow = new ValueNodeOutputViewModel<IStateMent>
+
+            StatementIfce = StatementCls.GenStatementCls(this.UUID);
+            OutputFlow = new ValueNodeOutputViewModel<StatementCls>
             {
                 Name="Out",
-                MaxConnections = 1
+                MaxConnections = 1,
+                Value= this.WhenAnyValue(vm => vm.StatementIfce)
             };
-            InputFlow = new ValueListNodeInputViewModel<IStateMent>
+            InputFlow = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "In",
                 MaxConnections = 1
