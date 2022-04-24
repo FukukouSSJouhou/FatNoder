@@ -65,7 +65,7 @@ namespace FatNoder.Serializer.Node.Xml
                         foreach (var c in nvo.Connections.Items)
                         {
                             XMLNodeOutputConnect cn=new XMLNodeOutputConnect();
-                            cn.Parent = c.Input.Parent.UUID.ToString();
+                            cn.Target = c.Input.Parent.UUID.ToString();
                             cn.Name = c.Input.Name;
                             o.connections.Add(cn);
                         }

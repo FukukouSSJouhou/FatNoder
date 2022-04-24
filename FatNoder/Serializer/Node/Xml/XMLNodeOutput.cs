@@ -16,8 +16,8 @@ namespace FatNoder.Serializer.Node.Xml
         {
             get;set;
         }
-        [DataMember(Name = "Parent", Order = 2)]
-        public string Parent
+        [DataMember(Name = "Target", Order = 2)]
+        public string Target
         {
             get;set;
         }
