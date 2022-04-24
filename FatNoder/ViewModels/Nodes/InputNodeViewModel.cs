@@ -1,4 +1,6 @@
 ﻿using DynamicData;
+using FatNoder.Serializer.Node.Xml;
+using FatNoder.ViewModels.Xml;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;
@@ -6,12 +8,13 @@ using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class InputNodeViewModel<T>: StatementNodeViewModelBase
+    public class InputNodeViewModel<T>: StatementNodeViewModelBase, INVModelXML
     {
         static InputNodeViewModel()
         {
@@ -27,6 +30,18 @@ namespace FatNoder.ViewModels.Nodes
                 Value = this.WhenAnyValue(vm => vm.ValueEditor.Value)
             };
             this.Outputs.Add(Output);
+        }
+
+        public XmlNodeDatas GetXMLNodeDT()
+        {
+            InputNodeViewModelNaibuSyoriXML nvkun = new();
+            nvkun.Value = this.ValueEditor.Value.ToString();
+            return nvkun;
+        }
+
+        public void SetXMLNodeDT(XmlNodeDatas xmldt)
+        {
+            throw new NotImplementedException();
         }
     }
 }

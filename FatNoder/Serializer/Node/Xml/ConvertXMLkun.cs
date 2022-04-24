@@ -1,5 +1,6 @@
 ﻿using DynamicData;
 using FatNoder.Model.Transc;
+using FatNoder.ViewModels.Xml;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using System;
@@ -12,11 +13,11 @@ namespace FatNoder.Serializer.Node.Xml
 {
     public class ConvertXMLkun
     {
-        public static XmlRootN Serializekun(NetworkViewModel novm)
+        public static XmlRootN Serializekun(NetworkViewModel novm,ref List<Type> knowTypeList)
         {
             XmlRootN xr=new();
             xr.nodes = new XMLRoot_NodesCLskun();
-            foreach(NodeViewModel nvm in novm.Nodes.Items)
+            foreach (NodeViewModel nvm in novm.Nodes.Items)
             {
                 XML_NodeViewModel nobj =new XML_NodeViewModel();
 
@@ -24,12 +25,24 @@ namespace FatNoder.Serializer.Node.Xml
                 nobj.UUID = nvm.UUID.ToString();
                 nobj.TYPE = nvm.GetType().ToString();
                 nobj.InputStates = new XMLNodeInputStatement_VMLS();
+                dynamic dynvn = nvm as dynamic;
+                if (dynvn is INVModelXML)
+                {
+                    INVModelXML dtkun=dynvn as INVModelXML;
+                    XmlNodeDatas  dt= dtkun.GetXMLNodeDT();
+                    nobj.DTTYPE = dt.GetType().ToString();
+                    if (!knowTypeList.Contains(dt.GetType()))
+                    {
+                        knowTypeList.Add(dt.GetType());
+                    }
+                    nobj.Datas = dt;
+
+                    Console.Write("");
+                }
                 foreach (NodeInputViewModel nvi in nvm.Inputs.Items)
                 {
 
-                    dynamic dyi = nvi as dynamic;
-                    object objkun = dyi as object;
-                    Type t = objkun.GetType();
+                    dynamic dyi = nvi;
                     if (dyi is ValueListNodeInputViewModel<StatementCls>)
                     {
                         var statementkun = new XMLNodeInputStatement();
@@ -50,18 +63,18 @@ namespace FatNoder.Serializer.Node.Xml
                 foreach (NodeOutputViewModel nvo in nvm.Outputs.Items)
                 {
 
-                    dynamic dyo = nvo as dynamic;
-                    object objkun = dyo as object;
-                    Type t = objkun.GetType();
+                    dynamic dyo = nvo;
                     if(dyo is ValueNodeOutputViewModel<StatementCls>)
                     {
                         
                     }
                     else
                     {
-                        XMLNodeOutput o=new XMLNodeOutput();
-                        o.Name = nvo.Name;
-                        o.connections=new XMLNodeOutputConnectS();
+                        XMLNodeOutput o = new XMLNodeOutput
+                        {
+                            Name = nvo.Name,
+                            connections = new XMLNodeOutputConnectS()
+                        };
                         foreach (var c in nvo.Connections.Items)
                         {
                             XMLNodeOutputConnect cn=new XMLNodeOutputConnect();
