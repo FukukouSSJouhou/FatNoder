@@ -13,12 +13,10 @@ namespace FatNoder.Serializer.Node.Xml
 {
     public class ConvertXMLkun
     {
-        public static XmlRootN Serializekun(NetworkViewModel novm)
+        public static XmlRootN Serializekun(NetworkViewModel novm,ref List<Type> knowTypeList)
         {
             XmlRootN xr=new();
             xr.nodes = new XMLRoot_NodesCLskun();
-
-            List<Type> knowTypeList = new List<Type>();
             foreach (NodeViewModel nvm in novm.Nodes.Items)
             {
                 XML_NodeViewModel nobj =new XML_NodeViewModel();
