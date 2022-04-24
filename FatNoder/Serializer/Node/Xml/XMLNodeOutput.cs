@@ -22,16 +22,24 @@ namespace FatNoder.Serializer.Node.Xml
             get;set;
         }
     }
+
+    [CollectionDataContract(Name = "connections")]
     public class XMLNodeOutputConnectS : List<XMLNodeOutputConnect>
     {
 
     }
+    [DataContract(Name = "out")]
     public class XMLNodeOutput
     {
+        [DataMember(Name = "Name", Order = 1)]
         public string Name
         {
             get;set;
         }
-        public 
+        [DataMember(Name = "connections", Order = 2)]
+        public XMLNodeOutputConnectS connections
+        {
+            get;set;
+        }
     }
 }

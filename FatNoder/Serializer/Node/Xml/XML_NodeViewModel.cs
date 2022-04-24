@@ -13,6 +13,11 @@ namespace FatNoder.Serializer.Node.Xml
     {
 
     }
+    [CollectionDataContract(Name="Outputs")]
+    public class XMLNodeOutputS : List<XMLNodeOutput>
+    {
+
+    }
     [DataContract(Name = "NodeVM")]
     public class XML_NodeViewModel
     {
@@ -34,6 +39,11 @@ namespace FatNoder.Serializer.Node.Xml
         }
         [DataMember(Name= "InputStates",Order=4,IsRequired =false)]
         public XMLNodeInputStatement_VMLS InputStates
+        {
+            get;set;
+        }
+        [DataMember(Name="Outputs",Order=5)]
+        public XMLNodeOutputS Outputs
         {
             get;set;
         }
