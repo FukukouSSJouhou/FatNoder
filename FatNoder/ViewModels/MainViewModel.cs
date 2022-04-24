@@ -51,7 +51,7 @@ namespace FatNoder.ViewModels
         public ReactiveCommand<Unit, Unit> GroupNodes { get; }
         public ReactiveCommand<Unit, Unit> UngroupNodes { get; }
         public ReactiveCommand<Unit, Unit> OpenGroup { get; }
-        public ReactiveCommand<Unit,Unit> CreateTest { get; }
+        public ReactiveCommand<Unit, Unit> CreateTest { get; }
         public void add_project(String Name)
         {
 
@@ -109,12 +109,13 @@ namespace FatNoder.ViewModels
             });
             TestPhasekun = ReactiveCommand.Create(() =>
             {
-                Serializer.Node.Xml.XmlRootN xr = Serializer.Node.Xml.ConvertXMLkun.Serializekun(Network);
+                List<Type> typelistkun = new List<Type>();
+                Serializer.Node.Xml.XmlRootN xr = Serializer.Node.Xml.ConvertXMLkun.Serializekun(Network,ref typelistkun);
                 using(var writer = new StringWriter())
                 {
 
                     DataContractSerializer serializer =
-                        new (typeof(Serializer.Node.Xml.XmlRootN));
+                        new (typeof(Serializer.Node.Xml.XmlRootN), typelistkun);
                     var settings = new XmlWriterSettings()
                     {
                         Indent=true,

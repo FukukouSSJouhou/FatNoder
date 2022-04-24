@@ -35,6 +35,7 @@ namespace FatNoder.Serializer.Node.Xml
                     {
                         knowTypeList.Add(dt.GetType());
                     }
+                    nobj.Datas = dt;
 
                     Console.Write("");
                 }
