@@ -8,6 +8,11 @@ using System.Xml.Serialization;
 
 namespace FatNoder.Serializer.Node.Xml
 {
+    [CollectionDataContract(Name = "InputStates")]
+    public class XMLNodeInputStatement_VMLS : List<XMLNodeInputStatement>
+    {
+
+    }
     [DataContract(Name = "NodeVM")]
     public class XML_NodeViewModel
     {
@@ -24,6 +29,11 @@ namespace FatNoder.Serializer.Node.Xml
         }
         [DataMember(Name = "type",Order=3)]
         public string TYPE
+        {
+            get;set;
+        }
+        [DataMember(Name= "InputStates",Order=4,IsRequired =false)]
+        public XMLNodeInputStatement_VMLS InputStates
         {
             get;set;
         }
