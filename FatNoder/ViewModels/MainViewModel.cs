@@ -84,7 +84,7 @@ namespace FatNoder.ViewModels
                         dynamic dyi = i as dynamic;
                         object objkun = dyi as object;
                         Type t = objkun.GetType();
-                        Console.WriteLine($"Type:{t} ");
+                        Console.WriteLine($"\tType:{t} ");
                         if (dyi is ValueListNodeInputViewModel<StatementCls>)
                         {
                             IObservableList<StatementCls> valueskun;
@@ -92,7 +92,7 @@ namespace FatNoder.ViewModels
                             valueskun = dyi.Values as IObservableList<StatementCls>;
                             foreach (StatementCls s in valueskun.Items)
                             {
-                                Console.WriteLine($"\tChildUUID:{s.UUID} ");
+                                Console.WriteLine($"\t\tChildUUID:{s.UUID} ");
                             }
                         }
                         else

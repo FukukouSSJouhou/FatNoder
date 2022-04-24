@@ -14,7 +14,7 @@ namespace FatNoder.ViewModels.Conv
             if (obj is ValueNodeInputViewModel<string>)
             {
                 string valuekun = obj.Value as string;
-                Console.WriteLine($"\tValue:{valuekun}");
+                Console.WriteLine($"\t\tValue:{valuekun}");
             }
         }
     }
