@@ -20,7 +20,7 @@ namespace FatNoder.ViewModels.Nodes
         public class InputNodeViewModelNaibuSyoriXML : XmlNodeDatas
         {
             [DataMember (Name ="Value",Order =1)]
-            public T Value
+            public string Value
             {
                 get;set;
             }
@@ -44,7 +44,7 @@ namespace FatNoder.ViewModels.Nodes
         public XmlNodeDatas GetXMLNodeDT()
         {
             InputNodeViewModelNaibuSyoriXML nvkun = new();
-            nvkun.Value = this.ValueEditor.Value;
+            nvkun.Value = this.ValueEditor.Value.ToString();
             return nvkun;
         }
 
