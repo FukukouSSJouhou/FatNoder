@@ -63,18 +63,18 @@ namespace FatNoder.Serializer.Node.Xml
                 foreach (NodeOutputViewModel nvo in nvm.Outputs.Items)
                 {
 
-                    dynamic dyo = nvo as dynamic;
-                    object objkun = dyo as object;
-                    Type t = objkun.GetType();
+                    dynamic dyo = nvo;
                     if(dyo is ValueNodeOutputViewModel<StatementCls>)
                     {
                         
                     }
                     else
                     {
-                        XMLNodeOutput o=new XMLNodeOutput();
-                        o.Name = nvo.Name;
-                        o.connections=new XMLNodeOutputConnectS();
+                        XMLNodeOutput o = new XMLNodeOutput
+                        {
+                            Name = nvo.Name,
+                            connections = new XMLNodeOutputConnectS()
+                        };
                         foreach (var c in nvo.Connections.Items)
                         {
                             XMLNodeOutputConnect cn=new XMLNodeOutputConnect();
