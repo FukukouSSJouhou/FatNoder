@@ -42,9 +42,7 @@ namespace FatNoder.Serializer.Node.Xml
                 foreach (NodeInputViewModel nvi in nvm.Inputs.Items)
                 {
 
-                    dynamic dyi = nvi as dynamic;
-                    object objkun = dyi as object;
-                    Type t = objkun.GetType();
+                    dynamic dyi = nvi;
                     if (dyi is ValueListNodeInputViewModel<StatementCls>)
                     {
                         var statementkun = new XMLNodeInputStatement();
