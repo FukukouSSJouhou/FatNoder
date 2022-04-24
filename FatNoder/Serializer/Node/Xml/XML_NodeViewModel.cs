@@ -47,6 +47,11 @@ namespace FatNoder.Serializer.Node.Xml
         {
             get;set;
         }
+        [DataMember(Name= "Datas",Order =6)]
+        public XmlNodeDatas Datas
+        {
+            get;set;
+        }
 
     }
 }
