@@ -54,11 +54,17 @@ namespace FatNoder.Serializer.Node.Xml
                     Type t = objkun.GetType();
                     if(dyo is ValueNodeOutputViewModel<StatementCls>)
                     {
-
+                        
                     }
                     else
                     {
-                        Console.WriteLine(t.ToString());
+                        string my_name = nvo.Name;
+                        foreach (var c in nvo.Connections.Items)
+                        {
+                            string target_uuid = c.Input.Parent.UUID.ToString();
+                            string target_name = c.Input.Name;
+                            Console.WriteLine($"OutName:{my_name} InName:{target_name} target:{target_uuid}");
+                        }
                     }
                 }
                 xr.nodes.Add(nobj);
