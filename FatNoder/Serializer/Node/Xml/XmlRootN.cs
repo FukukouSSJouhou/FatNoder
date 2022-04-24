@@ -10,10 +10,15 @@ namespace FatNoder.Serializer.Node.Xml
     [DataContract(Name = "root")]
     public class XmlRootN
     {
-        [CollectionDataContract(Name="nodes",ItemName ="NodeVM")]
-        public class XMLRoot_NodesCLskun:List<XML_NodeViewModel>
+        [DataMember(Name = "nodes")]
+        public XMLRoot_NodesCLskun nodes
         {
-
+            get;set;
         }
+    }
+    [CollectionDataContract(Name = "nodes", ItemName = "NodeVM")]
+    public class XMLRoot_NodesCLskun : List<XML_NodeViewModel>
+    {
+
     }
 }
