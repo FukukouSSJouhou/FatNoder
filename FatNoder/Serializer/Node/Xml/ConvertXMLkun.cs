@@ -63,7 +63,7 @@ namespace FatNoder.Serializer.Node.Xml
                         {
                             string target_uuid = c.Input.Parent.UUID.ToString();
                             string target_name = c.Input.Name;
-                            Console.WriteLine($"OutName:{my_name} InName:{target_name} target:{target_uuid}");
+
                         }
                     }
                 }
