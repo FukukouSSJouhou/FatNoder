@@ -40,7 +40,7 @@ namespace FatNoder.ViewModels.Nodes
             });
             Flow = new ValueNodeOutputViewModel<StatementCls>
             {
-                Name = "",
+                Name = "In",
                 MaxConnections = 1,
                 Value = this.WhenAnyValue(vm =>vm.StatementIfce),
                 PortPosition=PortPosition.Left
