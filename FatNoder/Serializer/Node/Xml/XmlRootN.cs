@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace FatNoder.Serializer.Node.Xml
 {
     [DataContract(Name = "root")]
-    public class XmlRootNodesCls
+    public class XmlRootN
     {
         [CollectionDataContract(Name="nodes",ItemName ="NodeVM")]
         public class XMLRoot_NodesCLskun:List<XML_NodeViewModel>
