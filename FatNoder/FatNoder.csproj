@@ -1,17 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <StartupObject>FatNoder.App</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Fluent.Ribbon" Version="9.0.4" />
-    <PackageReference Include="NodeNetwork" Version="6.0.0" />
-    <PackageReference Include="NodeNetworkToolkit" Version="6.0.0" />
+    <PackageReference Include="NodeNetworkJH" Version="6.0.0" />
+    <PackageReference Include="NodeNetworkJHToolkit" Version="6.0.0" />
     <PackageReference Include="ReactiveUI" Version="18.0.7" />
     <PackageReference Include="ReactiveUI.WPF" Version="18.0.7" />
   </ItemGroup>

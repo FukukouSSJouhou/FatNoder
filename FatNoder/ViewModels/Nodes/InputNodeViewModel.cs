@@ -1,7 +1,7 @@
 ﻿using DynamicData;
-using NodeNetwork.Toolkit.ValueNode;
-using NodeNetwork.ViewModels;
-using NodeNetwork.Views;
+using NodeNetworkJH.Toolkit.ValueNode;
+using NodeNetworkJH.ViewModels;
+using NodeNetworkJH.Views;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class InputNodeViewModel<T>:NodeViewModel
+    public class InputNodeViewModel<T>: StatementNodeViewModelBase
     {
         static InputNodeViewModel()
         {
