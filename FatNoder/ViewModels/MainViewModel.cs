@@ -10,11 +10,13 @@ using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace FatNoder.ViewModels
 {
@@ -105,9 +107,11 @@ namespace FatNoder.ViewModels
             });
             TestPhasekun = ReactiveCommand.Create(() =>
             {
+                
                 string nm;
 
                 foreach (NodeViewModel n in Network.Nodes.Items){
+                    Debug.Print(n.GetType().ToString());
                     Debug.Print(n.UUID.ToString());
                     foreach(NodeInputViewModel i in n.Inputs.Items)
                     {
