@@ -14,8 +14,10 @@ using System.IO;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace FatNoder.ViewModels
@@ -107,6 +109,24 @@ namespace FatNoder.ViewModels
             });
             TestPhasekun = ReactiveCommand.Create(() =>
             {
+                Serializer.Node.Xml.XmlRootN xr = Serializer.Node.Xml.ConvertXMLkun.Serializekun(Network);
+                using(var writer = new StringWriter())
+                {
+
+                    DataContractSerializer serializer =
+                        new (typeof(Serializer.Node.Xml.XmlRootN));
+                    var settings = new XmlWriterSettings()
+                    {
+                        Indent=true,
+                        IndentChars="    "
+                    };
+                    using (var xw = XmlWriter.Create(writer,settings))
+                    {
+                        serializer.WriteObject(xw, xr);
+                    }
+                    Console.WriteLine(writer.ToString());
+                }
+                /*
                 
                 string nm;
 
@@ -129,7 +149,7 @@ namespace FatNoder.ViewModels
                         }
 
                     }
-                }
+                }*/
             });
 
         }

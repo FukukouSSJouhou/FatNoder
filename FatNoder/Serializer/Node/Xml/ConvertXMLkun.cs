@@ -15,10 +15,11 @@ namespace FatNoder.Serializer.Node.Xml
             xr.nodes = new XMLRoot_NodesCLskun();
             foreach(NodeViewModel nvm in novm.Nodes.Items)
             {
-                XML_NodeViewModel nobj = new();
+                XML_NodeViewModel nobj =new XML_NodeViewModel();
+
                 nobj.Name = nvm.Name;
-                nobj.TYPE = nvm.GetType().ToString();
                 nobj.UUID = nvm.UUID.ToString();
+                nobj.TYPE = nvm.GetType().ToString();
                 xr.nodes.Add(nobj);
             }
             return xr;
