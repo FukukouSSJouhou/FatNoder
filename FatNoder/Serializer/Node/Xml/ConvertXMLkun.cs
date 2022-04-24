@@ -1,5 +1,6 @@
 ﻿using DynamicData;
 using FatNoder.Model.Transc;
+using FatNoder.ViewModels.Xml;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using System;
@@ -24,6 +25,11 @@ namespace FatNoder.Serializer.Node.Xml
                 nobj.UUID = nvm.UUID.ToString();
                 nobj.TYPE = nvm.GetType().ToString();
                 nobj.InputStates = new XMLNodeInputStatement_VMLS();
+                dynamic dynvn = nvm as dynamic;
+                if (dynvn is INVModelXML)
+                {
+                    nobj.Datas = dynvn.GetXMLNodeDT();
+                }
                 foreach (NodeInputViewModel nvi in nvm.Inputs.Items)
                 {
 
