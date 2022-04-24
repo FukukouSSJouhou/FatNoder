@@ -17,7 +17,9 @@ namespace FatNoder.Serializer.Node.Xml
         {
             XmlRootN xr=new();
             xr.nodes = new XMLRoot_NodesCLskun();
-            foreach(NodeViewModel nvm in novm.Nodes.Items)
+
+            List<Type> knowTypeList = new List<Type>();
+            foreach (NodeViewModel nvm in novm.Nodes.Items)
             {
                 XML_NodeViewModel nobj =new XML_NodeViewModel();
 
@@ -28,7 +30,15 @@ namespace FatNoder.Serializer.Node.Xml
                 dynamic dynvn = nvm as dynamic;
                 if (dynvn is INVModelXML)
                 {
-                    nobj.Datas = dynvn.GetXMLNodeDT();
+                    INVModelXML dtkun=dynvn as INVModelXML;
+                    XmlNodeDatas  dt= dtkun.GetXMLNodeDT();
+                    nobj.DTTYPE = dt.GetType().ToString();
+                    if (!knowTypeList.Contains(dt.GetType()))
+                    {
+                        knowTypeList.Add(dt.GetType());
+                    }
+
+                    Console.Write("");
                 }
                 foreach (NodeInputViewModel nvi in nvm.Inputs.Items)
                 {

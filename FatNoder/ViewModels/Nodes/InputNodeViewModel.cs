@@ -16,15 +16,6 @@ namespace FatNoder.ViewModels.Nodes
 {
     public class InputNodeViewModel<T>: StatementNodeViewModelBase, INVModelXML
     {
-        [DataContract(Name = "Datas")]
-        public class InputNodeViewModelNaibuSyoriXML : XmlNodeDatas
-        {
-            [DataMember (Name ="Value",Order =1)]
-            public string Value
-            {
-                get;set;
-            }
-        }
         static InputNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<InputNodeViewModel<T>>));
