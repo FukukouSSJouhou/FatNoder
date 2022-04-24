@@ -46,7 +46,8 @@ namespace FatNoder.Serializer.Node.Xml
                         nobj.InputStates.Add(statementkun);
                     }
                 }
-                foreach(NodeOutputViewModel nvo in nvm.Outputs.Items)
+                nobj.Outputs = new XMLNodeOutputS();
+                foreach (NodeOutputViewModel nvo in nvm.Outputs.Items)
                 {
 
                     dynamic dyo = nvo as dynamic;
@@ -58,13 +59,17 @@ namespace FatNoder.Serializer.Node.Xml
                     }
                     else
                     {
-                        string my_name = nvo.Name;
+                        XMLNodeOutput o=new XMLNodeOutput();
+                        o.Name = nvo.Name;
+                        o.connections=new XMLNodeOutputConnectS();
                         foreach (var c in nvo.Connections.Items)
                         {
-                            string target_uuid = c.Input.Parent.UUID.ToString();
-                            string target_name = c.Input.Name;
-
+                            XMLNodeOutputConnect cn=new XMLNodeOutputConnect();
+                            cn.Parent = c.Input.Parent.UUID.ToString();
+                            cn.Name = c.Input.Name;
+                            o.connections.Add(cn);
                         }
+                        nobj.Outputs.Add(o);
                     }
                 }
                 xr.nodes.Add(nobj);
