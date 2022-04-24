@@ -34,6 +34,7 @@ namespace FatNoder.Serializer.Node.Xml
                     {
                         var statementkun = new XMLNodeInputStatement();
                         statementkun.States = new XMLNodeInputStatementLS();
+                        statementkun.Name = dyi.Name;
                         IObservableList<StatementCls> valueskun;
                         
                         valueskun = dyi.Values as IObservableList<StatementCls>;
@@ -43,6 +44,21 @@ namespace FatNoder.Serializer.Node.Xml
                             statementkun.States.Add(s.UUID.ToString());
                         }
                         nobj.InputStates.Add(statementkun);
+                    }
+                }
+                foreach(NodeOutputViewModel nvo in nvm.Outputs.Items)
+                {
+
+                    dynamic dyo = nvo as dynamic;
+                    object objkun = dyo as object;
+                    Type t = objkun.GetType();
+                    if(dyo is ValueNodeOutputViewModel<StatementCls>)
+                    {
+
+                    }
+                    else
+                    {
+                        Console.WriteLine(t.ToString());
                     }
                 }
                 xr.nodes.Add(nobj);

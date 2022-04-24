@@ -30,7 +30,7 @@ namespace FatNoder.ViewModels.Nodes
             StatementIfce = StatementCls.GenStatementCls(this.UUID);
             ReturnInput = new ValueNodeInputViewModel<T?>
             {
-                Name = "Value",
+                Name = "ValueRet",
                 Editor=new HannyouValueEditorViewModel<T?>(),
                 MaxConnections=1
             };
