@@ -56,6 +56,9 @@ namespace FatNoder.ViewModels
         {
 
         }
+        /// <summary>
+        /// MainViewModel
+        /// </summary>
         public MainViewModel()
         {
             this.WhenAnyValue(vm => vm.NetworkBreadcrumbBar.ActiveItem).Cast<NetworkBreadcrumb>()
