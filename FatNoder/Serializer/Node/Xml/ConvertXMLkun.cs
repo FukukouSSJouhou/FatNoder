@@ -20,10 +20,12 @@ namespace FatNoder.Serializer.Node.Xml
             foreach (NodeViewModel nvm in novm.Nodes.Items)
             {
                 XML_NodeViewModel nobj =new XML_NodeViewModel();
-
+                nobj.Points = new XMLNodeXY();
                 nobj.Name = nvm.Name;
                 nobj.UUID = nvm.UUID.ToString();
                 nobj.TYPE = nvm.GetType().ToString();
+                nobj.Points.X = nvm.Position.X.ToString();
+                nobj.Points.Y = nvm.Position.Y.ToString();
                 nobj.InputStates = new XMLNodeInputStatement_VMLS();
                 dynamic dynvn = nvm as dynamic;
                 if (dynvn is INVModelXML)
