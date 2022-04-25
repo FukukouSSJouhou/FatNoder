@@ -48,7 +48,7 @@ namespace FatNoder
         public MainWindow()
         {
             InitializeComponent();
-
+            //ViewModelとの紐づけ(bind)
             this.WhenActivated(d =>
             {
                 this.OneWayBind(ViewModel, vm => vm.Network, v => v.network.ViewModel).DisposeWith(d);
@@ -75,6 +75,7 @@ namespace FatNoder
             {
                 this.Close();
             });
+            //viewmodelの設定
             this.ViewModel = new MainViewModel();
         }
     }
