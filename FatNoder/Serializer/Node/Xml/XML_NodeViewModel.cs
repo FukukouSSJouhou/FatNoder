@@ -18,6 +18,21 @@ namespace FatNoder.Serializer.Node.Xml
     {
 
     }
+    [DataContract(Name = "point")]
+    public class XMLNodeXY
+    {
+        [DataMember(Name ="X")]
+
+        public string X
+        {
+            get;set;
+        }
+        [DataMember(Name ="Y")]
+        public string Y
+        {
+            get;set;
+        }
+    }
     [DataContract(Name = "NodeVM")]
     public class XML_NodeViewModel
     {
@@ -56,6 +71,11 @@ namespace FatNoder.Serializer.Node.Xml
         public string DTTYPE
         {
             get; set;
+        }
+        [DataMember(Name = "Point", Order = 8)]
+        public XMLNodeXY Points
+        {
+            get;set;
         }
 
     }
