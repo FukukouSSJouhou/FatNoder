@@ -33,6 +33,9 @@ namespace FatNoder.ViewModels
         }
         #endregion
     }
+    /// <summary>
+    /// MainWindowのViewModel!
+    /// </summary>
     public class MainViewModel:ReactiveObject
     {
         #region Network
