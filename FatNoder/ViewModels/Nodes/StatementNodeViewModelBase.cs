@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
+    /// <summary>
+    /// Statement入出力を備えたNodeの基本形
+    /// </summary>
     public class StatementNodeViewModelBase: NodeViewModel
     {
 
@@ -21,7 +24,13 @@ namespace FatNoder.ViewModels.Nodes
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<StatementNodeViewModelBase>));
         }
 
+        /// <summary>
+        /// Input(表示上はOutput)
+        /// </summary>
         public ValueListNodeInputViewModel<StatementCls> InputFlow { get; }
+        /// <summary>
+        /// Output(表示上はInput)
+        /// </summary>
         public ValueNodeOutputViewModel<StatementCls> OutputFlow { get; }
         public StatementCls StatementIfce { get; }
         public StatementNodeViewModelBase()

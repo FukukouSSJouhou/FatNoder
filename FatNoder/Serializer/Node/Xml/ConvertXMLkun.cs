@@ -11,8 +11,17 @@ using System.Threading.Tasks;
 
 namespace FatNoder.Serializer.Node.Xml
 {
+    /// <summary>
+    /// XMLに変換したりする機能があるclass
+    /// </summary>
     public class ConvertXMLkun
     {
+        /// <summary>
+        /// NetworkViewModelをXMLでSerialize可能なオブジェクトにする
+        /// </summary>
+        /// <param name="novm">NetworkViewModelの中身</param>
+        /// <param name="knowTypeList">シリアライザーが使う型リスト(参照型)</param>
+        /// <returns>Serialize可能なオブジェクト</returns>
         public static XmlRootN Serializekun(NetworkViewModel novm,ref List<Type> knowTypeList)
         {
             XmlRootN xr=new();

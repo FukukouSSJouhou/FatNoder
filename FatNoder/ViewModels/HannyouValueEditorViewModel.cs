@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels
 {
+    /// <summary>
+    /// 数値を編集するNodeの基本形
+    /// </summary>
+    /// <typeparam name="T">編集対象の型</typeparam>
     public class HannyouValueEditorViewModel<T>:ValueEditorViewModel<T>
     {
         static HannyouValueEditorViewModel()
@@ -25,6 +29,9 @@ namespace FatNoder.ViewModels
             }
 
         }
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public HannyouValueEditorViewModel()
         {
             object ret = null;

@@ -33,6 +33,9 @@ namespace FatNoder.ViewModels
         }
         #endregion
     }
+    /// <summary>
+    /// MainWindowのViewModel!
+    /// </summary>
     public class MainViewModel:ReactiveObject
     {
         #region Network
@@ -56,6 +59,9 @@ namespace FatNoder.ViewModels
         {
 
         }
+        /// <summary>
+        /// MainViewModel
+        /// </summary>
         public MainViewModel()
         {
             this.WhenAnyValue(vm => vm.NetworkBreadcrumbBar.ActiveItem).Cast<NetworkBreadcrumb>()
