@@ -14,6 +14,10 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
+    /// <summary>
+    /// 値を返却するNodeの基本形
+    /// </summary>
+    /// <typeparam name="T">型</typeparam>
     public class ReturnNodeViewModel<T> : NodeViewModel
     {
         static ReturnNodeViewModel()
