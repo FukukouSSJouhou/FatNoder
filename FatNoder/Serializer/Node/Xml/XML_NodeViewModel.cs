@@ -25,12 +25,12 @@ namespace FatNoder.Serializer.Node.Xml
 
         public string X
         {
-            get;
+            get;set;
         }
         [DataMember(Name ="Y")]
         public string Y
         {
-            get;
+            get;set;
         }
     }
     [DataContract(Name = "NodeVM")]
