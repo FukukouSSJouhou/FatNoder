@@ -18,7 +18,7 @@ namespace FatNoder.Serializer.Node.Xml
     {
 
     }
-    [CollectionDataContract(Name = "point")]
+    [DataContract(Name = "point")]
     public class XMLNodeXY
     {
         [DataMember(Name ="X")]
