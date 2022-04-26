@@ -29,6 +29,7 @@ namespace NodeAyano
         static int Main(string[] args)
         {
             Console.WriteLine("Start");
+            /*
             var options = CSharpParseOptions.Default
                 .WithLanguageVersion(LanguageVersion.CSharp10); 
             var syntaxTrees = new List<SyntaxTree>();
@@ -52,6 +53,8 @@ namespace NodeAyano
             syntaxTrees.Add(syntaxTree);
             var compilation = CSharpCompilation.Create("MainObj", syntaxTrees, references);
             Console.WriteLine("a");
+            */
+            
             return 0;
         }
     }

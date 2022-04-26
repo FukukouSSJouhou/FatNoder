@@ -1,4 +1,5 @@
-﻿using NodeNetworkJH.ViewModels;
+﻿using FatNoder.ViewModels.Nodes;
+using NodeNetworkJH.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +51,26 @@ namespace FatNoder.Code.Nodes
         }
         public string Compile()
         {
-            return "";
+            string returnstr = "";
+            List<string> usinglist = new List<string>();
+            usinglist.Add("System");
+            foreach(string n in usinglist)
+            {
+                returnstr += $"using {n};\n";
+            }
+            returnstr += $"namespace {_namespaceid} " + "{\n";
+            returnstr += $"\tpublic class {clsname} " + "{\n";
+            //class syori
+            foreach(NodeViewModel n in _Nodes)
+            {
+                if(n is MethodEntryPointVIewModel)
+                {
+
+                }
+            }
+            returnstr += "}";
+            returnstr += "}";
+            return returnstr;
         }
     }
 }
