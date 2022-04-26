@@ -23,7 +23,7 @@ namespace FatNoder.ViewModels.Enumerators
         /// <param name="nodes">Nodes</param>
         public NodeViewModelEnumerator(NodeViewModel rootNVM,IEnumerable<NodeViewModel> nodes)
         {
-            _currentNVM = rootNVM;
+            _currentNVM = null;
             _RootNVM = rootNVM;
             _nodes = nodes;
         }
