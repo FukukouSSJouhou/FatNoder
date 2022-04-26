@@ -14,6 +14,10 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
+    /// <summary>
+    /// 入力するNodeの基本形?
+    /// </summary>
+    /// <typeparam name="T">入力型</typeparam>
     public class InputNodeViewModel<T>: StatementNodeViewModelBase, INVModelXML
     {
         static InputNodeViewModel()

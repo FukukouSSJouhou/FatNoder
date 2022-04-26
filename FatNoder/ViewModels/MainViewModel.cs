@@ -73,12 +73,13 @@ namespace FatNoder.ViewModels
                 Network = new NetworkViewModel()
             });
 
-            ReturnNodeViewModel<string> returnnodekun = new ReturnNodeViewModel<string> { CanBeRemovedByUser = false,Name="StringReturn" };
+            ReturnNodeViewModel<int> returnnodekun = new ReturnNodeViewModel<int> { CanBeRemovedByUser = false,Name="IntReturn" };
             Network.Nodes.Add(returnnodekun);
             MethodEntryPointVIewModel mainnodekun = new MethodEntryPointVIewModel { CanBeRemovedByUser = false, Name = "MainEntryPoint" };
             Network.Nodes.Add(mainnodekun);
             NodeList.AddNodeType(() => new InputNodeViewModel<int> { Name="IntInput"});
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name="StringInput"});
+            NodeList.AddNodeType(() => new PrintNodeViewModel { Name = "PrintString" });
             CreateTest = ReactiveCommand.Create(() =>
             {
                 Console.WriteLine("Detamon");
