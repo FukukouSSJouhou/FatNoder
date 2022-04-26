@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FatNoder", "FatNoder\FatNod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FatXMLCore", "FatXMLCore\FatXMLCore.csproj", "{078A433E-188B-4654-A633-DE2F92AF1D8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodeAyano", "NodeAyano\NodeAyano.csproj", "{D986B8EB-170E-459E-B28E-92ED25FA00C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{078A433E-188B-4654-A633-DE2F92AF1D8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{078A433E-188B-4654-A633-DE2F92AF1D8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{078A433E-188B-4654-A633-DE2F92AF1D8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D986B8EB-170E-459E-B28E-92ED25FA00C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D986B8EB-170E-459E-B28E-92ED25FA00C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D986B8EB-170E-459E-B28E-92ED25FA00C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D986B8EB-170E-459E-B28E-92ED25FA00C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
