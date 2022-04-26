@@ -79,6 +79,7 @@ namespace FatNoder.ViewModels
             Network.Nodes.Add(mainnodekun);
             NodeList.AddNodeType(() => new InputNodeViewModel<int> { Name="IntInput"});
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name="StringInput"});
+            NodeList.AddNodeType(() => new PrintNodeViewModel { Name = "PrintString" });
             CreateTest = ReactiveCommand.Create(() =>
             {
                 Console.WriteLine("Detamon");
