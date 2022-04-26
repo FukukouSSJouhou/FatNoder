@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="Model\" />
+    <Folder Include="Code\" />
   </ItemGroup>
 
   <ItemGroup>

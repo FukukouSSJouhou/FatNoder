@@ -1,15 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <UseWPF>True</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FatXMLCore\FatXMLCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Code\Nodes\" />
   </ItemGroup>
 
 </Project>
