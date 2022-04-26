@@ -65,7 +65,7 @@ namespace FatNoder.Code.Nodes
             {
                 if(n is MethodEntryPointVIewModel)
                 {
-
+                    //start!
                 }
             }
             returnstr += "}";
