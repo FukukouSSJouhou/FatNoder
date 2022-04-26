@@ -30,14 +30,28 @@ namespace NodeAyano
         {
             Console.WriteLine("Start");
             var options = CSharpParseOptions.Default
-                .WithLanguageVersion(LanguageVersion.CSharp10);
+                .WithLanguageVersion(LanguageVersion.CSharp10); 
+            var syntaxTrees = new List<SyntaxTree>();
+            var assemblyDirectoryPath = Path.GetDirectoryName(typeof(object).Assembly.Location);
+            var references = new MetadataReference[]
+            {
+                MetadataReference.CreateFromFile(
+                    $"{assemblyDirectoryPath}/mscorlib.dll"),
+                MetadataReference.CreateFromFile(
+                    $"{assemblyDirectoryPath}/System.Runtime.dll"),
+                MetadataReference.CreateFromFile(
+                    typeof(object).Assembly.Location),
+                MetadataReference.CreateFromFile(
+                    typeof(System.Console).Assembly.Location),
+            };
             var syntaxTree = CSharpSyntaxTree.ParseText(
                 samplestrclass,
                 options,
                 "MainObj.cs"
             );
-            Console.WriteLine("tdn");
-
+            syntaxTrees.Add(syntaxTree);
+            var compilation = CSharpCompilation.Create("MainObj", syntaxTrees, references);
+            Console.WriteLine("a");
             return 0;
         }
     }
