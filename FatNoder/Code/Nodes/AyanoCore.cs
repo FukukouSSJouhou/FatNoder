@@ -70,7 +70,9 @@ namespace FatNoder.Code.Nodes
                     NodeViewModelEnumerator iterator = new NodeViewModelEnumerator(n, _Nodes);
                     while (iterator.MoveNext())
                     {
-
+                        NodeViewModel nvm = (NodeViewModel)iterator.Current;
+                        Console.WriteLine(nvm.GetType().ToString());
+                        Console.WriteLine(nvm.UUID);
                     }
                 }
             }
