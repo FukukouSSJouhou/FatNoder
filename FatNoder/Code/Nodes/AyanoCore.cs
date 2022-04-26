@@ -24,6 +24,22 @@ namespace FatNoder.Code.Nodes
                 _Nodes = value;
             }
         }
+        private string _namespaceid;
+        public string NamespaceID
+        {
+            get
+            {
+                return _namespaceid;
+            }
+            set
+            {
+                _namespaceid = value;
+            }
+        }
+        public string clsname
+        {
+            get;set;
+        }
         /// <summary>
         /// constructor
         /// </summary>
