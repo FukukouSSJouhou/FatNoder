@@ -23,7 +23,10 @@ namespace FatNoder.ViewModels.Enumerators
                 return _currentNVM;
             }
         }
-
+        /// <summary>
+        /// Next Move
+        /// </summary>
+        /// <returns>Status</returns>
         public bool MoveNext()
         {
             if (_currentNVM == null)
@@ -62,7 +65,9 @@ namespace FatNoder.ViewModels.Enumerators
                 return false;
             }
         }
-
+        /// <summary>
+        /// Reset
+        /// </summary>
         public void Reset()
         {
             _currentNVM = null;
