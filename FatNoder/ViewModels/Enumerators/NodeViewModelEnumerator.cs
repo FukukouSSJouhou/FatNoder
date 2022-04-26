@@ -16,6 +16,17 @@ namespace FatNoder.ViewModels.Enumerators
         private NodeViewModel _currentNVM;
         private NodeViewModel _RootNVM;
         private IEnumerable<NodeViewModel> _nodes;
+        /// <summary>
+        /// constructor!
+        /// </summary>
+        /// <param name="rootNVM">Root NVM</param>
+        /// <param name="nodes">Nodes</param>
+        public NodeViewModelEnumerator(NodeViewModel rootNVM,IEnumerable<NodeViewModel> nodes)
+        {
+            _currentNVM = rootNVM;
+            _RootNVM = rootNVM;
+            _nodes = nodes;
+        }
         public object Current
         {
             get
