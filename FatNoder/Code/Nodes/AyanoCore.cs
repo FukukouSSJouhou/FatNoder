@@ -34,7 +34,7 @@ namespace FatNoder.Code.Nodes
         }
         public string Compile()
         {
-
+            return "";
         }
     }
 }
