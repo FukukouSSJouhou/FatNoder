@@ -1,7 +1,7 @@
 ﻿namespace NodeAyano
 {
     /// <summary>
-    /// t
+    /// This is a trans compiler.
     /// </summary>
     public class NodeAyano
     {
