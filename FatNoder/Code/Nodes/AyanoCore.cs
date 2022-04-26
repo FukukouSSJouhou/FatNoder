@@ -1,4 +1,5 @@
-﻿using FatNoder.ViewModels.Nodes;
+﻿using FatNoder.ViewModels.Enumerators;
+using FatNoder.ViewModels.Nodes;
 using NodeNetworkJH.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,14 @@ namespace FatNoder.Code.Nodes
             {
                 if(n is MethodEntryPointVIewModel)
                 {
-
+                    //start!
+                    NodeViewModelEnumerator iterator = new NodeViewModelEnumerator(n, _Nodes);
+                    while (iterator.MoveNext())
+                    {
+                        NodeViewModel nvm = (NodeViewModel)iterator.Current;
+                        Console.WriteLine(nvm.GetType().ToString());
+                        Console.WriteLine(nvm.UUID);
+                    }
                 }
             }
             returnstr += "}";
