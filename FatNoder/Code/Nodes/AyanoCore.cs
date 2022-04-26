@@ -12,9 +12,25 @@ namespace FatNoder.Code.Nodes
     /// </summary>
     public class AyanoCore
     {
+        private IEnumerable<NodeViewModel> _Nodes;
+        public IEnumerable<NodeViewModel> Nodes
+        {
+            get
+            {
+                return _Nodes;
+            }
+            set
+            {
+                _Nodes = value;
+            }
+        }
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="novms">Nodes</param>
         public AyanoCore(IEnumerable<NodeViewModel> novms)
         {
-
+            _Nodes = novms;
         }
     }
 }
