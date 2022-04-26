@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NodeNetworkJH.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,9 @@ namespace FatNoder.Code.Nodes
     /// </summary>
     public class AyanoCore
     {
+        public AyanoCore(IEnumerable<NodeViewModel> novms)
+        {
+
+        }
     }
 }
