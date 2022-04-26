@@ -32,5 +32,9 @@ namespace FatNoder.Code.Nodes
         {
             _Nodes = novms;
         }
+        public string Compile()
+        {
+
+        }
     }
 }
