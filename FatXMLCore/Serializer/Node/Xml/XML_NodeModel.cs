@@ -23,12 +23,12 @@ namespace FatNoder.Serializer.Node.Xml
     {
         [DataMember(Name ="X")]
 
-        public string X
+        public double X
         {
             get;set;
         }
         [DataMember(Name ="Y")]
-        public string Y
+        public double Y
         {
             get;set;
         }
