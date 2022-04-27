@@ -48,7 +48,7 @@ namespace FatNoder.Serializer.Node.Xml
             get;set;
         }
         [DataMember(Name = "type",Order=3)]
-        public string TYPE
+        public Type TYPE
         {
             get;set;
         }
@@ -68,7 +68,7 @@ namespace FatNoder.Serializer.Node.Xml
             get;set;
         }
         [DataMember(Name = "modeltype", Order = 7)]
-        public string MODELTYPE
+        public Type MODELTYPE
         {
             get; set;
         }
