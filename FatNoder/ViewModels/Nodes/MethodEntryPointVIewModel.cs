@@ -17,7 +17,8 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class MethodEntryPointVIewModel : NodeVMBasekun
+    public class MethodEntryPointVIewModel : NodeVMBasekun, INodeViewModelBase
+    {
     {
 
         static MethodEntryPointVIewModel()
@@ -28,7 +29,7 @@ namespace FatNoder.ViewModels.Nodes
         public ValueListNodeInputViewModel<StatementCls> Input { get; }
         private MethodEntryPoint _model=new MethodEntryPoint();
 
-        public MethodEntryPoint model
+        public XML_NodeModel model
         {
             get
             {
