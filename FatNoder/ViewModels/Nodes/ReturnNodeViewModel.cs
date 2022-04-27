@@ -20,7 +20,7 @@ namespace FatNoder.ViewModels.Nodes
     /// <typeparam name="T">型</typeparam>
     public class ReturnNodeViewModel<T> : NodeViewModel, INodeViewModelBase
     {
-    {
+        
         static ReturnNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<ReturnNodeViewModel<T>>));
