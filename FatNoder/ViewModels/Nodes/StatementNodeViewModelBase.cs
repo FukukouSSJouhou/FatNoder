@@ -33,18 +33,6 @@ namespace FatNoder.ViewModels.Nodes
         /// </summary>
         public ValueNodeOutputViewModel<StatementCls> OutputFlow { get; }
         public StatementCls StatementIfce { get; }
-        /// <summary>
-        /// Name Changed
-        /// </summary>
-        public IObservable<string> NameChanged { get; }
-        /// <summary>
-        /// Position Changed
-        /// </summary>
-        public IObservable<Point> PositionChanged { get; }
-        /// <summary>
-        /// UUID!
-        /// </summary>
-        public IObservable<Guid> UUIDChanged { get; }
         public StatementNodeViewModelBase()
         {
 
@@ -64,9 +52,6 @@ namespace FatNoder.ViewModels.Nodes
             };
             this.Outputs.Add(OutputFlow);
             this.Inputs.Add(InputFlow);
-            NameChanged = this.WhenAnyValue(vm => vm.Name);
-            PositionChanged=this.WhenAnyValue(vm => vm.Position);
-            UUIDChanged = this.WhenAnyValue(vm => UUID);
         }
     }
 }
