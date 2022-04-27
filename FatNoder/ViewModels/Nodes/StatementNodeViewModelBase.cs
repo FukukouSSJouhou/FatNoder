@@ -1,6 +1,5 @@
 ﻿using DynamicData;
 using FatNoder.Model.Transc;
-using FatNoder.ViewModels.Xml;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;
@@ -10,13 +9,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FatNoder.ViewModels.Nodes
 {
     /// <summary>
     /// Statement入出力を備えたNodeの基本形
     /// </summary>
-    public class StatementNodeViewModelBase: NodeViewModel
+    public class StatementNodeViewModelBase: NodeVMBasekun
     {
 
         static StatementNodeViewModelBase()

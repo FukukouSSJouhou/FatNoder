@@ -23,18 +23,18 @@ namespace FatNoder.Serializer.Node.Xml
     {
         [DataMember(Name ="X")]
 
-        public string X
+        public double X
         {
             get;set;
         }
         [DataMember(Name ="Y")]
-        public string Y
+        public double Y
         {
             get;set;
         }
     }
-    [DataContract(Name = "NodeVM")]
-    public class XML_NodeViewModel
+    [DataContract(Name = "Node")]
+    public class XML_NodeModel
     {
         
         [DataMember(Name = "Name", Order = 1)]
@@ -43,7 +43,7 @@ namespace FatNoder.Serializer.Node.Xml
             get;set;
         }
         [DataMember(Name = "UUID", Order = 2)]
-        public string UUID
+        public Guid UUID
         {
             get;set;
         }
@@ -62,17 +62,7 @@ namespace FatNoder.Serializer.Node.Xml
         {
             get;set;
         }
-        [DataMember(Name= "Datas",Order =6)]
-        public XmlNodeDatas Datas
-        {
-            get;set;
-        }
-        [DataMember(Name = "datatype", Order =7)]
-        public string DTTYPE
-        {
-            get; set;
-        }
-        [DataMember(Name = "Point", Order = 8)]
+        [DataMember(Name = "Point", Order = 6)]
         public XMLNodeXY Points
         {
             get;set;
