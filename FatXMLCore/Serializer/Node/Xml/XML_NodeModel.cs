@@ -33,8 +33,8 @@ namespace FatNoder.Serializer.Node.Xml
             get;set;
         }
     }
-    [DataContract(Name = "NodeVM")]
-    public class XML_NodeViewModel
+    [DataContract(Name = "Node")]
+    public class XML_NodeModel
     {
         
         [DataMember(Name = "Name", Order = 1)]
