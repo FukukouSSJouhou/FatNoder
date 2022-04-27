@@ -61,6 +61,13 @@ namespace FatNoder.ViewModels
         {
 
         }
+        public IEnumerable<XML_NodeModel> GetNodeModels()
+        {
+            foreach(NodeViewModel nvm in Network.Nodes.Items)
+            {
+
+            }
+        }
         /// <summary>
         /// MainViewModel
         /// </summary>
