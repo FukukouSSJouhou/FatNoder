@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class PrintNodeViewModel : StatementNodeViewModelBase, INVModelXML
+    public class PrintNodeViewModel : StatementNodeViewModelBase
     {
         static PrintNodeViewModel()
         {
@@ -34,16 +34,6 @@ namespace FatNoder.ViewModels.Nodes
                 Debug.Print("Set print : " + newvalue);
             });
             this.Inputs.Add(PrintInput);
-        }
-
-        public XmlNodeDatas GetXMLNodeDT()
-        {
-            return new XmlNodeDatas();
-        }
-
-        public void SetXMLNodeDT(XmlNodeDatas xmldt)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="Code\Nodes\" />
+    <Folder Include="Model\Nodes\" />
   </ItemGroup>
 
   <ItemGroup>

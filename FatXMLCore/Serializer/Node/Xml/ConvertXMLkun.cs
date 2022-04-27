@@ -1,5 +1,4 @@
 ﻿using FatNoder.Model.Transc;
-using FatNoder.ViewModels.Xml;
 using System;
 using System.Collections.Generic;
 using System.Linq;
