@@ -1,6 +1,5 @@
 ﻿using DynamicData;
 using FatNoder.Serializer.Node.Xml;
-using FatNoder.ViewModels.Xml;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;
@@ -18,7 +17,7 @@ namespace FatNoder.ViewModels.Nodes
     /// 入力するNodeの基本形?
     /// </summary>
     /// <typeparam name="T">入力型</typeparam>
-    public class InputNodeViewModel<T>: StatementNodeViewModelBase, INVModelXML
+    public class InputNodeViewModel<T>: StatementNodeViewModelBase
     {
         static InputNodeViewModel()
         {
@@ -36,16 +35,6 @@ namespace FatNoder.ViewModels.Nodes
             this.Outputs.Add(Output);
         }
 
-        public XmlNodeDatas GetXMLNodeDT()
-        {
-            InputNodeViewModelNaibuSyoriXML nvkun = new();
-            nvkun.Value = this.ValueEditor.Value.ToString();
-            return nvkun;
-        }
-
-        public void SetXMLNodeDT(XmlNodeDatas xmldt)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
