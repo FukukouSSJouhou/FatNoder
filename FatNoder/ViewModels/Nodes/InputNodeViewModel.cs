@@ -20,7 +20,7 @@ namespace FatNoder.ViewModels.Nodes
     /// 入力するNodeの基本形?
     /// </summary>
     /// <typeparam name="T">入力型</typeparam>
-    public class InputNodeViewModel<T>: StatementNodeViewModelBase
+    public class InputNodeViewModel<T>: StatementNodeViewModelBase, INodeViewModelBase
     {
         static InputNodeViewModel()
         {
@@ -29,7 +29,7 @@ namespace FatNoder.ViewModels.Nodes
         public HannyouValueEditorViewModel<T> ValueEditor { get; } = new HannyouValueEditorViewModel<T>();
         private InputNodeModel<T> _model = new InputNodeModel<T>(); 
 
-        public InputNodeModel<T> model 
+        public XML_NodeModel model 
         {
             get
             {
@@ -40,7 +40,7 @@ namespace FatNoder.ViewModels.Nodes
         public ValueNodeOutputViewModel<T?> Output { get; }
         public InputNodeViewModel()
         {
-            model.TYPE = typeof(InputNodeModel<T>).ToString();
+            _model.TYPE = typeof(InputNodeModel<T>).ToString();
             Output = new ValueNodeOutputViewModel<T?> {
                 Name = "Value",
                 Editor = ValueEditor,
@@ -48,33 +48,35 @@ namespace FatNoder.ViewModels.Nodes
             };
             this.ValueEditor.ValueChanged.Subscribe(newvalue =>
             {
-                model.Value = newvalue;
+                _model.Value = newvalue;
             });
             this.UUIDChanged.Subscribe(newvalue =>
             {
-                model.UUID = newvalue;
+                _model.UUID = newvalue;
             });
             this.NameChanged.Subscribe(newvalue =>
             {
-                model.Name = newvalue;
+                _model.Name = newvalue;
             });
             this.PositionChanged.Subscribe(newvalue =>
             {
-                model.Points = new XMLNodeXY()
+                _model.Points = new XMLNodeXY()
                 {
                     X = newvalue.X,
                     Y = newvalue.Y
                 };
             });
-            model.InputStates = new XMLNodeInputStatement_VMLS();
-            model.InputStates.Add(new XMLNodeInputStatement()
+            _model.InputStates = new XMLNodeInputStatement_VMLS
             {
-                States = new XMLNodeInputStatementLS(),
-                Name = InputFlow.Name
-            });
+                new XMLNodeInputStatement()
+                {
+                    States = new XMLNodeInputStatementLS(),
+                    Name = InputFlow.Name
+                }
+            };
             this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
-                foreach (XMLNodeInputStatement xs in model.InputStates.Where(d =>
+                foreach (XMLNodeInputStatement xs in _model.InputStates.Where(d =>
                 {
                     return d.Name == InputFlow.Name;
                 }))
