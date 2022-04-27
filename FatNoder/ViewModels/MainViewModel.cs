@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
+
 namespace FatNoder.ViewModels
 {
     class NetworkBreadcrumb : BreadcrumbViewModel
@@ -149,10 +150,23 @@ namespace FatNoder.ViewModels
                     {
                         continue;
                     }
+                    if (root.MODELTYPE == "")
+                    {
+                        continue;
+                    }
+                    if (root.MODELTYPE == null)
+                    {
+                        continue;
+                    }
                     if (!typelistkun.Contains(Type.GetType(root.TYPE)))
                     {
                         if(Type.GetType(root.TYPE) != null)
                         typelistkun.Add(Type.GetType(root.TYPE));
+                    }
+                    if (!typelistkun.Contains(Type.GetType(root.MODELTYPE)))
+                    {
+                        if (Type.GetType(root.MODELTYPE) != null)
+                            typelistkun.Add(Type.GetType(root.MODELTYPE));
                     }
                 }
                 var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);

@@ -11,7 +11,7 @@ namespace NodeAyano.Model.Nodes
     public class PrintNodeModel: XML_NodeModel
     {
 
-        [DataMember(Name = "Value", Order = 7)]
+        [DataMember(Name = "Value", Order = 8)]
 
         public string Value
         {

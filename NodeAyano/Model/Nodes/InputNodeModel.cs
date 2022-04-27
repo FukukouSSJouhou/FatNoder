@@ -12,7 +12,7 @@ namespace NodeAyano.Model.Nodes
     public class InputNodeModel<T>: XML_NodeModel
     {
 
-        [DataMember(Name="Value",Order=7)]
+        [DataMember(Name="Value",Order=8)]
         public T Value
         {
             get;set;
