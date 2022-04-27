@@ -58,7 +58,7 @@ namespace FatNoder.ViewModels.Nodes
             });
             Input = new CoderListInputViewModel<StatementCls>(typeof(StatementCls))
             {
-                Name = "statement",
+                Name = "Out",
                 PortPosition=PortPosition.Right,
                 MaxConnections = 1
             };
