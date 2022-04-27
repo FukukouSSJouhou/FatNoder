@@ -1,7 +1,9 @@
 ﻿using DynamicData;
 using FatNoder.Model.Transc;
+using FatNoder.Serializer.Node.Xml;
 using FatNoder.ViewModels.Conv;
 using FatNoder.ViewModels.Nodes;
+using NodeAyano.Model.Nodes;
 using NodeNetworkJH.Toolkit.BreadcrumbBar;
 using NodeNetworkJH.Toolkit.NodeList;
 using NodeNetworkJH.Toolkit.ValueNode;
@@ -117,6 +119,25 @@ namespace FatNoder.ViewModels
             TestPhasekun = ReactiveCommand.Create(() =>
             {
                 List<Type> typelistkun = new List<Type>();
+                XML_NodeModel modelkun = mainnodekun.model;
+                typelistkun.Add(typeof(MethodEntryPoint));
+                using (var writer = new StringWriter())
+                {
+
+                    DataContractSerializer serializer =
+                        new(typeof(XML_NodeModel), typelistkun);
+                    var settings = new XmlWriterSettings()
+                    {
+                        Indent = true,
+                        IndentChars = "    ",
+                        Encoding = Encoding.UTF8
+                    };
+                    using (var xw = XmlWriter.Create(writer, settings))
+                    {
+                        serializer.WriteObject(xw, modelkun);
+                    }
+                    Console.WriteLine(writer.ToString());
+                }
                 /*Serializer.Node.Xml.XmlRootN xr = Serializer.Node.Xml.ConvertXMLkun.Serializekun(Network,ref typelistkun);
                 using(var writer = new StringWriter())
                 {
