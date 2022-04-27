@@ -62,17 +62,7 @@ namespace FatNoder.Serializer.Node.Xml
         {
             get;set;
         }
-        [DataMember(Name= "Datas",Order =6)]
-        public XmlNodeDatas Datas
-        {
-            get;set;
-        }
-        [DataMember(Name = "datatype", Order =7)]
-        public string DTTYPE
-        {
-            get; set;
-        }
-        [DataMember(Name = "Point", Order = 8)]
+        [DataMember(Name = "Point", Order = 6)]
         public XMLNodeXY Points
         {
             get;set;
