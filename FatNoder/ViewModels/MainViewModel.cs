@@ -65,7 +65,11 @@ namespace FatNoder.ViewModels
         {
             foreach(NodeViewModel nvm in Network.Nodes.Items)
             {
-
+                if(nvm is INodeViewModelBase)
+                {
+                    INodeViewModelBase nbase = nvm as INodeViewModelBase;
+                    yield return nbase.model;
+                }
             }
         }
         /// <summary>
@@ -128,6 +132,14 @@ namespace FatNoder.ViewModels
                 List<Type> typelistkun = new List<Type>();
                 XML_NodeModel modelkun = mainnodekun.model;
                 typelistkun.Add(typeof(MethodEntryPoint));
+                var roots = GetNodeModels();
+                foreach (var root in roots)
+                {
+                    if (!typelistkun.Contains(Type.GetType(root.TYPE)))
+                    {
+                        typelistkun.Add(Type.GetType(root.TYPE));
+                    }
+                }
                 using (var writer = new StringWriter())
                 {
 

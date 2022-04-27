@@ -19,7 +19,6 @@ namespace FatNoder.ViewModels.Nodes
 {
     public class MethodEntryPointVIewModel : NodeVMBasekun, INodeViewModelBase
     {
-    {
 
         static MethodEntryPointVIewModel()
         {
