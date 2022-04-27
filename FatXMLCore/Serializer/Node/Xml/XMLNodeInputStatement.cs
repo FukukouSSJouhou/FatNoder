@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace FatNoder.Serializer.Node.Xml
 {
     [CollectionDataContract(Name = "States")]
-    public class XMLNodeInputStatementLS : List<string>
+    public class XMLNodeInputStatementLS : List<Guid>
     {
 
     }

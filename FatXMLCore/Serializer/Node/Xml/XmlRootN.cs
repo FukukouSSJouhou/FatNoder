@@ -16,8 +16,8 @@ namespace FatNoder.Serializer.Node.Xml
             get;set;
         }
     }
-    [CollectionDataContract(Name = "nodes", ItemName = "NodeVM")]
-    public class XMLRoot_NodesCLskun : List<XML_NodeViewModel>
+    [CollectionDataContract(Name = "nodes", ItemName = "Node")]
+    public class XMLRoot_NodesCLskun : List<XML_NodeModel>
     {
 
     }

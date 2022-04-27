@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FatXMLCore\FatXMLCore.csproj" />
+    <ProjectReference Include="..\NodeAyano\NodeAyano.csproj" />
   </ItemGroup>
 
 </Project>

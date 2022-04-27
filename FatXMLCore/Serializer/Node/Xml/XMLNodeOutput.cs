@@ -17,7 +17,7 @@ namespace FatNoder.Serializer.Node.Xml
             get;set;
         }
         [DataMember(Name = "Target", Order = 2)]
-        public string Target
+        public Guid Target
         {
             get;set;
         }
@@ -34,12 +34,12 @@ namespace FatNoder.Serializer.Node.Xml
         [DataMember(Name = "Name", Order = 1)]
         public string Name
         {
-            get;set;
+            get; set;
         }
         [DataMember(Name = "connections", Order = 2)]
         public XMLNodeOutputConnectS connections
         {
-            get;set;
+            get; set;
         }
     }
 }
