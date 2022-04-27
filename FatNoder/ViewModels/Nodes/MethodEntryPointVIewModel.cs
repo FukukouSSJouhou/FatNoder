@@ -27,7 +27,6 @@ namespace FatNoder.ViewModels.Nodes
 
         public ValueListNodeInputViewModel<StatementCls> Input { get; }
         private MethodEntryPoint _model=new MethodEntryPoint();
-        private IObservable<IChangeSet<StatementCls>> InputChange;
 
         public MethodEntryPoint model
         {

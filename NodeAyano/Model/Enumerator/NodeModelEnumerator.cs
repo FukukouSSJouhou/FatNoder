@@ -20,6 +20,12 @@ namespace NodeAyano.Model.Enumerator
                 return _Current;
             }
         }
+        public NodeModelEnumerator(XML_NodeModel root, IEnumerable<XML_NodeModel> nodes)
+        {
+            _Current = null;
+            _root = root;
+            _nodes = nodes;
+        }
 
         object IEnumerator.Current => throw new NotImplementedException();
 

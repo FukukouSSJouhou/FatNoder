@@ -1,4 +1,5 @@
 ﻿using DynamicData;
+using FatNoder.Model.Transc;
 using FatNoder.Serializer.Node.Xml;
 using NodeAyano.Model.Nodes;
 using NodeNetworkJH.Toolkit.ValueNode;
@@ -7,6 +8,7 @@ using NodeNetworkJH.Views;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -63,6 +65,26 @@ namespace FatNoder.ViewModels.Nodes
                     X = newvalue.X,
                     Y = newvalue.Y
                 };
+            });
+            model.InputStates = new XMLNodeInputStatement_VMLS();
+            model.InputStates.Add(new XMLNodeInputStatement()
+            {
+                States = new XMLNodeInputStatementLS(),
+                Name = InputFlow.Name
+            });
+            this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
+            {
+                foreach (XMLNodeInputStatement xs in model.InputStates.Where(d =>
+                {
+                    return d.Name == InputFlow.Name;
+                }))
+                {
+                    xs.States = new XMLNodeInputStatementLS();
+                    foreach (StatementCls guidkun in InputFlow.Values.Items)
+                    {
+                        xs.States.Add(guidkun.UUID);
+                    }
+                }
             });
             this.Outputs.Add(Output);
         }
