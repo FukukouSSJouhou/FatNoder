@@ -10,7 +10,7 @@ namespace NodeAyano.Model.Nodes
 {
     public class ReturnNodeModel<T> : XML_NodeModel
     {
-        [DataMember(Name = "Value", Order = 7)]
+        [DataMember(Name = "Value", Order = 8)]
 
         public T Value
         {
