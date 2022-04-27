@@ -38,6 +38,7 @@ namespace FatNoder.ViewModels.Nodes
                 Y = this.Position.Y
             };
         }
+
         public InputNodeModel<T> model 
         {
             get

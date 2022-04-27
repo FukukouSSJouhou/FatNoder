@@ -32,6 +32,7 @@ namespace FatNoder.ViewModels.Nodes
         /// </summary>
         public ValueNodeOutputViewModel<StatementCls> OutputFlow { get; }
         public StatementCls StatementIfce { get; }
+        public IObservable<string> NameChanged { get; }
         public StatementNodeViewModelBase()
         {
 
@@ -51,6 +52,7 @@ namespace FatNoder.ViewModels.Nodes
             };
             this.Outputs.Add(OutputFlow);
             this.Inputs.Add(InputFlow);
+            NameChanged = this.WhenAnyValue(vm => vm.Name);
         }
     }
 }
