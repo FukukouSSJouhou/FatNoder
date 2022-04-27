@@ -29,7 +29,7 @@ namespace FatNoder.ViewModels.Nodes
 
             NameChanged = this.WhenAnyValue(vm => vm.Name);
             PositionChanged = this.WhenAnyValue(vm => vm.Position);
-            UUIDChanged = this.WhenAnyValue(vm => UUID);
+            UUIDChanged = this.WhenAnyValue(vm => vm.UUID);
         }
         static NodeVMBasekun()
         {
