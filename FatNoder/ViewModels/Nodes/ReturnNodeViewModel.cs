@@ -20,7 +20,7 @@ namespace FatNoder.ViewModels.Nodes
     /// 値を返却するNodeの基本形
     /// </summary>
     /// <typeparam name="T">型</typeparam>
-    public class ReturnNodeViewModel<T> : NodeViewModel, INodeViewModelBase
+    public class ReturnNodeViewModel<T> : NodeVMBasekun, INodeViewModelBase
     {
         
         static ReturnNodeViewModel()
@@ -60,7 +60,24 @@ namespace FatNoder.ViewModels.Nodes
                 Value = this.WhenAnyValue(vm =>vm.StatementIfce),
                 PortPosition=PortPosition.Left
             };
-            this.Outputs.Add(Flow);
+            this.UUIDChanged.Subscribe(newvalue =>
+            {
+                model.UUID = newvalue;
+            });
+            this.NameChanged.Subscribe(newvalue =>
+            {
+                model.Name = newvalue;
+            });
+            this.PositionChanged.Subscribe(newvalue =>
+            {
+                model.Points = new XMLNodeXY()
+                {
+                    X = newvalue.X,
+                    Y = newvalue.Y
+                };
+            });
+            model.InputStates = new XMLNodeInputStatement_VMLS();
+            model.InputStates.Add(new XMLNodeInputStatement());
             this.Inputs.Add(ReturnInput);
         }
     }
