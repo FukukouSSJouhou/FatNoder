@@ -135,8 +135,17 @@ namespace FatNoder.ViewModels
                 var roots = GetNodeModels();
                 foreach (var root in roots)
                 {
+                    if(root.TYPE == "")
+                    {
+                        continue;
+                    }
+                    if (root.TYPE == null)
+                    {
+                        continue;
+                    }
                     if (!typelistkun.Contains(Type.GetType(root.TYPE)))
                     {
+                        if(Type.GetType(root.TYPE) != null)
                         typelistkun.Add(Type.GetType(root.TYPE));
                     }
                 }
