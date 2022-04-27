@@ -1,5 +1,7 @@
 ﻿using DynamicData;
+using DynamicData.Alias;
 using FatNoder.Model.Transc;
+using FatNoder.Serializer.Node.Xml;
 using NodeAyano.Model.Nodes;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
@@ -8,6 +10,8 @@ using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +27,8 @@ namespace FatNoder.ViewModels.Nodes
 
         public ValueListNodeInputViewModel<StatementCls> Input { get; }
         private MethodEntryPoint _model=new MethodEntryPoint();
+        private IObservable<IChangeSet<StatementCls>> InputChange;
+
         public MethodEntryPoint model
         {
             get
@@ -56,8 +62,33 @@ namespace FatNoder.ViewModels.Nodes
                 PortPosition=PortPosition.Right,
                 MaxConnections = 1
             };
-
-            
+            model.InputStates = new XMLNodeInputStatement_VMLS();
+            model.InputStates.Add(new XMLNodeInputStatement()
+            {
+                States=new XMLNodeInputStatementLS(),
+                Name=Input.Name
+            });
+            InputChange = Input.Values.Connect();
+            InputChange.OnItemRemoved(statementcls =>
+            {
+                foreach(XMLNodeInputStatement xs in model.InputStates.Where(d =>
+                {
+                    return Name == Input.Name;
+                }))
+                {
+                    xs.States.RemoveAll(uuid => uuid.Equals(statementcls.UUID));
+                }
+            });
+            InputChange.OnItemAdded(statementcls =>
+            {
+                foreach (XMLNodeInputStatement xs in model.InputStates.Where(d =>
+                {
+                    return Name == Input.Name;
+                }))
+                {
+                    xs.States.Add(statementcls.UUID);
+                }
+            });
             this.Inputs.Add(Input);
         }
     }

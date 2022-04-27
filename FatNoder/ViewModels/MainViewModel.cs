@@ -117,6 +117,7 @@ namespace FatNoder.ViewModels
             TestPhasekun = ReactiveCommand.Create(() =>
             {
                 List<Type> typelistkun = new List<Type>();
+                XML_NodeModel modelkun = mainnodekun.model;
                 /*Serializer.Node.Xml.XmlRootN xr = Serializer.Node.Xml.ConvertXMLkun.Serializekun(Network,ref typelistkun);
                 using(var writer = new StringWriter())
                 {
