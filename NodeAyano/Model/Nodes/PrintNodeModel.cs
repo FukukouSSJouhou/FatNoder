@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Nodes
 {
-
-    public class InputNodeModel<T>: XML_NodeModel
+    public class PrintNodeModel: XML_NodeModel
     {
 
-        [DataMember(Name="Value",Order=7)]
-        public T Value
+        [DataMember(Name = "Value", Order = 7)]
+
+        public string Value
         {
-            get;set;
+            get; set;
         }
     }
 }
