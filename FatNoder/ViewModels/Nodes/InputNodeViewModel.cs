@@ -26,18 +26,6 @@ namespace FatNoder.ViewModels.Nodes
         }
         public HannyouValueEditorViewModel<T> ValueEditor { get; } = new HannyouValueEditorViewModel<T>();
         private InputNodeModel<T> _model = new InputNodeModel<T>(); 
-        public void SetV()
-        {
-
-            model.Name = this.Name;
-            model.TYPE = typeof(InputNodeModel<T>).ToString();
-            model.UUID = this.UUID;
-            model.Points = new XMLNodeXY()
-            {
-                X = this.Position.X,
-                Y = this.Position.Y
-            };
-        }
 
         public InputNodeModel<T> model 
         {
@@ -50,6 +38,7 @@ namespace FatNoder.ViewModels.Nodes
         public ValueNodeOutputViewModel<T?> Output { get; }
         public InputNodeViewModel()
         {
+            model.TYPE = typeof(InputNodeModel<T>).ToString();
             Output = new ValueNodeOutputViewModel<T?> {
                 Name = "Value",
                 Editor = ValueEditor,
