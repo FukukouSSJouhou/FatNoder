@@ -1,6 +1,5 @@
 ﻿using DynamicData;
 using FatNoder.Model.Transc;
-using FatNoder.ViewModels.Xml;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;

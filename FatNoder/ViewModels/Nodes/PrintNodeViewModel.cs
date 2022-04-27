@@ -1,6 +1,5 @@
 ﻿using DynamicData;
 using FatNoder.Serializer.Node.Xml;
-using FatNoder.ViewModels.Xml;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.Views;
 using ReactiveUI;
