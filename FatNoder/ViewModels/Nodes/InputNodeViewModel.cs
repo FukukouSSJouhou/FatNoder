@@ -31,7 +31,7 @@ namespace FatNoder.ViewModels.Nodes
         {
             get
             {
-                return model;
+                return _model;
 
             }
         }
