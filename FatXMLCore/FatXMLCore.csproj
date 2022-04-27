@@ -1,17 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>
-    <UseWPF>True</UseWPF>
+    <UseWPF>False</UseWPF>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="NodeNetworkJH" Version="6.0.0" />
-    <PackageReference Include="NodeNetworkJHToolkit" Version="6.0.0" />
-    <PackageReference Include="ReactiveUI" Version="18.0.7" />
-  </ItemGroup>
 
 </Project>
