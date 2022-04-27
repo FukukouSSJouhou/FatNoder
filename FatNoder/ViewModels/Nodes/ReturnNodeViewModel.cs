@@ -79,6 +79,7 @@ namespace FatNoder.ViewModels.Nodes
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement());
             this.Inputs.Add(ReturnInput);
+            this.Outputs.Add(Flow);
         }
     }
 }
