@@ -8,4 +8,8 @@
     <UseWPF>False</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ReactiveUI" Version="18.0.7" />
+  </ItemGroup>
+
 </Project>

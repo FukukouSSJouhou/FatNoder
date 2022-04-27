@@ -1,5 +1,6 @@
 ﻿using DynamicData;
 using FatNoder.Serializer.Node.Xml;
+using NodeAyano.Model.Nodes;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;
@@ -24,6 +25,27 @@ namespace FatNoder.ViewModels.Nodes
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<InputNodeViewModel<T>>));
         }
         public HannyouValueEditorViewModel<T> ValueEditor { get; } = new HannyouValueEditorViewModel<T>();
+        private InputNodeModel<T> _model = new InputNodeModel<T>(); 
+        public void SetV()
+        {
+
+            model.Name = this.Name;
+            model.TYPE = typeof(InputNodeModel<T>).ToString();
+            model.UUID = this.UUID;
+            model.Points = new XMLNodeXY()
+            {
+                X = this.Position.X,
+                Y = this.Position.Y
+            };
+        }
+        public InputNodeModel<T> model 
+        {
+            get
+            {
+                return model;
+
+            }
+        }
         public ValueNodeOutputViewModel<T?> Output { get; }
         public InputNodeViewModel()
         {
@@ -32,6 +54,10 @@ namespace FatNoder.ViewModels.Nodes
                 Editor = ValueEditor,
                 Value = this.WhenAnyValue(vm => vm.ValueEditor.Value)
             };
+            this.ValueEditor.ValueChanged.Subscribe(newvalue =>
+            {
+                model.Value = newvalue;
+            });
             this.Outputs.Add(Output);
         }
 

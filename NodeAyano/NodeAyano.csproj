@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.1.0" />
+    <PackageReference Include="ReactiveUI" Version="18.0.7" />
   </ItemGroup>
 
 </Project>
