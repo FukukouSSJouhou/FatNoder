@@ -38,6 +38,7 @@ namespace FatNoder.ViewModels.Nodes
         public MethodEntryPointVIewModel()
         {
             model.TYPE = typeof(MethodEntryPointVIewModel).ToString();
+            _model.MODELTYPE = typeof(MethodEntryPoint).ToString();
 
             this.UUIDChanged.Subscribe(newvalue =>
             {
