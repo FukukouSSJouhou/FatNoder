@@ -16,7 +16,7 @@ namespace FatNoder.ViewModels.Nodes
     /// <summary>
     /// Statement入出力を備えたNodeの基本形
     /// </summary>
-    public class StatementNodeViewModelBase: NodeViewModel
+    public class StatementNodeViewModelBase: NodeVMBasekun
     {
 
         static StatementNodeViewModelBase()

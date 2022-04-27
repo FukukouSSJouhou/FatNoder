@@ -48,6 +48,22 @@ namespace FatNoder.ViewModels.Nodes
             {
                 model.Value = newvalue;
             });
+            this.UUIDChanged.Subscribe(newvalue =>
+            {
+                model.UUID = newvalue;
+            });
+            this.NameChanged.Subscribe(newvalue =>
+            {
+                model.Name = newvalue;
+            });
+            this.PositionChanged.Subscribe(newvalue =>
+            {
+                model.Points = new XMLNodeXY()
+                {
+                    X = newvalue.X,
+                    Y = newvalue.Y
+                };
+            });
             this.Outputs.Add(Output);
         }
 
