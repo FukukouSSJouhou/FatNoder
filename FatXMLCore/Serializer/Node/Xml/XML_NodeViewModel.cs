@@ -43,7 +43,7 @@ namespace FatNoder.Serializer.Node.Xml
             get;set;
         }
         [DataMember(Name = "UUID", Order = 2)]
-        public string UUID
+        public Guid UUID
         {
             get;set;
         }
