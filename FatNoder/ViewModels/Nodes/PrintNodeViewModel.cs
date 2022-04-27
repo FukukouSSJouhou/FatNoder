@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class PrintNodeViewModel : StatementNodeViewModelBase
+    public class PrintNodeViewModel : StatementNodeViewModelBase, INodeViewModelBase
     {
         static PrintNodeViewModel()
         {
@@ -23,7 +23,7 @@ namespace FatNoder.ViewModels.Nodes
         
         public ValueNodeInputViewModel<string?> PrintInput { get; }
         private PrintNodeModel _model = new PrintNodeModel();
-        public PrintNodeModel model
+        public XML_NodeModel model
         {
             get
             {
@@ -42,7 +42,7 @@ namespace FatNoder.ViewModels.Nodes
             };
             PrintInput.ValueChanged.Subscribe(newvalue =>
             {
-                model.Value = newvalue;
+                _model.Value = newvalue;
             });
 
             this.UUIDChanged.Subscribe(newvalue =>
