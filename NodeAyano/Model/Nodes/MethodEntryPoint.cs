@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Nodes
 {
-    [DataContract(Name = "Node")]
     public class MethodEntryPoint : XML_NodeModel
     {
     }
