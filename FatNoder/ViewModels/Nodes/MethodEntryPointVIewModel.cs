@@ -68,25 +68,18 @@ namespace FatNoder.ViewModels.Nodes
                 States=new XMLNodeInputStatementLS(),
                 Name=Input.Name
             });
-            InputChange = Input.Values.Connect();
-            InputChange.OnItemRemoved(statementcls =>
-            {
-                foreach(XMLNodeInputStatement xs in model.InputStates.Where(d =>
-                {
-                    return Name == Input.Name;
-                }))
-                {
-                    xs.States.RemoveAll(uuid => uuid.Equals(statementcls.UUID));
-                }
-            });
-            InputChange.OnItemAdded(statementcls =>
+            this.WhenAnyObservable(vm => vm.Input.Values.CountChanged).Subscribe(newvalue =>
             {
                 foreach (XMLNodeInputStatement xs in model.InputStates.Where(d =>
                 {
-                    return Name == Input.Name;
+                    return d.Name == Input.Name;
                 }))
                 {
-                    xs.States.Add(statementcls.UUID);
+                    xs.States = new XMLNodeInputStatementLS();
+                    foreach(StatementCls guidkun in Input.Values.Items)
+                    {
+                        xs.States.Add(guidkun.UUID);
+                    }
                 }
             });
             this.Inputs.Add(Input);

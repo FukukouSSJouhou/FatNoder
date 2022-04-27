@@ -3,6 +3,7 @@ using FatNoder.Model.Transc;
 using FatNoder.Serializer.Node.Xml;
 using FatNoder.ViewModels.Conv;
 using FatNoder.ViewModels.Nodes;
+using NodeAyano.Model.Nodes;
 using NodeNetworkJH.Toolkit.BreadcrumbBar;
 using NodeNetworkJH.Toolkit.NodeList;
 using NodeNetworkJH.Toolkit.ValueNode;
@@ -119,6 +120,7 @@ namespace FatNoder.ViewModels
             {
                 List<Type> typelistkun = new List<Type>();
                 XML_NodeModel modelkun = mainnodekun.model;
+                typelistkun.Add(typeof(MethodEntryPoint));
                 using (var writer = new StringWriter())
                 {
 
