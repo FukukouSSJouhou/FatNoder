@@ -10,8 +10,12 @@ namespace NodeAyano.Model.Nodes
 {
 
     [DataContract(Name = "Node")]
-    public class InputNodeModel: XML_NodeModel
+    public class InputNodeModel<T>: XML_NodeModel
     {
-
+        [DataMember(Name="Value",Order=7)]
+        public T Value
+        {
+            get;set;
+        }
     }
 }
