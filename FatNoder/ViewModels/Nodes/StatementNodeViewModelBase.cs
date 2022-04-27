@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -33,6 +34,7 @@ namespace FatNoder.ViewModels.Nodes
         public ValueNodeOutputViewModel<StatementCls> OutputFlow { get; }
         public StatementCls StatementIfce { get; }
         public IObservable<string> NameChanged { get; }
+        public IObservable<Point> PositionChanged { get; }
         public StatementNodeViewModelBase()
         {
 
@@ -53,6 +55,7 @@ namespace FatNoder.ViewModels.Nodes
             this.Outputs.Add(OutputFlow);
             this.Inputs.Add(InputFlow);
             NameChanged = this.WhenAnyValue(vm => vm.Name);
+            PositionChanged=this.WhenAnyValue(vm => vm.Position);
         }
     }
 }
