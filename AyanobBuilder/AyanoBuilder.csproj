@@ -17,4 +17,8 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NodeAyano\NodeAyano.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using NodeAyano;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -62,7 +63,8 @@ namespace tintin{
             var newnode = rootNode.ReplaceNode(
                 oldNode: namespaceNode,
                 newNode: namespaceNode2);
-            Console.WriteLine(newnode.NormalizeWhitespace());
+            //Console.WriteLine(newnode.NormalizeWhitespace());
+            Console.WriteLine(NodeAyanoCompiler.Compile(null));
             return 0;
         }
     }
