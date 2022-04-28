@@ -41,8 +41,8 @@ namespace FatNoder.ViewModels.Nodes
         }
         public ReturnNodeViewModel()
         {
-            model.TYPE = typeof(ReturnNodeViewModel<T>).ToString();
-            model.MODELTYPE=typeof(ReturnNodeModel<T>).ToString();
+            model.TYPE = typeof(ReturnNodeViewModel<T>).FullName;
+            model.MODELTYPE=typeof(ReturnNodeModel<T>).FullName;
 
             StatementIfce = StatementCls.GenStatementCls(this.UUID);
             ReturnInput = new ValueNodeInputViewModel<T?>
