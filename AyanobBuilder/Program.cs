@@ -26,6 +26,15 @@ namespace FatNoder
             var namesyntax= SyntaxFactory.IdentifierName(namekun);
             return SyntaxFactory.NamespaceDeclaration(attributeLists,modifiers,namesyntax,externs,usings,members);
         }
+        static NamespaceDeclarationSyntax CreateNameSpaceSyntax(string namekun,SyntaxList<MemberDeclarationSyntax> members)
+        {
+            var namesyntax = SyntaxFactory.IdentifierName(namekun);
+            return SyntaxFactory.NamespaceDeclaration(new SyntaxList<AttributeListSyntax>(), new SyntaxTokenList(), namesyntax, new SyntaxList<ExternAliasDirectiveSyntax>(), new SyntaxList<UsingDirectiveSyntax>(),members);
+        }
+        static ClassDeclarationSyntax GenClass(string name)
+        {
+            return SyntaxFactory.ClassDeclaration(name);
+        }
         public static int Main(string[] args)
         {
             Console.WriteLine("TDN");
@@ -41,10 +50,18 @@ namespace tintin{
             var rootNode = syntaxTree.GetRoot();
             //new Walker().Visit(rootNode);
             //Console.ReadKey();
+            ClassDeclarationSyntax scls = GenClass("test21");
+            SyntaxList<MemberDeclarationSyntax> Listkun;
+            List<MemberDeclarationSyntax> lskun2 = new();
             var namespaceNode = rootNode.DescendantNodes().First(node => node.GetType() == typeof(NamespaceDeclarationSyntax));
+            var namespaceSyntaxkun = namespaceNode.DescendantNodes().First(node => node.GetType() == typeof(IdentifierNameSyntax));
+            var namespaceNode2 = namespaceNode.ReplaceNode(
+                oldNode: namespaceSyntaxkun,
+                newNode: SyntaxFactory.IdentifierName("tadokoro"))
+                ;
             var newnode = rootNode.ReplaceNode(
                 oldNode: namespaceNode,
-                newNode: CreateNameSpaceSyntax(new SyntaxList<AttributeListSyntax>(),new SyntaxTokenList(),"yaju",new SyntaxList<ExternAliasDirectiveSyntax>(),new SyntaxList<UsingDirectiveSyntax>(),new SyntaxList<MemberDeclarationSyntax>()));
+                newNode: namespaceNode2);
             Console.WriteLine(newnode.NormalizeWhitespace());
             return 0;
         }
