@@ -1,33 +1,28 @@
 ﻿using DynamicData;
-using DynamicData.Alias;
 using FatNoder.Model.Transc;
 using FatNoder.Serializer.Node.Xml;
 using NodeAyano.Model.Nodes;
 using NodeNetworkJH.Toolkit.ValueNode;
-using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Reactive;
-using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class MethodEntryPointVIewModel : NodeVMBasekun, INodeViewModelBase
+    public class PrintNodeViewModel : StatementNodeViewModelBase, INodeViewModelBase
     {
-
-        static MethodEntryPointVIewModel()
+        static PrintNodeViewModel()
         {
-            Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<MethodEntryPointVIewModel>));
+            Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<PrintNodeViewModel>));
         }
-
-        public ValueListNodeInputViewModel<StatementCls> Input { get; }
-        private MethodEntryPoint _model=new MethodEntryPoint();
-
+        
+        public ValueNodeInputViewModel<string?> PrintInput { get; }
+        private PrintNodeModel _model = new PrintNodeModel();
         public XML_NodeModel model
         {
             get
@@ -35,10 +30,20 @@ namespace FatNoder.ViewModels.Nodes
                 return _model;
             }
         }
-        public MethodEntryPointVIewModel()
+        public PrintNodeViewModel()
         {
-            model.TYPE = typeof(MethodEntryPointVIewModel).AssemblyQualifiedName;
-            _model.MODELTYPE = typeof(MethodEntryPoint).AssemblyQualifiedName;
+            model.TYPE = typeof(PrintNodeViewModel).AssemblyQualifiedName;
+            _model.MODELTYPE = typeof(PrintNodeModel).AssemblyQualifiedName;
+            PrintInput = new ValueNodeInputViewModel<string?>
+            {
+                Name = "Printcontent",
+                Editor = new HannyouValueEditorViewModel<string?>(),
+                MaxConnections = 1
+            };
+            PrintInput.ValueChanged.Subscribe(newvalue =>
+            {
+                _model.Value = newvalue;
+            });
 
             this.UUIDChanged.Subscribe(newvalue =>
             {
@@ -56,33 +61,27 @@ namespace FatNoder.ViewModels.Nodes
                     Y = newvalue.Y
                 };
             });
-            Input = new CoderListInputViewModel<StatementCls>(typeof(StatementCls))
-            {
-                Name = "Out",
-                PortPosition=PortPosition.Right,
-                MaxConnections = 1
-            };
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement()
             {
-                States=new XMLNodeInputStatementLS(),
-                Name=Input.Name
+                States = new XMLNodeInputStatementLS(),
+                Name = InputFlow.Name
             });
-            this.WhenAnyObservable(vm => vm.Input.Values.CountChanged).Subscribe(newvalue =>
+            this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
                 foreach (XMLNodeInputStatement xs in model.InputStates.Where(d =>
                 {
-                    return d.Name == Input.Name;
+                    return d.Name == InputFlow.Name;
                 }))
                 {
                     xs.States = new XMLNodeInputStatementLS();
-                    foreach(StatementCls guidkun in Input.Values.Items)
+                    foreach (StatementCls guidkun in InputFlow.Values.Items)
                     {
                         xs.States.Add(guidkun.UUID);
                     }
                 }
             });
-            this.Inputs.Add(Input);
+            this.Inputs.Add(PrintInput);
         }
     }
 }

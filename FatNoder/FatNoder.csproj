@@ -17,4 +17,13 @@
     <PackageReference Include="ReactiveUI.WPF" Version="18.0.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FatXMLCore\FatXMLCore.csproj" />
+    <ProjectReference Include="..\NodeAyano\NodeAyano.csproj" />
+  </ItemGroup>
+
 </Project>

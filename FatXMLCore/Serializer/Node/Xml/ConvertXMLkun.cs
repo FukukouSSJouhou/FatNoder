@@ -1,8 +1,4 @@
-﻿using DynamicData;
-using FatNoder.Model.Transc;
-using FatNoder.ViewModels.Xml;
-using NodeNetworkJH.Toolkit.ValueNode;
-using NodeNetworkJH.ViewModels;
+﻿using FatNoder.Model.Transc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +18,9 @@ namespace FatNoder.Serializer.Node.Xml
         /// <param name="novm">NetworkViewModelの中身</param>
         /// <param name="knowTypeList">シリアライザーが使う型リスト(参照型)</param>
         /// <returns>Serialize可能なオブジェクト</returns>
-        public static XmlRootN Serializekun(NetworkViewModel novm,ref List<Type> knowTypeList)
+        public static void /*XmlRootN*/ Serializekun(/*NetworkViewModel novm,ref List<Type> knowTypeList*/)
         {
+            /*
             XmlRootN xr=new();
             xr.nodes = new XMLRoot_NodesCLskun();
             foreach (NodeViewModel nvm in novm.Nodes.Items)
@@ -99,6 +96,7 @@ namespace FatNoder.Serializer.Node.Xml
                 xr.nodes.Add(nobj);
             }
             return xr;
+            */
         }
     }
 }

@@ -6,13 +6,13 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FatNoder.ViewModels.Nodes
+namespace NodeAyano.Model.Nodes
 {
-
-    [DataContract(Name = "Datas")]
-    public class InputNodeViewModelNaibuSyoriXML : XmlNodeDatas
+    public class PrintNodeModel: XML_NodeModel
     {
-        [DataMember(Name = "Value", Order = 1)]
+
+        [DataMember(Name = "Value", Order = 8)]
+
         public string Value
         {
             get; set;

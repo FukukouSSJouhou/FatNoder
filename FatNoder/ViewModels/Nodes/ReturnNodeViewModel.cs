@@ -1,5 +1,7 @@
 ﻿using DynamicData;
 using FatNoder.Model.Transc;
+using FatNoder.Serializer.Node.Xml;
+using NodeAyano.Model.Nodes;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;
@@ -18,8 +20,9 @@ namespace FatNoder.ViewModels.Nodes
     /// 値を返却するNodeの基本形
     /// </summary>
     /// <typeparam name="T">型</typeparam>
-    public class ReturnNodeViewModel<T> : NodeViewModel
+    public class ReturnNodeViewModel<T> : NodeVMBasekun, INodeViewModelBase
     {
+        
         static ReturnNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<ReturnNodeViewModel<T>>));
@@ -28,8 +31,18 @@ namespace FatNoder.ViewModels.Nodes
         public ValueNodeInputViewModel<T?> ReturnInput { get; }
         public ValueNodeOutputViewModel<StatementCls> Flow { get; }
         public StatementCls StatementIfce { get; }
+        private ReturnNodeModel<T> _model = new ReturnNodeModel<T>();
+        public XML_NodeModel model
+        {
+            get
+            {
+                return _model;
+            }
+        }
         public ReturnNodeViewModel()
         {
+            model.TYPE = typeof(ReturnNodeViewModel<T>).AssemblyQualifiedName;
+            model.MODELTYPE=typeof(ReturnNodeModel<T>).AssemblyQualifiedName;
 
             StatementIfce = StatementCls.GenStatementCls(this.UUID);
             ReturnInput = new ValueNodeInputViewModel<T?>
@@ -40,7 +53,7 @@ namespace FatNoder.ViewModels.Nodes
             };
             ReturnInput.ValueChanged.Subscribe(newvalue =>
             {
-                Debug.Print("Set : " + newvalue);
+                _model.Value = newvalue;
             });
             Flow = new ValueNodeOutputViewModel<StatementCls>
             {
@@ -49,8 +62,26 @@ namespace FatNoder.ViewModels.Nodes
                 Value = this.WhenAnyValue(vm =>vm.StatementIfce),
                 PortPosition=PortPosition.Left
             };
-            this.Outputs.Add(Flow);
+            this.UUIDChanged.Subscribe(newvalue =>
+            {
+                model.UUID = newvalue;
+            });
+            this.NameChanged.Subscribe(newvalue =>
+            {
+                model.Name = newvalue;
+            });
+            this.PositionChanged.Subscribe(newvalue =>
+            {
+                model.Points = new XMLNodeXY()
+                {
+                    X = newvalue.X,
+                    Y = newvalue.Y
+                };
+            });
+            model.InputStates = new XMLNodeInputStatement_VMLS();
+            model.InputStates.Add(new XMLNodeInputStatement());
             this.Inputs.Add(ReturnInput);
+            this.Outputs.Add(Flow);
         }
     }
 }
