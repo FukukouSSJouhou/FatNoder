@@ -72,6 +72,7 @@ namespace FatNoder.Serializer.Node.Xml
         {
             get; set;
         }
+        
 
     }
 }
