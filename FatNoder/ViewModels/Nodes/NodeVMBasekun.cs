@@ -1,4 +1,5 @@
-﻿using NodeNetworkJH.ViewModels;
+﻿using FatNoder.Serializer.Node.Xml;
+using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;
 using ReactiveUI;
 using System;
@@ -24,6 +25,7 @@ namespace FatNoder.ViewModels.Nodes
         /// UUID!
         /// </summary>
         public IObservable<Guid> UUIDChanged { get; }
+
         public NodeVMBasekun()
         {
 

@@ -8,7 +8,13 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Nodes
 {
-    public class MethodEntryPoint : XML_NodeModel
+    public class ReturnNodeModel<T> : XML_NodeModel
     {
+        [DataMember(Name = "Value", Order = 8)]
+
+        public T Value
+        {
+            get; set;
+        }
     }
 }

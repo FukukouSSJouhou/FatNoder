@@ -67,6 +67,12 @@ namespace FatNoder.Serializer.Node.Xml
         {
             get;set;
         }
+        [DataMember(Name = "modeltype", Order = 7)]
+        public string MODELTYPE
+        {
+            get; set;
+        }
+        
 
     }
 }

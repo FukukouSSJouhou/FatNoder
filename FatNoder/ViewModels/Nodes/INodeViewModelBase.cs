@@ -2,13 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NodeAyano.Model.Nodes
+namespace FatNoder.ViewModels.Nodes
 {
-    public class MethodEntryPoint : XML_NodeModel
+    public interface INodeViewModelBase
     {
+        public XML_NodeModel model
+        {
+            get;
+        }
     }
 }

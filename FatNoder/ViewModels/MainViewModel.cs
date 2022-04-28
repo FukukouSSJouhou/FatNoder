@@ -3,6 +3,7 @@ using FatNoder.Model.Transc;
 using FatNoder.Serializer.Node.Xml;
 using FatNoder.ViewModels.Conv;
 using FatNoder.ViewModels.Nodes;
+using NodeAyano.Model.Enumerator;
 using NodeAyano.Model.Nodes;
 using NodeNetworkJH.Toolkit.BreadcrumbBar;
 using NodeNetworkJH.Toolkit.NodeList;
@@ -21,6 +22,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+
 
 namespace FatNoder.ViewModels
 {
@@ -60,6 +62,17 @@ namespace FatNoder.ViewModels
         public void add_project(String Name)
         {
 
+        }
+        public IEnumerable<XML_NodeModel> GetNodeModels()
+        {
+            foreach(NodeViewModel nvm in Network.Nodes.Items)
+            {
+                if(nvm is INodeViewModelBase)
+                {
+                    INodeViewModelBase nbase = nvm as INodeViewModelBase;
+                    yield return nbase.model;
+                }
+            }
         }
         /// <summary>
         /// MainViewModel
@@ -121,11 +134,53 @@ namespace FatNoder.ViewModels
                 List<Type> typelistkun = new List<Type>();
                 XML_NodeModel modelkun = mainnodekun.model;
                 typelistkun.Add(typeof(MethodEntryPoint));
+                typelistkun.Add(typeof(XmlRootN));
+                XmlRootN documentrootkun = new XmlRootN()
+                {
+                    nodes = new XMLRoot_NodesCLskun()
+                };
+                var roots = GetNodeModels();
+                foreach (var root in roots)
+                {
+                    if(root.TYPE == "")
+                    {
+                        continue;
+                    }
+                    if (root.TYPE == null)
+                    {
+                        continue;
+                    }
+                    if (root.MODELTYPE == "")
+                    {
+                        continue;
+                    }
+                    if (root.MODELTYPE == null)
+                    {
+                        continue;
+                    }
+                    if (!typelistkun.Contains(Type.GetType(root.TYPE)))
+                    {
+                        if(Type.GetType(root.TYPE) != null)
+                        typelistkun.Add(Type.GetType(root.TYPE));
+                    }
+                    if (!typelistkun.Contains(Type.GetType(root.MODELTYPE)))
+                    {
+                        if (Type.GetType(root.MODELTYPE) != null)
+                            typelistkun.Add(Type.GetType(root.MODELTYPE));
+                    }
+                }
+                var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
+                ModelEnumerator.Reset();
+                while (ModelEnumerator.MoveNext())
+                {
+                    documentrootkun.nodes.Add(ModelEnumerator.Current);
+                }
+
                 using (var writer = new StringWriter())
                 {
 
                     DataContractSerializer serializer =
-                        new(typeof(XML_NodeModel), typelistkun);
+                        new(typeof(XmlRootN), typelistkun);
                     var settings = new XmlWriterSettings()
                     {
                         Indent = true,
@@ -134,7 +189,7 @@ namespace FatNoder.ViewModels
                     };
                     using (var xw = XmlWriter.Create(writer, settings))
                     {
-                        serializer.WriteObject(xw, modelkun);
+                        serializer.WriteObject(xw, documentrootkun);
                     }
                     Console.WriteLine(writer.ToString());
                 }
