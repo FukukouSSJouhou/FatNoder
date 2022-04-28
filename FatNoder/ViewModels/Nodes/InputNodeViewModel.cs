@@ -40,8 +40,8 @@ namespace FatNoder.ViewModels.Nodes
         public ValueNodeOutputViewModel<T?> Output { get; }
         public InputNodeViewModel()
         {
-            _model.TYPE = typeof(InputNodeViewModel<T>).ToString();
-            _model.MODELTYPE = typeof(InputNodeModel<T>).ToString();
+            _model.TYPE = typeof(InputNodeViewModel<T>).AssemblyQualifiedName;
+            _model.MODELTYPE = typeof(InputNodeModel<T>).AssemblyQualifiedName;
             Output = new ValueNodeOutputViewModel<T?> {
                 Name = "Value",
                 Editor = ValueEditor,
