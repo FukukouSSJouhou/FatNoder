@@ -32,8 +32,8 @@ namespace FatNoder.ViewModels.Nodes
         }
         public PrintNodeViewModel()
         {
-            model.TYPE = typeof(PrintNodeViewModel).FullName;
-            _model.MODELTYPE = typeof(PrintNodeModel).FullName;
+            model.TYPE = typeof(PrintNodeViewModel).AssemblyQualifiedName;
+            _model.MODELTYPE = typeof(PrintNodeModel).AssemblyQualifiedName;
             PrintInput = new ValueNodeInputViewModel<string?>
             {
                 Name = "Printcontent",
