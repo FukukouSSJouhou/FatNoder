@@ -9,6 +9,11 @@ namespace FatNoder.Model.Transc
     public class StatementCls
     {
         public Guid UUID { get; set; }
+        /// <summary>
+        /// get new statement
+        /// </summary>
+        /// <param name="uUID">uuid</param>
+        /// <returns></returns>
         public static StatementCls GenStatementCls(Guid uUID)
         {
             return new StatementCls(uUID);
