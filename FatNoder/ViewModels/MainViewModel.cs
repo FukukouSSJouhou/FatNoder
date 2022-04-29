@@ -135,6 +135,7 @@ namespace FatNoder.ViewModels
                 XML_NodeModel modelkun = mainnodekun.model;
                 typelistkun.Add(typeof(MethodEntryPoint));
                 typelistkun.Add(typeof(XmlRootN));
+                typelistkun.Add(typeof(CompileNodeBase));
                 XmlRootN documentrootkun = new XmlRootN()
                 {
                     nodes = new XMLRoot_NodesCLskun()
