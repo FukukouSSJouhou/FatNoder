@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Nodes
 {
+    /// <summary>
+    /// Print Node Model
+    /// </summary>
     public class PrintNodeModel: XML_NodeModel
     {
 
