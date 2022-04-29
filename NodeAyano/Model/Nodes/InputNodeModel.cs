@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Nodes
 {
-
+    /// <summary>
+    /// 入力ノードのModel
+    /// </summary>
+    /// <typeparam name="T">Type</typeparam>
     public class InputNodeModel<T>: XML_NodeModel
     {
 
