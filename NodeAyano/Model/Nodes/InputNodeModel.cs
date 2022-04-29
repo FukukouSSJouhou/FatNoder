@@ -1,4 +1,5 @@
 ﻿using FatNoder.Serializer.Node.Xml;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +13,18 @@ namespace NodeAyano.Model.Nodes
     /// 入力ノードのModel
     /// </summary>
     /// <typeparam name="T">Type</typeparam>
-    public class InputNodeModel<T>: XML_NodeModel
+    public class InputNodeModel<T>: CompileNodeBase
     {
 
         [DataMember(Name="Value",Order=8)]
         public T Value
         {
             get;set;
+        }
+
+        public override MemberDeclarationSyntax CompileSyntax()
+        {
+            throw new NotImplementedException();
         }
     }
 }
