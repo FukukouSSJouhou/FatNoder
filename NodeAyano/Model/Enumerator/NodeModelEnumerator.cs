@@ -26,6 +26,11 @@ namespace NodeAyano.Model.Enumerator
                 return _Current;
             }
         }
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="root">root要素</param>
+        /// <param name="nodes">nodeたち</param>
         public NodeModelEnumerator(XML_NodeModel root, IEnumerable<XML_NodeModel> nodes)
         {
             _Current = null;
@@ -39,7 +44,10 @@ namespace NodeAyano.Model.Enumerator
         {
 
         }
-
+        /// <summary>
+        /// イテレータを次に進める
+        /// </summary>
+        /// <returns>成功したか否か</returns>
         public bool MoveNext()
         {
 
@@ -70,7 +78,9 @@ namespace NodeAyano.Model.Enumerator
             }
             return false;
         }
-
+        /// <summary>
+        /// リセット
+        /// </summary>
         public void Reset()
         {
             _Current = null;
