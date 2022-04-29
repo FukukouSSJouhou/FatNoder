@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Nodes
 {
+    /// <summary>
+    /// EntryPoint Model
+    /// </summary>
     public class MethodEntryPoint : XML_NodeModel
     {
     }

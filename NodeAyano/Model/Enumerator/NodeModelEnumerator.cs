@@ -8,11 +8,17 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Enumerator
 {
+    /// <summary>
+    /// NodeModelのEnumerator!
+    /// </summary>
     public class NodeModelEnumerator : IEnumerator<XML_NodeModel>
     {
         private XML_NodeModel _Current;
         private XML_NodeModel _root;
         private IEnumerable<XML_NodeModel> _nodes;
+        /// <summary>
+        /// 現在の要素を取得
+        /// </summary>
         public XML_NodeModel Current
         {
             get

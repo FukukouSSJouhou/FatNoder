@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Nodes
 {
+    /// <summary>
+    /// ReturnNode Model
+    /// </summary>
+    /// <typeparam name="T">Type!</typeparam>
     public class ReturnNodeModel<T> : XML_NodeModel
     {
         [DataMember(Name = "Value", Order = 8)]
