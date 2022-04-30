@@ -18,8 +18,8 @@ namespace NodeAyano.Model.Nodes
         private static readonly string returntypename = "int";
         public MethodDeclarationSyntax CompileMethodSyntax()
         {
-            MethodDeclarationSyntax methodkun = SyntaxFactory.MethodDeclaration(SyntaxFactory.ParseTypeName(returntypename), SyntaxFactory.Identifier(this.Name));
-            
+            MethodDeclarationSyntax methodkun = SyntaxFactory.MethodDeclaration(SyntaxFactory.ParseTypeName(returntypename), SyntaxFactory.Identifier("Main"));
+            methodkun = methodkun.AddModifiers(new Microsoft.CodeAnalysis.SyntaxToken[1] { SyntaxFactory.Token(SyntaxKind.StaticKeyword) });
             return methodkun;
         }
     }
