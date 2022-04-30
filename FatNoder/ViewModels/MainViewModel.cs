@@ -393,6 +393,7 @@ namespace FatNoder.ViewModels
                     });
                     LoadXMLFileCommand.Select(x =>
                     {
+                        #region XML Load and Struct
                         List<Type> knownlists = new();
                         using (var inputstream = new StreamReader(x))
                         {
@@ -439,13 +440,55 @@ namespace FatNoder.ViewModels
                                     }
                                     else
                                     {
-                                        var nodekun=(INodeViewModelBase)System.Activator.CreateInstance(typekun);
+                                        var nodekun=(INodeViewModelBase)System.Activator.CreateInstance(typekun, new object[] {n.UUID});
                                         Network.Nodes.Add((NodeViewModel)nodekun);
                                         nodekun.ChangeStates(n);
                                     }
                                 }
+                                foreach (XML_NodeModel n in obj.nodes)
+                                {
+                                    Type typekun = Type.GetType(n.TYPE);
+                                    {
+                                        if (n.InputStates != null)
+                                            foreach (var CNBB in n.InputStates)
+                                        {
+                                            var targetportName=CNBB.Name;
+                                            if(CNBB.States != null)
+                                            foreach(var targetid in CNBB.States)
+                                            {
+                                                foreach(var NVkun in Network.Nodes.Items)
+                                                {
+                                                    if(NVkun.UUID == targetid)
+                                                    {
+                                                        foreach(var origkun in Network.Nodes.Items)
+                                                        {
+                                                            if(origkun.UUID == n.UUID)
+                                                            {
+                                                                foreach(var InputObj in origkun.Inputs.Items)
+                                                                {
+                                                                    if(InputObj.Name == targetportName)
+                                                                    {
+                                                                        foreach(var OutObj in NVkun.Outputs.Items)
+                                                                        {
+                                                                            if(OutObj.Name == "In")
+                                                                            {
+                                                                                Network.Connections.Add(Network.ConnectionFactory(InputObj, OutObj));
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                //Network.ConnectionFactory.Add(Network.ConnectionFactory());
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
+                        #endregion
 
                         return "";
                     }).Subscribe(x =>
