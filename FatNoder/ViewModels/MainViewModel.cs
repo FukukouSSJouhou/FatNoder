@@ -42,7 +42,7 @@ namespace FatNoder.ViewModels
     /// <summary>
     /// MainWindowのViewModel!
     /// </summary>
-    public class MainViewModel:ReactiveObject
+    public class MainViewModel : ReactiveObject, IActivatableViewModel
     {
         #region Network
         private readonly ObservableAsPropertyHelper<NetworkViewModel> _network;
@@ -58,26 +58,28 @@ namespace FatNoder.ViewModels
         public ReactiveCommand<Unit, Unit> TestPhasekun { get; }
         public ReactiveCommand<Unit, Unit> CompilePhasekun { get; }
 
-        public ReactiveCommand<Unit,Unit> CompileandrunPhasekun { get; }
+        public ReactiveCommand<Unit, Unit> CompileandrunPhasekun { get; }
         public ReactiveCommand<Unit, Unit> GroupNodes { get; }
         public ReactiveCommand<Unit, Unit> UngroupNodes { get; }
         public ReactiveCommand<Unit, Unit> OpenGroup { get; }
         public ReactiveCommand<Unit, Unit> CreateTest { get; }
         #endregion
         #region dialog
-        public ReactiveCommand<Unit, SaveFileRequest> SaveXMLFileCommand { get; }
-        public Interaction<string,string> SaveXMLFileDialog { get; set; }
+
+        public ReactiveCommand<Unit, SaveFileRequest> SaveXMLFileCommand { get; private set; }
+        public Interaction<SaveFileRequest, SaveFileRequest> SaveXMLFileDialog { get; set; }
 
         #endregion
+        public ViewModelActivator Activator { get; }
         public void add_project(String Name)
         {
 
         }
         public IEnumerable<XML_NodeModel> GetNodeModels()
         {
-            foreach(NodeViewModel nvm in Network.Nodes.Items)
+            foreach (NodeViewModel nvm in Network.Nodes.Items)
             {
-                if(nvm is INodeViewModelBase)
+                if (nvm is INodeViewModelBase)
                 {
                     INodeViewModelBase nbase = nvm as INodeViewModelBase;
                     yield return nbase.model;
@@ -98,12 +100,12 @@ namespace FatNoder.ViewModels
                 Network = new NetworkViewModel()
             });
 
-            ReturnNodeViewModel<int> returnnodekun = new ReturnNodeViewModel<int> { CanBeRemovedByUser = false,Name="IntReturn" };
+            ReturnNodeViewModel<int> returnnodekun = new ReturnNodeViewModel<int> { CanBeRemovedByUser = false, Name = "IntReturn" };
             Network.Nodes.Add(returnnodekun);
             MethodEntryPointVIewModel mainnodekun = new MethodEntryPointVIewModel { CanBeRemovedByUser = false, Name = "MainEntryPoint" };
             Network.Nodes.Add(mainnodekun);
-            NodeList.AddNodeType(() => new InputNodeViewModel<int> { Name="IntInput"});
-            NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name="StringInput"});
+            NodeList.AddNodeType(() => new InputNodeViewModel<int> { Name = "IntInput" });
+            NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name = "StringInput" });
             NodeList.AddNodeType(() => new PrintNodeViewModel { Name = "PrintString" });
             CreateTest = ReactiveCommand.Create(() =>
             {
@@ -153,7 +155,7 @@ namespace FatNoder.ViewModels
                 var roots = GetNodeModels();
                 foreach (var root in roots)
                 {
-                    if(root.TYPE == "")
+                    if (root.TYPE == "")
                     {
                         continue;
                     }
@@ -171,8 +173,8 @@ namespace FatNoder.ViewModels
                     }
                     if (!typelistkun.Contains(Type.GetType(root.TYPE)))
                     {
-                        if(Type.GetType(root.TYPE) != null)
-                        typelistkun.Add(Type.GetType(root.TYPE));
+                        if (Type.GetType(root.TYPE) != null)
+                            typelistkun.Add(Type.GetType(root.TYPE));
                     }
                     if (!typelistkun.Contains(Type.GetType(root.MODELTYPE)))
                     {
@@ -299,7 +301,82 @@ namespace FatNoder.ViewModels
 
                 var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
                 var asmkun = NodeAyanoCompiler.Compile(compilerstr);
-                asmkun.EntryPoint.Invoke(null,null);
+                asmkun.EntryPoint.Invoke(null, null);
+            });
+            Activator = new ViewModelActivator();
+            this.WhenActivated(d =>
+            {
+                {
+
+                    SaveXMLFileDialog = new Interaction<SaveFileRequest, SaveFileRequest>();
+                    SaveXMLFileCommand = ReactiveCommand.CreateFromObservable(() =>
+                    {
+
+
+                        List<Type> typelistkun = new List<Type>();
+                        XML_NodeModel modelkun = mainnodekun.model;
+                        typelistkun.Add(typeof(MethodEntryPoint));
+                        typelistkun.Add(typeof(XmlRootN));
+                        typelistkun.Add(typeof(CompileNodeBase));
+                        XmlRootN documentrootkun = new XmlRootN()
+                        {
+                            nodes = new XMLRoot_NodesCLskun()
+                        };
+                        var roots = GetNodeModels();
+                        foreach (var root in roots)
+                        {
+                            if (root.TYPE == "")
+                            {
+                                continue;
+                            }
+                            if (root.TYPE == null)
+                            {
+                                continue;
+                            }
+                            if (root.MODELTYPE == "")
+                            {
+                                continue;
+                            }
+                            if (root.MODELTYPE == null)
+                            {
+                                continue;
+                            }
+                            if (!typelistkun.Contains(Type.GetType(root.TYPE)))
+                            {
+                                if (Type.GetType(root.TYPE) != null)
+                                    typelistkun.Add(Type.GetType(root.TYPE));
+                            }
+                            if (!typelistkun.Contains(Type.GetType(root.MODELTYPE)))
+                            {
+                                if (Type.GetType(root.MODELTYPE) != null)
+                                    typelistkun.Add(Type.GetType(root.MODELTYPE));
+                            }
+                        }
+                        var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
+                        ModelEnumerator.Reset();
+                        while (ModelEnumerator.MoveNext())
+                        {
+                            documentrootkun.nodes.Add(ModelEnumerator.Current);
+                        }
+
+
+                        DataContractSerializer serializer =
+                            new(typeof(XmlRootN), typelistkun);
+                        return SaveXMLFileDialog.Handle(new SaveFileRequest()
+                        {
+                            FilePath = "",
+                            Serializer = serializer,
+                            RootXML = documentrootkun
+                        }).Select(
+                            x =>
+                            {
+                                return x;
+                            }
+                        );
+                    }
+                    );
+                    SaveXMLFileCommand.Select(x => new SaveFileModel().SaveXML(x)).Subscribe(x => { Console.Error.WriteLine(x.Message); }).DisposeWith(d);
+                }
             });
 
         }
