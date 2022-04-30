@@ -1,4 +1,5 @@
 ﻿using FatNoder.Serializer.Node.Xml;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,12 @@ namespace NodeAyano.Model.Nodes
     /// </summary>
     public class MethodEntryPoint : XML_NodeModel, IMethodPointBase
     {
+        private static readonly string returntypename = "int";
         public MethodDeclarationSyntax CompileMethodSyntax()
         {
-            throw new NotImplementedException();
+            MethodDeclarationSyntax methodkun = SyntaxFactory.MethodDeclaration(SyntaxFactory.ParseTypeName(returntypename), SyntaxFactory.Identifier(this.Name));
+            
+            return methodkun;
         }
     }
 }
