@@ -54,7 +54,7 @@ namespace tintin{
             {
                 MethodDeclarationSyntax methodkun = SyntaxFactory.MethodDeclaration(SyntaxFactory.ParseTypeName("int"), SyntaxFactory.Identifier("Metkun"));
                 var statements = new List<StatementSyntax>();
-                statements.Add(SyntaxFactory.Block());
+                //statements.Add(SyntaxFactory.Block());
                 methodkun = methodkun.AddBodyStatements(statements.ToArray());
                 SCLSMethodLists.Add(methodkun);
             }
