@@ -14,7 +14,7 @@ namespace FatNoder
         public override void Visit(SyntaxNode node) // 各ノードを Visit
         {
             if (node != null)
-                Console.WriteLine("[Node  - Type: {0}, Kind: {1}]\n{2}\n", node.GetType().Name, node.Kind, node);
+                Console.WriteLine("[Node  - Type: {0}, Kind: {1}]\n{2}\n", node.GetType().Name, node.Kind(), node);
 
             base.Visit(node);
         }
@@ -38,6 +38,7 @@ namespace FatNoder
         }
         public static int Main(string[] args)
         {
+            
             /*var sourceCode = @"
 using System;
 namespace tintin{
@@ -45,6 +46,7 @@ namespace tintin{
     static int Main(){
         int tdn=9;
         string tdn33=tdnx445;
+        Console.WriteLine(tdn33);
         return tdn;
     }
     }
@@ -68,7 +70,7 @@ namespace tintin{
                 oldNode: namespaceNode,
                 newNode: namespaceNode2);
             //Console.WriteLine(newnode.NormalizeWhitespace());*/
-            var compilerstr = NodeAyanoCompiler.Compile(null);
+            var compilerstr = NodeAyanoCompiler.TransCompile(null);
             Console.WriteLine(compilerstr);
             /*var syntaxTree2 = CSharpSyntaxTree.ParseText(compilerstr);
             var rootNode2 = syntaxTree2.GetRoot();
