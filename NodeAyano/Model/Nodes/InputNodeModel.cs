@@ -27,7 +27,12 @@ namespace NodeAyano.Model.Nodes
         {
             if(typeof(T) == typeof(int))
             {
+                
                 dynamic valuekundynamic = Value;
+                List<StatementSyntax> statementskun222 = new();
+                foreach(XMLNodeOutput xnode in Outputs)
+                {
+
                 PredefinedTypeSyntax predeftype = SyntaxFactory.PredefinedType(SyntaxFactory.ParseToken("int"));
                 List<VariableDeclaratorSyntax> vardecatorsynlist = new();
                 VariableDeclarationSyntax valdeckun = SyntaxFactory.VariableDeclaration(predeftype);
@@ -41,7 +46,9 @@ namespace NodeAyano.Model.Nodes
                 }
                 valdeckun = valdeckun.AddVariables(vardecatorsynlist.ToArray());
                 LocalDeclarationStatementSyntax localdec = SyntaxFactory.LocalDeclarationStatement(valdeckun);
-                return localdec;
+
+                }
+                return SyntaxFactory.Block(statementskun222.);
             }
             return SyntaxFactory.Block();
         }
