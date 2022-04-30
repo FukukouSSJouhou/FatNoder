@@ -22,7 +22,7 @@ namespace NodeAyano.Model.Nodes
             get;set;
         }
 
-        public override MemberDeclarationSyntax CompileSyntax()
+        public override StatementSyntax CompileSyntax()
         {
             throw new NotImplementedException();
         }

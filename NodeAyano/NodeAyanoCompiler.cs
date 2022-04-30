@@ -45,9 +45,24 @@ namespace tintin{
             USList.Add(SyntaxFactory.UsingDirective(SyntaxFactory.IdentifierName("System")));
             if (NodeEnum != null)
             {
-                if(NodeEnum.Current is IMethodPointBase)
-                {
+                NodeEnum.Reset();
+                MethodDeclarationSyntax methodkun;
+                var statements = new List<StatementSyntax>();
+                NodeEnum.MoveNext();
 
+                if (NodeEnum.Current is IMethodPointBase)
+                {
+                    methodkun = ((IMethodPointBase)NodeEnum.Current).CompileMethodSyntax();
+
+                    while (NodeEnum.MoveNext())
+                    {
+                        if (NodeEnum.Current is CompileNodeBase)
+                        {
+                            statements.Add(((CompileNodeBase)NodeEnum.Current).CompileSyntax());
+                        }
+                    }
+                    methodkun = methodkun.AddBodyStatements(statements.ToArray());
+                    SCLSMethodLists.Add(methodkun);
                 }
             }
             else
@@ -66,12 +81,6 @@ namespace tintin{
             newnode = newnode.AddMembers(NSList.ToArray());
 
             return (newnode.NormalizeWhitespace().ToString());
-            NodeEnum.Reset();
-            while (NodeEnum.MoveNext())
-            {
-
-            }
-            return "";
         }
         private static ClassDeclarationSyntax CreateClass(string name)
         {
