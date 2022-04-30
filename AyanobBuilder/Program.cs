@@ -14,7 +14,7 @@ namespace FatNoder
         public override void Visit(SyntaxNode node) // 各ノードを Visit
         {
             if (node != null)
-                Console.WriteLine("[Node  - Type: {0}, Kind: {1}]\n{2}\n", node.GetType().Name, node.Kind, node);
+                Console.WriteLine("[Node  - Type: {0}, Kind: {1}]\n{2}\n", node.GetType().Name, node.Kind(), node);
 
             base.Visit(node);
         }
@@ -38,8 +38,8 @@ namespace FatNoder
         }
         public static int Main(string[] args)
         {
-            /*
-            var sourceCode = @"
+            
+            /*var sourceCode = @"
 using System;
 namespace tintin{
     class tinpo{
