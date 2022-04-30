@@ -39,6 +39,7 @@
                 <Fluent:RibbonGroupBox Header="A">
                     <Fluent:Button Header="TestPhase" Name="testPhaseButton"></Fluent:Button>
                     <Fluent:Button Header="CompilePhase" Name="compilePhaseButton"></Fluent:Button>
+                    <Fluent:Button Header="CompileAndRunPhase" Name="compileandrunPhaseButton"></Fluent:Button>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>

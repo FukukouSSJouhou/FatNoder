@@ -123,6 +123,8 @@ namespace tintin{
         MetadataReference.CreateFromFile(
             $"{assemblyDirectoryPath}/System.Runtime.dll"),
         MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/System.Console.dll"),
+        MetadataReference.CreateFromFile(
             typeof(object).Assembly.Location)
             };
 
@@ -135,7 +137,8 @@ namespace tintin{
             );
 
             var compilationOptions = new CSharpCompilationOptions(
-                OutputKind.ConsoleApplication
+                OutputKind.ConsoleApplication,
+                mainTypeName:$"{nsName}.{clsName}"
             );
 
             var compilation = CSharpCompilation.Create(
