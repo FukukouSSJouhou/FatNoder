@@ -54,6 +54,7 @@ namespace FatNoder.ViewModels
         public ReactiveCommand<Unit, Unit> StartAutoLayoutLive { get; }
         public ReactiveCommand<Unit, Unit> StopAutoLayoutLive { get; }
         public ReactiveCommand<Unit, Unit> TestPhasekun { get; }
+        public ReactiveCommand<Unit, Unit> CompilePhasekun { get; }
 
         public ReactiveCommand<Unit, Unit> GroupNodes { get; }
         public ReactiveCommand<Unit, Unit> UngroupNodes { get; }
