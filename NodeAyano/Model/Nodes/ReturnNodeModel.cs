@@ -30,11 +30,33 @@ namespace NodeAyano.Model.Nodes
 
         public override StatementSyntax CompileSyntax()
         {
-            if (Isconnected)
-            {
+            if (!Isconnected) { 
+                if(typeof(T) == typeof(int))
+                {
 
+                    dynamic valuekundynamic = Value;
+                    PredefinedTypeSyntax predeftype = SyntaxFactory.PredefinedType(SyntaxFactory.ParseToken("int"));
+                    List<VariableDeclaratorSyntax> vardecatorsynlist = new();
+                    VariableDeclarationSyntax valdeckun = SyntaxFactory.VariableDeclaration(predeftype);
+                    {
+                        VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator(UUID.ToString().Replace("-", "_") + "_Value");
+                        decr = decr.WithInitializer(
+                            SyntaxFactory.EqualsValueClause(SyntaxFactory.LiteralExpression(SyntaxKind.NumericLiteralExpression, SyntaxFactory.Literal(
+                                valuekundynamic)))
+                            );
+                        vardecatorsynlist.Add(decr);
+                    }
+                    valdeckun = valdeckun.AddVariables(vardecatorsynlist.ToArray());
+                    LocalDeclarationStatementSyntax localdec = SyntaxFactory.LocalDeclarationStatement(valdeckun);
+                    return localdec;
+                }
+                else
+                {
+                    return SyntaxFactory.Block();
+                }
             }
-            return SyntaxFactory.Block(); 
+            ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(SyntaxFactory.IdentifierName(this.UUID.ToString().Replace("-", "_") + "_Value"));
+            return retstatement;
         }
     }
 }
