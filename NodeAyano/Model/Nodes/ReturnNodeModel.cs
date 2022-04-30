@@ -28,8 +28,9 @@ namespace NodeAyano.Model.Nodes
             get; set;
         }
 
-        public override StatementSyntax CompileSyntax()
+        public override StatementSyntax[] CompileSyntax()
         {
+            List<StatementSyntax> statementskun65656565 = new();
             if (!Isconnected) { 
                 if(typeof(T) == typeof(int))
                 {
@@ -48,15 +49,16 @@ namespace NodeAyano.Model.Nodes
                     }
                     valdeckun = valdeckun.AddVariables(vardecatorsynlist.ToArray());
                     LocalDeclarationStatementSyntax localdec = SyntaxFactory.LocalDeclarationStatement(valdeckun);
-                    return localdec;
+                    statementskun65656565.Add(localdec);
                 }
                 else
                 {
-                    return SyntaxFactory.Block();
+                    return new StatementSyntax[1] { SyntaxFactory.Block() };
                 }
             }
             ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(SyntaxFactory.IdentifierName(this.UUID.ToString().Replace("-", "_") + "_Value"));
-            return retstatement;
+            statementskun65656565.Add(retstatement);
+            return statementskun65656565.ToArray() ;
         }
     }
 }

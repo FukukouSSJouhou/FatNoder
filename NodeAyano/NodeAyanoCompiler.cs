@@ -58,7 +58,10 @@ namespace tintin{
                     {
                         if (NodeEnum.Current is CompileNodeBase)
                         {
-                            statements.Add(((CompileNodeBase)NodeEnum.Current).CompileSyntax());
+                            foreach (StatementSyntax sckun in ((CompileNodeBase)NodeEnum.Current).CompileSyntax())
+                            {
+                                statements.Add(sckun);
+                            }
                         }
                     }
                     methodkun = methodkun.AddBodyStatements(statements.ToArray());
