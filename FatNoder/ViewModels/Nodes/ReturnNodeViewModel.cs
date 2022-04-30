@@ -96,7 +96,7 @@ namespace FatNoder.ViewModels.Nodes
             this.Inputs.Add(ReturnInput);
             this.Outputs.Add(Flow);
         }
-        public void INodeViewModelBase(XML_NodeModel newmodelbs)
+        public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
             model.UUID = newmodelbs.UUID;

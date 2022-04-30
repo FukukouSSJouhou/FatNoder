@@ -438,7 +438,7 @@ namespace FatNoder.ViewModels
                                     }
                                     else
                                     {
-
+                                        var nodekun=()
                                     }
                                 }
                             }

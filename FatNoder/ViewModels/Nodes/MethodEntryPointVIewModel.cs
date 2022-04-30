@@ -86,7 +86,7 @@ namespace FatNoder.ViewModels.Nodes
 
         }
 
-        public void ChangeStates(MethodEntryPoint mdel)
+        public void ChangeStates(XML_NodeModel mdel)
         {
             model.UUID = mdel.UUID;
             model.Name = mdel.Name;
