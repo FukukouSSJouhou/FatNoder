@@ -14,43 +14,50 @@ namespace NodeAyano.Model.Nodes
     /// 入力ノードのModel
     /// </summary>
     /// <typeparam name="T">Type</typeparam>
-    public class InputNodeModel<T>: CompileNodeBase
+    public class InputNodeModel<T> : CompileNodeBase
     {
 
-        [DataMember(Name="Value",Order=8)]
+        [DataMember(Name = "Value", Order = 8)]
         public T Value
         {
-            get;set;
+            get; set;
         }
 
-        public override StatementSyntax CompileSyntax()
+        public override StatementSyntax[] CompileSyntax()
         {
-            if(typeof(T) == typeof(int))
+            List<StatementSyntax> statementskun222 = new();
+            if (typeof(T) == typeof(int))
             {
-                
+
                 dynamic valuekundynamic = Value;
-                List<StatementSyntax> statementskun222 = new();
-                foreach(XMLNodeOutput xnode in Outputs)
+                foreach (XMLNodeOutput xnode in Outputs)
                 {
-
-                PredefinedTypeSyntax predeftype = SyntaxFactory.PredefinedType(SyntaxFactory.ParseToken("int"));
-                List<VariableDeclaratorSyntax> vardecatorsynlist = new();
-                VariableDeclarationSyntax valdeckun = SyntaxFactory.VariableDeclaration(predeftype);
-                {
-                    VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator(UUID.ToString().Replace("-","_") + "_Value");
-                    decr = decr.WithInitializer(
-                        SyntaxFactory.EqualsValueClause(SyntaxFactory.LiteralExpression(SyntaxKind.NumericLiteralExpression, SyntaxFactory.Literal(
-                            valuekundynamic)))
-                        );
-                    vardecatorsynlist.Add(decr);
+                    if (xnode.Name == "Value")
+                    {
+                        foreach (XMLNodeOutputConnect cn in xnode.connections)
+                        {
+                            PredefinedTypeSyntax predeftype = SyntaxFactory.PredefinedType(SyntaxFactory.ParseToken("int"));
+                            List<VariableDeclaratorSyntax> vardecatorsynlist = new();
+                            VariableDeclarationSyntax valdeckun = SyntaxFactory.VariableDeclaration(predeftype);
+                            {
+                                VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator(cn.Target.ToString().Replace("-", "_") + "_" + cn.Name);
+                                decr = decr.WithInitializer(
+                                    SyntaxFactory.EqualsValueClause(SyntaxFactory.LiteralExpression(SyntaxKind.NumericLiteralExpression, SyntaxFactory.Literal(
+                                        valuekundynamic)))
+                                    );
+                                vardecatorsynlist.Add(decr);
+                            }
+                            valdeckun = valdeckun.AddVariables(vardecatorsynlist.ToArray());
+                            LocalDeclarationStatementSyntax localdec = SyntaxFactory.LocalDeclarationStatement(valdeckun);
+                            statementskun222.Add(localdec);
+                        }
+                    }
                 }
-                valdeckun = valdeckun.AddVariables(vardecatorsynlist.ToArray());
-                LocalDeclarationStatementSyntax localdec = SyntaxFactory.LocalDeclarationStatement(valdeckun);
-
-                }
-                return SyntaxFactory.Block(statementskun222.);
+                return statementskun222.ToArray();
             }
-            return SyntaxFactory.Block();
+            statementskun222.Add(SyntaxFactory.Block());
+            return statementskun222.ToArray();
+
         }
     }
 }
