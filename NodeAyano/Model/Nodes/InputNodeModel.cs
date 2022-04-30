@@ -54,6 +54,34 @@ namespace NodeAyano.Model.Nodes
                     }
                 }
                 return statementskun222.ToArray();
+            }else if (typeof(T) == typeof(string))
+            {
+
+                dynamic valuekundynamic = Value;
+                foreach (XMLNodeOutput xnode in Outputs)
+                {
+                    if (xnode.Name == "Value")
+                    {
+                        foreach (XMLNodeOutputConnect cn in xnode.connections)
+                        {
+                            PredefinedTypeSyntax predeftype = SyntaxFactory.PredefinedType(SyntaxFactory.ParseToken("string"));
+                            List<VariableDeclaratorSyntax> vardecatorsynlist = new();
+                            VariableDeclarationSyntax valdeckun = SyntaxFactory.VariableDeclaration(predeftype);
+                            {
+                                VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator(cn.Target.ToString().Replace("-", "_") + "_" + cn.Name);
+                                decr = decr.WithInitializer(
+                                    SyntaxFactory.EqualsValueClause(SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(
+                                        valuekundynamic)))
+                                    );
+                                vardecatorsynlist.Add(decr);
+                            }
+                            valdeckun = valdeckun.AddVariables(vardecatorsynlist.ToArray());
+                            LocalDeclarationStatementSyntax localdec = SyntaxFactory.LocalDeclarationStatement(valdeckun);
+                            statementskun222.Add(localdec);
+                        }
+                    }
+                }
+                return statementskun222.ToArray();
             }
             statementskun222.Add(SyntaxFactory.Block());
             return statementskun222.ToArray();
