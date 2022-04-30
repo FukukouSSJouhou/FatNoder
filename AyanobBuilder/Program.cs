@@ -64,7 +64,11 @@ namespace tintin{
                 oldNode: namespaceNode,
                 newNode: namespaceNode2);
             //Console.WriteLine(newnode.NormalizeWhitespace());*/
-            Console.WriteLine(NodeAyanoCompiler.Compile(null));
+            var compilerstr = NodeAyanoCompiler.Compile(null);
+            Console.WriteLine(compilerstr);
+            var syntaxTree2 = CSharpSyntaxTree.ParseText(compilerstr);
+            var rootNode2 = syntaxTree2.GetRoot();
+            new Walker().Visit(rootNode2);
             return 0;
         }
     }

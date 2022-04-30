@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using NodeAyano.Model.Enumerator;
+using NodeAyano.Model.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,17 @@ namespace tintin{
             var newnode = rootNode.ReplaceNode(
                 oldNode: namespaceNode,
                 newNode: namespaceNode2);
+            var SCLSMethodLists = SyntaxFactory.List<MemberDeclarationSyntax>();
+            if (rootNode is IMethodPointBase)
+            {
+
+            }
+            else
+            {
+                MethodDeclarationSyntax methodkun = SyntaxFactory.MethodDeclaration(SyntaxFactory.ParseTypeName("int"), SyntaxFactory.Identifier("Metkun"));
+                SCLSMethodLists= SCLSMethodLists.Add(methodkun);
+            }
+            SCLS = SCLS.WithMembers(SCLSMethodLists);
             OldNode = newnode;
             {
                 var oldcls = OldNode.DescendantNodes().First(node => node.GetType() == typeof(ClassDeclarationSyntax));
