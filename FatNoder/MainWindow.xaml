@@ -32,6 +32,7 @@
             <Fluent:Ribbon.Menu>
                 <Fluent:ApplicationMenu Header="File">
                     <Fluent:MenuItem Header="CreateTest" Name="CreateTestRibbon"></Fluent:MenuItem>
+                    <Fluent:MenuItem Header="Load As" Name="LoadAsRibbon"></Fluent:MenuItem>
                     <Fluent:MenuItem Header="Save As" Name="SaveAsRibbon"></Fluent:MenuItem>
                     <Fluent:MenuItem Header="Exit" Name="ExitRibbon"></Fluent:MenuItem>
                 </Fluent:ApplicationMenu>
