@@ -189,7 +189,7 @@ namespace FatNoder.ViewModels
                     {
                         Indent = true,
                         IndentChars = "    ",
-                        Encoding = Encoding.UTF8
+                        Encoding = new System.Text.UTF8Encoding(false)
                     };
                     using (var xw = XmlWriter.Create(writer, settings))
                     {
