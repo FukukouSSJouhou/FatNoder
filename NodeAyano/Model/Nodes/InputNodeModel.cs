@@ -24,7 +24,10 @@ namespace NodeAyano.Model.Nodes
 
         public override StatementSyntax CompileSyntax()
         {
+            if(typeof(T) == typeof(int))
+            {
 
+            }
             throw new NotImplementedException();
         }
     }
