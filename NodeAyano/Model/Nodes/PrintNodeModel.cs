@@ -50,7 +50,6 @@ namespace NodeAyano.Model.Nodes
                 LocalDeclarationStatementSyntax localdec = SyntaxFactory.LocalDeclarationStatement(valdeckun);
                 returnstatements.Add(localdec);
             }
-
             return returnstatements.ToArray();
         }
     }
