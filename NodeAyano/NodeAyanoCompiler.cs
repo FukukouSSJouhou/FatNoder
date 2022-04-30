@@ -107,8 +107,12 @@ namespace tintin{
         }
         private static ClassDeclarationSyntax CreateClass(string name)
         {
-
+            
             return SyntaxFactory.ClassDeclaration(name).AddModifiers(new SyntaxToken[1] {SyntaxFactory.Token(SyntaxKind.PublicKeyword)});
+        }
+        public static int CompileAndRun(string code,string clsName = "testMainCls", string nsName = "TEST123")
+        {
+            return 0;
         }
     }
 }

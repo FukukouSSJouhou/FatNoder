@@ -241,7 +241,7 @@ namespace FatNoder.ViewModels
                 }
                 var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
 
-                var compilerstr = NodeAyanoCompiler.Compile(ModelEnumerator);
+                var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
                 Console.WriteLine(compilerstr);
 
             });

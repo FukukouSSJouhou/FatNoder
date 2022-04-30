@@ -39,7 +39,7 @@ namespace NodeAyano.Model.Nodes
                 List<VariableDeclaratorSyntax> vardecatorsynlist = new();
                 VariableDeclarationSyntax valdeckun = SyntaxFactory.VariableDeclaration(predeftype);
                 {
-                    VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator(UUID.ToString().Replace("-", "_") + "_Printcontent");
+                    VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator("id_" + UUID.ToString().Replace("-", "_") + "_Printcontent");
                     decr = decr.WithInitializer(
                         SyntaxFactory.EqualsValueClause(SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(
                             valuekundynamic)))
@@ -62,7 +62,7 @@ namespace NodeAyano.Model.Nodes
                     SyntaxFactory.ArgumentList(
                         SyntaxFactory.SeparatedList<ArgumentSyntax>(
                             new ArgumentSyntax[1]{SyntaxFactory.Argument(
-                                SyntaxFactory.IdentifierName(UUID.ToString().Replace("-", "_") + "_Printcontent")
+                                SyntaxFactory.IdentifierName("id_" + UUID.ToString().Replace("-", "_") + "_Printcontent")
                             ) }
 
                     )
