@@ -24,6 +24,7 @@ namespace NodeAyano.Model.Nodes
 
         public override StatementSyntax CompileSyntax()
         {
+
             throw new NotImplementedException();
         }
     }

@@ -38,15 +38,18 @@ namespace FatNoder
         }
         public static int Main(string[] args)
         {
-            var sourceCode = @"
+            /*var sourceCode = @"
 using System;
 namespace tintin{
     class tinpo{
     static void Main(){
+        int tdn=9;
+        string tdn33=tdnx445;
     }
     }
 }";
-            /*var syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
+            sourceCode = sourceCode.Replace("tdnx445", "\"tdn910\"");
+            var syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
             var rootNode = syntaxTree.GetRoot();
             new Walker().Visit(rootNode);*/
             /*
