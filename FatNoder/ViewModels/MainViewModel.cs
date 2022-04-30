@@ -69,7 +69,7 @@ namespace FatNoder.ViewModels
         public ReactiveCommand<Unit, SaveFileRequest> SaveXMLFileCommand { get; private set; }
         public Interaction<SaveFileRequest, SaveFileRequest> SaveXMLFileDialog { get; set; }
         public ReactiveCommand<Unit, string> LoadXMLFileCommand { get; private set; }
-        public Interaction<string,string> LoadXMLFileDialog { get; set; }
+        public Interaction<string, string> LoadXMLFileDialog { get; set; }
 
         #endregion
         public ViewModelActivator Activator { get; }
@@ -391,7 +391,44 @@ namespace FatNoder.ViewModels
                     });
                     LoadXMLFileCommand.Select(x =>
                     {
-                        Console.WriteLine(x);
+                        List<Type> knownlists = new();
+                        using (var inputstream = new StreamReader(x))
+                        {
+                            {
+                                XmlDocument xmlDoc = new XmlDocument();
+                                xmlDoc.Load(inputstream);
+                                XmlNode root = xmlDoc.DocumentElement;
+                                foreach (XmlNode node in root.ChildNodes)
+                                {
+
+                                    foreach (XmlNode node2 in node.ChildNodes)
+                                    {
+                                        if (node2.Name == "Node")
+                                        {
+                                            foreach (XmlNode node3 in node2.ChildNodes)
+                                            {
+                                                if (node3.Name == "modeltype")
+                                                {
+                                                    //Console.WriteLine(node3.InnerText);
+                                                    knownlists.Add(Type.GetType(node3.InnerText));
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        using (var inputstream = new StreamReader(x))
+                        {
+                            DataContractSerializer serializer =
+                                new(typeof(XmlRootN),knownlists);
+                            using (XmlReader xr = XmlReader.Create(inputstream))
+                            {
+                                XmlRootN obj = (XmlRootN)serializer.ReadObject(xr);
+                                Console.WriteLine(obj.GetType());
+                            }
+                        }
+
                         return "";
                     }).Subscribe(x =>
                     {
