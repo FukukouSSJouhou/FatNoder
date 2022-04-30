@@ -50,13 +50,23 @@ namespace NodeAyano.Model.Nodes
                 LocalDeclarationStatementSyntax localdec = SyntaxFactory.LocalDeclarationStatement(valdeckun);
                 returnstatements.Add(localdec);
             }
-            /*
+
             returnstatements.Add(
+                SyntaxFactory.ExpressionStatement(
                 SyntaxFactory.InvocationExpression(
                     SyntaxFactory.MemberAccessExpression(
-                            SyntaxKind.SimpleMemberAccessExpression
-                        )
-                );*/
+                            SyntaxKind.SimpleMemberAccessExpression,
+                            SyntaxFactory.IdentifierName("Console"),
+                            SyntaxFactory.IdentifierName("WriteLine")
+                        ),
+                    SyntaxFactory.ArgumentList(
+                        SyntaxFactory.SeparatedList<ArgumentSyntax>(
+                            new ArgumentSyntax[1]{SyntaxFactory.Argument(
+                                SyntaxFactory.IdentifierName(UUID.ToString().Replace("-", "_") + "_Printcontent")
+                            ) }
+
+                    )
+                ))));
             return returnstatements.ToArray();
         }
     }
