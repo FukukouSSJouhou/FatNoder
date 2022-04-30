@@ -47,7 +47,7 @@ namespace tintin{
     }
     }
 }";
-            var syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
+            /*var syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
             var rootNode = syntaxTree.GetRoot();
             //new Walker().Visit(rootNode);
             //Console.ReadKey();
@@ -63,7 +63,7 @@ namespace tintin{
             var newnode = rootNode.ReplaceNode(
                 oldNode: namespaceNode,
                 newNode: namespaceNode2);
-            //Console.WriteLine(newnode.NormalizeWhitespace());
+            //Console.WriteLine(newnode.NormalizeWhitespace());*/
             Console.WriteLine(NodeAyanoCompiler.Compile(null));
             return 0;
         }
