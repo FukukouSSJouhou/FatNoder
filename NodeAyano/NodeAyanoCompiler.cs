@@ -27,14 +27,17 @@ namespace tintin{
         /// Compile
         /// </summary>
         /// <param name="NodeEnum">Node</param>
+        /// <param name="clsName">clsName</param>
+        /// <param name="nsName">Namespace Name</param>
         /// <returns>C# str</returns>
-        public static string Compile(NodeModelEnumerator NodeEnum)
+        public static string Compile(NodeModelEnumerator NodeEnum, string clsName = "testMainCls", string nsName="TEST123")
         {
             var syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
             var rootNode = syntaxTree.GetRoot();
-            string nsName = "TEST123";
             var namespaceNode = rootNode.DescendantNodes().First(node => node.GetType() == typeof(NamespaceDeclarationSyntax));
             var namespaceSyntaxkun = namespaceNode.DescendantNodes().First(node => node.GetType() == typeof(IdentifierNameSyntax));
+            SyntaxNode OldNode;
+            var SCLS = CreateClass(clsName);
             var namespaceNode2 = namespaceNode.ReplaceNode(
                 oldNode: namespaceSyntaxkun,
                 newNode: SyntaxFactory.IdentifierName(nsName))
@@ -42,6 +45,13 @@ namespace tintin{
             var newnode = rootNode.ReplaceNode(
                 oldNode: namespaceNode,
                 newNode: namespaceNode2);
+            OldNode = newnode;
+            {
+                var oldcls = OldNode.DescendantNodes().First(node => node.GetType() == typeof(ClassDeclarationSyntax));
+                newnode = OldNode.ReplaceNode(
+                    oldNode: oldcls,
+                    newNode: SCLS);
+            }
             return (newnode.NormalizeWhitespace().ToString());
             NodeEnum.Reset();
             while (NodeEnum.MoveNext())
@@ -49,6 +59,11 @@ namespace tintin{
 
             }
             return "";
+        }
+        private static ClassDeclarationSyntax CreateClass(string name)
+        {
+
+            return SyntaxFactory.ClassDeclaration(name);
         }
     }
 }

@@ -38,7 +38,6 @@ namespace FatNoder
         }
         public static int Main(string[] args)
         {
-            Console.WriteLine("TDN");
             var sourceCode = @"
 using System;
 namespace tintin{
