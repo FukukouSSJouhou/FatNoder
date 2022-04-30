@@ -39,6 +39,63 @@ namespace FatNoder.ViewModels.Nodes
                 return _model;
             }
         }
+        public ReturnNodeViewModel(Guid UUID):base(UUID)
+        {
+            model.TYPE = typeof(ReturnNodeViewModel<T>).AssemblyQualifiedName;
+            model.MODELTYPE = typeof(ReturnNodeModel<T>).AssemblyQualifiedName;
+
+            StatementIfce = StatementCls.GenStatementCls(this.UUID);
+            ReturnInput = new ValueNodeInputViewModel<T?>
+            {
+                Name = "ValueRet",
+                Editor = new HannyouValueEditorViewModel<T?>(),
+                MaxConnections = 1
+            };
+            ReturnInput.ValueChanged.Subscribe(newvalue =>
+            {
+                _model.Value = newvalue;
+            });
+            Flow = new ValueNodeOutputViewModel<StatementCls>
+            {
+                Name = "In",
+                MaxConnections = 1,
+                Value = this.WhenAnyValue(vm => vm.StatementIfce),
+                PortPosition = PortPosition.Left
+            };
+            this.UUIDChanged.Subscribe(newvalue =>
+            {
+                model.UUID = newvalue;
+            });
+            this.NameChanged.Subscribe(newvalue =>
+            {
+                model.Name = newvalue;
+            });
+            this.PositionChanged.Subscribe(newvalue =>
+            {
+                model.Points = new XMLNodeXY()
+                {
+                    X = newvalue.X,
+                    Y = newvalue.Y
+                };
+            });
+            this.ReturnInput.Connections.CountChanged.Subscribe(newvalue =>
+            {
+                if (newvalue > 0)
+                {
+                    _model.Isconnected = true;
+                }
+                else
+                {
+
+                    _model.Isconnected = false;
+                }
+            }
+            );
+            model.InputStates = new XMLNodeInputStatement_VMLS();
+            model.InputStates.Add(new XMLNodeInputStatement());
+            this.Inputs.Add(ReturnInput);
+            this.Outputs.Add(Flow);
+        }
         public ReturnNodeViewModel()
         {
             model.TYPE = typeof(ReturnNodeViewModel<T>).AssemblyQualifiedName;
@@ -99,9 +156,12 @@ namespace FatNoder.ViewModels.Nodes
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
-            model.UUID = newmodelbs.UUID;
-            model.Name = newmodelbs.Name;
-            model.Points = newmodelbs.Points;
+            Name = newmodelbs.Name;
+            Position = new System.Windows.Point
+            {
+                X = newmodelbs.Points.X,
+                Y = newmodelbs.Points.Y
+            };
             _model.Value = ((ReturnNodeModel<T>)newmodelbs).Value;
         }
     }

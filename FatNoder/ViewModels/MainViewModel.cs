@@ -430,15 +430,18 @@ namespace FatNoder.ViewModels
                                 Network.Nodes.Clear();
                                 foreach (XML_NodeModel n in obj.nodes)
                                 {
-                                    Type typekun = Type.GetType(n.MODELTYPE);
+                                    Type typekun = Type.GetType(n.TYPE);
                                     if (typekun == typeof(MethodEntryPointVIewModel))
                                     {
-                                        mainnodekun = new MethodEntryPointVIewModel();
+                                        mainnodekun = new MethodEntryPointVIewModel(n.UUID);
+                                        Network.Nodes.Add(mainnodekun);
                                         mainnodekun.ChangeStates((MethodEntryPoint)n);
                                     }
                                     else
                                     {
-                                        var nodekun=()
+                                        var nodekun=(INodeViewModelBase)System.Activator.CreateInstance(typekun);
+                                        Network.Nodes.Add((NodeViewModel)nodekun);
+                                        nodekun.ChangeStates(n);
                                     }
                                 }
                             }
