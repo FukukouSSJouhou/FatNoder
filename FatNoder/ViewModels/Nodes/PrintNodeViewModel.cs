@@ -81,6 +81,19 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
+            this.PrintInput.Connections.CountChanged.Subscribe(newvalue =>
+            {
+                if (newvalue > 0)
+                {
+                    _model.Isconnected = true;
+                }
+                else
+                {
+
+                    _model.Isconnected = false;
+                }
+            }
+            );
             this.Inputs.Add(PrintInput);
         }
     }

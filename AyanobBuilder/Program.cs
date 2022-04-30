@@ -14,7 +14,7 @@ namespace FatNoder
         public override void Visit(SyntaxNode node) // 各ノードを Visit
         {
             if (node != null)
-                Console.WriteLine("[Node  - Type: {0}, Kind: {1}]\n{2}\n", node.GetType().Name, node.Kind, node);
+                Console.WriteLine("[Node  - Type: {0}, Kind: {1}]\n{2}\n", node.GetType().Name, node.Kind(), node);
 
             base.Visit(node);
         }
@@ -38,18 +38,24 @@ namespace FatNoder
         }
         public static int Main(string[] args)
         {
-            Console.WriteLine("TDN");
-            var sourceCode = @"
+            
+            /*var sourceCode = @"
 using System;
 namespace tintin{
     class tinpo{
-    static void Main(){
+    static int Main(){
+        int tdn=9;
+        string tdn33=tdnx445;
+        Console.WriteLine(tdn33);
+        return tdn;
     }
     }
 }";
-            /*var syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
+            sourceCode = sourceCode.Replace("tdnx445", "\"tdn910\"");
+            var syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
             var rootNode = syntaxTree.GetRoot();
-            //new Walker().Visit(rootNode);
+            new Walker().Visit(rootNode);*/
+            /*
             //Console.ReadKey();
             ClassDeclarationSyntax scls = GenClass("test21");
             SyntaxList<MemberDeclarationSyntax> Listkun;
@@ -64,7 +70,11 @@ namespace tintin{
                 oldNode: namespaceNode,
                 newNode: namespaceNode2);
             //Console.WriteLine(newnode.NormalizeWhitespace());*/
-            Console.WriteLine(NodeAyanoCompiler.Compile(null));
+            var compilerstr = NodeAyanoCompiler.TransCompile(null);
+            Console.WriteLine(compilerstr);
+            /*var syntaxTree2 = CSharpSyntaxTree.ParseText(compilerstr);
+            var rootNode2 = syntaxTree2.GetRoot();
+            new Walker().Visit(rootNode2);*/
             return 0;
         }
     }

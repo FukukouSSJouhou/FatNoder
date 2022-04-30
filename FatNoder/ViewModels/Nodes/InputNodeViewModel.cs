@@ -75,6 +75,17 @@ namespace FatNoder.ViewModels.Nodes
                     Name = InputFlow.Name
                 }
             };
+            _model.Outputs = new XMLNodeOutputS
+            {
+                new XMLNodeOutput()
+                {
+                    Name = Output.Name,
+                    connections=new XMLNodeOutputConnectS
+                    {
+
+                    }
+                }
+            };
             this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
                 foreach (XMLNodeInputStatement xs in _model.InputStates.Where(d =>
@@ -82,10 +93,31 @@ namespace FatNoder.ViewModels.Nodes
                     return d.Name == InputFlow.Name;
                 }))
                 {
-                    xs.States = new XMLNodeInputStatementLS();
+                    xs.States.Clear();
                     foreach (StatementCls guidkun in InputFlow.Values.Items)
                     {
                         xs.States.Add(guidkun.UUID);
+                    }
+                }
+            });
+            this.WhenAnyObservable(vm => vm.Output.Connections.CountChanged).Subscribe(newvalue =>
+            {
+
+                foreach (XMLNodeOutput xs in _model.Outputs.Where(d =>
+                {
+                    return d.Name == Output.Name;
+                }))
+                {
+                    xs.connections.Clear();
+                    foreach (ConnectionViewModel cv in Output.Connections.Items)
+                    {
+                        //Console.WriteLine($"{cv.Input.Name},{cv.Input.Parent.UUID}");
+                        xs.connections.Add(
+                            new XMLNodeOutputConnect
+                            {
+                                Name=cv.Input.Name,
+                                Target=cv.Input.Parent.UUID
+                            });
                     }
                 }
             });

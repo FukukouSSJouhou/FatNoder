@@ -14,7 +14,7 @@ namespace NodeAyano.Model.Nodes
         /// コンパイラメソッド
         /// </summary>
         /// <returns>メンバー君</returns>
-        public abstract MemberDeclarationSyntax CompileSyntax();
+        public abstract StatementSyntax[] CompileSyntax();
 
     }
 }

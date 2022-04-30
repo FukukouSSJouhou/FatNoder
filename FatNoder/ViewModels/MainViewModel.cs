@@ -3,6 +3,7 @@ using FatNoder.Model.Transc;
 using FatNoder.Serializer.Node.Xml;
 using FatNoder.ViewModels.Conv;
 using FatNoder.ViewModels.Nodes;
+using NodeAyano;
 using NodeAyano.Model.Enumerator;
 using NodeAyano.Model.Nodes;
 using NodeNetworkJH.Toolkit.BreadcrumbBar;
@@ -54,6 +55,7 @@ namespace FatNoder.ViewModels
         public ReactiveCommand<Unit, Unit> StartAutoLayoutLive { get; }
         public ReactiveCommand<Unit, Unit> StopAutoLayoutLive { get; }
         public ReactiveCommand<Unit, Unit> TestPhasekun { get; }
+        public ReactiveCommand<Unit, Unit> CompilePhasekun { get; }
 
         public ReactiveCommand<Unit, Unit> GroupNodes { get; }
         public ReactiveCommand<Unit, Unit> UngroupNodes { get; }
@@ -194,48 +196,54 @@ namespace FatNoder.ViewModels
                     }
                     Console.WriteLine(writer.ToString());
                 }
-                /*Serializer.Node.Xml.XmlRootN xr = Serializer.Node.Xml.ConvertXMLkun.Serializekun(Network,ref typelistkun);
-                using(var writer = new StringWriter())
+            });
+            CompilePhasekun = ReactiveCommand.Create(() =>
+            {
+
+                List<Type> typelistkun = new List<Type>();
+                XML_NodeModel modelkun = mainnodekun.model;
+                typelistkun.Add(typeof(MethodEntryPoint));
+                typelistkun.Add(typeof(XmlRootN));
+                typelistkun.Add(typeof(CompileNodeBase));
+                XmlRootN documentrootkun = new XmlRootN()
                 {
-
-                    DataContractSerializer serializer =
-                        new (typeof(Serializer.Node.Xml.XmlRootN), typelistkun);
-                    var settings = new XmlWriterSettings()
+                    nodes = new XMLRoot_NodesCLskun()
+                };
+                var roots = GetNodeModels();
+                foreach (var root in roots)
+                {
+                    if (root.TYPE == "")
                     {
-                        Indent=true,
-                        IndentChars="    ",
-                        Encoding = Encoding.UTF8
-                    };
-                    using (var xw = XmlWriter.Create(writer,settings))
-                    {
-                        serializer.WriteObject(xw, xr);
+                        continue;
                     }
-                    Console.WriteLine(writer.ToString());
+                    if (root.TYPE == null)
+                    {
+                        continue;
+                    }
+                    if (root.MODELTYPE == "")
+                    {
+                        continue;
+                    }
+                    if (root.MODELTYPE == null)
+                    {
+                        continue;
+                    }
+                    if (!typelistkun.Contains(Type.GetType(root.TYPE)))
+                    {
+                        if (Type.GetType(root.TYPE) != null)
+                            typelistkun.Add(Type.GetType(root.TYPE));
+                    }
+                    if (!typelistkun.Contains(Type.GetType(root.MODELTYPE)))
+                    {
+                        if (Type.GetType(root.MODELTYPE) != null)
+                            typelistkun.Add(Type.GetType(root.MODELTYPE));
+                    }
                 }
-                /*
-                
-                string nm;
+                var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
 
-                foreach (NodeViewModel n in Network.Nodes.Items){
-                    Debug.Print(n.GetType().ToString());
-                    Debug.Print(n.UUID.ToString());
-                    foreach(NodeInputViewModel i in n.Inputs.Items)
-                    {
-                        dynamic dyi = i as dynamic;
-                        if( dyi is ValueListNodeInputViewModel<StatementCls>)
-                        {
-                            IObservableList<StatementCls> valueskun;
-                            nm = dyi.Name as string;
-                            Debug.Print(nm);
-                            valueskun=dyi.Values as IObservableList<StatementCls>;
-                            foreach (StatementCls s in valueskun.Items)
-                            {
-                                Debug.Print(s.UUID.ToString());
-                            }
-                        }
+                var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
+                Console.WriteLine(compilerstr);
 
-                    }
-                }*/
             });
             
 

@@ -78,6 +78,19 @@ namespace FatNoder.ViewModels.Nodes
                     Y = newvalue.Y
                 };
             });
+            this.ReturnInput.Connections.CountChanged.Subscribe(newvalue =>
+            {
+                if(newvalue > 0)
+                {
+                    _model.Isconnected = true;
+                }
+                else
+                {
+
+                    _model.Isconnected = false;
+                }
+            }
+            );
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement());
             this.Inputs.Add(ReturnInput);
