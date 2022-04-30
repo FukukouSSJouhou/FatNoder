@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Nodes
 {
+    /// <summary>
+    /// Method Generate Interface
+    /// </summary>
     public interface IMethodPointBase
     {
         /// <summary>
