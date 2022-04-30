@@ -26,7 +26,7 @@ namespace FatNoder.ViewModels.Nodes
         }
 
         public ValueListNodeInputViewModel<StatementCls> Input { get; }
-        private MethodEntryPoint _model=new MethodEntryPoint();
+        private MethodEntryPoint _model = new MethodEntryPoint();
 
         public XML_NodeModel model
         {
@@ -59,14 +59,14 @@ namespace FatNoder.ViewModels.Nodes
             Input = new CoderListInputViewModel<StatementCls>(typeof(StatementCls))
             {
                 Name = "Out",
-                PortPosition=PortPosition.Right,
+                PortPosition = PortPosition.Right,
                 MaxConnections = 1
             };
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement()
             {
-                States=new XMLNodeInputStatementLS(),
-                Name=Input.Name
+                States = new XMLNodeInputStatementLS(),
+                Name = Input.Name
             });
             this.WhenAnyObservable(vm => vm.Input.Values.CountChanged).Subscribe(newvalue =>
             {
@@ -76,13 +76,21 @@ namespace FatNoder.ViewModels.Nodes
                 }))
                 {
                     xs.States = new XMLNodeInputStatementLS();
-                    foreach(StatementCls guidkun in Input.Values.Items)
+                    foreach (StatementCls guidkun in Input.Values.Items)
                     {
                         xs.States.Add(guidkun.UUID);
                     }
                 }
             });
             this.Inputs.Add(Input);
+
+        }
+
+        public void ChangeStates(MethodEntryPoint mdel)
+        {
+            model.UUID = mdel.UUID;
+            model.Name = mdel.Name;
+            model.Points= mdel.Points;
         }
     }
 }

@@ -70,13 +70,15 @@ namespace FatNoder.ViewModels
         public Interaction<SaveFileRequest, SaveFileRequest> SaveXMLFileDialog { get; set; }
         public ReactiveCommand<Unit, string> LoadXMLFileCommand { get; private set; }
         public Interaction<string, string> LoadXMLFileDialog { get; set; }
-
+        
         #endregion
         public ViewModelActivator Activator { get; }
         public void add_project(String Name)
         {
 
         }
+        private ReturnNodeViewModel<int> returnnodekun;
+        MethodEntryPointVIewModel mainnodekun;
         public IEnumerable<XML_NodeModel> GetNodeModels()
         {
             foreach (NodeViewModel nvm in Network.Nodes.Items)
@@ -102,9 +104,9 @@ namespace FatNoder.ViewModels
                 Network = new NetworkViewModel()
             });
 
-            ReturnNodeViewModel<int> returnnodekun = new ReturnNodeViewModel<int> { CanBeRemovedByUser = false, Name = "IntReturn" };
+            returnnodekun = new ReturnNodeViewModel<int> { CanBeRemovedByUser = false, Name = "IntReturn" };
             Network.Nodes.Add(returnnodekun);
-            MethodEntryPointVIewModel mainnodekun = new MethodEntryPointVIewModel { CanBeRemovedByUser = false, Name = "MainEntryPoint" };
+            mainnodekun = new MethodEntryPointVIewModel { CanBeRemovedByUser = false, Name = "MainEntryPoint" };
             Network.Nodes.Add(mainnodekun);
             NodeList.AddNodeType(() => new InputNodeViewModel<int> { Name = "IntInput" });
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name = "StringInput" });
@@ -425,7 +427,20 @@ namespace FatNoder.ViewModels
                             using (XmlReader xr = XmlReader.Create(inputstream))
                             {
                                 XmlRootN obj = (XmlRootN)serializer.ReadObject(xr);
-                                Console.WriteLine(obj.GetType());
+                                Network.Nodes.Clear();
+                                foreach (XML_NodeModel n in obj.nodes)
+                                {
+                                    Type typekun = Type.GetType(n.MODELTYPE);
+                                    if (typekun == typeof(MethodEntryPointVIewModel))
+                                    {
+                                        mainnodekun = new MethodEntryPointVIewModel();
+                                        mainnodekun.ChangeStates((MethodEntryPoint)n);
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                }
                             }
                         }
 

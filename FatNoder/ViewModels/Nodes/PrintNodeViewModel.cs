@@ -96,5 +96,14 @@ namespace FatNoder.ViewModels.Nodes
             );
             this.Inputs.Add(PrintInput);
         }
+
+        public void INodeViewModelBase(XML_NodeModel newmodelbs)
+        {
+
+            model.UUID = newmodelbs.UUID;
+            model.Name = newmodelbs.Name;
+            model.Points = newmodelbs.Points;
+            _model.Value = ((PrintNodeModel)newmodelbs).Value;
+        }
     }
 }

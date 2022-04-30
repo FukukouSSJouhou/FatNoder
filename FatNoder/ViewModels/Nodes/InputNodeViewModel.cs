@@ -123,7 +123,15 @@ namespace FatNoder.ViewModels.Nodes
             });
             this.Outputs.Add(Output);
         }
+        public void INodeViewModelBase(XML_NodeModel newmodelbs)
+        {
 
-        
+            model.UUID = newmodelbs.UUID;
+            model.Name = newmodelbs.Name;
+            model.Points = newmodelbs.Points;
+            _model.Value = ((InputNodeModel<T>)newmodelbs).Value;
+        }
+
+
     }
 }
