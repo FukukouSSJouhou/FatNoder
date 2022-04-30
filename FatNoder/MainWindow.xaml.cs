@@ -69,12 +69,14 @@ namespace FatNoder
                     .BindTo(this, v => v.stopAutoLayoutLiveButton.Visibility);
                 this.BindCommand(ViewModel, vm => vm.TestPhasekun, v => v.testPhaseButton);
                 this.BindCommand(ViewModel, vm => vm.CreateTest, v => v.CreateTestRibbon);
+                this.BindCommand(ViewModel, vm => vm.CompilePhasekun, v => v.compilePhaseButton);
 
             });
             this.ExitRibbon.Click += ((sender, e) =>
             {
                 this.Close();
             });
+            
             //viewmodelの設定
             this.ViewModel = new MainViewModel();
         }
