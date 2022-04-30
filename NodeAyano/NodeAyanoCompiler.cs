@@ -85,6 +85,10 @@ namespace tintin{
                     LocalDeclarationStatementSyntax localdec = SyntaxFactory.LocalDeclarationStatement(valdeckun);
                     statements.Add(localdec);
                 }
+                {
+                    ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(SyntaxFactory.IdentifierName("tdn34"));
+                    statements.Add(retstatement);
+                }
                 //statements.Add(SyntaxFactory.Block());
                 methodkun = methodkun.AddBodyStatements(statements.ToArray());
                 SCLSMethodLists.Add(methodkun);

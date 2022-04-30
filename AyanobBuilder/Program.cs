@@ -42,9 +42,10 @@ namespace FatNoder
 using System;
 namespace tintin{
     class tinpo{
-    static void Main(){
+    static int Main(){
         int tdn=9;
         string tdn33=tdnx445;
+        return tdn;
     }
     }
 }";

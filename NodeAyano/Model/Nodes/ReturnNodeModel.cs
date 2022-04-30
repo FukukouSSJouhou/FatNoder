@@ -30,7 +30,10 @@ namespace NodeAyano.Model.Nodes
 
         public override StatementSyntax CompileSyntax()
         {
+            if (Isconnected)
+            {
 
+            }
             return SyntaxFactory.Block(); 
         }
     }
