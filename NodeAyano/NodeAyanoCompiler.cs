@@ -69,6 +69,22 @@ namespace tintin{
             {
                 MethodDeclarationSyntax methodkun = SyntaxFactory.MethodDeclaration(SyntaxFactory.ParseTypeName("int"), SyntaxFactory.Identifier("Metkun"));
                 var statements = new List<StatementSyntax>();
+                {
+                    PredefinedTypeSyntax predeftype = SyntaxFactory.PredefinedType(SyntaxFactory.ParseToken("int"));
+                    List<VariableDeclaratorSyntax> vardecatorsynlist = new();
+                    VariableDeclarationSyntax valdeckun = SyntaxFactory.VariableDeclaration(predeftype);
+                    {
+                        VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator("tdn34");
+                        decr = decr.WithInitializer(
+                            SyntaxFactory.EqualsValueClause(SyntaxFactory.LiteralExpression(SyntaxKind.NumericLiteralExpression,SyntaxFactory.Literal(
+                                810)))
+                            );
+                        vardecatorsynlist.Add(decr);
+                    }
+                    valdeckun = valdeckun.AddVariables(vardecatorsynlist.ToArray());
+                    LocalDeclarationStatementSyntax localdec = SyntaxFactory.LocalDeclarationStatement(valdeckun);
+                    statements.Add(localdec);
+                }
                 //statements.Add(SyntaxFactory.Block());
                 methodkun = methodkun.AddBodyStatements(statements.ToArray());
                 SCLSMethodLists.Add(methodkun);
