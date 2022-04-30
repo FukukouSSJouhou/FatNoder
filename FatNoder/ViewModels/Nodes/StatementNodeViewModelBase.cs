@@ -33,6 +33,26 @@ namespace FatNoder.ViewModels.Nodes
         /// </summary>
         public ValueNodeOutputViewModel<StatementCls> OutputFlow { get; }
         public StatementCls StatementIfce { get; }
+        public StatementNodeViewModelBase(Guid UUID):base(UUID)
+        {
+
+            StatementIfce = StatementCls.GenStatementCls(this.UUID);
+            OutputFlow = new ValueNodeOutputViewModel<StatementCls>
+            {
+                Name = "In",
+                MaxConnections = 1,
+                Value = this.WhenAnyValue(vm => vm.StatementIfce),
+                PortPosition = PortPosition.Left
+            };
+            InputFlow = new ValueListNodeInputViewModel<StatementCls>
+            {
+                Name = "Out",
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+            };
+            this.Outputs.Add(OutputFlow);
+            this.Inputs.Add(InputFlow);
+        }
         public StatementNodeViewModelBase()
         {
 

@@ -26,7 +26,7 @@ namespace FatNoder.ViewModels.Nodes
         }
 
         public ValueListNodeInputViewModel<StatementCls> Input { get; }
-        private MethodEntryPoint _model=new MethodEntryPoint();
+        private MethodEntryPoint _model = new MethodEntryPoint();
 
         public XML_NodeModel model
         {
@@ -59,14 +59,14 @@ namespace FatNoder.ViewModels.Nodes
             Input = new CoderListInputViewModel<StatementCls>(typeof(StatementCls))
             {
                 Name = "Out",
-                PortPosition=PortPosition.Right,
+                PortPosition = PortPosition.Right,
                 MaxConnections = 1
             };
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement()
             {
-                States=new XMLNodeInputStatementLS(),
-                Name=Input.Name
+                States = new XMLNodeInputStatementLS(),
+                Name = Input.Name
             });
             this.WhenAnyObservable(vm => vm.Input.Values.CountChanged).Subscribe(newvalue =>
             {
@@ -76,13 +76,74 @@ namespace FatNoder.ViewModels.Nodes
                 }))
                 {
                     xs.States = new XMLNodeInputStatementLS();
-                    foreach(StatementCls guidkun in Input.Values.Items)
+                    foreach (StatementCls guidkun in Input.Values.Items)
                     {
                         xs.States.Add(guidkun.UUID);
                     }
                 }
             });
             this.Inputs.Add(Input);
+
+        }
+        public MethodEntryPointVIewModel(Guid UUID):base(UUID)
+        {
+            model.TYPE = typeof(MethodEntryPointVIewModel).AssemblyQualifiedName;
+            _model.MODELTYPE = typeof(MethodEntryPoint).AssemblyQualifiedName;
+
+            this.UUIDChanged.Subscribe(newvalue =>
+            {
+                model.UUID = newvalue;
+            });
+            this.NameChanged.Subscribe(newvalue =>
+            {
+                model.Name = newvalue;
+            });
+            this.PositionChanged.Subscribe(newvalue =>
+            {
+                model.Points = new XMLNodeXY()
+                {
+                    X = newvalue.X,
+                    Y = newvalue.Y
+                };
+            });
+            Input = new CoderListInputViewModel<StatementCls>(typeof(StatementCls))
+            {
+                Name = "Out",
+                PortPosition = PortPosition.Right,
+                MaxConnections = 1
+            };
+            model.InputStates = new XMLNodeInputStatement_VMLS();
+            model.InputStates.Add(new XMLNodeInputStatement()
+            {
+                States = new XMLNodeInputStatementLS(),
+                Name = Input.Name
+            });
+            this.WhenAnyObservable(vm => vm.Input.Values.CountChanged).Subscribe(newvalue =>
+            {
+                foreach (XMLNodeInputStatement xs in model.InputStates.Where(d =>
+                {
+                    return d.Name == Input.Name;
+                }))
+                {
+                    xs.States = new XMLNodeInputStatementLS();
+                    foreach (StatementCls guidkun in Input.Values.Items)
+                    {
+                        xs.States.Add(guidkun.UUID);
+                    }
+                }
+            });
+            this.Inputs.Add(Input);
+
+        }
+
+        public void ChangeStates(XML_NodeModel mdel)
+        {
+            Name = mdel.Name;
+            Position = new System.Windows.Point
+            {
+                X = mdel.Points.X,
+                Y = mdel.Points.Y
+            };
         }
     }
 }

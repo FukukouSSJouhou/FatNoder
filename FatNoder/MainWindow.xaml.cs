@@ -71,7 +71,55 @@ namespace FatNoder
                 this.BindCommand(ViewModel, vm => vm.CreateTest, v => v.CreateTestRibbon);
                 this.BindCommand(ViewModel, vm => vm.CompilePhasekun, v => v.compilePhaseButton);
                 this.BindCommand(ViewModel, vm => vm.CompileandrunPhasekun, v => v.compileandrunPhaseButton);
+                this.BindCommand(ViewModel, vm => vm.SaveXMLFileCommand, v => v.SaveAsRibbon);
+                this.BindCommand(ViewModel, vm => vm.LoadXMLFileCommand, v => v.LoadAsRibbon);
+                this.BindInteraction(ViewModel, vm => vm.SaveXMLFileDialog, async interaction =>
+                {
+                    var result = await Task.Run(() =>
+                    {
+                        var dialog = new Microsoft.Win32.SaveFileDialog()
+                        {
+                            FileName = interaction.Input.FilePath,
+                            Filter="XML File(*.xml)|*.xml|All Files(*)|*.*"
+                        };
+                        if(dialog.ShowDialog()?? false)
+                        {
+                            return dialog.FileName;
+                        }
+                        else
+                        {
+                            return null;
+                        }
 
+                    });
+                    interaction.SetOutput(new Model.SaveFileRequest()
+                    {
+                        FilePath= result,
+                        Serializer=interaction.Input.Serializer,
+                        RootXML=interaction.Input.RootXML
+                    });
+                }).DisposeWith(d);
+                this.BindInteraction(ViewModel, vm => vm.LoadXMLFileDialog, async interaction =>
+                {
+                    var result = await Task.Run(() =>
+                    {
+                        var dialog = new Microsoft.Win32.OpenFileDialog()
+                        {
+                            FileName = interaction.Input,
+                            Filter = "XML File(*.xml)|*.xml|All Files(*)|*.*"
+                        };
+                        if (dialog.ShowDialog() ?? false)
+                        {
+                            return dialog.FileName;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    });
+                    interaction.SetOutput(result);
+
+                }).DisposeWith(d);
             });
             this.ExitRibbon.Click += ((sender, e) =>
             {

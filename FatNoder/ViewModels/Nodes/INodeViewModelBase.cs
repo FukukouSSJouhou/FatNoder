@@ -13,5 +13,6 @@ namespace FatNoder.ViewModels.Nodes
         {
             get;
         }
+        public void ChangeStates(XML_NodeModel newmodelbs);
     }
 }

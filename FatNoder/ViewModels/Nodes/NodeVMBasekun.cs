@@ -33,6 +33,13 @@ namespace FatNoder.ViewModels.Nodes
             PositionChanged = this.WhenAnyValue(vm => vm.Position);
             UUIDChanged = this.WhenAnyValue(vm => vm.UUID);
         }
+        public NodeVMBasekun(Guid UUID) : base(UUID)
+        {
+
+            NameChanged = this.WhenAnyValue(vm => vm.Name);
+            PositionChanged = this.WhenAnyValue(vm => vm.Position);
+            UUIDChanged = this.WhenAnyValue(vm => vm.UUID);
+        }
         static NodeVMBasekun()
         {
 
