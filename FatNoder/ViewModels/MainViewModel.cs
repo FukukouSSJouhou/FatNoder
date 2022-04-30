@@ -68,6 +68,8 @@ namespace FatNoder.ViewModels
 
         public ReactiveCommand<Unit, SaveFileRequest> SaveXMLFileCommand { get; private set; }
         public Interaction<SaveFileRequest, SaveFileRequest> SaveXMLFileDialog { get; set; }
+        public ReactiveCommand<Unit, string> LoadXMLFileCommand { get; private set; }
+        public Interaction<string,string> LoadXMLFileDialog { get; set; }
 
         #endregion
         public ViewModelActivator Activator { get; }
@@ -376,6 +378,25 @@ namespace FatNoder.ViewModels
                     }
                     );
                     SaveXMLFileCommand.Select(x => new SaveFileModel().SaveXML(x)).Subscribe(x => { Console.Error.WriteLine(x.Message); }).DisposeWith(d);
+                }
+                {
+                    LoadXMLFileDialog = new Interaction<string, string>();
+                    LoadXMLFileCommand = ReactiveCommand.CreateFromObservable(() =>
+                    {
+                        return LoadXMLFileDialog.Handle("").Select(
+                            x =>
+                            {
+                                return x;
+                            });
+                    });
+                    LoadXMLFileCommand.Select(x =>
+                    {
+                        Console.WriteLine(x);
+                        return "";
+                    }).Subscribe(x =>
+                    {
+
+                    }).DisposeWith(d);
                 }
             });
 
