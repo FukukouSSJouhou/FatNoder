@@ -195,48 +195,6 @@ namespace FatNoder.ViewModels
                     }
                     Console.WriteLine(writer.ToString());
                 }
-                /*Serializer.Node.Xml.XmlRootN xr = Serializer.Node.Xml.ConvertXMLkun.Serializekun(Network,ref typelistkun);
-                using(var writer = new StringWriter())
-                {
-
-                    DataContractSerializer serializer =
-                        new (typeof(Serializer.Node.Xml.XmlRootN), typelistkun);
-                    var settings = new XmlWriterSettings()
-                    {
-                        Indent=true,
-                        IndentChars="    ",
-                        Encoding = Encoding.UTF8
-                    };
-                    using (var xw = XmlWriter.Create(writer,settings))
-                    {
-                        serializer.WriteObject(xw, xr);
-                    }
-                    Console.WriteLine(writer.ToString());
-                }
-                /*
-                
-                string nm;
-
-                foreach (NodeViewModel n in Network.Nodes.Items){
-                    Debug.Print(n.GetType().ToString());
-                    Debug.Print(n.UUID.ToString());
-                    foreach(NodeInputViewModel i in n.Inputs.Items)
-                    {
-                        dynamic dyi = i as dynamic;
-                        if( dyi is ValueListNodeInputViewModel<StatementCls>)
-                        {
-                            IObservableList<StatementCls> valueskun;
-                            nm = dyi.Name as string;
-                            Debug.Print(nm);
-                            valueskun=dyi.Values as IObservableList<StatementCls>;
-                            foreach (StatementCls s in valueskun.Items)
-                            {
-                                Debug.Print(s.UUID.ToString());
-                            }
-                        }
-
-                    }
-                }*/
             });
             
 
