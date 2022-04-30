@@ -18,6 +18,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -41,7 +42,7 @@ namespace FatNoder.ViewModels
     /// <summary>
     /// MainWindowのViewModel!
     /// </summary>
-    public class MainViewModel:ReactiveObject, IActivatableViewModel
+    public class MainViewModel:ReactiveObject
     {
         #region Network
         private readonly ObservableAsPropertyHelper<NetworkViewModel> _network;
@@ -66,8 +67,8 @@ namespace FatNoder.ViewModels
         #region dialog
         public ReactiveCommand<Unit, SaveFileRequest> SaveXMLFileCommand { get; }
         public Interaction<string,string> SaveXMLFileDialog { get; set; }
+
         #endregion
-        public ViewModelActivator Activator { get; }
         public void add_project(String Name)
         {
 
