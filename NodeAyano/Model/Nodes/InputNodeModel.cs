@@ -1,4 +1,5 @@
 ﻿using FatNoder.Serializer.Node.Xml;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
@@ -26,9 +27,23 @@ namespace NodeAyano.Model.Nodes
         {
             if(typeof(T) == typeof(int))
             {
-
+                dynamic valuekundynamic = Value;
+                PredefinedTypeSyntax predeftype = SyntaxFactory.PredefinedType(SyntaxFactory.ParseToken("int"));
+                List<VariableDeclaratorSyntax> vardecatorsynlist = new();
+                VariableDeclarationSyntax valdeckun = SyntaxFactory.VariableDeclaration(predeftype);
+                {
+                    VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator(UUID.ToString().Replace("-","_") + "_Value");
+                    decr = decr.WithInitializer(
+                        SyntaxFactory.EqualsValueClause(SyntaxFactory.LiteralExpression(SyntaxKind.NumericLiteralExpression, SyntaxFactory.Literal(
+                            valuekundynamic)))
+                        );
+                    vardecatorsynlist.Add(decr);
+                }
+                valdeckun = valdeckun.AddVariables(vardecatorsynlist.ToArray());
+                LocalDeclarationStatementSyntax localdec = SyntaxFactory.LocalDeclarationStatement(valdeckun);
+                return localdec;
             }
-            throw new NotImplementedException();
+            return SyntaxFactory.Block();
         }
     }
 }
