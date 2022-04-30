@@ -16,7 +16,7 @@ namespace NodeAyano.Model.Nodes
     /// <typeparam name="T">Type!</typeparam>
     public class ReturnNodeModel<T> : CompileNodeBase
     {
-        [DataMember(Name = "Value", Order = 8)]
+        [DataMember(Name = "ValueRet", Order = 8)]
 
         public T Value
         {
@@ -40,7 +40,7 @@ namespace NodeAyano.Model.Nodes
                     List<VariableDeclaratorSyntax> vardecatorsynlist = new();
                     VariableDeclarationSyntax valdeckun = SyntaxFactory.VariableDeclaration(predeftype);
                     {
-                        VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator(UUID.ToString().Replace("-", "_") + "_Value");
+                        VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator(UUID.ToString().Replace("-", "_") + "_ValueRet");
                         decr = decr.WithInitializer(
                             SyntaxFactory.EqualsValueClause(SyntaxFactory.LiteralExpression(SyntaxKind.NumericLiteralExpression, SyntaxFactory.Literal(
                                 valuekundynamic)))
@@ -56,7 +56,7 @@ namespace NodeAyano.Model.Nodes
                     return new StatementSyntax[1] { SyntaxFactory.Block() };
                 }
             }
-            ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(SyntaxFactory.IdentifierName(this.UUID.ToString().Replace("-", "_") + "_Value"));
+            ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(SyntaxFactory.IdentifierName(this.UUID.ToString().Replace("-", "_") + "_ValueRet"));
             statementskun65656565.Add(retstatement);
             return statementskun65656565.ToArray() ;
         }
