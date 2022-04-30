@@ -32,12 +32,15 @@
             <Fluent:Ribbon.Menu>
                 <Fluent:ApplicationMenu Header="File">
                     <Fluent:MenuItem Header="CreateTest" Name="CreateTestRibbon"></Fluent:MenuItem>
+                    <Fluent:MenuItem Header="Save As" Name="SaveAsRibbon"></Fluent:MenuItem>
                     <Fluent:MenuItem Header="Exit" Name="ExitRibbon"></Fluent:MenuItem>
                 </Fluent:ApplicationMenu>
             </Fluent:Ribbon.Menu>
             <Fluent:RibbonTabItem Header="Main">
                 <Fluent:RibbonGroupBox Header="A">
                     <Fluent:Button Header="TestPhase" Name="testPhaseButton"></Fluent:Button>
+                    <Fluent:Button Header="CompilePhase" Name="compilePhaseButton"></Fluent:Button>
+                    <Fluent:Button Header="CompileAndRunPhase" Name="compileandrunPhaseButton"></Fluent:Button>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>

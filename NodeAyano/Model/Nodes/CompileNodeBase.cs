@@ -10,8 +10,11 @@ namespace NodeAyano.Model.Nodes
 {
     public abstract class CompileNodeBase: XML_NodeModel
     {
-
-        public abstract MemberDeclarationSyntax CompileSyntax();
+        /// <summary>
+        /// コンパイラメソッド
+        /// </summary>
+        /// <returns>メンバー君</returns>
+        public abstract StatementSyntax[] CompileSyntax();
 
     }
 }
