@@ -3,6 +3,7 @@ using FatNoder.Model.Transc;
 using FatNoder.Serializer.Node.Xml;
 using FatNoder.ViewModels.Conv;
 using FatNoder.ViewModels.Nodes;
+using NodeAyano;
 using NodeAyano.Model.Enumerator;
 using NodeAyano.Model.Nodes;
 using NodeNetworkJH.Toolkit.BreadcrumbBar;
@@ -195,6 +196,54 @@ namespace FatNoder.ViewModels
                     }
                     Console.WriteLine(writer.ToString());
                 }
+            });
+            CompilePhasekun = ReactiveCommand.Create(() =>
+            {
+
+                List<Type> typelistkun = new List<Type>();
+                XML_NodeModel modelkun = mainnodekun.model;
+                typelistkun.Add(typeof(MethodEntryPoint));
+                typelistkun.Add(typeof(XmlRootN));
+                typelistkun.Add(typeof(CompileNodeBase));
+                XmlRootN documentrootkun = new XmlRootN()
+                {
+                    nodes = new XMLRoot_NodesCLskun()
+                };
+                var roots = GetNodeModels();
+                foreach (var root in roots)
+                {
+                    if (root.TYPE == "")
+                    {
+                        continue;
+                    }
+                    if (root.TYPE == null)
+                    {
+                        continue;
+                    }
+                    if (root.MODELTYPE == "")
+                    {
+                        continue;
+                    }
+                    if (root.MODELTYPE == null)
+                    {
+                        continue;
+                    }
+                    if (!typelistkun.Contains(Type.GetType(root.TYPE)))
+                    {
+                        if (Type.GetType(root.TYPE) != null)
+                            typelistkun.Add(Type.GetType(root.TYPE));
+                    }
+                    if (!typelistkun.Contains(Type.GetType(root.MODELTYPE)))
+                    {
+                        if (Type.GetType(root.MODELTYPE) != null)
+                            typelistkun.Add(Type.GetType(root.MODELTYPE));
+                    }
+                }
+                var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
+
+                var compilerstr = NodeAyanoCompiler.Compile(ModelEnumerator);
+                Console.WriteLine(compilerstr);
+
             });
             
 
