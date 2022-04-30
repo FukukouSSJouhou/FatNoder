@@ -1,4 +1,5 @@
 ﻿using DynamicData;
+using FatNoder.Model;
 using FatNoder.Model.Transc;
 using FatNoder.Serializer.Node.Xml;
 using FatNoder.ViewModels.Conv;
@@ -63,7 +64,8 @@ namespace FatNoder.ViewModels
         public ReactiveCommand<Unit, Unit> CreateTest { get; }
         #endregion
         #region dialog
-        public ReactiveCommand<Unit, SaveFileRequest>
+        public ReactiveCommand<Unit, SaveFileRequest> SaveXMLFileCommand { get; }
+        public Interaction<string,string> SaveXMLFileDialog { get; set; }
         #endregion
         public ViewModelActivator Activator { get; }
         public void add_project(String Name)
