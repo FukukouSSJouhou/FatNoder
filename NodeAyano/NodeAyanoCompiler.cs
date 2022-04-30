@@ -6,6 +6,8 @@ using NodeAyano.Model.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Loader;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,7 +33,7 @@ namespace tintin{
         /// <param name="clsName">clsName</param>
         /// <param name="nsName">Namespace Name</param>
         /// <returns>C# str</returns>
-        public static string Compile(NodeModelEnumerator NodeEnum, string clsName = "testMainCls", string nsName="TEST123")
+        public static string TransCompile(NodeModelEnumerator NodeEnum, string clsName = "testMainCls", string nsName = "TEST123")
         {
             var compUnit = SyntaxFactory.CompilationUnit();
             var CLSList = new List<MemberDeclarationSyntax>();
@@ -79,7 +81,7 @@ namespace tintin{
                     {
                         VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator("tdn34");
                         decr = decr.WithInitializer(
-                            SyntaxFactory.EqualsValueClause(SyntaxFactory.LiteralExpression(SyntaxKind.NumericLiteralExpression,SyntaxFactory.Literal(
+                            SyntaxFactory.EqualsValueClause(SyntaxFactory.LiteralExpression(SyntaxKind.NumericLiteralExpression, SyntaxFactory.Literal(
                                 810)))
                             );
                         vardecatorsynlist.Add(decr);
@@ -107,12 +109,65 @@ namespace tintin{
         }
         private static ClassDeclarationSyntax CreateClass(string name)
         {
-            
-            return SyntaxFactory.ClassDeclaration(name).AddModifiers(new SyntaxToken[1] {SyntaxFactory.Token(SyntaxKind.PublicKeyword)});
+
+            return SyntaxFactory.ClassDeclaration(name).AddModifiers(new SyntaxToken[1] { SyntaxFactory.Token(SyntaxKind.PublicKeyword) });
         }
-        public static int CompileAndRun(string code,string clsName = "testMainCls", string nsName = "TEST123")
+        public static Assembly Compile(string code, string clsName = "testMainCls", string nsName = "TEST123")
         {
-            return 0;
+
+            var assemblyDirectoryPath = Path.GetDirectoryName(typeof(object).Assembly.Location);
+            var references = new MetadataReference[]
+            {
+            MetadataReference.CreateFromFile( 
+            $"{assemblyDirectoryPath}/mscorlib.dll"),
+        MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/System.Runtime.dll"),
+        MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/System.Console.dll"),
+        MetadataReference.CreateFromFile(
+            typeof(object).Assembly.Location)
+            };
+
+            var parseOptions = CSharpParseOptions.Default
+                .WithLanguageVersion(LanguageVersion.CSharp10);
+
+            var syntaxTree = CSharpSyntaxTree.ParseText(
+                code,
+                parseOptions
+            );
+
+            var compilationOptions = new CSharpCompilationOptions(
+                OutputKind.ConsoleApplication,
+                mainTypeName:$"{nsName}.{clsName}"
+            );
+
+            var compilation = CSharpCompilation.Create(
+                clsName,
+                new[] { syntaxTree },
+                references,
+                compilationOptions
+            );
+
+            using (var stream = new MemoryStream())
+            {
+                var emitResult = compilation.Emit(stream);
+
+                foreach (var diagnostic in emitResult.Diagnostics)
+                {
+                    var pos = diagnostic.Location.GetLineSpan();
+                    var location = "(" + pos.Path + "@Line" + (pos.StartLinePosition.Line + 1) + ":" + (pos.StartLinePosition.Character + 1) + ")";
+                    Console.WriteLine($"[{diagnostic.Severity}, {location}] {diagnostic.Id}, {diagnostic.GetMessage()}");
+                }
+
+                if (!emitResult.Success)
+                {
+                    throw new ArgumentException("Compile error occured.");
+                }
+
+                stream.Seek(0, SeekOrigin.Begin);
+                return AssemblyLoadContext.Default.LoadFromStream(stream);
+            }
+
         }
     }
 }
