@@ -48,7 +48,8 @@ namespace tintin{
 }";
             /*var syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
             var rootNode = syntaxTree.GetRoot();
-            //new Walker().Visit(rootNode);
+            new Walker().Visit(rootNode);*/
+            /*
             //Console.ReadKey();
             ClassDeclarationSyntax scls = GenClass("test21");
             SyntaxList<MemberDeclarationSyntax> Listkun;
