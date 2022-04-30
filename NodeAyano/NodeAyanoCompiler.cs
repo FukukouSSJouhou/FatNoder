@@ -16,14 +16,14 @@ namespace NodeAyano
     /// </summary>
     public class NodeAyanoCompiler
     {
-        private const string sourceCode = @"
+        /*private const string sourceCode = @"
 using System;
 namespace tintin{
     class tinpo{
     static void Main(){
     }
     }
-}";
+}";*/
         /// <summary>
         /// Compile
         /// </summary>
@@ -33,37 +33,38 @@ namespace tintin{
         /// <returns>C# str</returns>
         public static string Compile(NodeModelEnumerator NodeEnum, string clsName = "testMainCls", string nsName="TEST123")
         {
-            var syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
-            var rootNode = syntaxTree.GetRoot();
-            var namespaceNode = rootNode.DescendantNodes().First(node => node.GetType() == typeof(NamespaceDeclarationSyntax));
-            var namespaceSyntaxkun = namespaceNode.DescendantNodes().First(node => node.GetType() == typeof(IdentifierNameSyntax));
-            SyntaxNode OldNode;
+            var compUnit = SyntaxFactory.CompilationUnit();
+            var CLSList = new List<MemberDeclarationSyntax>();
+            var NSList = new List<MemberDeclarationSyntax>();
+            var USList = new List<UsingDirectiveSyntax>();
             var SCLS = CreateClass(clsName);
-            var namespaceNode2 = namespaceNode.ReplaceNode(
-                oldNode: namespaceSyntaxkun,
-                newNode: SyntaxFactory.IdentifierName(nsName))
-                ;
-            var newnode = rootNode.ReplaceNode(
-                oldNode: namespaceNode,
-                newNode: namespaceNode2);
-            var SCLSMethodLists = SyntaxFactory.List<MemberDeclarationSyntax>();
-            if (rootNode is IMethodPointBase)
-            {
+            var nsNode = SyntaxFactory.NamespaceDeclaration(SyntaxFactory.IdentifierName(nsName));
 
+            var newnode = compUnit;
+            var SCLSMethodLists = new List<MemberDeclarationSyntax>();
+            USList.Add(SyntaxFactory.UsingDirective(SyntaxFactory.IdentifierName("System")));
+            if (NodeEnum != null)
+            {
+                if(NodeEnum.Current is IMethodPointBase)
+                {
+
+                }
             }
             else
             {
                 MethodDeclarationSyntax methodkun = SyntaxFactory.MethodDeclaration(SyntaxFactory.ParseTypeName("int"), SyntaxFactory.Identifier("Metkun"));
-                SCLSMethodLists= SCLSMethodLists.Add(methodkun);
+                var statements = new List<StatementSyntax>();
+                statements.Add(SyntaxFactory.Block());
+                methodkun = methodkun.AddBodyStatements(statements.ToArray());
+                SCLSMethodLists.Add(methodkun);
             }
-            SCLS = SCLS.WithMembers(SCLSMethodLists);
-            OldNode = newnode;
-            {
-                var oldcls = OldNode.DescendantNodes().First(node => node.GetType() == typeof(ClassDeclarationSyntax));
-                newnode = OldNode.ReplaceNode(
-                    oldNode: oldcls,
-                    newNode: SCLS);
-            }
+            SCLS = SCLS.AddMembers(SCLSMethodLists.ToArray());
+            CLSList.Add(SCLS);
+            nsNode = nsNode.AddMembers(CLSList.ToArray());
+            NSList.Add(nsNode);
+            newnode = newnode.AddUsings(USList.ToArray());
+            newnode = newnode.AddMembers(NSList.ToArray());
+
             return (newnode.NormalizeWhitespace().ToString());
             NodeEnum.Reset();
             while (NodeEnum.MoveNext())
