@@ -24,7 +24,6 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-
 namespace FatNoder.ViewModels
 {
     class NetworkBreadcrumb : BreadcrumbViewModel
@@ -41,7 +40,7 @@ namespace FatNoder.ViewModels
     /// <summary>
     /// MainWindowのViewModel!
     /// </summary>
-    public class MainViewModel:ReactiveObject
+    public class MainViewModel:ReactiveObject, IActivatableViewModel
     {
         #region Network
         private readonly ObservableAsPropertyHelper<NetworkViewModel> _network;
@@ -50,7 +49,7 @@ namespace FatNoder.ViewModels
 
         public BreadcrumbBarViewModel NetworkBreadcrumbBar { get; } = new BreadcrumbBarViewModel();
         public NodeListViewModel NodeList { get; } = new NodeListViewModel();
-
+        #region buttons?
         public ReactiveCommand<Unit, Unit> AutoLayout { get; }
         public ReactiveCommand<Unit, Unit> StartAutoLayoutLive { get; }
         public ReactiveCommand<Unit, Unit> StopAutoLayoutLive { get; }
@@ -62,6 +61,11 @@ namespace FatNoder.ViewModels
         public ReactiveCommand<Unit, Unit> UngroupNodes { get; }
         public ReactiveCommand<Unit, Unit> OpenGroup { get; }
         public ReactiveCommand<Unit, Unit> CreateTest { get; }
+        #endregion
+        #region dialog
+        public ReactiveCommand<Unit, SaveFileRequest>
+        #endregion
+        public ViewModelActivator Activator { get; }
         public void add_project(String Name)
         {
 
