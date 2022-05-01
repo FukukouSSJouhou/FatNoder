@@ -1,11 +1,13 @@
 ﻿using AyanoBuilder.CUItools;
+using FatNoder.Serializer.Node.Xml;
 using Microsoft.Extensions.CommandLineUtils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Xml;
 
 namespace AyanoBuilder.compilers
 {
@@ -45,6 +47,45 @@ namespace AyanoBuilder.compilers
                         return 1;
                     }
                     ConsoleWrapper.GreenPrint($"xml : {xmlArgument.Value} outexe:{OutArgument.Value}");
+                    #region XML Load and Struct
+                    List<Type> knownlists = new();
+                    using (var inputstream = new StreamReader(xmlArgument.Value))
+                    {
+                        {
+                            XmlDocument xmlDoc = new XmlDocument();
+                            xmlDoc.Load(inputstream);
+                            XmlNode root = xmlDoc.DocumentElement;
+                            foreach (XmlNode node in root.ChildNodes)
+                            {
+
+                                foreach (XmlNode node2 in node.ChildNodes)
+                                {
+                                    if (node2.Name == "Node")
+                                    {
+                                        foreach (XmlNode node3 in node2.ChildNodes)
+                                        {
+                                            if (node3.Name == "modeltype")
+                                            {
+                                                //Console.WriteLine(node3.InnerText);
+                                                knownlists.Add(Type.GetType(node3.InnerText));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    using (var inputstream = new StreamReader(xmlArgument.Value))
+                    {
+                        DataContractSerializer serializer =
+                            new(typeof(XmlRootN), knownlists);
+                        using (XmlReader xr = XmlReader.Create(inputstream))
+                        {
+                            XmlRootN obj = (XmlRootN)serializer.ReadObject(xr);
+                            Console.WriteLine(obj);
+                        }
+                    }
+                    #endregion
                     return 0;
                 });
             });
