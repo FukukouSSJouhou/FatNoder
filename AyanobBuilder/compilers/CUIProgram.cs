@@ -1,9 +1,11 @@
 ﻿using AyanoBuilder.CUItools;
+using Microsoft.Extensions.CommandLineUtils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace AyanoBuilder.compilers
 {
@@ -19,9 +21,17 @@ namespace AyanoBuilder.compilers
         /// <returns>Exit Code</returns>
         public static int MainCUI(string[] args)
         {
-            ConsoleWrapper.BluePrint("[AyanoBuilder]");
+            var app = new CommandLineApplication(throwOnUnexpectedArg: false);
+            app.Name = "AyanoBuilder for FatNoder";
+            app.Description = "Transcompiler for FatNoder";
+            app.HelpOption("-h|--help");
+            app.OnExecute(() =>
+            {
 
-            return 0;
+                ConsoleWrapper.BluePrint("[AyanoBuilder]");
+                return 0;
+            });
+            return app.Execute(args);
         }
     }
 }
