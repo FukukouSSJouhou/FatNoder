@@ -36,6 +36,11 @@ namespace FatNoder
         {
             return SyntaxFactory.ClassDeclaration(name);
         }
+        /// <summary>
+        /// Main Method
+        /// </summary>
+        /// <param name="args">Arguments</param>
+        /// <returns>Status Code</returns>
         public static int Main(string[] args)
         {
             
