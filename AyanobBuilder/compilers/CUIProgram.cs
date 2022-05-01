@@ -25,11 +25,28 @@ namespace AyanoBuilder.compilers
             app.Name = "AyanoBuilder for FatNoder";
             app.Description = "Transcompiler for FatNoder";
             app.HelpOption("-h|--help");
-            app.OnExecute(() =>
+            app.Command("compile", command =>
             {
+                command.Description = "compile code";
+                command.HelpOption("-h|--help");
 
-                ConsoleWrapper.BluePrint("[AyanoBuilder]");
-                return 0;
+                var xmlArgument = command.Argument("xml", "XML Path");
+                var OutArgument = command.Argument("out", "output exe path");
+                command.OnExecute(() =>
+                {
+                    if (xmlArgument.Value == null)
+                    {
+                        command.ShowHelp();
+                        return 1;
+                    }
+                    if (OutArgument.Value == null)
+                    {
+                        command.ShowHelp();
+                        return 1;
+                    }
+                    ConsoleWrapper.GreenPrint($"xml : {xmlArgument.Value} outexe:{OutArgument.Value}");
+                    return 0;
+                });
             });
             return app.Execute(args);
         }
