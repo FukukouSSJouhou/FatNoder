@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AyanoBuilder.CUItools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ namespace AyanoBuilder.compilers
         /// <returns>Exit Code</returns>
         public static int MainCUI(string[] args)
         {
+            ConsoleWrapper.BluePrint("[AyanoBuilder]");
+
             return 0;
         }
     }
