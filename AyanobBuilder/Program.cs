@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using AyanoBuilder.compilers;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -36,6 +37,11 @@ namespace FatNoder
         {
             return SyntaxFactory.ClassDeclaration(name);
         }
+        /// <summary>
+        /// Main Method
+        /// </summary>
+        /// <param name="args">Arguments</param>
+        /// <returns>Status Code</returns>
         public static int Main(string[] args)
         {
             
@@ -70,12 +76,10 @@ namespace tintin{
                 oldNode: namespaceNode,
                 newNode: namespaceNode2);
             //Console.WriteLine(newnode.NormalizeWhitespace());*/
-            var compilerstr = NodeAyanoCompiler.TransCompile(null);
+            /*var compilerstr = NodeAyanoCompiler.TransCompile(null);
             Console.WriteLine(compilerstr);
-            /*var syntaxTree2 = CSharpSyntaxTree.ParseText(compilerstr);
-            var rootNode2 = syntaxTree2.GetRoot();
-            new Walker().Visit(rootNode2);*/
-            return 0;
+            return 0;*/
+            return CUIProgram.MainCUI(args);
         }
     }
 }
