@@ -1,6 +1,9 @@
 ﻿using AyanoBuilder.CUItools;
 using FatNoder.Serializer.Node.Xml;
 using Microsoft.Extensions.CommandLineUtils;
+using NodeAyano;
+using NodeAyano.Model.Enumerator;
+using NodeAyano.Model.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,13 +30,13 @@ namespace AyanoBuilder.compilers
             app.Name = "AyanoBuilder for FatNoder";
             app.Description = "Transcompiler for FatNoder";
             app.HelpOption("-h|--help");
-            app.Command("compile", command =>
+            app.Command("transcompile", command =>
             {
                 command.Description = "compile code";
                 command.HelpOption("-h|--help");
 
                 var xmlArgument = command.Argument("xml", "XML Path");
-                var OutArgument = command.Argument("out", "output exe path");
+                var OutArgument = command.Argument("out", "output cs path");
                 command.OnExecute(() =>
                 {
                     if (xmlArgument.Value == null)
@@ -46,7 +49,7 @@ namespace AyanoBuilder.compilers
                         command.ShowHelp();
                         return 1;
                     }
-                    ConsoleWrapper.GreenPrint($"xml : {xmlArgument.Value} outexe:{OutArgument.Value}");
+                    ConsoleWrapper.GreenPrint($"xml : {xmlArgument.Value} cs:{OutArgument.Value}");
                     #region XML Load and Struct
                     List<Type> knownlists = new();
                     using (var inputstream = new StreamReader(xmlArgument.Value))
@@ -82,7 +85,24 @@ namespace AyanoBuilder.compilers
                         using (XmlReader xr = XmlReader.Create(inputstream))
                         {
                             XmlRootN obj = (XmlRootN)serializer.ReadObject(xr);
-                            Console.WriteLine(obj);
+                            var roots = obj.nodes;
+                            XML_NodeModel rootnode = null;
+                            foreach (var obkujn in obj.nodes)
+                            {
+                                if(obkujn is IMethodPointBase)
+                                {
+                                    rootnode = obkujn;
+                                }
+                            }
+
+                            var ModelEnumerator = new NodeModelEnumerator(rootnode, roots);
+                            ;
+
+                            var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
+                            using(var stream=new StreamWriter(OutArgument.Value))
+                            {
+                                stream.Write(compilerstr);
+                            }
                         }
                     }
                     #endregion
