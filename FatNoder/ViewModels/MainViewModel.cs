@@ -70,7 +70,7 @@ namespace FatNoder.ViewModels
         public Interaction<SaveFileRequest, SaveFileRequest> SaveXMLFileDialog { get; set; }
         public ReactiveCommand<Unit, string> LoadXMLFileCommand { get; private set; }
         public Interaction<string, string> LoadXMLFileDialog { get; set; }
-        
+
         #endregion
         public ViewModelActivator Activator { get; }
         public void add_project(String Name)
@@ -393,96 +393,131 @@ namespace FatNoder.ViewModels
                     });
                     LoadXMLFileCommand.Select(x =>
                     {
-                        #region XML Load and Struct
-                        List<Type> knownlists = new();
-                        using (var inputstream = new StreamReader(x))
+                    #region XML Load and Struct
+                    List<Type> knownlists = new();
+                    using (var inputstream = new StreamReader(x))
+                    {
                         {
+                            XmlDocument xmlDoc = new XmlDocument();
+                            xmlDoc.Load(inputstream);
+                            XmlNode root = xmlDoc.DocumentElement;
+                            foreach (XmlNode node in root.ChildNodes)
                             {
-                                XmlDocument xmlDoc = new XmlDocument();
-                                xmlDoc.Load(inputstream);
-                                XmlNode root = xmlDoc.DocumentElement;
-                                foreach (XmlNode node in root.ChildNodes)
-                                {
 
-                                    foreach (XmlNode node2 in node.ChildNodes)
+                                foreach (XmlNode node2 in node.ChildNodes)
+                                {
+                                    if (node2.Name == "Node")
                                     {
-                                        if (node2.Name == "Node")
+                                        foreach (XmlNode node3 in node2.ChildNodes)
                                         {
-                                            foreach (XmlNode node3 in node2.ChildNodes)
+                                            if (node3.Name == "modeltype")
                                             {
-                                                if (node3.Name == "modeltype")
-                                                {
-                                                    //Console.WriteLine(node3.InnerText);
-                                                    knownlists.Add(Type.GetType(node3.InnerText));
-                                                }
+                                                //Console.WriteLine(node3.InnerText);
+                                                knownlists.Add(Type.GetType(node3.InnerText));
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                        using (var inputstream = new StreamReader(x))
+                    }
+                    using (var inputstream = new StreamReader(x))
+                    {
+                        DataContractSerializer serializer =
+                            new(typeof(XmlRootN), knownlists);
+                        using (XmlReader xr = XmlReader.Create(inputstream))
                         {
-                            DataContractSerializer serializer =
-                                new(typeof(XmlRootN),knownlists);
-                            using (XmlReader xr = XmlReader.Create(inputstream))
+                            XmlRootN obj = (XmlRootN)serializer.ReadObject(xr);
+                            Network.Nodes.Clear();
+                            foreach (XML_NodeModel n in obj.nodes)
                             {
-                                XmlRootN obj = (XmlRootN)serializer.ReadObject(xr);
-                                Network.Nodes.Clear();
-                                foreach (XML_NodeModel n in obj.nodes)
+                                Type typekun = Type.GetType(n.TYPE);
+                                if (typekun == typeof(MethodEntryPointVIewModel))
                                 {
-                                    Type typekun = Type.GetType(n.TYPE);
-                                    if (typekun == typeof(MethodEntryPointVIewModel))
-                                    {
-                                        mainnodekun = new MethodEntryPointVIewModel(n.UUID);
-                                        Network.Nodes.Add(mainnodekun);
-                                        mainnodekun.ChangeStates((MethodEntryPoint)n);
-                                    }
-                                    else
-                                    {
-                                        var nodekun=(INodeViewModelBase)System.Activator.CreateInstance(typekun, new object[] {n.UUID});
-                                        Network.Nodes.Add((NodeViewModel)nodekun);
-                                        nodekun.ChangeStates(n);
-                                    }
+                                    mainnodekun = new MethodEntryPointVIewModel(n.UUID);
+                                    Network.Nodes.Add(mainnodekun);
+                                    mainnodekun.ChangeStates((MethodEntryPoint)n);
                                 }
+                                else
+                                {
+                                    var nodekun = (INodeViewModelBase)System.Activator.CreateInstance(typekun, new object[] { n.UUID });
+                                    Network.Nodes.Add((NodeViewModel)nodekun);
+                                    nodekun.ChangeStates(n);
+                                }
+                            }
                                 foreach (XML_NodeModel n in obj.nodes)
                                 {
                                     Type typekun = Type.GetType(n.TYPE);
                                     {
                                         if (n.InputStates != null)
                                             foreach (var CNBB in n.InputStates)
-                                        {
-                                            var targetportName=CNBB.Name;
-                                            if(CNBB.States != null)
-                                            foreach(var targetid in CNBB.States)
                                             {
-                                                foreach(var NVkun in Network.Nodes.Items)
-                                                {
-                                                    if(NVkun.UUID == targetid)
+                                                var targetportName = CNBB.Name;
+                                                if (CNBB.States != null)
+                                                    foreach (var targetid in CNBB.States)
                                                     {
-                                                        foreach(var origkun in Network.Nodes.Items)
+                                                        foreach (var NVkun in Network.Nodes.Items)
                                                         {
-                                                            if(origkun.UUID == n.UUID)
+                                                            if (NVkun.UUID == targetid)
                                                             {
-                                                                foreach(var InputObj in origkun.Inputs.Items)
+                                                                foreach (var origkun in Network.Nodes.Items)
                                                                 {
-                                                                    if(InputObj.Name == targetportName)
+                                                                    if (origkun.UUID == n.UUID)
                                                                     {
-                                                                        foreach(var OutObj in NVkun.Outputs.Items)
+                                                                        foreach (var InputObj in origkun.Inputs.Items)
                                                                         {
-                                                                            if(OutObj.Name == "In")
+                                                                            if (InputObj.Name == targetportName)
                                                                             {
-                                                                                Network.Connections.Add(Network.ConnectionFactory(InputObj, OutObj));
+                                                                                foreach (var OutObj in NVkun.Outputs.Items)
+                                                                                {
+                                                                                    if (OutObj.Name == "In")
+                                                                                    {
+                                                                                        Network.Connections.Add(Network.ConnectionFactory(InputObj, OutObj));
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        //Network.ConnectionFactory.Add(Network.ConnectionFactory());
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                            }
+                                        if(n.Outputs != null)
+                                        foreach (var outkun2344 in n.Outputs)
+                                        {
+                                            var SourceportName = outkun2344.Name;
+                                            if (outkun2344.connections != null)
+                                                foreach (var xmlOC in outkun2344.connections)
+                                                {
+                                                    foreach (var NVkun2 in Network.Nodes.Items)
+                                                    {
+                                                        if (NVkun2.UUID == n.UUID)
+                                                        {
+                                                            foreach (var origkun in Network.Nodes.Items)
+                                                            {
+                                                                if (origkun.UUID == xmlOC.Target)
+                                                                {
+                                                                    foreach (var OutObj in NVkun2.Outputs.Items)
+                                                                    {
+                                                                        if (OutObj.Name == outkun2344.Name)
+                                                                        {
+                                                                            foreach (var InObj in origkun.Inputs.Items)
+                                                                            {
+                                                                                if (InObj.Name == xmlOC.Name)
+                                                                                {
+                                                                                    Network.Connections.Add(Network.ConnectionFactory(InObj, OutObj));
+
+                                                                                }
                                                                             }
                                                                         }
                                                                     }
                                                                 }
-                                                                //Network.ConnectionFactory.Add(Network.ConnectionFactory());
                                                             }
                                                         }
                                                     }
                                                 }
-                                            }
                                         }
                                     }
                                 }
