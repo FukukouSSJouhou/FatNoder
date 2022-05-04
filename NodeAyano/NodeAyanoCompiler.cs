@@ -199,7 +199,7 @@ namespace tintin{
             );
 
             var compilation = CSharpCompilation.Create(
-                clsName,
+                clsName + Guid.NewGuid().ToString(),
                 new[] { syntaxTree },
                 references,
                 compilationOptions
