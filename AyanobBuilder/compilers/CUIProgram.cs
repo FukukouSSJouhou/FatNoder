@@ -50,6 +50,11 @@ namespace AyanoBuilder.compilers
                         return 1;
                     }
                     ConsoleWrapper.GreenPrint($"xml : {xmlArgument.Value} cs:{OutArgument.Value}");
+                    if (!File.Exists(xmlArgument.Value))
+                    {
+                        ConsoleWrapper.RedPrint($"Error!\n {xmlArgument.Value} is not found! ");
+                        return 2;
+                    }
                     #region XML Load and Struct
                     List<Type> knownlists = new();
                     using (var inputstream = new StreamReader(xmlArgument.Value))
@@ -108,6 +113,12 @@ namespace AyanoBuilder.compilers
                     #endregion
                     return 0;
                 });
+            });
+            app.OnExecute(() =>
+            {
+                ConsoleWrapper.BluePrint("No opt");
+                app.ShowHelp();
+                return 0;
             });
             return app.Execute(args);
         }
