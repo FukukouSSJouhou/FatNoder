@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Emit;
 using NodeAyano.Model.Enumerator;
 using NodeAyano.Model.Nodes;
 using System;
@@ -117,6 +118,8 @@ namespace NodeAyano
         MetadataReference.CreateFromFile(
             $"{assemblyDirectoryPath}/System.Console.dll"),
         MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/System.Private.CoreLib.dll"),
+        MetadataReference.CreateFromFile(
             typeof(object).Assembly.Location)
             };
 
@@ -139,10 +142,13 @@ namespace NodeAyano
                 references,
                 compilationOptions
             );
-
+            var emOptions = new EmitOptions(includePrivateMembers:true)
+            {
+                
+            };
             using (Stream stream = new FileStream(filename,FileMode.OpenOrCreate))
             {
-                var emitResult = compilation.Emit(stream);
+                var emitResult = compilation.Emit(stream,options: emOptions);
 
                 foreach (var diagnostic in emitResult.Diagnostics)
                 {
