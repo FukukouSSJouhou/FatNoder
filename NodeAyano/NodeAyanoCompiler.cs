@@ -134,7 +134,7 @@ namespace NodeAyano
             );
 
             var compilation = CSharpCompilation.Create(
-                clsName,
+                clsName + ".exe",
                 new[] { syntaxTree },
                 references,
                 compilationOptions
