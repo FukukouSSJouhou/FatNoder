@@ -18,14 +18,6 @@ namespace NodeAyano
     /// </summary>
     public class NodeAyanoCompiler
     {
-        /*private const string sourceCode = @"
-using System;
-namespace tintin{
-    class tinpo{
-    static void Main(){
-    }
-    }
-}";*/
         /// <summary>
         /// Compile
         /// </summary>
