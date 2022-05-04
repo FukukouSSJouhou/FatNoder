@@ -59,6 +59,7 @@ namespace AyanoBuilder.compilers
                     List<Type> knownlists = new();
                     using (var inputstream = new StreamReader(xmlArgument.Value))
                     {
+                        ConsoleWrapper.BluePrint("[Phase 1] Loading XML File...");
                         {
                             XmlDocument xmlDoc = new XmlDocument();
                             xmlDoc.Load(inputstream);
@@ -85,6 +86,7 @@ namespace AyanoBuilder.compilers
                     }
                     using (var inputstream = new StreamReader(xmlArgument.Value))
                     {
+                        ConsoleWrapper.BluePrint("[Phase 2] Loading XML File...");
                         DataContractSerializer serializer =
                             new(typeof(XmlRootN), knownlists);
                         using (XmlReader xr = XmlReader.Create(inputstream))
@@ -109,6 +111,7 @@ namespace AyanoBuilder.compilers
                                 stream.Write(compilerstr);
                             }
                         }
+                        ConsoleWrapper.GreenPrint("Success!");
                     }
                     #endregion
                     return 0;
