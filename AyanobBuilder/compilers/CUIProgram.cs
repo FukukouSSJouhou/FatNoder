@@ -27,7 +27,6 @@ namespace AyanoBuilder.compilers
         public static int MainCUI(string[] args)
         {
             var app = new CommandLineApplication(throwOnUnexpectedArg: false);
-            ConsoleWrapper.BluePrint(Path.GetDirectoryName(typeof(object).Assembly.Location));
             app.Name = "AyanoBuilder for FatNoder";
             app.Description = "Transcompiler for FatNoder";
             app.HelpOption("-h|--help");
