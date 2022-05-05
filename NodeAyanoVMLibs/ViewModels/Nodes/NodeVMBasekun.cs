@@ -29,6 +29,9 @@ namespace NodeAyanoVMLibs.ViewModels.Nodes
         /// </summary>
         public IObservable<Guid> UUIDChanged { get; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public NodeVMBasekun()
         {
 
@@ -36,6 +39,10 @@ namespace NodeAyanoVMLibs.ViewModels.Nodes
             PositionChanged = this.WhenAnyValue(vm => vm.Position);
             UUIDChanged = this.WhenAnyValue(vm => vm.UUID);
         }
+        /// <summary>
+        /// Constructor (set UUID)
+        /// </summary>
+        /// <param name="UUID">UUID</param>
         public NodeVMBasekun(Guid UUID) : base(UUID)
         {
 
