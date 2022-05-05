@@ -3,6 +3,7 @@ using DynamicData.Alias;
 using FatNoder.Model.Transc;
 using FatNoder.Serializer.Node.Xml;
 using NodeAyano.Model.Nodes;
+using NodeAyanoVMLibs.ViewModels.Nodes;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;
