@@ -33,6 +33,10 @@ namespace NodeAyanoVMLibs.ViewModels.Nodes
         /// </summary>
         public ValueNodeOutputViewModel<StatementCls> OutputFlow { get; }
         public StatementCls StatementIfce { get; }
+        /// <summary>
+        /// Constructor (Set UUID)
+        /// </summary>
+        /// <param name="UUID">UUID</param>
         public StatementNodeViewModelBase(Guid UUID):base(UUID)
         {
 
@@ -53,6 +57,9 @@ namespace NodeAyanoVMLibs.ViewModels.Nodes
             this.Outputs.Add(OutputFlow);
             this.Inputs.Add(InputFlow);
         }
+        /// <summary>
+        /// constructor
+        /// </summary>
         public StatementNodeViewModelBase()
         {
 
