@@ -12,10 +12,17 @@ namespace NodeAyanoVMLibs.ViewModels.Nodes
     /// </summary>
     public interface INodeViewModelBase
     {
+        /// <summary>
+        /// Model(MVVM)
+        /// </summary>
         public XML_NodeModel model
         {
             get;
         }
+        /// <summary>
+        /// Change Model Data(Not Direct)
+        /// </summary>
+        /// <param name="newmodelbs">New Model Data!</param>
         public void ChangeStates(XML_NodeModel newmodelbs);
     }
 }
