@@ -40,6 +40,7 @@ namespace NodeAyano.Model.Enumerator
 
         object IEnumerator.Current => throw new NotImplementedException();
 
+        /// <inheritdoc/>
         public void Dispose()
         {
 

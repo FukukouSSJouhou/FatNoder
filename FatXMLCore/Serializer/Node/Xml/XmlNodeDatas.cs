@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 namespace FatNoder.Serializer.Node.Xml
 {
 
+    /// <summary>
+    /// Node Datas(??)
+    /// </summary>
     [DataContract(Name = "Datas")]
     public class XmlNodeDatas
     {
