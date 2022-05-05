@@ -2,6 +2,7 @@
 using FatNoder.ViewModels;
 using FatNoder.ViewModels.Nodes;
 using Fluent;
+using IconLibrary;
 using NodeNetworkJH.ViewModels;
 using ReactiveUI;
 using System;
@@ -48,6 +49,8 @@ namespace FatNoder
         public MainWindow()
         {
             InitializeComponent();
+            //bind icon
+            ExitRibbon.Icon = Iconlib.getIcon_Small("imageres.dll", 161);
             //ViewModelとの紐づけ(bind)
             this.WhenActivated(d =>
             {
