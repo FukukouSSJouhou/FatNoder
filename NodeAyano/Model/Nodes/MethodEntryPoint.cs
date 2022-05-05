@@ -16,6 +16,8 @@ namespace NodeAyano.Model.Nodes
     public class MethodEntryPoint : XML_NodeModel, IMethodPointBase
     {
         private static readonly string returntypename = "int";
+
+        /// <inheritdoc/>
         public MethodDeclarationSyntax CompileMethodSyntax()
         {
             MethodDeclarationSyntax methodkun = SyntaxFactory.MethodDeclaration(SyntaxFactory.ParseTypeName(returntypename), SyntaxFactory.Identifier("Main"));

@@ -28,6 +28,7 @@ namespace NodeAyano.Model.Nodes
             get; set;
         }
 
+        /// <inheritdoc/>
         public override StatementSyntax[] CompileSyntax()
         {
             List<StatementSyntax> returnstatements = new();
