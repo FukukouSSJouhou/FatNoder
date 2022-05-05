@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FatXMLCore\FatXMLCore.csproj" />
+    <ProjectReference Include="..\IconLibrary\IconLibrary.csproj" />
     <ProjectReference Include="..\NodeAyanoVMLibs\NodeAyanoVMLibs.csproj" />
     <ProjectReference Include="..\NodeAyano\NodeAyano.csproj" />
   </ItemGroup>
