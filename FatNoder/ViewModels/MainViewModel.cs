@@ -7,6 +7,7 @@ using FatNoder.ViewModels.Nodes;
 using NodeAyano;
 using NodeAyano.Model.Enumerator;
 using NodeAyano.Model.Nodes;
+using NodeAyanoVMLibs.ViewModels.Nodes;
 using NodeNetworkJH.Toolkit.BreadcrumbBar;
 using NodeNetworkJH.Toolkit.NodeList;
 using NodeNetworkJH.Toolkit.ValueNode;

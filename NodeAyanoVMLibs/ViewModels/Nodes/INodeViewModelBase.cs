@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FatNoder.ViewModels.Nodes
+namespace NodeAyanoVMLibs.ViewModels.Nodes
 {
     public interface INodeViewModelBase
     {
