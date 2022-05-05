@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace NodeAyanoVMLibs.ViewModels.Nodes
 {
+    /// <summary>
+    /// NodeViewModelの基礎インターフェース
+    /// </summary>
     public interface INodeViewModelBase
     {
         public XML_NodeModel model

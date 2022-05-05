@@ -11,6 +11,9 @@ using System.Windows;
 
 namespace NodeAyanoVMLibs.ViewModels.Nodes
 {
+    /// <summary>
+    /// 基本機能を備えたNodeViewModelの基幹クラス
+    /// </summary>
     public class NodeVMBasekun : NodeViewModel
     {
         /// <summary>
