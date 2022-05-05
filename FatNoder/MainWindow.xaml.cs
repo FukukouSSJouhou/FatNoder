@@ -50,9 +50,10 @@ namespace FatNoder
         {
             InitializeComponent();
             //bind icon
-            ExitRibbon.Icon = Iconlib.getIcon_Small("imageres.dll", 161);
+            ExitRibbon.Icon = Iconlib.getIcon_Large("imageres.dll", 244);
             compilePhaseButton.Icon = Iconlib.getIcon_Large("imageres.dll", 280);
             compileandrunPhaseButton.Icon = Iconlib.getIcon_Large("imageres.dll", 281);
+            LoadAsRibbon.Icon = Iconlib.getIcon_Large("imageres.dll", 177);
             //ViewModelとの紐づけ(bind)
             this.WhenActivated(d =>
             {
