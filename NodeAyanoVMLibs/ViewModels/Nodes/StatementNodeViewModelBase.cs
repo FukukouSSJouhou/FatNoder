@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace FatNoder.ViewModels.Nodes
+namespace NodeAyanoVMLibs.ViewModels.Nodes
 {
     /// <summary>
     /// Statement入出力を備えたNodeの基本形
