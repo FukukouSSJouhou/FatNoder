@@ -6,7 +6,7 @@ on:
     branches: [ test ]
 
 env:
-  DOTNET_VERSION: '6.0.300' # The .NET SDK version to use
+  DOTNET_VERSION: '6.0.202' # The .NET SDK version to use
 
 jobs:
   build-and-test:
