@@ -10,16 +10,6 @@ using System.Linq.Expressions;
 
 namespace FatNoder
 {
-    class Walker : SyntaxWalker // Visitor パターンでソースコードを解析
-    {
-        public override void Visit(SyntaxNode node) // 各ノードを Visit
-        {
-            if (node != null)
-                Console.WriteLine("[Node  - Type: {0}, Kind: {1}]\n{2}\n", node.GetType().Name, node.Kind(), node);
-
-            base.Visit(node);
-        }
-    }
     
     public class AyanoBuilder
     {
