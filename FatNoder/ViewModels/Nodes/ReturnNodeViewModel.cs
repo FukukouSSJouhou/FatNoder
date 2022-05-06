@@ -154,6 +154,7 @@ namespace FatNoder.ViewModels.Nodes
             this.Inputs.Add(ReturnInput);
             this.Outputs.Add(Flow);
         }
+        /// <inheritdoc/>
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
