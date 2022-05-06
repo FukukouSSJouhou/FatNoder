@@ -39,7 +39,7 @@ namespace NodeAyanoTest
             var returnM = new ReturnNodeModel<int>
             {
                 Value = 1,
-                Isconnected = false
+                Isconnected=true
             };
             statements.AddRange(returnM.CompileSyntax());
             methodkun = methodkun.AddBodyStatements(statements.ToArray());
@@ -50,9 +50,7 @@ namespace NodeAyanoTest
             NSList.Add(nsNode);
             newnode = newnode.AddUsings(USList.ToArray());
             newnode = newnode.AddMembers(NSList.ToArray());
-
-            Debug.Print(newnode.NormalizeWhitespace().ToString());
-            Assert.True(true);
+            Assert.AreEqual("usingSystem;namespaceNS{publicclassCLS{intMetkun(){returnid_00000000_0000_0000_0000_000000000000_ValueRet;}}}", newnode.ToString());
         }
 
 
