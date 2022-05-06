@@ -143,6 +143,7 @@ namespace tintin{
         int tdn=9;
         string tdn33=tdnx445;
         Console.WriteLine(tdn33);
+        Console.Error.WriteLine(tdn33);
         return tdn;
     }
     }
@@ -151,6 +152,17 @@ namespace tintin{
                     var syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
                     var rootNode = syntaxTree.GetRoot();
                     new Walker().Visit(rootNode);
+                    return 0;
+                });
+            });
+            app.Command("test_compile", command =>
+            {
+                command.Description = "test compile";
+                command.HelpOption("-h|--help");
+                command.OnExecute(() =>
+                {
+                    var compilerstr = NodeAyanoCompiler.TransCompile(null);
+                    Console.WriteLine(compilerstr);
                     return 0;
                 });
             });

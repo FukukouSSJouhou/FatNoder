@@ -84,6 +84,9 @@ namespace NodeAyano
                     statements.Add(localdec);
                 }
                 {
+
+                }
+                {
                     ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(SyntaxFactory.IdentifierName("tdn34"));
                     statements.Add(retstatement);
                 }
