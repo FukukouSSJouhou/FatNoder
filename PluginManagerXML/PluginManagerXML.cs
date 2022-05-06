@@ -28,5 +28,9 @@ namespace PluginManagerXML
         /// </summary>
         [DataMember(Name = "ViewModelDLL")]
         public string ViewModelDLL { get; set; }
+        [DataMember(Name = "ModelClass")]
+        public string ModelClass { get; set; }
+        [DataMember(Name = "ViewModelClass")]
+        public string ViewModelClass { get; set; }
     }
 }
