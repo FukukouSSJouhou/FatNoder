@@ -84,7 +84,22 @@ namespace NodeAyano
                     statements.Add(localdec);
                 }
                 {
+                    statements.Add(
+                                        SyntaxFactory.ExpressionStatement(
+                    SyntaxFactory.InvocationExpression(
+                        SyntaxFactory.MemberAccessExpression(
+                                SyntaxKind.SimpleMemberAccessExpression,
+                                SyntaxFactory.IdentifierName("Console.Error"),
+                                SyntaxFactory.IdentifierName("WriteLine")
+                            ),
+                        SyntaxFactory.ArgumentList(
+                            SyntaxFactory.SeparatedList<ArgumentSyntax>(
+                                new ArgumentSyntax[1]{SyntaxFactory.Argument(
+                                SyntaxFactory.IdentifierName("id_" + "X_PrintErrcontent")
+                            ) }
 
+                        )
+                    ))));
                 }
                 {
                     ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(SyntaxFactory.IdentifierName("tdn34"));
