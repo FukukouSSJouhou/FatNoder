@@ -3,7 +3,6 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -25,12 +24,6 @@ namespace NodeAyano.Model.Nodes
         }
         [DataMember(Name = "isconnected", Order = 9)]
         public bool Isconnected
-        {
-            get; set;
-        }
-        [DataMember(Name = "Value_Edit", Order = 10)]
-        [DefaultValue("")]
-        public string Value_Edit
         {
             get; set;
         }
