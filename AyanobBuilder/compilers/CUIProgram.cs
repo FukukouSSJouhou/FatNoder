@@ -1,5 +1,7 @@
 ﻿using AyanoBuilder.CUItools;
 using FatNoder.Serializer.Node.Xml;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.Extensions.CommandLineUtils;
 using NodeAyano;
 using NodeAyano.Model.Enumerator;
@@ -19,6 +21,16 @@ namespace AyanoBuilder.compilers
     /// </summary>
     public class CUIProgram
     {
+        class Walker : SyntaxWalker
+        {
+            public override void Visit(SyntaxNode node)
+            {
+                if (node != null)
+                    Console.WriteLine("[Node  - Type: {0}, Kind: {1}]\n{2}\n", node.GetType().Name, node.Kind(), node);
+
+                base.Visit(node);
+            }
+        }
         /// <summary>
         /// Main CUI EntryPoint
         /// </summary>
@@ -114,6 +126,43 @@ namespace AyanoBuilder.compilers
                         ConsoleWrapper.GreenPrint("Success!");
                     }
                     #endregion
+                    return 0;
+                });
+            });
+            app.Command("testros", command =>
+            {
+                command.Description = "test roslyn";
+                command.HelpOption("-h|--help");
+                command.OnExecute(() =>
+                {
+                    var sourceCode = @"
+using System;
+namespace tintin{
+    class tinpo{
+    static int Main(){
+        int tdn=9;
+        string tdn33=tdnx445;
+        Console.WriteLine(tdn33);
+        Console.Error.WriteLine(tdn33);
+        return tdn;
+    }
+    }
+}";
+                    sourceCode = sourceCode.Replace("tdnx445", "\"tdn910\"");
+                    var syntaxTree = CSharpSyntaxTree.ParseText(sourceCode);
+                    var rootNode = syntaxTree.GetRoot();
+                    new Walker().Visit(rootNode);
+                    return 0;
+                });
+            });
+            app.Command("test_compile", command =>
+            {
+                command.Description = "test compile";
+                command.HelpOption("-h|--help");
+                command.OnExecute(() =>
+                {
+                    var compilerstr = NodeAyanoCompiler.TransCompile(null);
+                    Console.WriteLine(compilerstr);
                     return 0;
                 });
             });
