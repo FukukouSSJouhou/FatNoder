@@ -27,7 +27,9 @@ namespace FatNoder.ViewModels
         /// Out Code
         /// </summary>
         public string OutCode => _outCode.Value;
-
+        /// <summary>
+        /// Constructor!
+        /// </summary>
         public CSCodePreviewViewModel()
         {
             this.WhenAnyValue(vm => vm.Code).Where(c => c != null)
