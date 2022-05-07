@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AyanoBuilder", "AyanobBuild
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoVMLibs", "NodeAyanoVMLibs\NodeAyanoVMLibs.csproj", "{0E9C6F7F-FF73-4D32-8A6A-377409AEE4E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginManagerXML", "PluginManagerXML\PluginManagerXML.csproj", "{F7A57F9D-3294-4817-97DD-C5E4CF2BF574}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginManagerXML", "PluginManagerXML\PluginManagerXML.csproj", "{F7A57F9D-3294-4817-97DD-C5E4CF2BF574}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IconLibrary", "IconLibrary\IconLibrary.csproj", "{C3D56FED-C82D-4AEE-90C3-F7893DF8D918}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IconLibrary", "IconLibrary\IconLibrary.csproj", "{C3D56FED-C82D-4AEE-90C3-F7893DF8D918}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodeAyanoTest", "NodeAyanoTest\NodeAyanoTest.csproj", "{17941C51-55F6-40B5-A72C-DA60BB718628}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{C3D56FED-C82D-4AEE-90C3-F7893DF8D918}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3D56FED-C82D-4AEE-90C3-F7893DF8D918}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3D56FED-C82D-4AEE-90C3-F7893DF8D918}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17941C51-55F6-40B5-A72C-DA60BB718628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17941C51-55F6-40B5-A72C-DA60BB718628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17941C51-55F6-40B5-A72C-DA60BB718628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17941C51-55F6-40B5-A72C-DA60BB718628}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

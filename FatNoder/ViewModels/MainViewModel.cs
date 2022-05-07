@@ -91,6 +91,7 @@ namespace FatNoder.ViewModels
                 }
             }
         }
+        public CSCodePreviewViewModel CPreviewViewModel { get; } = new CSCodePreviewViewModel();
         /// <summary>
         /// MainViewModel
         /// </summary>
@@ -112,6 +113,53 @@ namespace FatNoder.ViewModels
             NodeList.AddNodeType(() => new InputNodeViewModel<int> { Name = "IntInput" });
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name = "StringInput" });
             NodeList.AddNodeType(() => new PrintNodeViewModel { Name = "PrintString" });
+            this.WhenAnyObservable(vm => vm.Network.NetworkChanged).Subscribe(newvalue =>
+            {
+                List<Type> typelistkun = new List<Type>();
+                XML_NodeModel modelkun = mainnodekun.model;
+                typelistkun.Add(typeof(MethodEntryPoint));
+                typelistkun.Add(typeof(XmlRootN));
+                typelistkun.Add(typeof(CompileNodeBase));
+                XmlRootN documentrootkun = new XmlRootN()
+                {
+                    nodes = new XMLRoot_NodesCLskun()
+                };
+                var roots = GetNodeModels();
+                foreach (var root in roots)
+                {
+                    if (root.TYPE == "")
+                    {
+                        continue;
+                    }
+                    if (root.TYPE == null)
+                    {
+                        continue;
+                    }
+                    if (root.MODELTYPE == "")
+                    {
+                        continue;
+                    }
+                    if (root.MODELTYPE == null)
+                    {
+                        continue;
+                    }
+                    if (!typelistkun.Contains(Type.GetType(root.TYPE)))
+                    {
+                        if (Type.GetType(root.TYPE) != null)
+                            typelistkun.Add(Type.GetType(root.TYPE));
+                    }
+                    if (!typelistkun.Contains(Type.GetType(root.MODELTYPE)))
+                    {
+                        if (Type.GetType(root.MODELTYPE) != null)
+                            typelistkun.Add(Type.GetType(root.MODELTYPE));
+                    }
+                }
+                var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
+
+                var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
+                CPreviewViewModel.Code = compilerstr;
+            }
+                );
             CreateTest = ReactiveCommand.Create(() =>
             {
                 Console.WriteLine("Detamon");
@@ -394,58 +442,58 @@ namespace FatNoder.ViewModels
                     });
                     LoadXMLFileCommand.Select(x =>
                     {
-                    #region XML Load and Struct
-                    List<Type> knownlists = new();
-                    using (var inputstream = new StreamReader(x))
-                    {
+                        #region XML Load and Struct
+                        List<Type> knownlists = new();
+                        using (var inputstream = new StreamReader(x))
                         {
-                            XmlDocument xmlDoc = new XmlDocument();
-                            xmlDoc.Load(inputstream);
-                            XmlNode root = xmlDoc.DocumentElement;
-                            foreach (XmlNode node in root.ChildNodes)
                             {
-
-                                foreach (XmlNode node2 in node.ChildNodes)
+                                XmlDocument xmlDoc = new XmlDocument();
+                                xmlDoc.Load(inputstream);
+                                XmlNode root = xmlDoc.DocumentElement;
+                                foreach (XmlNode node in root.ChildNodes)
                                 {
-                                    if (node2.Name == "Node")
+
+                                    foreach (XmlNode node2 in node.ChildNodes)
                                     {
-                                        foreach (XmlNode node3 in node2.ChildNodes)
+                                        if (node2.Name == "Node")
                                         {
-                                            if (node3.Name == "modeltype")
+                                            foreach (XmlNode node3 in node2.ChildNodes)
                                             {
-                                                //Console.WriteLine(node3.InnerText);
-                                                knownlists.Add(Type.GetType(node3.InnerText));
+                                                if (node3.Name == "modeltype")
+                                                {
+                                                    //Console.WriteLine(node3.InnerText);
+                                                    knownlists.Add(Type.GetType(node3.InnerText));
+                                                }
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                    }
-                    using (var inputstream = new StreamReader(x))
-                    {
-                        DataContractSerializer serializer =
-                            new(typeof(XmlRootN), knownlists);
-                        using (XmlReader xr = XmlReader.Create(inputstream))
+                        using (var inputstream = new StreamReader(x))
                         {
-                            XmlRootN obj = (XmlRootN)serializer.ReadObject(xr);
-                            Network.Nodes.Clear();
-                            foreach (XML_NodeModel n in obj.nodes)
+                            DataContractSerializer serializer =
+                                new(typeof(XmlRootN), knownlists);
+                            using (XmlReader xr = XmlReader.Create(inputstream))
                             {
-                                Type typekun = Type.GetType(n.TYPE);
-                                if (typekun == typeof(MethodEntryPointVIewModel))
+                                XmlRootN obj = (XmlRootN)serializer.ReadObject(xr);
+                                Network.Nodes.Clear();
+                                foreach (XML_NodeModel n in obj.nodes)
                                 {
-                                    mainnodekun = new MethodEntryPointVIewModel(n.UUID);
-                                    Network.Nodes.Add(mainnodekun);
-                                    mainnodekun.ChangeStates((MethodEntryPoint)n);
+                                    Type typekun = Type.GetType(n.TYPE);
+                                    if (typekun == typeof(MethodEntryPointVIewModel))
+                                    {
+                                        mainnodekun = new MethodEntryPointVIewModel(n.UUID);
+                                        Network.Nodes.Add(mainnodekun);
+                                        mainnodekun.ChangeStates((MethodEntryPoint)n);
+                                    }
+                                    else
+                                    {
+                                        var nodekun = (INodeViewModelBase)System.Activator.CreateInstance(typekun, new object[] { n.UUID });
+                                        Network.Nodes.Add((NodeViewModel)nodekun);
+                                        nodekun.ChangeStates(n);
+                                    }
                                 }
-                                else
-                                {
-                                    var nodekun = (INodeViewModelBase)System.Activator.CreateInstance(typekun, new object[] { n.UUID });
-                                    Network.Nodes.Add((NodeViewModel)nodekun);
-                                    nodekun.ChangeStates(n);
-                                }
-                            }
                                 foreach (XML_NodeModel n in obj.nodes)
                                 {
                                     Type typekun = Type.GetType(n.TYPE);
@@ -485,31 +533,32 @@ namespace FatNoder.ViewModels
                                                         }
                                                     }
                                             }
-                                        if(n.Outputs != null)
-                                        foreach (var outkun2344 in n.Outputs)
-                                        {
-                                            var SourceportName = outkun2344.Name;
-                                            if (outkun2344.connections != null)
-                                                foreach (var xmlOC in outkun2344.connections)
-                                                {
-                                                    foreach (var NVkun2 in Network.Nodes.Items)
+                                        if (n.Outputs != null)
+                                            foreach (var outkun2344 in n.Outputs)
+                                            {
+                                                var SourceportName = outkun2344.Name;
+                                                if (outkun2344.connections != null)
+                                                    foreach (var xmlOC in outkun2344.connections)
                                                     {
-                                                        if (NVkun2.UUID == n.UUID)
+                                                        foreach (var NVkun2 in Network.Nodes.Items)
                                                         {
-                                                            foreach (var origkun in Network.Nodes.Items)
+                                                            if (NVkun2.UUID == n.UUID)
                                                             {
-                                                                if (origkun.UUID == xmlOC.Target)
+                                                                foreach (var origkun in Network.Nodes.Items)
                                                                 {
-                                                                    foreach (var OutObj in NVkun2.Outputs.Items)
+                                                                    if (origkun.UUID == xmlOC.Target)
                                                                     {
-                                                                        if (OutObj.Name == outkun2344.Name)
+                                                                        foreach (var OutObj in NVkun2.Outputs.Items)
                                                                         {
-                                                                            foreach (var InObj in origkun.Inputs.Items)
+                                                                            if (OutObj.Name == outkun2344.Name)
                                                                             {
-                                                                                if (InObj.Name == xmlOC.Name)
+                                                                                foreach (var InObj in origkun.Inputs.Items)
                                                                                 {
-                                                                                    Network.Connections.Add(Network.ConnectionFactory(InObj, OutObj));
+                                                                                    if (InObj.Name == xmlOC.Name)
+                                                                                    {
+                                                                                        Network.Connections.Add(Network.ConnectionFactory(InObj, OutObj));
 
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         }
@@ -518,8 +567,7 @@ namespace FatNoder.ViewModels
                                                             }
                                                         }
                                                     }
-                                                }
-                                        }
+                                            }
                                     }
                                 }
                             }

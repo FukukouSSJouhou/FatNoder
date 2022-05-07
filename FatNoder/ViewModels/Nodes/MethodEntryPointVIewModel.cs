@@ -76,7 +76,7 @@ namespace FatNoder.ViewModels.Nodes
                     return d.Name == Input.Name;
                 }))
                 {
-                    xs.States = new XMLNodeInputStatementLS();
+                    xs.States.Clear();
                     foreach (StatementCls guidkun in Input.Values.Items)
                     {
                         xs.States.Add(guidkun.UUID);
@@ -126,7 +126,7 @@ namespace FatNoder.ViewModels.Nodes
                     return d.Name == Input.Name;
                 }))
                 {
-                    xs.States = new XMLNodeInputStatementLS();
+                    xs.States.Clear();
                     foreach (StatementCls guidkun in Input.Values.Items)
                     {
                         xs.States.Add(guidkun.UUID);

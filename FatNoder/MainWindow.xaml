@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:FatNoder"
         xmlns:nodes="clr-namespace:FatNoder.ViewModels.Nodes"
         xmlns:views="clr-namespace:NodeNetworkJH.Views;assembly=NodeNetworkJH"
+        xmlns:views1="clr-namespace:FatNoder.Views"
         xmlns:nodeList="clr-namespace:NodeNetworkJH.Toolkit.NodeList;assembly=NodeNetworkJHToolkit"
         xmlns:breadcrumbBar="clr-namespace:NodeNetworkJH.Toolkit.BreadcrumbBar;assembly=NodeNetworkJHToolkit"
                      
@@ -30,18 +31,18 @@
 
         <Fluent:Ribbon Grid.Row="0" Grid.ColumnSpan="5" MinHeight="30">
             <Fluent:Ribbon.Menu>
-                <Fluent:ApplicationMenu Header="File">
-                    <Fluent:MenuItem Header="CreateTest" Name="CreateTestRibbon"></Fluent:MenuItem>
-                    <Fluent:MenuItem Header="Load As" Name="LoadAsRibbon"></Fluent:MenuItem>
-                    <Fluent:MenuItem Header="Save As" Name="SaveAsRibbon"></Fluent:MenuItem>
-                    <Fluent:MenuItem Header="Exit" Name="ExitRibbon"></Fluent:MenuItem>
+                <Fluent:ApplicationMenu Header="File" KeyTip="F"> 
+                    <Fluent:MenuItem Header="CreateTest" KeyTip="C" Name="CreateTestRibbon"></Fluent:MenuItem>
+                    <Fluent:MenuItem Header="Load As" KeyTip="L" Name="LoadAsRibbon"></Fluent:MenuItem>
+                    <Fluent:MenuItem Header="Save As" KeyTip="S" Name="SaveAsRibbon"></Fluent:MenuItem>
+                    <Fluent:MenuItem Header="Exit" KeyTip="Q" Name="ExitRibbon"></Fluent:MenuItem>
                 </Fluent:ApplicationMenu>
             </Fluent:Ribbon.Menu>
-            <Fluent:RibbonTabItem Header="Main">
-                <Fluent:RibbonGroupBox Header="A">
+            <Fluent:RibbonTabItem Header="Home" KeyTip="H">
+                <Fluent:RibbonGroupBox Header="A" KeyTip="A">
                     <Fluent:Button Header="TestPhase" Name="testPhaseButton"></Fluent:Button>
-                    <Fluent:Button Header="CompilePhase" Name="compilePhaseButton"></Fluent:Button>
-                    <Fluent:Button Header="CompileAndRunPhase" Name="compileandrunPhaseButton"></Fluent:Button>
+                    <Fluent:Button Header="CompilePhase" Name="compilePhaseButton" KeyTip="C"></Fluent:Button>
+                    <Fluent:Button Header="CompileAndRunPhase" Name="compileandrunPhaseButton" KeyTip="R"></Fluent:Button>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
@@ -73,5 +74,7 @@
                 </DrawingBrush>
             </views:NetworkView.NetworkBackground>
         </views:NetworkView>
+        <GridSplitter Grid.Row="2" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <views1:CSCodePreviewView  Grid.Row="2" Grid.Column="4" x:Name="CodePreviewViewkun"/>
     </Grid>
 </Fluent:RibbonWindow>
