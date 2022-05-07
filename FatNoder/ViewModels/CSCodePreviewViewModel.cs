@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels
 {
-    public class CSCodePreviewViewModel
+    public class CSCodePreviewViewModel : ReactiveObject
     {
     }
 }
