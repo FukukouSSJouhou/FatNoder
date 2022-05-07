@@ -73,5 +73,7 @@
                 </DrawingBrush>
             </views:NetworkView.NetworkBackground>
         </views:NetworkView>
+        <GridSplitter Grid.Row="2" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        
     </Grid>
 </Fluent:RibbonWindow>
