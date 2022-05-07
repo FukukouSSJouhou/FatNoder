@@ -3,6 +3,7 @@ using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -37,9 +38,16 @@ namespace FatNoder.Views
             set => ViewModel = (CSCodePreviewViewModel)value;
         }
         #endregion
+        /// <summary>
+        /// constructor
+        /// </summary>
         public CSCodePreviewView()
         {
             InitializeComponent();
+            this.WhenActivated(d =>
+            {
+                this.OneWayBind(ViewModel, vm => vm.Code, v => v.PreviewCodeTextBox.Text).DisposeWith(d);
+            });
         }
     }
 }
