@@ -31,6 +31,11 @@ namespace FatNoder.Views
             get=>(CSCodePreviewViewModel)GetValue(ViewModelProperty);
             set => SetValue(ViewModelProperty, value);
         }
+        object IViewFor.ViewModel
+        {
+            get => ViewModel;
+            set => ViewModel = (CSCodePreviewViewModel)value;
+        }
         #endregion
         public CSCodePreviewView()
         {
