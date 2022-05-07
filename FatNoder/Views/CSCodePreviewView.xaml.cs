@@ -26,6 +26,7 @@ namespace FatNoder.Views
         #region VM
         public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(nameof(ViewModel),
             typeof(CSCodePreviewViewModel), typeof(CSCodePreviewView), new PropertyMetadata(null));
+        /// <inheritdoc/>
         public CSCodePreviewViewModel ViewModel
         {
 
