@@ -352,8 +352,8 @@ namespace FatNoder.ViewModels
                 }
                 var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
 
-                var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
-                NodeAyanoCompiler.CompileAndRunExec(compilerstr, out WeakReference alcWeakRef);
+                var CObj = NodeAyanoCompiler.TransCompileNode(ModelEnumerator);
+                NodeAyanoCompiler.CompileAndRunExec(CObj, out WeakReference alcWeakRef);
                 int c = 0;
                 for (c = 0; alcWeakRef.IsAlive && (c < 10);c++)
                 {

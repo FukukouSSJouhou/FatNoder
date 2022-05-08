@@ -47,7 +47,7 @@ namespace FatNoder.Views
             InitializeComponent();
             this.WhenActivated(d =>
             {
-                this.OneWayBind(ViewModel, vm => vm.Code, v => v.PreviewCodeTextBox.Text).DisposeWith(d);
+                this.OneWayBind(ViewModel, vm => vm.StringCode, v => v.PreviewCodeTextBox.Text).DisposeWith(d);
             });
         }
     }
