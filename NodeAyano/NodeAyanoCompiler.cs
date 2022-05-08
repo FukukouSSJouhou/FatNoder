@@ -2,12 +2,14 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Emit;
+using NodeAyano.ASMC;
 using NodeAyano.Model.Enumerator;
 using NodeAyano.Model.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
 using System.Text;
 using System.Threading.Tasks;
@@ -123,7 +125,7 @@ namespace NodeAyano
 
             return SyntaxFactory.ClassDeclaration(name).AddModifiers(new SyntaxToken[1] { SyntaxFactory.Token(SyntaxKind.PublicKeyword) });
         }
-        public static void CompileToFile(string code,string filename, string clsName = "testMainCls", string nsName = "TEST123")
+        public static void CompileToFile(string code, string filename, string clsName = "testMainCls", string nsName = "TEST123")
         {
 
             var assemblyDirectoryPath = Path.GetDirectoryName(typeof(object).Assembly.Location);
@@ -160,13 +162,13 @@ namespace NodeAyano
                 references,
                 compilationOptions
             );
-            var emOptions = new EmitOptions(includePrivateMembers:true)
+            var emOptions = new EmitOptions(includePrivateMembers: true)
             {
-                
+
             };
-            using (Stream stream = new FileStream(filename,FileMode.OpenOrCreate))
+            using (Stream stream = new FileStream(filename, FileMode.OpenOrCreate))
             {
-                var emitResult = compilation.Emit(stream,options: emOptions);
+                var emitResult = compilation.Emit(stream, options: emOptions);
 
                 foreach (var diagnostic in emitResult.Diagnostics)
                 {
@@ -185,13 +187,14 @@ namespace NodeAyano
             }
 
         }
-        public static Assembly Compile(string code, string clsName = "testMainCls", string nsName = "TEST123")
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static void CompileAndRunExec(string code, out WeakReference wref, string clsName = "testMainCls", string nsName = "TEST123")
         {
 
             var assemblyDirectoryPath = Path.GetDirectoryName(typeof(object).Assembly.Location);
             var references = new MetadataReference[]
             {
-            MetadataReference.CreateFromFile( 
+            MetadataReference.CreateFromFile(
             $"{assemblyDirectoryPath}/mscorlib.dll"),
         MetadataReference.CreateFromFile(
             $"{assemblyDirectoryPath}/System.Runtime.dll"),
@@ -211,11 +214,11 @@ namespace NodeAyano
 
             var compilationOptions = new CSharpCompilationOptions(
                 OutputKind.ConsoleApplication,
-                mainTypeName:$"{nsName}.{clsName}"
+                mainTypeName: $"{nsName}.{clsName}"
             );
 
             var compilation = CSharpCompilation.Create(
-                clsName + Guid.NewGuid().ToString(),
+                clsName,
                 new[] { syntaxTree },
                 references,
                 compilationOptions
@@ -236,9 +239,14 @@ namespace NodeAyano
                 {
                     throw new ArgumentException("Compile error occured.");
                 }
-
                 stream.Seek(0, SeekOrigin.Begin);
-                return AssemblyLoadContext.Default.LoadFromStream(stream);
+                var ASC = new AyanoAssemblyLoadContext();
+                var asm = ASC.LoadFromStream(stream);
+                wref = new WeakReference(ASC, trackResurrection: true);
+                asm.EntryPoint.Invoke(null, null);
+                ASC.Unload();
+
+
             }
 
         }
