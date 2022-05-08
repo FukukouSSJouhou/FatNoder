@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Debug2": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\FatNoder\\FatNoder.csproj"
+    }
+  }
+}

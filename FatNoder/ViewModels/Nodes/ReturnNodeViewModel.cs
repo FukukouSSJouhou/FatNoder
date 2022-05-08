@@ -15,13 +15,15 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
+using AyanoNodeVM;
+
 namespace FatNoder.ViewModels.Nodes
 {
     /// <summary>
     /// 値を返却するNodeの基本形
     /// </summary>
     /// <typeparam name="T">型</typeparam>
-    public class ReturnNodeViewModel<T> : NodeVMBasekun, INodeViewModelBase
+    public partial class ReturnNodeViewModel<T> : NodeVMBasekun, INodeViewModelBase
     {
         
         static ReturnNodeViewModel()
@@ -32,18 +34,12 @@ namespace FatNoder.ViewModels.Nodes
         public ValueNodeInputViewModel<T?> ReturnInput { get; }
         public ValueNodeOutputViewModel<StatementCls> Flow { get; }
         public StatementCls StatementIfce { get; }
+        [ModelAyano]
         private ReturnNodeModel<T> _model = new ReturnNodeModel<T>();
-        public XML_NodeModel model
-        {
-            get
-            {
-                return _model;
-            }
-        }
+
         public ReturnNodeViewModel(Guid UUID):base(UUID)
         {
-            model.TYPE = typeof(ReturnNodeViewModel<T>).AssemblyQualifiedName;
-            model.MODELTYPE = typeof(ReturnNodeModel<T>).AssemblyQualifiedName;
+            InitAyanoVMB();
 
             StatementIfce = StatementCls.GenStatementCls(this.UUID);
             ReturnInput = new ValueNodeInputViewModel<T?>
@@ -63,22 +59,6 @@ namespace FatNoder.ViewModels.Nodes
                 Value = this.WhenAnyValue(vm => vm.StatementIfce),
                 PortPosition = PortPosition.Left
             };
-            this.UUIDChanged.Subscribe(newvalue =>
-            {
-                model.UUID = newvalue;
-            });
-            this.NameChanged.Subscribe(newvalue =>
-            {
-                model.Name = newvalue;
-            });
-            this.PositionChanged.Subscribe(newvalue =>
-            {
-                model.Points = new XMLNodeXY()
-                {
-                    X = newvalue.X,
-                    Y = newvalue.Y
-                };
-            });
             this.ReturnInput.Connections.CountChanged.Subscribe(newvalue =>
             {
                 if (newvalue > 0)
@@ -99,8 +79,7 @@ namespace FatNoder.ViewModels.Nodes
         }
         public ReturnNodeViewModel()
         {
-            model.TYPE = typeof(ReturnNodeViewModel<T>).AssemblyQualifiedName;
-            model.MODELTYPE=typeof(ReturnNodeModel<T>).AssemblyQualifiedName;
+            InitAyanoVMB();
 
             StatementIfce = StatementCls.GenStatementCls(this.UUID);
             ReturnInput = new ValueNodeInputViewModel<T?>
@@ -120,22 +99,6 @@ namespace FatNoder.ViewModels.Nodes
                 Value = this.WhenAnyValue(vm =>vm.StatementIfce),
                 PortPosition=PortPosition.Left
             };
-            this.UUIDChanged.Subscribe(newvalue =>
-            {
-                model.UUID = newvalue;
-            });
-            this.NameChanged.Subscribe(newvalue =>
-            {
-                model.Name = newvalue;
-            });
-            this.PositionChanged.Subscribe(newvalue =>
-            {
-                model.Points = new XMLNodeXY()
-                {
-                    X = newvalue.X,
-                    Y = newvalue.Y
-                };
-            });
             this.ReturnInput.Connections.CountChanged.Subscribe(newvalue =>
             {
                 if(newvalue > 0)

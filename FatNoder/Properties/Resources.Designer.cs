@@ -22,7 +22,7 @@ namespace FatNoder.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace FatNoder.Properties {
         ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FatNoder.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace FatNoder.Properties {
         ///   現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,63 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
+        ///   Exit に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Ribbon_File_Exit {
+            get {
+                return ResourceManager.GetString("Ribbon_File_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Load As に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Ribbon_File_Load_As {
+            get {
+                return ResourceManager.GetString("Ribbon_File_Load_As", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Save As に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Ribbon_File_Save_As {
+            get {
+                return ResourceManager.GetString("Ribbon_File_Save_As", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Compile And Run に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Ribbon_Home_CompileAndRunPhase {
+            get {
+                return ResourceManager.GetString("Ribbon_Home_CompileAndRunPhase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   File に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Ribbon_Menu_File {
+            get {
+                return ResourceManager.GetString("Ribbon_Menu_File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Home に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Ribbon_Tab_Home {
+            get {
+                return ResourceManager.GetString("Ribbon_Tab_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap splash {
+        public static System.Drawing.Bitmap splash {
             get {
                 object obj = ResourceManager.GetObject("splash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

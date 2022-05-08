@@ -14,30 +14,27 @@ namespace NodeAyanoVMLibs.ViewModels.Nodes
     /// <summary>
     /// 基本機能を備えたNodeViewModelの基幹クラス
     /// </summary>
-    public class NodeVMBasekun : NodeViewModel
+    public partial class NodeVMBasekun : NodeViewModel
     {
         /// <summary>
         /// Name Changed
         /// </summary>
-        public IObservable<string> NameChanged { get; }
+        public IObservable<string> NameChanged { get; private set; }
         /// <summary>
         /// Position Changed
         /// </summary>
-        public IObservable<Point> PositionChanged { get; }
+        public IObservable<Point> PositionChanged { get; private set; }
         /// <summary>
         /// UUID!
         /// </summary>
-        public IObservable<Guid> UUIDChanged { get; }
+        public IObservable<Guid> UUIDChanged { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         public NodeVMBasekun()
         {
-
-            NameChanged = this.WhenAnyValue(vm => vm.Name);
-            PositionChanged = this.WhenAnyValue(vm => vm.Position);
-            UUIDChanged = this.WhenAnyValue(vm => vm.UUID);
+            InitNodeVM();
         }
         /// <summary>
         /// Constructor (set UUID)
@@ -45,10 +42,7 @@ namespace NodeAyanoVMLibs.ViewModels.Nodes
         /// <param name="UUID">UUID</param>
         public NodeVMBasekun(Guid UUID) : base(UUID)
         {
-
-            NameChanged = this.WhenAnyValue(vm => vm.Name);
-            PositionChanged = this.WhenAnyValue(vm => vm.Position);
-            UUIDChanged = this.WhenAnyValue(vm => vm.UUID);
+            InitNodeVM();
         }
         static NodeVMBasekun()
         {
