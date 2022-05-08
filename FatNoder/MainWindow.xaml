@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Fluent="urn:fluent-ribbon"
+        xmlns:Properties="clr-namespace:FatNoder.Properties"
         xmlns:local="clr-namespace:FatNoder"
         xmlns:nodes="clr-namespace:FatNoder.ViewModels.Nodes"
         xmlns:views="clr-namespace:NodeNetworkJH.Views;assembly=NodeNetworkJH"
@@ -31,7 +32,7 @@
 
         <Fluent:Ribbon Grid.Row="0" Grid.ColumnSpan="5" MinHeight="30">
             <Fluent:Ribbon.Menu>
-                <Fluent:ApplicationMenu Header="File" KeyTip="F"> 
+                <Fluent:ApplicationMenu Header="{x:Static Properties:Resources.Ribbon_Menu_File}" KeyTip="F"> 
                     <Fluent:MenuItem Header="CreateTest" KeyTip="C" Name="CreateTestRibbon"></Fluent:MenuItem>
                     <Fluent:MenuItem Header="Load As" KeyTip="L" Name="LoadAsRibbon"></Fluent:MenuItem>
                     <Fluent:MenuItem Header="Save As" KeyTip="S" Name="SaveAsRibbon"></Fluent:MenuItem>

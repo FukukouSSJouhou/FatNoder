@@ -61,7 +61,7 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
-        ///   File(_F) に類似しているローカライズされた文字列を検索します。
+        ///   File に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Ribbon_Menu_File {
             get {
