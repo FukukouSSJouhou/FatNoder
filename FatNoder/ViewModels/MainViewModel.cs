@@ -353,14 +353,7 @@ namespace FatNoder.ViewModels
                 var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
 
                 var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
-                /*
-                var asmkun = NodeAyanoCompiler.Compile(compilerstr);
-                asmkun.EntryPoint.Invoke(null, null);*/
-                NodeAyanoCompiler.CompileAndRun(compilerstr, asmkun =>
-                {
-                    asmkun.EntryPoint.Invoke(null, null);
-                    return 0;
-                });
+                NodeAyanoCompiler.CompileAndRunExe(compilerstr);
             });
             Activator = new ViewModelActivator();
             this.WhenActivated(d =>
