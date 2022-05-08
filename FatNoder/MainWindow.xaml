@@ -34,16 +34,16 @@
             <Fluent:Ribbon.Menu>
                 <Fluent:ApplicationMenu Header="{x:Static Properties:Resources.Ribbon_Menu_File}" KeyTip="F"> 
                     <Fluent:MenuItem Header="CreateTest" KeyTip="C" Name="CreateTestRibbon"></Fluent:MenuItem>
-                    <Fluent:MenuItem Header="Load As" KeyTip="L" Name="LoadAsRibbon"></Fluent:MenuItem>
-                    <Fluent:MenuItem Header="Save As" KeyTip="S" Name="SaveAsRibbon"></Fluent:MenuItem>
-                    <Fluent:MenuItem Header="Exit" KeyTip="Q" Name="ExitRibbon"></Fluent:MenuItem>
+                    <Fluent:MenuItem Header="{x:Static Properties:Resources.Ribbon_File_Load_As}" KeyTip="L" Name="LoadAsRibbon"></Fluent:MenuItem>
+                    <Fluent:MenuItem Header="{x:Static Properties:Resources.Ribbon_File_Save_As}" KeyTip="S" Name="SaveAsRibbon"></Fluent:MenuItem>
+                    <Fluent:MenuItem Header="{x:Static Properties:Resources.Ribbon_File_Exit}" KeyTip="Q" Name="ExitRibbon"></Fluent:MenuItem>
                 </Fluent:ApplicationMenu>
             </Fluent:Ribbon.Menu>
-            <Fluent:RibbonTabItem Header="Home" KeyTip="H">
+            <Fluent:RibbonTabItem Header="{x:Static Properties:Resources.Ribbon_Tab_Home}" KeyTip="H">
                 <Fluent:RibbonGroupBox Header="A" KeyTip="A">
                     <Fluent:Button Header="TestPhase" Name="testPhaseButton"></Fluent:Button>
                     <Fluent:Button Header="CompilePhase" Name="compilePhaseButton" KeyTip="C"></Fluent:Button>
-                    <Fluent:Button Header="CompileAndRunPhase" Name="compileandrunPhaseButton" KeyTip="R"></Fluent:Button>
+                    <Fluent:Button Header="{x:Static Properties:Resources.Ribbon_Home_CompileAndRunPhase}" Name="compileandrunPhaseButton" KeyTip="R"></Fluent:Button>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
