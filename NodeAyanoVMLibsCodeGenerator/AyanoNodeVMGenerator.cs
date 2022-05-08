@@ -38,10 +38,14 @@ namespace AyanoNodeVM
             INamedTypeSymbol attributeSymbol = context.Compilation.GetTypeByMetadataName("AyanoNodeVM.ModelAyanoAttribute");
             foreach(IGrouping<INamedTypeSymbol, IFieldSymbol> group in reciever.Fields.GroupBy<IFieldSymbol, INamedTypeSymbol>(f => f.ContainingType, SymbolEqualityComparer.Default))
             {
-
+                string src = ProcClass(group.Key, group.ToList(), attributeSymbol, context);
+                context.AddSource($"{group.Key.Name}_AyanoNodeVM.g.cs", SourceText.From(src, Encoding.UTF8));
             }
         }
-
+        private string ProcClass(INamedTypeSymbol symbol,List<IFieldSymbol> fields, ISymbol attributeSymbol, GeneratorExecutionContext context)
+        {
+            return "";
+        }
     }
     class SyntaxReciever : ISyntaxContextReceiver
     {
