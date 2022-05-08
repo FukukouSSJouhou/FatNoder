@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Emit;
+using NodeAyano.ASMC;
 using NodeAyano.Model.Enumerator;
 using NodeAyano.Model.Nodes;
 using System;
@@ -185,7 +186,7 @@ namespace NodeAyano
             }
 
         }
-        public static Assembly Compile(string code, string clsName = "testMainCls", string nsName = "TEST123")
+        public static void CompileAndRun(string code,Func<Assembly,int> asmfunc, string clsName = "testMainCls", string nsName = "TEST123")
         {
 
             var assemblyDirectoryPath = Path.GetDirectoryName(typeof(object).Assembly.Location);
@@ -238,7 +239,10 @@ namespace NodeAyano
                 }
 
                 stream.Seek(0, SeekOrigin.Begin);
-                return AssemblyLoadContext.Default.LoadFromStream(stream);
+                var ASC = new AyanoAssemblyLoadContext();
+                var asm = ASC.LoadFromStream(stream);
+                var ret=asmfunc(asm);
+                ASC.Unload();
             }
 
         }
