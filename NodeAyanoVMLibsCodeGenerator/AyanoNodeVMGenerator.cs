@@ -25,14 +25,23 @@ namespace AyanoNodeVM
     }
 }
 ";
+        public void Initialize(GeneratorInitializationContext context)
+        {
+            context.RegisterForPostInitialization((i) => i.AddSource("ModelAyanoAttribute.g.cs", attributeText));
+            context.RegisterForSyntaxNotifications(() => new SyntaxReciever());
+        }
         public void Execute(GeneratorExecutionContext context)
         {
             throw new NotImplementedException();
         }
 
-        public void Initialize(GeneratorInitializationContext context)
+    }
+    class SyntaxReciever : ISyntaxContextReceiver
+    {
+        public List<IFieldSymbol> Fields { get; }= new List<IFieldSymbol>();
+        public void OnVisitSyntaxNode(GeneratorSyntaxContext context)
         {
-            throw new NotImplementedException();
+
         }
     }
 }
