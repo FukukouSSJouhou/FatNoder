@@ -457,6 +457,7 @@ namespace FatNoder.ViewModels
                     {
                         #region XML Load and Struct
                         List<Type> knownlists = new();
+                        if (x == null) return "";
                         using (var inputstream = new StreamReader(x))
                         {
                             {
