@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 using Microsoft.CodeAnalysis;
@@ -41,7 +42,17 @@ namespace AyanoNodeVM
         public List<IFieldSymbol> Fields { get; }= new List<IFieldSymbol>();
         public void OnVisitSyntaxNode(GeneratorSyntaxContext context)
         {
-
+            if(context.Node is FieldDeclarationSyntax cNode && cNode.AttributeLists.Count > 0)
+            {
+                foreach(VariableDeclaratorSyntax v in cNode.Declaration.Variables)
+                {
+                    IFieldSymbol sym = context.SemanticModel.GetDeclaredSymbol(v) as IFieldSymbol;
+                    if(sym.GetAttributes().Any(ad=>ad.AttributeClass.ToDisplayString()== "AyanoNodeVM.ModelAyanoAttribute"))
+                    {
+                        Fields.Add(sym);
+                    }
+                }
+            }
         }
     }
 }
