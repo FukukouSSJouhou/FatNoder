@@ -36,15 +36,70 @@ namespace AyanoNodeVM
             if (!(context.SyntaxContextReceiver is SyntaxReciever reciever))
                 return;
             INamedTypeSymbol attributeSymbol = context.Compilation.GetTypeByMetadataName("AyanoNodeVM.ModelAyanoAttribute");
-            foreach(IGrouping<INamedTypeSymbol, IFieldSymbol> group in reciever.Fields.GroupBy<IFieldSymbol, INamedTypeSymbol>(f => f.ContainingType, SymbolEqualityComparer.Default))
+            INamedTypeSymbol XMLModelSymbol = context.Compilation.GetTypeByMetadataName("FatNoder.Serializer.Node.Xml.XML_NodeModel");
+            INamedTypeSymbol XMLNodeXYSymbol = context.Compilation.GetTypeByMetadataName("FatNoder.Serializer.Node.Xml.XMLNodeXY");
+            foreach (IGrouping<INamedTypeSymbol, IFieldSymbol> group in reciever.Fields.GroupBy<IFieldSymbol, INamedTypeSymbol>(f => f.ContainingType, SymbolEqualityComparer.Default))
             {
-                string src = ProcClass(group.Key, group.ToList(), attributeSymbol, context);
+                string src = ProcClass(group.Key,XMLModelSymbol, XMLNodeXYSymbol,group.ToList(), attributeSymbol, context);
                 context.AddSource($"{group.Key.Name}_AyanoNodeVM.g.cs", SourceText.From(src, Encoding.UTF8));
             }
         }
-        private string ProcClass(INamedTypeSymbol symbol,List<IFieldSymbol> fields, ISymbol attributeSymbol, GeneratorExecutionContext context)
+        private string ProcClass(INamedTypeSymbol symbol, INamedTypeSymbol XMLModelSymbol,INamedTypeSymbol XMLNodeXYSymbol,List<IFieldSymbol> fields, ISymbol attributeSymbol, GeneratorExecutionContext context)
         {
-            return "";
+            if (!symbol.ContainingSymbol.Equals(symbol.ContainingNamespace, SymbolEqualityComparer.Default)){
+                return null;
+            }
+            string NSName = symbol.ContainingNamespace.ToDisplayString();
+            StringBuilder src=new StringBuilder($@"
+namespace {NSName}
+{{
+    public partial class {symbol.Name}
+    {{
+");
+            string XMLSymkun=XMLModelSymbol.ToDisplayString();
+            string XMLNodeXYSymbolkun = XMLNodeXYSymbol.ToDisplayString();
+            foreach (IFieldSymbol symf in fields)
+            {
+                ProcField(src, symf, XMLSymkun, symbol.Name, XMLNodeXYSymbolkun);
+            }
+            src.Append("} }");
+            return src.ToString();
+        }
+        private void ProcField(StringBuilder src, IFieldSymbol fSymbol, string XMLModelSymbol, string CLSName, string XMLNodeXYName)
+        {
+            string fName=fSymbol.Name;
+            ITypeSymbol fType = fSymbol.Type;
+            if (fName == "model") return;
+            src.Append($@"
+public {XMLModelSymbol} model {{
+    get {{
+        return this.{fName};
+    }}
+}}
+");
+            src.Append($@"
+private void InitAyanoVMB()
+{{
+    this.{fName}.TYPE = typeof({CLSName}).AssemblyQualifiedName;
+    this.{fName}.MODELTYPE = typeof({CLSName}).AssemblyQualifiedName;
+    this.UUIDChanged.Subscribe(newvalue =>
+    {{
+        {fName}.UUID = newvalue;
+    }});
+    this.NameChanged.Subscribe(newvalue =>
+    {{
+        {fName}.Name = newvalue;
+    }});
+    this.PositionChanged.Subscribe(newvalue =>
+    {{
+        {fName}.Points = new {XMLNodeXYName}()
+        {{
+            X = newvalue.X,
+            Y = newvalue.Y
+        }};
+    }});
+    
+}}");
         }
     }
     class SyntaxReciever : ISyntaxContextReceiver

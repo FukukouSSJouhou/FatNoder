@@ -33,7 +33,7 @@ namespace FatNoder.ViewModels.Nodes
         }
         public PrintNodeViewModel(Guid UUID):base(UUID)
         {
-            model.TYPE = typeof(PrintNodeViewModel).AssemblyQualifiedName;
+            _model.TYPE = typeof(PrintNodeViewModel).AssemblyQualifiedName;
             _model.MODELTYPE = typeof(PrintNodeModel).AssemblyQualifiedName;
             PrintInput = new ValueNodeInputViewModel<string?>
             {
@@ -48,29 +48,29 @@ namespace FatNoder.ViewModels.Nodes
 
             this.UUIDChanged.Subscribe(newvalue =>
             {
-                model.UUID = newvalue;
+                _model.UUID = newvalue;
             });
             this.NameChanged.Subscribe(newvalue =>
             {
-                model.Name = newvalue;
+                _model.Name = newvalue;
             });
             this.PositionChanged.Subscribe(newvalue =>
             {
-                model.Points = new XMLNodeXY()
+                _model.Points = new XMLNodeXY()
                 {
                     X = newvalue.X,
                     Y = newvalue.Y
                 };
             });
-            model.InputStates = new XMLNodeInputStatement_VMLS();
-            model.InputStates.Add(new XMLNodeInputStatement()
+            _model.InputStates = new XMLNodeInputStatement_VMLS();
+            _model.InputStates.Add(new XMLNodeInputStatement()
             {
                 States = new XMLNodeInputStatementLS(),
                 Name = InputFlow.Name
             });
             this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
-                foreach (XMLNodeInputStatement xs in model.InputStates.Where(d =>
+                foreach (XMLNodeInputStatement xs in _model.InputStates.Where(d =>
                 {
                     return d.Name == InputFlow.Name;
                 }))
@@ -100,7 +100,7 @@ namespace FatNoder.ViewModels.Nodes
 
         public PrintNodeViewModel()
         {
-            model.TYPE = typeof(PrintNodeViewModel).AssemblyQualifiedName;
+            _model.TYPE = typeof(PrintNodeViewModel).AssemblyQualifiedName;
             _model.MODELTYPE = typeof(PrintNodeModel).AssemblyQualifiedName;
             PrintInput = new ValueNodeInputViewModel<string?>
             {
@@ -115,29 +115,29 @@ namespace FatNoder.ViewModels.Nodes
 
             this.UUIDChanged.Subscribe(newvalue =>
             {
-                model.UUID = newvalue;
+                _model.UUID = newvalue;
             });
             this.NameChanged.Subscribe(newvalue =>
             {
-                model.Name = newvalue;
+                _model.Name = newvalue;
             });
             this.PositionChanged.Subscribe(newvalue =>
             {
-                model.Points = new XMLNodeXY()
+                _model.Points = new XMLNodeXY()
                 {
                     X = newvalue.X,
                     Y = newvalue.Y
                 };
             });
-            model.InputStates = new XMLNodeInputStatement_VMLS();
-            model.InputStates.Add(new XMLNodeInputStatement()
+            _model.InputStates = new XMLNodeInputStatement_VMLS();
+            _model.InputStates.Add(new XMLNodeInputStatement()
             {
                 States = new XMLNodeInputStatementLS(),
                 Name = InputFlow.Name
             });
             this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
-                foreach (XMLNodeInputStatement xs in model.InputStates.Where(d =>
+                foreach (XMLNodeInputStatement xs in _model.InputStates.Where(d =>
                 {
                     return d.Name == InputFlow.Name;
                 }))
