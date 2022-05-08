@@ -99,7 +99,7 @@ namespace FatNoder.ViewModels.Nodes
                 Value = this.WhenAnyValue(vm =>vm.StatementIfce),
                 PortPosition=PortPosition.Left
             };
-            this.ReturnInput.Connections.CountChanged.Subscribe(newvalue =>
+            ReturnInput.Connections.CountChanged.Subscribe(newvalue =>
             {
                 if(newvalue > 0)
                 {
