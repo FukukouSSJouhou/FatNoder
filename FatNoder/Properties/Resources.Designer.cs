@@ -61,11 +61,56 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
+        ///   Exit に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Ribbon_File_Exit {
+            get {
+                return ResourceManager.GetString("Ribbon_File_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Load As に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Ribbon_File_Load_As {
+            get {
+                return ResourceManager.GetString("Ribbon_File_Load_As", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Save As に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Ribbon_File_Save_As {
+            get {
+                return ResourceManager.GetString("Ribbon_File_Save_As", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Compile And Run に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Ribbon_Home_CompileAndRunPhase {
+            get {
+                return ResourceManager.GetString("Ribbon_Home_CompileAndRunPhase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   File に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Ribbon_Menu_File {
             get {
                 return ResourceManager.GetString("Ribbon_Menu_File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Home に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Ribbon_Tab_Home {
+            get {
+                return ResourceManager.GetString("Ribbon_Tab_Home", resourceCulture);
             }
         }
         

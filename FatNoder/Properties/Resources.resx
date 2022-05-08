@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Ribbon_File_Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="Ribbon_File_Load_As" xml:space="preserve">
+    <value>Load As</value>
+  </data>
+  <data name="Ribbon_File_Save_As" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="Ribbon_Home_CompileAndRunPhase" xml:space="preserve">
+    <value>Compile And Run</value>
+  </data>
   <data name="Ribbon_Menu_File" xml:space="preserve">
     <value>File</value>
+  </data>
+  <data name="Ribbon_Tab_Home" xml:space="preserve">
+    <value>Home</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splash" type="System.Resources.ResXFileRef, System.Windows.Forms">
