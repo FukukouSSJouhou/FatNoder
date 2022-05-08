@@ -27,8 +27,8 @@ namespace NodeAyano
         /// <param name="NodeEnum">Node</param>
         /// <param name="clsName">clsName</param>
         /// <param name="nsName">Namespace Name</param>
-        /// <returns>C# str</returns>
-        public static string TransCompile(NodeModelEnumerator NodeEnum, string clsName = "testMainCls", string nsName = "TEST123")
+        /// <returns>C# SyntaxNode</returns>
+        public static CompilationUnitSyntax TransCompileNode(NodeModelEnumerator NodeEnum, string clsName = "testMainCls", string nsName = "TEST123")
         {
             var compUnit = SyntaxFactory.CompilationUnit();
             var CLSList = new List<MemberDeclarationSyntax>();
@@ -118,7 +118,18 @@ namespace NodeAyano
             newnode = newnode.AddUsings(USList.ToArray());
             newnode = newnode.AddMembers(NSList.ToArray());
 
-            return (newnode.NormalizeWhitespace().ToString());
+            return newnode;
+        }
+        /// <summary>
+        /// TransCompile
+        /// </summary>
+        /// <param name="NodeEnum">Node</param>
+        /// <param name="clsName">clsName</param>
+        /// <param name="nsName">Namespace Name</param>
+        /// <returns>C# String</returns>
+        public static string TransCompile(NodeModelEnumerator NodeEnum, string clsName = "testMainCls", string nsName = "TEST123")
+        {
+            return TransCompileNode(NodeEnum, clsName, nsName).NormalizeWhitespace().ToString();
         }
         private static ClassDeclarationSyntax CreateClass(string name)
         {
