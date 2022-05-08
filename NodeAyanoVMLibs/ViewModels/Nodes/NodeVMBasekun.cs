@@ -14,7 +14,7 @@ namespace NodeAyanoVMLibs.ViewModels.Nodes
     /// <summary>
     /// 基本機能を備えたNodeViewModelの基幹クラス
     /// </summary>
-    public class NodeVMBasekun : NodeViewModel
+    public partial class NodeVMBasekun : NodeViewModel
     {
         /// <summary>
         /// Name Changed
