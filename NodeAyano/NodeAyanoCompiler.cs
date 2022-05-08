@@ -261,5 +261,68 @@ namespace NodeAyano
             }
 
         }
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static void CompileAndRunExec(CompilationUnitSyntax code, out WeakReference wref, string clsName = "testMainCls", string nsName = "TEST123")
+        {
+
+            var assemblyDirectoryPath = Path.GetDirectoryName(typeof(object).Assembly.Location);
+            var references = new MetadataReference[]
+            {
+            MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/mscorlib.dll"),
+        MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/System.Runtime.dll"),
+        MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/System.Console.dll"),
+        MetadataReference.CreateFromFile(
+            typeof(object).Assembly.Location)
+            };
+
+            var parseOptions = CSharpParseOptions.Default
+                .WithLanguageVersion(LanguageVersion.CSharp10);
+
+            var syntaxTree = CSharpSyntaxTree.Create(
+                code,
+                parseOptions
+            );
+
+            var compilationOptions = new CSharpCompilationOptions(
+                OutputKind.ConsoleApplication,
+                mainTypeName: $"{nsName}.{clsName}"
+            );
+
+            var compilation = CSharpCompilation.Create(
+                clsName,
+                new[] { syntaxTree },
+                references,
+                compilationOptions
+            );
+
+            using (var stream = new MemoryStream())
+            {
+                var emitResult = compilation.Emit(stream);
+
+                foreach (var diagnostic in emitResult.Diagnostics)
+                {
+                    var pos = diagnostic.Location.GetLineSpan();
+                    var location = "(" + pos.Path + "@Line" + (pos.StartLinePosition.Line + 1) + ":" + (pos.StartLinePosition.Character + 1) + ")";
+                    Console.WriteLine($"[{diagnostic.Severity}, {location}] {diagnostic.Id}, {diagnostic.GetMessage()}");
+                }
+
+                if (!emitResult.Success)
+                {
+                    throw new ArgumentException("Compile error occured.");
+                }
+                stream.Seek(0, SeekOrigin.Begin);
+                var ASC = new AyanoAssemblyLoadContext();
+                var asm = ASC.LoadFromStream(stream);
+                wref = new WeakReference(ASC, trackResurrection: true);
+                asm.EntryPoint.Invoke(null, null);
+                ASC.Unload();
+
+
+            }
+
+        }
     }
 }

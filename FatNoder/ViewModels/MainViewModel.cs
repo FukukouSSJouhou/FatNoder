@@ -156,8 +156,8 @@ namespace FatNoder.ViewModels
                 }
                 var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
 
-                var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
-                CPreviewViewModel.Code = compilerstr;
+                var SyntaxCompiled = NodeAyanoCompiler.TransCompileNode(ModelEnumerator);
+                CPreviewViewModel.Code = SyntaxCompiled;
             }
                 );
             CreateTest = ReactiveCommand.Create(() =>
