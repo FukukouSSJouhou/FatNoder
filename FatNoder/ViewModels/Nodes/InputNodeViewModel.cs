@@ -14,6 +14,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using AyanoNodeVM;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -21,28 +22,20 @@ namespace FatNoder.ViewModels.Nodes
     /// 入力するNodeの基本形?
     /// </summary>
     /// <typeparam name="T">入力型</typeparam>
-    public class InputNodeViewModel<T>: StatementNodeViewModelBase, INodeViewModelBase
+    public partial class InputNodeViewModel<T>: StatementNodeViewModelBase, INodeViewModelBase
     {
         static InputNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<InputNodeViewModel<T>>));
         }
         public HannyouValueEditorViewModel<T> ValueEditor { get; } = new HannyouValueEditorViewModel<T>();
+        [ModelAyano]
         private InputNodeModel<T> _model = new InputNodeModel<T>(); 
-
-        public XML_NodeModel model 
-        {
-            get
-            {
-                return _model;
-
-            }
-        }
         public ValueNodeOutputViewModel<T?> Output { get; }
         public InputNodeViewModel(Guid UUID):base(UUID)
         {
-            _model.TYPE = typeof(InputNodeViewModel<T>).AssemblyQualifiedName;
-            _model.MODELTYPE = typeof(InputNodeModel<T>).AssemblyQualifiedName;
+
+            InitAyanoVMB();
             Output = new ValueNodeOutputViewModel<T?>
             {
                 Name = "Value",
@@ -52,22 +45,6 @@ namespace FatNoder.ViewModels.Nodes
             this.ValueEditor.ValueChanged.Subscribe(newvalue =>
             {
                 _model.Value = newvalue;
-            });
-            this.UUIDChanged.Subscribe(newvalue =>
-            {
-                _model.UUID = newvalue;
-            });
-            this.NameChanged.Subscribe(newvalue =>
-            {
-                _model.Name = newvalue;
-            });
-            this.PositionChanged.Subscribe(newvalue =>
-            {
-                _model.Points = new XMLNodeXY()
-                {
-                    X = newvalue.X,
-                    Y = newvalue.Y
-                };
             });
             _model.InputStates = new XMLNodeInputStatement_VMLS
             {
@@ -127,8 +104,7 @@ namespace FatNoder.ViewModels.Nodes
         }
         public InputNodeViewModel()
         {
-            _model.TYPE = typeof(InputNodeViewModel<T>).AssemblyQualifiedName;
-            _model.MODELTYPE = typeof(InputNodeModel<T>).AssemblyQualifiedName;
+            InitAyanoVMB();
             Output = new ValueNodeOutputViewModel<T?> {
                 Name = "Value",
                 Editor = ValueEditor,
@@ -137,22 +113,6 @@ namespace FatNoder.ViewModels.Nodes
             this.ValueEditor.ValueChanged.Subscribe(newvalue =>
             {
                 _model.Value = newvalue;
-            });
-            this.UUIDChanged.Subscribe(newvalue =>
-            {
-                _model.UUID = newvalue;
-            });
-            this.NameChanged.Subscribe(newvalue =>
-            {
-                _model.Name = newvalue;
-            });
-            this.PositionChanged.Subscribe(newvalue =>
-            {
-                _model.Points = new XMLNodeXY()
-                {
-                    X = newvalue.X,
-                    Y = newvalue.Y
-                };
             });
             _model.InputStates = new XMLNodeInputStatement_VMLS
             {

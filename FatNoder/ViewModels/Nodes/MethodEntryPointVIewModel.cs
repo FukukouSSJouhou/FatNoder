@@ -32,25 +32,7 @@ namespace FatNoder.ViewModels.Nodes
         private MethodEntryPoint _model = new MethodEntryPoint();
         public MethodEntryPointVIewModel()
         {
-            model.TYPE = typeof(MethodEntryPointVIewModel).AssemblyQualifiedName;
-            _model.MODELTYPE = typeof(MethodEntryPoint).AssemblyQualifiedName;
-
-            this.UUIDChanged.Subscribe(newvalue =>
-            {
-                model.UUID = newvalue;
-            });
-            this.NameChanged.Subscribe(newvalue =>
-            {
-                model.Name = newvalue;
-            });
-            this.PositionChanged.Subscribe(newvalue =>
-            {
-                model.Points = new XMLNodeXY()
-                {
-                    X = newvalue.X,
-                    Y = newvalue.Y
-                };
-            });
+            InitAyanoVMB();
             Input = new CoderListInputViewModel<StatementCls>(typeof(StatementCls))
             {
                 Name = "Out",
@@ -82,25 +64,7 @@ namespace FatNoder.ViewModels.Nodes
         }
         public MethodEntryPointVIewModel(Guid UUID):base(UUID)
         {
-            model.TYPE = typeof(MethodEntryPointVIewModel).AssemblyQualifiedName;
-            _model.MODELTYPE = typeof(MethodEntryPoint).AssemblyQualifiedName;
-
-            this.UUIDChanged.Subscribe(newvalue =>
-            {
-                model.UUID = newvalue;
-            });
-            this.NameChanged.Subscribe(newvalue =>
-            {
-                model.Name = newvalue;
-            });
-            this.PositionChanged.Subscribe(newvalue =>
-            {
-                model.Points = new XMLNodeXY()
-                {
-                    X = newvalue.X,
-                    Y = newvalue.Y
-                };
-            });
+            InitAyanoVMB();
             Input = new CoderListInputViewModel<StatementCls>(typeof(StatementCls))
             {
                 Name = "Out",
