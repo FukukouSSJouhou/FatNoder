@@ -33,7 +33,13 @@ namespace AyanoNodeVM
         }
         public void Execute(GeneratorExecutionContext context)
         {
-            throw new NotImplementedException();
+            if (!(context.SyntaxContextReceiver is SyntaxReciever reciever))
+                return;
+            INamedTypeSymbol attributeSymbol = context.Compilation.GetTypeByMetadataName("AyanoNodeVM.ModelAyanoAttribute");
+            foreach(IGrouping<INamedTypeSymbol, IFieldSymbol> group in reciever.Fields.GroupBy<IFieldSymbol, INamedTypeSymbol>(f => f.ContainingType, SymbolEqualityComparer.Default))
+            {
+
+            }
         }
 
     }
