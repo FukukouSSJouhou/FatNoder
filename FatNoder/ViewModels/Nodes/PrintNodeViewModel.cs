@@ -12,10 +12,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AyanoNodeVM;
 namespace FatNoder.ViewModels.Nodes
 {
-    public class PrintNodeViewModel : StatementNodeViewModelBase, INodeViewModelBase
+    public partial class PrintNodeViewModel : StatementNodeViewModelBase, INodeViewModelBase
     {
         static PrintNodeViewModel()
         {
@@ -23,18 +23,11 @@ namespace FatNoder.ViewModels.Nodes
         }
         
         public ValueNodeInputViewModel<string?> PrintInput { get; }
+        [ModelAyano]
         private PrintNodeModel _model = new PrintNodeModel();
-        public XML_NodeModel model
-        {
-            get
-            {
-                return _model;
-            }
-        }
         public PrintNodeViewModel(Guid UUID):base(UUID)
         {
-            _model.TYPE = typeof(PrintNodeViewModel).AssemblyQualifiedName;
-            _model.MODELTYPE = typeof(PrintNodeModel).AssemblyQualifiedName;
+            InitAyanoVMB();
             PrintInput = new ValueNodeInputViewModel<string?>
             {
                 Name = "Printcontent",
@@ -46,22 +39,6 @@ namespace FatNoder.ViewModels.Nodes
                 _model.Value = newvalue;
             });
 
-            this.UUIDChanged.Subscribe(newvalue =>
-            {
-                _model.UUID = newvalue;
-            });
-            this.NameChanged.Subscribe(newvalue =>
-            {
-                _model.Name = newvalue;
-            });
-            this.PositionChanged.Subscribe(newvalue =>
-            {
-                _model.Points = new XMLNodeXY()
-                {
-                    X = newvalue.X,
-                    Y = newvalue.Y
-                };
-            });
             _model.InputStates = new XMLNodeInputStatement_VMLS();
             _model.InputStates.Add(new XMLNodeInputStatement()
             {
@@ -100,8 +77,7 @@ namespace FatNoder.ViewModels.Nodes
 
         public PrintNodeViewModel()
         {
-            _model.TYPE = typeof(PrintNodeViewModel).AssemblyQualifiedName;
-            _model.MODELTYPE = typeof(PrintNodeModel).AssemblyQualifiedName;
+            InitAyanoVMB();
             PrintInput = new ValueNodeInputViewModel<string?>
             {
                 Name = "Printcontent",
@@ -113,22 +89,6 @@ namespace FatNoder.ViewModels.Nodes
                 _model.Value = newvalue;
             });
 
-            this.UUIDChanged.Subscribe(newvalue =>
-            {
-                _model.UUID = newvalue;
-            });
-            this.NameChanged.Subscribe(newvalue =>
-            {
-                _model.Name = newvalue;
-            });
-            this.PositionChanged.Subscribe(newvalue =>
-            {
-                _model.Points = new XMLNodeXY()
-                {
-                    X = newvalue.X,
-                    Y = newvalue.Y
-                };
-            });
             _model.InputStates = new XMLNodeInputStatement_VMLS();
             _model.InputStates.Add(new XMLNodeInputStatement()
             {

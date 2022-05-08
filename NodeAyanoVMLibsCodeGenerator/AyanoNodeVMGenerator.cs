@@ -51,6 +51,9 @@ namespace AyanoNodeVM
             }
             string NSName = symbol.ContainingNamespace.ToDisplayString();
             StringBuilder src=new StringBuilder($@"
+using System.Reactive;
+using System.Reactive.Linq;
+using System;
 namespace {NSName}
 {{
     public partial class {symbol.Name}
@@ -71,35 +74,36 @@ namespace {NSName}
             ITypeSymbol fType = fSymbol.Type;
             if (fName == "model") return;
             src.Append($@"
-public {XMLModelSymbol} model {{
-    get {{
-        return this.{fName};
-    }}
-}}
+        public {XMLModelSymbol} model {{
+            get {{
+                return this.{fName};
+            }}
+        }}
 ");
             src.Append($@"
-private void InitAyanoVMB()
-{{
-    this.{fName}.TYPE = typeof({CLSName}).AssemblyQualifiedName;
-    this.{fName}.MODELTYPE = typeof({CLSName}).AssemblyQualifiedName;
-    this.UUIDChanged.Subscribe(newvalue =>
-    {{
-        {fName}.UUID = newvalue;
-    }});
-    this.NameChanged.Subscribe(newvalue =>
-    {{
-        {fName}.Name = newvalue;
-    }});
-    this.PositionChanged.Subscribe(newvalue =>
-    {{
-        {fName}.Points = new {XMLNodeXYName}()
+        private void InitAyanoVMB()
         {{
-            X = newvalue.X,
-            Y = newvalue.Y
-        }};
-    }});
+            this.{fName}.TYPE = typeof({CLSName}).AssemblyQualifiedName;
+            this.{fName}.MODELTYPE = typeof({CLSName}).AssemblyQualifiedName;
+            this.UUIDChanged.Subscribe(newvalue =>
+            {{
+                {fName}.UUID = newvalue;
+            }});
+            this.NameChanged.Subscribe(newvalue =>
+            {{
+                {fName}.Name = newvalue;
+            }});
+            this.PositionChanged.Subscribe(newvalue =>
+            {{
+                {fName}.Points = new {XMLNodeXYName}()
+                {{
+                    X = newvalue.X,
+                    Y = newvalue.Y
+                }};
+            }});
     
-}}");
+        }}
+");
         }
     }
     class SyntaxReciever : ISyntaxContextReceiver
