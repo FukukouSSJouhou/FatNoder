@@ -12,10 +12,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AyanoNodeVM;
 namespace FatNoder.ViewModels.Nodes
 {
-    public class PrintNodeViewModel : StatementNodeViewModelBase, INodeViewModelBase
+    public partial class PrintNodeViewModel : StatementNodeViewModelBase, INodeViewModelBase
     {
         static PrintNodeViewModel()
         {
@@ -23,18 +23,11 @@ namespace FatNoder.ViewModels.Nodes
         }
         
         public ValueNodeInputViewModel<string?> PrintInput { get; }
+        [ModelAyano]
         private PrintNodeModel _model = new PrintNodeModel();
-        public XML_NodeModel model
-        {
-            get
-            {
-                return _model;
-            }
-        }
         public PrintNodeViewModel(Guid UUID):base(UUID)
         {
-            model.TYPE = typeof(PrintNodeViewModel).AssemblyQualifiedName;
-            _model.MODELTYPE = typeof(PrintNodeModel).AssemblyQualifiedName;
+            InitAyanoVMB();
             PrintInput = new ValueNodeInputViewModel<string?>
             {
                 Name = "Printcontent",
@@ -46,31 +39,15 @@ namespace FatNoder.ViewModels.Nodes
                 _model.Value = newvalue;
             });
 
-            this.UUIDChanged.Subscribe(newvalue =>
-            {
-                model.UUID = newvalue;
-            });
-            this.NameChanged.Subscribe(newvalue =>
-            {
-                model.Name = newvalue;
-            });
-            this.PositionChanged.Subscribe(newvalue =>
-            {
-                model.Points = new XMLNodeXY()
-                {
-                    X = newvalue.X,
-                    Y = newvalue.Y
-                };
-            });
-            model.InputStates = new XMLNodeInputStatement_VMLS();
-            model.InputStates.Add(new XMLNodeInputStatement()
+            _model.InputStates = new XMLNodeInputStatement_VMLS();
+            _model.InputStates.Add(new XMLNodeInputStatement()
             {
                 States = new XMLNodeInputStatementLS(),
                 Name = InputFlow.Name
             });
             this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
-                foreach (XMLNodeInputStatement xs in model.InputStates.Where(d =>
+                foreach (XMLNodeInputStatement xs in _model.InputStates.Where(d =>
                 {
                     return d.Name == InputFlow.Name;
                 }))
@@ -100,8 +77,7 @@ namespace FatNoder.ViewModels.Nodes
 
         public PrintNodeViewModel()
         {
-            model.TYPE = typeof(PrintNodeViewModel).AssemblyQualifiedName;
-            _model.MODELTYPE = typeof(PrintNodeModel).AssemblyQualifiedName;
+            InitAyanoVMB();
             PrintInput = new ValueNodeInputViewModel<string?>
             {
                 Name = "Printcontent",
@@ -113,31 +89,15 @@ namespace FatNoder.ViewModels.Nodes
                 _model.Value = newvalue;
             });
 
-            this.UUIDChanged.Subscribe(newvalue =>
-            {
-                model.UUID = newvalue;
-            });
-            this.NameChanged.Subscribe(newvalue =>
-            {
-                model.Name = newvalue;
-            });
-            this.PositionChanged.Subscribe(newvalue =>
-            {
-                model.Points = new XMLNodeXY()
-                {
-                    X = newvalue.X,
-                    Y = newvalue.Y
-                };
-            });
-            model.InputStates = new XMLNodeInputStatement_VMLS();
-            model.InputStates.Add(new XMLNodeInputStatement()
+            _model.InputStates = new XMLNodeInputStatement_VMLS();
+            _model.InputStates.Add(new XMLNodeInputStatement()
             {
                 States = new XMLNodeInputStatementLS(),
                 Name = InputFlow.Name
             });
             this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
-                foreach (XMLNodeInputStatement xs in model.InputStates.Where(d =>
+                foreach (XMLNodeInputStatement xs in _model.InputStates.Where(d =>
                 {
                     return d.Name == InputFlow.Name;
                 }))
