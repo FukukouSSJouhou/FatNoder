@@ -16,9 +16,10 @@ using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using AyanoNodeVM;
 namespace FatNoder.ViewModels.Nodes
 {
-    public class MethodEntryPointVIewModel : NodeVMBasekun, INodeViewModelBase
+    public partial class MethodEntryPointVIewModel : NodeVMBasekun, INodeViewModelBase
     {
 
         static MethodEntryPointVIewModel()
@@ -27,15 +28,8 @@ namespace FatNoder.ViewModels.Nodes
         }
 
         public ValueListNodeInputViewModel<StatementCls> Input { get; }
+        [ModelAyano]
         private MethodEntryPoint _model = new MethodEntryPoint();
-
-        public XML_NodeModel model
-        {
-            get
-            {
-                return _model;
-            }
-        }
         public MethodEntryPointVIewModel()
         {
             model.TYPE = typeof(MethodEntryPointVIewModel).AssemblyQualifiedName;

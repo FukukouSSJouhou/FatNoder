@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Debug Generators": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\NodeAyanoVMLibsCodeGenerator.Test\\NodeAyanoVMLibsCodeGenerator.Test.csproj"
+    },
+    "Debug2": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\FatNoder\\FatNoder.csproj"
+    }
+  }
+}

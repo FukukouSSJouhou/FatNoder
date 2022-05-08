@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IconLibrary", "IconLibrary\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoTest", "NodeAyanoTest\NodeAyanoTest.csproj", "{17941C51-55F6-40B5-A72C-DA60BB718628}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodeAyanoVMLibsCodeGenerator", "NodeAyanoVMLibsCodeGenerator\NodeAyanoVMLibsCodeGenerator.csproj", "{4E17C562-44A2-4143-96FC-6ACB9D2916AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoVMLibsCodeGenerator", "NodeAyanoVMLibsCodeGenerator\NodeAyanoVMLibsCodeGenerator.csproj", "{4E17C562-44A2-4143-96FC-6ACB9D2916AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodeAyanoVMLibsCodeGenerator.Test", "NodeAyanoVMLibsCodeGenerator.Test\NodeAyanoVMLibsCodeGenerator.Test.csproj", "{2FEC6E9E-56E0-4B13-A724-728CD8635366}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{4E17C562-44A2-4143-96FC-6ACB9D2916AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E17C562-44A2-4143-96FC-6ACB9D2916AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E17C562-44A2-4143-96FC-6ACB9D2916AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FEC6E9E-56E0-4B13-A724-728CD8635366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FEC6E9E-56E0-4B13-A724-728CD8635366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FEC6E9E-56E0-4B13-A724-728CD8635366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FEC6E9E-56E0-4B13-A724-728CD8635366}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

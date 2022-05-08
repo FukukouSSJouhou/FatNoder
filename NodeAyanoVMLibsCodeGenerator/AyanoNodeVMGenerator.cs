@@ -50,20 +50,32 @@ namespace AyanoNodeVM
                 return null;
             }
             string NSName = symbol.ContainingNamespace.ToDisplayString();
-            StringBuilder src=new StringBuilder($@"
+            string CLSName = symbol.Name;
+            StringBuilder src = new StringBuilder("");
+            if (symbol.IsGenericType)
+            {
+                CLSName += $"<{symbol.TypeParameters[0].ToDisplayString()}";
+                for (int i = 1; i < symbol.TypeParameters.Length; i++)
+                {
+
+                    CLSName+= $",{symbol.TypeParameters[i].ToDisplayString()}";
+                }
+                CLSName += ">";
+            }
+                src.Append($@"
 using System.Reactive;
 using System.Reactive.Linq;
 using System;
 namespace {NSName}
 {{
-    public partial class {symbol.Name}
+    public partial class {CLSName}
     {{
 ");
             string XMLSymkun=XMLModelSymbol.ToDisplayString();
             string XMLNodeXYSymbolkun = XMLNodeXYSymbol.ToDisplayString();
             foreach (IFieldSymbol symf in fields)
             {
-                ProcField(src, symf, XMLSymkun, symbol.Name, XMLNodeXYSymbolkun);
+                ProcField(src, symf, XMLSymkun, CLSName, XMLNodeXYSymbolkun);
             }
             src.Append("} }");
             return src.ToString();
@@ -101,7 +113,7 @@ namespace {NSName}
                     Y = newvalue.Y
                 }};
             }});
-    
+   
         }}
 ");
         }
