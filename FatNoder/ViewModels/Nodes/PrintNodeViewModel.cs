@@ -31,7 +31,6 @@ namespace FatNoder.ViewModels.Nodes
             PrintInput = new ValueNodeInputViewModel<string?>
             {
                 Name = "Printcontent",
-                Editor = new HannyouValueEditorViewModel<string?>(),
                 MaxConnections = 1
             };
             PrintInput.ValueChanged.Subscribe(newvalue =>
@@ -59,19 +58,6 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
-            this.PrintInput.Connections.CountChanged.Subscribe(newvalue =>
-            {
-                if (newvalue > 0)
-                {
-                    _model.Isconnected = true;
-                }
-                else
-                {
-
-                    _model.Isconnected = false;
-                }
-            }
-            );
             this.Inputs.Add(PrintInput);
         }
 
@@ -81,7 +67,6 @@ namespace FatNoder.ViewModels.Nodes
             PrintInput = new ValueNodeInputViewModel<string?>
             {
                 Name = "Printcontent",
-                Editor = new HannyouValueEditorViewModel<string?>(),
                 MaxConnections = 1
             };
             PrintInput.ValueChanged.Subscribe(newvalue =>
@@ -109,19 +94,6 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
-            this.PrintInput.Connections.CountChanged.Subscribe(newvalue =>
-            {
-                if (newvalue > 0)
-                {
-                    _model.Isconnected = true;
-                }
-                else
-                {
-
-                    _model.Isconnected = false;
-                }
-            }
-            );
             this.Inputs.Add(PrintInput);
         }
 

@@ -27,8 +27,8 @@ namespace NodeAyano
         /// <param name="NodeEnum">Node</param>
         /// <param name="clsName">clsName</param>
         /// <param name="nsName">Namespace Name</param>
-        /// <returns>C# str</returns>
-        public static string TransCompile(NodeModelEnumerator NodeEnum, string clsName = "testMainCls", string nsName = "TEST123")
+        /// <returns>C# SyntaxNode</returns>
+        public static CompilationUnitSyntax TransCompileNode(NodeModelEnumerator NodeEnum, string clsName = "testMainCls", string nsName = "TEST123")
         {
             var compUnit = SyntaxFactory.CompilationUnit();
             var CLSList = new List<MemberDeclarationSyntax>();
@@ -118,7 +118,18 @@ namespace NodeAyano
             newnode = newnode.AddUsings(USList.ToArray());
             newnode = newnode.AddMembers(NSList.ToArray());
 
-            return (newnode.NormalizeWhitespace().ToString());
+            return newnode;
+        }
+        /// <summary>
+        /// TransCompile
+        /// </summary>
+        /// <param name="NodeEnum">Node</param>
+        /// <param name="clsName">clsName</param>
+        /// <param name="nsName">Namespace Name</param>
+        /// <returns>C# String</returns>
+        public static string TransCompile(NodeModelEnumerator NodeEnum, string clsName = "testMainCls", string nsName = "TEST123")
+        {
+            return TransCompileNode(NodeEnum, clsName, nsName).NormalizeWhitespace().ToString();
         }
         private static ClassDeclarationSyntax CreateClass(string name)
         {
@@ -208,6 +219,69 @@ namespace NodeAyano
                 .WithLanguageVersion(LanguageVersion.CSharp10);
 
             var syntaxTree = CSharpSyntaxTree.ParseText(
+                code,
+                parseOptions
+            );
+
+            var compilationOptions = new CSharpCompilationOptions(
+                OutputKind.ConsoleApplication,
+                mainTypeName: $"{nsName}.{clsName}"
+            );
+
+            var compilation = CSharpCompilation.Create(
+                clsName,
+                new[] { syntaxTree },
+                references,
+                compilationOptions
+            );
+
+            using (var stream = new MemoryStream())
+            {
+                var emitResult = compilation.Emit(stream);
+
+                foreach (var diagnostic in emitResult.Diagnostics)
+                {
+                    var pos = diagnostic.Location.GetLineSpan();
+                    var location = "(" + pos.Path + "@Line" + (pos.StartLinePosition.Line + 1) + ":" + (pos.StartLinePosition.Character + 1) + ")";
+                    Console.WriteLine($"[{diagnostic.Severity}, {location}] {diagnostic.Id}, {diagnostic.GetMessage()}");
+                }
+
+                if (!emitResult.Success)
+                {
+                    throw new ArgumentException("Compile error occured.");
+                }
+                stream.Seek(0, SeekOrigin.Begin);
+                var ASC = new AyanoAssemblyLoadContext();
+                var asm = ASC.LoadFromStream(stream);
+                wref = new WeakReference(ASC, trackResurrection: true);
+                asm.EntryPoint.Invoke(null, null);
+                ASC.Unload();
+
+
+            }
+
+        }
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static void CompileAndRunExec(CompilationUnitSyntax code, out WeakReference wref, string clsName = "testMainCls", string nsName = "TEST123")
+        {
+
+            var assemblyDirectoryPath = Path.GetDirectoryName(typeof(object).Assembly.Location);
+            var references = new MetadataReference[]
+            {
+            MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/mscorlib.dll"),
+        MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/System.Runtime.dll"),
+        MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/System.Console.dll"),
+        MetadataReference.CreateFromFile(
+            typeof(object).Assembly.Location)
+            };
+
+            var parseOptions = CSharpParseOptions.Default
+                .WithLanguageVersion(LanguageVersion.CSharp10);
+
+            var syntaxTree = CSharpSyntaxTree.Create(
                 code,
                 parseOptions
             );

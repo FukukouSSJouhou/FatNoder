@@ -22,35 +22,10 @@ namespace NodeAyano.Model.Nodes
         {
             get; set;
         }
-        [DataMember(Name = "isconnected", Order = 9)]
-        public bool Isconnected
-        {
-            get; set;
-        }
-
         /// <inheritdoc/>
         public override StatementSyntax[] CompileSyntax()
         {
             List<StatementSyntax> returnstatements = new();
-
-            if (!Isconnected)
-            {
-                dynamic valuekundynamic = Value;
-                PredefinedTypeSyntax predeftype = SyntaxFactory.PredefinedType(SyntaxFactory.ParseToken("string"));
-                List<VariableDeclaratorSyntax> vardecatorsynlist = new();
-                VariableDeclarationSyntax valdeckun = SyntaxFactory.VariableDeclaration(predeftype);
-                {
-                    VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator("id_" + UUID.ToString().Replace("-", "_") + "_Printcontent");
-                    decr = decr.WithInitializer(
-                        SyntaxFactory.EqualsValueClause(SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(
-                            valuekundynamic)))
-                        );
-                    vardecatorsynlist.Add(decr);
-                }
-                valdeckun = valdeckun.AddVariables(vardecatorsynlist.ToArray());
-                LocalDeclarationStatementSyntax localdec = SyntaxFactory.LocalDeclarationStatement(valdeckun);
-                returnstatements.Add(localdec);
-            }
 
             returnstatements.Add(
                 SyntaxFactory.ExpressionStatement(

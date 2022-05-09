@@ -45,7 +45,6 @@ namespace FatNoder.ViewModels.Nodes
             ReturnInput = new ValueNodeInputViewModel<T?>
             {
                 Name = "ValueRet",
-                Editor = new HannyouValueEditorViewModel<T?>(),
                 MaxConnections = 1
             };
             ReturnInput.ValueChanged.Subscribe(newvalue =>
@@ -59,19 +58,6 @@ namespace FatNoder.ViewModels.Nodes
                 Value = this.WhenAnyValue(vm => vm.StatementIfce),
                 PortPosition = PortPosition.Left
             };
-            this.ReturnInput.Connections.CountChanged.Subscribe(newvalue =>
-            {
-                if (newvalue > 0)
-                {
-                    _model.Isconnected = true;
-                }
-                else
-                {
-
-                    _model.Isconnected = false;
-                }
-            }
-            );
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement());
             this.Inputs.Add(ReturnInput);
@@ -85,7 +71,6 @@ namespace FatNoder.ViewModels.Nodes
             ReturnInput = new ValueNodeInputViewModel<T?>
             {
                 Name = "ValueRet",
-                Editor=new HannyouValueEditorViewModel<T?>(),
                 MaxConnections=1
             };
             ReturnInput.ValueChanged.Subscribe(newvalue =>
@@ -99,19 +84,6 @@ namespace FatNoder.ViewModels.Nodes
                 Value = this.WhenAnyValue(vm =>vm.StatementIfce),
                 PortPosition=PortPosition.Left
             };
-            this.ReturnInput.Connections.CountChanged.Subscribe(newvalue =>
-            {
-                if(newvalue > 0)
-                {
-                    _model.Isconnected = true;
-                }
-                else
-                {
-
-                    _model.Isconnected = false;
-                }
-            }
-            );
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement());
             this.Inputs.Add(ReturnInput);
