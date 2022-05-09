@@ -45,7 +45,6 @@ namespace FatNoder.ViewModels.Nodes
             ReturnInput = new ValueNodeInputViewModel<T?>
             {
                 Name = "ValueRet",
-                Editor = new HannyouValueEditorViewModel<T?>(),
                 MaxConnections = 1
             };
             ReturnInput.ValueChanged.Subscribe(newvalue =>
@@ -72,7 +71,6 @@ namespace FatNoder.ViewModels.Nodes
             ReturnInput = new ValueNodeInputViewModel<T?>
             {
                 Name = "ValueRet",
-                Editor=new HannyouValueEditorViewModel<T?>(),
                 MaxConnections=1
             };
             ReturnInput.ValueChanged.Subscribe(newvalue =>
