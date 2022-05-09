@@ -96,6 +96,7 @@ namespace FatNoder.ViewModels.Nodes
             });
             this.Inputs.Add(PrintInput);
         }
+        /// <inheritdoc/>
 
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
