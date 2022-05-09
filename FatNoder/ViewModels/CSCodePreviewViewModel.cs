@@ -1,4 +1,6 @@
-﻿using ReactiveUI;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,17 +18,17 @@ namespace FatNoder.ViewModels
         /// <summary>
         /// preview code
         /// </summary>
-        public string Code
+        public CompilationUnitSyntax Code
         {
             get => _code;
             set => this.RaiseAndSetIfChanged(ref _code, value);
         }
-        private string _code;
+        private CompilationUnitSyntax _code;
         private readonly ObservableAsPropertyHelper<string> _outCode;
         /// <summary>
         /// Out Code
         /// </summary>
-        public string OutCode => _outCode.Value;
+        public string StringCode => _outCode.Value;
         /// <summary>
         /// Constructor!
         /// </summary>
@@ -35,8 +37,8 @@ namespace FatNoder.ViewModels
             this.WhenAnyValue(vm => vm.Code).Where(c => c != null)
                 .Select(c =>
                 {
-                    return c;
-                }).ToProperty(this, vm => vm.OutCode, out _outCode);
+                    return c.NormalizeWhitespace().ToString();
+                }).ToProperty(this, vm => vm.StringCode, out _outCode);
         }
     }
 }
