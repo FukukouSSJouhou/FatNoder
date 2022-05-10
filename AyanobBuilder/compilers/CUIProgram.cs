@@ -135,6 +135,7 @@ namespace AyanoBuilder.compilers
                 command.HelpOption("-h|--help");
 
                 var xmlArgument = command.Argument("xml", "XML Path");
+                var nocolorOption = command.Option("--nocolor", "no color syntax option", CommandOptionType.NoValue);
                 command.OnExecute(() =>
                 {
                     if (xmlArgument.Value == null)
@@ -142,6 +143,7 @@ namespace AyanoBuilder.compilers
                         command.ShowHelp();
                         return 1;
                     }
+                    bool ISColorEnabled = !nocolorOption.HasValue();
                     ConsoleWrapper.GreenPrint($"xml : {xmlArgument.Value}");
                     if (!File.Exists(xmlArgument.Value))
                     {
@@ -198,9 +200,17 @@ namespace AyanoBuilder.compilers
                             var ModelEnumerator = new NodeModelEnumerator(rootnode, roots);
                             ;
 
-                            var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
-                            Console.Write(compilerstr);
-                            Console.Write("\n");
+                            if (ISColorEnabled)
+                            {
+
+                                var compilernde = NodeAyanoCompiler.TransCompileNode(ModelEnumerator);
+                            }
+                            else
+                            {
+                                var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
+                                Console.Write(compilerstr);
+                                Console.Write("\n");
+                            }
                         }
                         ConsoleWrapper.GreenPrint("Success!");
                     }
