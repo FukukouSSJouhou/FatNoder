@@ -1,7 +1,9 @@
 ﻿using AyanoBuilder.CUItools;
 using FatNoder.Serializer.Node.Xml;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.Classification;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Text;
 using Microsoft.Extensions.CommandLineUtils;
 using NodeAyano;
 using NodeAyano.Model.Enumerator;
@@ -121,6 +123,95 @@ namespace AyanoBuilder.compilers
                             using(var stream=new StreamWriter(OutArgument.Value))
                             {
                                 stream.Write(compilerstr);
+                            }
+                        }
+                        ConsoleWrapper.GreenPrint("Success!");
+                    }
+                    #endregion
+                    return 0;
+                });
+            });
+            app.Command("transcompile_stdout", command =>
+            {
+                command.Description = "compile code and print";
+                command.HelpOption("-h|--help");
+
+                var xmlArgument = command.Argument("xml", "XML Path");
+                var nocolorOption = command.Option("--nocolor", "no color syntax option", CommandOptionType.NoValue);
+                command.OnExecute(() =>
+                {
+                    if (xmlArgument.Value == null)
+                    {
+                        command.ShowHelp();
+                        return 1;
+                    }
+                    bool ISColorEnabled = !nocolorOption.HasValue();
+                    ConsoleWrapper.GreenPrint($"xml : {xmlArgument.Value}");
+                    if (!File.Exists(xmlArgument.Value))
+                    {
+                        ConsoleWrapper.RedPrint($"Error!\n {xmlArgument.Value} is not found! ");
+                        return 2;
+                    }
+                    #region XML Load and Struct
+                    List<Type> knownlists = new();
+                    using (var inputstream = new StreamReader(xmlArgument.Value))
+                    {
+                        ConsoleWrapper.BluePrint("[Phase 1] Loading XML File...");
+                        {
+                            XmlDocument xmlDoc = new XmlDocument();
+                            xmlDoc.Load(inputstream);
+                            XmlNode root = xmlDoc.DocumentElement;
+                            foreach (XmlNode node in root.ChildNodes)
+                            {
+
+                                foreach (XmlNode node2 in node.ChildNodes)
+                                {
+                                    if (node2.Name == "Node")
+                                    {
+                                        foreach (XmlNode node3 in node2.ChildNodes)
+                                        {
+                                            if (node3.Name == "modeltype")
+                                            {
+                                                //Console.WriteLine(node3.InnerText);
+                                                knownlists.Add(Type.GetType(node3.InnerText));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    using (var inputstream = new StreamReader(xmlArgument.Value))
+                    {
+                        ConsoleWrapper.BluePrint("[Phase 2] Loading XML File...");
+                        DataContractSerializer serializer =
+                            new(typeof(XmlRootN), knownlists);
+                        using (XmlReader xr = XmlReader.Create(inputstream))
+                        {
+                            XmlRootN obj = (XmlRootN)serializer.ReadObject(xr);
+                            var roots = obj.nodes;
+                            XML_NodeModel rootnode = null;
+                            foreach (var obkujn in obj.nodes)
+                            {
+                                if (obkujn is IMethodPointBase)
+                                {
+                                    rootnode = obkujn;
+                                }
+                            }
+
+                            var ModelEnumerator = new NodeModelEnumerator(rootnode, roots);
+                            ;
+
+                            if (ISColorEnabled)
+                            {
+
+                                var compilernde = NodeAyanoCompiler.TransCompileNode(ModelEnumerator);
+                            }
+                            else
+                            {
+                                var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
+                                Console.Write(compilerstr);
+                                Console.Write("\n");
                             }
                         }
                         ConsoleWrapper.GreenPrint("Success!");

@@ -38,8 +38,7 @@ namespace NodeAyanoTest
             var statements = new List<StatementSyntax>();
             var returnM = new ReturnNodeModel<int>
             {
-                Value = 1,
-                Isconnected=true
+                Value = 1
             };
             statements.AddRange(returnM.CompileSyntax());
             methodkun = methodkun.AddBodyStatements(statements.ToArray());
@@ -69,8 +68,7 @@ namespace NodeAyanoTest
             var statements = new List<StatementSyntax>();
             var printM = new PrintNodeModel
             {
-                Value = "",
-                Isconnected = true
+                Value = ""
             };
             statements.AddRange(printM.CompileSyntax());
             methodkun = methodkun.AddBodyStatements(statements.ToArray());
