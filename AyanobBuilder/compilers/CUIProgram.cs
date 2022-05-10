@@ -1,7 +1,9 @@
 ﻿using AyanoBuilder.CUItools;
 using FatNoder.Serializer.Node.Xml;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.Classification;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Text;
 using Microsoft.Extensions.CommandLineUtils;
 using NodeAyano;
 using NodeAyano.Model.Enumerator;
@@ -204,6 +206,7 @@ namespace AyanoBuilder.compilers
                             {
 
                                 var compilernde = NodeAyanoCompiler.TransCompileNode(ModelEnumerator);
+                                SourceText text = compilernde.GetText();
                             }
                             else
                             {
