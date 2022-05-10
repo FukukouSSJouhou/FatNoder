@@ -207,6 +207,7 @@ namespace AyanoBuilder.compilers
 
                                 var compilernde = NodeAyanoCompiler.TransCompileNode(ModelEnumerator);
                                 SourceText text = compilernde.GetText();
+                                IEnumerable<ClassifiedSpan> classifiedSpans = compilernde.GetTrailingTrivia().Span;
                             }
                             else
                             {
