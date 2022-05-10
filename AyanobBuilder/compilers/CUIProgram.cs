@@ -129,6 +129,85 @@ namespace AyanoBuilder.compilers
                     return 0;
                 });
             });
+            app.Command("transcompile_stdout", command =>
+            {
+                command.Description = "compile code and print";
+                command.HelpOption("-h|--help");
+
+                var xmlArgument = command.Argument("xml", "XML Path");
+                command.OnExecute(() =>
+                {
+                    if (xmlArgument.Value == null)
+                    {
+                        command.ShowHelp();
+                        return 1;
+                    }
+                    ConsoleWrapper.GreenPrint($"xml : {xmlArgument.Value}");
+                    if (!File.Exists(xmlArgument.Value))
+                    {
+                        ConsoleWrapper.RedPrint($"Error!\n {xmlArgument.Value} is not found! ");
+                        return 2;
+                    }
+                    #region XML Load and Struct
+                    List<Type> knownlists = new();
+                    using (var inputstream = new StreamReader(xmlArgument.Value))
+                    {
+                        ConsoleWrapper.BluePrint("[Phase 1] Loading XML File...");
+                        {
+                            XmlDocument xmlDoc = new XmlDocument();
+                            xmlDoc.Load(inputstream);
+                            XmlNode root = xmlDoc.DocumentElement;
+                            foreach (XmlNode node in root.ChildNodes)
+                            {
+
+                                foreach (XmlNode node2 in node.ChildNodes)
+                                {
+                                    if (node2.Name == "Node")
+                                    {
+                                        foreach (XmlNode node3 in node2.ChildNodes)
+                                        {
+                                            if (node3.Name == "modeltype")
+                                            {
+                                                //Console.WriteLine(node3.InnerText);
+                                                knownlists.Add(Type.GetType(node3.InnerText));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    using (var inputstream = new StreamReader(xmlArgument.Value))
+                    {
+                        ConsoleWrapper.BluePrint("[Phase 2] Loading XML File...");
+                        DataContractSerializer serializer =
+                            new(typeof(XmlRootN), knownlists);
+                        using (XmlReader xr = XmlReader.Create(inputstream))
+                        {
+                            XmlRootN obj = (XmlRootN)serializer.ReadObject(xr);
+                            var roots = obj.nodes;
+                            XML_NodeModel rootnode = null;
+                            foreach (var obkujn in obj.nodes)
+                            {
+                                if (obkujn is IMethodPointBase)
+                                {
+                                    rootnode = obkujn;
+                                }
+                            }
+
+                            var ModelEnumerator = new NodeModelEnumerator(rootnode, roots);
+                            ;
+
+                            var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
+                            Console.Write(compilerstr);
+                            Console.Write("\n");
+                        }
+                        ConsoleWrapper.GreenPrint("Success!");
+                    }
+                    #endregion
+                    return 0;
+                });
+            });
             app.Command("testros", command =>
             {
                 command.Description = "test roslyn";
