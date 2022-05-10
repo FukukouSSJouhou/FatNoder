@@ -9,6 +9,7 @@ using NodeAyano.Model.Enumerator;
 using NodeAyano.Model.Nodes;
 using NodeAyanoVMLibs.ViewModels.Nodes;
 using NodeNetworkJH.Toolkit.BreadcrumbBar;
+using NodeNetworkJH.Toolkit.Layout.ForceDirected;
 using NodeNetworkJH.Toolkit.NodeList;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
@@ -326,6 +327,11 @@ namespace FatNoder.ViewModels
                 {
                     Console.WriteLine("\u001b[38;2;255;0;0mUnload Failed!\u001b[0m");
                 }
+            }); 
+            ForceDirectedLayouter layouter = new ForceDirectedLayouter();
+            AutoLayout = ReactiveCommand.Create(() =>
+            {
+                layouter.Layout(new Configuration { Network = Network }, 10000);
             });
             Activator = new ViewModelActivator();
             this.WhenActivated(d =>
