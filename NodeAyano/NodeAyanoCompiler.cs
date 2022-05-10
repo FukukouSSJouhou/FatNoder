@@ -198,8 +198,37 @@ namespace NodeAyano
             }
 
         }
+
+        /// <summary>
+        ///  Compile and Exec
+        /// </summary>
+        /// <param name="code">code</param>
+        /// <param name="wref">WREF</param>
+        /// <param name="clsName">CLS Name</param>
+        /// <param name="nsName">nsName</param>
         [MethodImpl(MethodImplOptions.NoInlining)]
+
         public static void CompileAndRunExec(string code, out WeakReference wref, string clsName = "testMainCls", string nsName = "TEST123")
+        {
+            CompileAndRunExec(code, d =>
+            {
+                var pos = d.Location.GetLineSpan();
+                var location = "(" + pos.Path + "@Line" + (pos.StartLinePosition.Line + 1) + ":" + (pos.StartLinePosition.Character + 1) + ")";
+                Console.WriteLine($"[{d.Severity}, {location}] {d.Id}, {d.GetMessage()}");
+
+            }, out wref, clsName, nsName);
+        }
+        /// <summary>
+        /// Compile and Exec
+        /// </summary>
+        /// <param name="code">Code</param>
+        /// <param name="diagOut">Diag out</param>
+        /// <param name="wref">WREF</param>
+        /// <param name="clsName">CLS Name</param>
+        /// <param name="nsName">Namespace Name</param>
+        /// <exception cref="ArgumentException"></exception>
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        public static void CompileAndRunExec(string code, Action<Diagnostic> diagOut, out WeakReference wref, string clsName = "testMainCls", string nsName = "TEST123")
         {
 
             var assemblyDirectoryPath = Path.GetDirectoryName(typeof(object).Assembly.Location);
@@ -241,9 +270,12 @@ namespace NodeAyano
 
                 foreach (var diagnostic in emitResult.Diagnostics)
                 {
+                    /* example
                     var pos = diagnostic.Location.GetLineSpan();
                     var location = "(" + pos.Path + "@Line" + (pos.StartLinePosition.Line + 1) + ":" + (pos.StartLinePosition.Character + 1) + ")";
                     Console.WriteLine($"[{diagnostic.Severity}, {location}] {diagnostic.Id}, {diagnostic.GetMessage()}");
+                    */
+                    diagOut(diagnostic);
                 }
 
                 if (!emitResult.Success)
