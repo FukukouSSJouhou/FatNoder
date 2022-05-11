@@ -49,6 +49,7 @@ namespace AyanoBuilder.compilers
                 command.Description = "compile code";
                 command.HelpOption("-h|--help");
 
+                var analyzeOption = command.Option("--analyze", "Analyze", CommandOptionType.NoValue);
                 var xmlArgument = command.Argument("xml", "XML Path");
                 var OutArgument = command.Argument("out", "output cs path");
                 command.OnExecute(() =>
@@ -124,6 +125,29 @@ namespace AyanoBuilder.compilers
                             {
                                 stream.Write(compilerstr);
                             }
+                            if (analyzeOption.HasValue())
+                            {
+                                NodeAyanoCompiler.Analyzekun(compilerstr, d =>
+                                {
+                                    var pos = d.Location.GetLineSpan();
+                                    var location = "(" + pos.Path + "@Line" + (pos.StartLinePosition.Line + 1) + ":" + (pos.StartLinePosition.Character + 1) + ")";
+                                    switch (d.Severity)
+                                    {
+                                        case DiagnosticSeverity.Warning:
+                                            Console.WriteLine($"\u001b[38;2;255;255;0m[{d.Severity}, {location}] {d.Id}, {d.GetMessage()}\u001b[0m");
+                                            break;
+                                        case DiagnosticSeverity.Error:
+                                            Console.WriteLine($"\u001b[38;2;255;0;0m[{d.Severity}, {location}] {d.Id}, {d.GetMessage()}\u001b[0m");
+                                            break;
+                                        case DiagnosticSeverity.Hidden:
+                                            Console.WriteLine($"\u001b[38;2;255;0;255m[{d.Severity}, {location}] {d.Id}, {d.GetMessage()}\u001b[0m");
+                                            break;
+                                        default:
+                                            Console.WriteLine($"[{d.Severity}, {location}] {d.Id}, {d.GetMessage()}");
+                                            break;
+                                    }
+                                });
+                            }
                         }
                         ConsoleWrapper.GreenPrint("Success!");
                     }
@@ -146,6 +170,7 @@ namespace AyanoBuilder.compilers
                         return 1;
                     }
                     bool ISColorEnabled = !nocolorOption.HasValue();
+                    ISColorEnabled = false;
                     ConsoleWrapper.GreenPrint($"xml : {xmlArgument.Value}");
                     if (!File.Exists(xmlArgument.Value))
                     {

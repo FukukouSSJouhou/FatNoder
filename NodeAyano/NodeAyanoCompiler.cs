@@ -117,7 +117,6 @@ namespace NodeAyano
             NSList.Add(nsNode);
             newnode = newnode.AddUsings(USList.ToArray());
             newnode = newnode.AddMembers(NSList.ToArray());
-
             return newnode;
         }
         /// <summary>
@@ -195,6 +194,29 @@ namespace NodeAyano
 
                 stream.Seek(0, SeekOrigin.Begin);
 
+            }
+
+        }
+        /// <summary>
+        /// Code Analyze!
+        /// </summary>
+        /// <param name="code">code</param>
+        /// <param name="diag">func</param>
+        /// <param name="clsName">clsname</param>
+        /// <param name="nsName">namespace name</param>
+        public static void Analyzekun(string code, Action<Diagnostic> diag, string clsName = "testMainCls", string nsName = "TEST123")
+        {
+
+            var parseOptions = CSharpParseOptions.Default
+                .WithLanguageVersion(LanguageVersion.CSharp10);
+
+            var syntaxTree = CSharpSyntaxTree.ParseText(
+                code,
+                parseOptions
+            );
+            foreach(var diagkun in syntaxTree.GetDiagnostics())
+            {
+                diag(diagkun);
             }
 
         }
