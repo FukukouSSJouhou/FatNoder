@@ -127,7 +127,6 @@ namespace AyanoBuilder.compilers
                             }
                             if (analyzeOption.HasValue())
                             {
-                                Console.WriteLine(compilerstr);
                                 NodeAyanoCompiler.AnalyzeAndTestCompilekun(compilerstr, d =>
                                 {
                                     var pos = d.Location.GetLineSpan();
