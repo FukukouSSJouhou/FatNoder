@@ -127,7 +127,8 @@ namespace AyanoBuilder.compilers
                             }
                             if (analyzeOption.HasValue())
                             {
-                                NodeAyanoCompiler.Analyzekun(compilerstr, d =>
+                                Console.WriteLine(compilerstr);
+                                NodeAyanoCompiler.AnalyzeAndTestCompilekun(compilerstr, d =>
                                 {
                                     var pos = d.Location.GetLineSpan();
                                     var location = "(" + pos.Path + "@Line" + (pos.StartLinePosition.Line + 1) + ":" + (pos.StartLinePosition.Character + 1) + ")";
@@ -149,7 +150,6 @@ namespace AyanoBuilder.compilers
                                 });
                             }
                         }
-                        ConsoleWrapper.GreenPrint("Success!");
                     }
                     #endregion
                     return 0;

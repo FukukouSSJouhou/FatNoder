@@ -214,9 +214,67 @@ namespace NodeAyano
                 code,
                 parseOptions
             );
-            foreach(var diagkun in syntaxTree.GetDiagnostics())
+            foreach (var diagkun in syntaxTree.GetDiagnostics())
             {
                 diag(diagkun);
+            }
+
+        }
+        /// <summary>
+        /// Code Analyze!
+        /// </summary>
+        /// <param name="code">code</param>
+        /// <param name="diag">func</param>
+        /// <param name="clsName">clsname</param>
+        /// <param name="nsName">namespace name</param>
+        public static void AnalyzeAndTestCompilekun(string code, Action<Diagnostic> diag, string clsName = "testMainCls", string nsName = "TEST123")
+        {
+
+            var parseOptions = CSharpParseOptions.Default
+                .WithLanguageVersion(LanguageVersion.CSharp10);
+
+            var syntaxTree = CSharpSyntaxTree.ParseText(
+                code,
+                parseOptions
+            );
+            foreach (var diagkun in syntaxTree.GetDiagnostics())
+            {
+                diag(diagkun);
+            }
+            var assemblyDirectoryPath = Path.GetDirectoryName(typeof(object).Assembly.Location);
+            var references = new MetadataReference[]
+            {
+            MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/mscorlib.dll"),
+        MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/System.Runtime.dll"),
+        MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/System.Console.dll"),
+        MetadataReference.CreateFromFile(
+            typeof(object).Assembly.Location)
+            };
+
+
+            var compilationOptions = new CSharpCompilationOptions(
+                OutputKind.ConsoleApplication,
+                mainTypeName: $"{nsName}.{clsName}"
+            );
+
+            var compilation = CSharpCompilation.Create(
+                clsName,
+                new[] { syntaxTree },
+                references,
+                compilationOptions
+            );
+
+            using (var stream = new MemoryStream())
+            {
+                var emitResult = compilation.Emit(stream);
+
+                foreach (var diagnostic in emitResult.Diagnostics)
+                {
+                    diag(diagnostic);
+                }
             }
 
         }
