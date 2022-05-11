@@ -117,7 +117,6 @@ namespace NodeAyano
             NSList.Add(nsNode);
             newnode = newnode.AddUsings(USList.ToArray());
             newnode = newnode.AddMembers(NSList.ToArray());
-
             return newnode;
         }
         /// <summary>
@@ -195,6 +194,87 @@ namespace NodeAyano
 
                 stream.Seek(0, SeekOrigin.Begin);
 
+            }
+
+        }
+        /// <summary>
+        /// Code Analyze!
+        /// </summary>
+        /// <param name="code">code</param>
+        /// <param name="diag">func</param>
+        /// <param name="clsName">clsname</param>
+        /// <param name="nsName">namespace name</param>
+        public static void Analyzekun(string code, Action<Diagnostic> diag, string clsName = "testMainCls", string nsName = "TEST123")
+        {
+
+            var parseOptions = CSharpParseOptions.Default
+                .WithLanguageVersion(LanguageVersion.CSharp10);
+
+            var syntaxTree = CSharpSyntaxTree.ParseText(
+                code,
+                parseOptions
+            );
+            foreach (var diagkun in syntaxTree.GetDiagnostics())
+            {
+                diag(diagkun);
+            }
+
+        }
+        /// <summary>
+        /// Code Analyze!
+        /// </summary>
+        /// <param name="code">code</param>
+        /// <param name="diag">func</param>
+        /// <param name="clsName">clsname</param>
+        /// <param name="nsName">namespace name</param>
+        public static void AnalyzeAndTestCompilekun(string code, Action<Diagnostic> diag, string clsName = "testMainCls", string nsName = "TEST123")
+        {
+
+            var parseOptions = CSharpParseOptions.Default
+                .WithLanguageVersion(LanguageVersion.CSharp10);
+
+            var syntaxTree = CSharpSyntaxTree.ParseText(
+                code,
+                parseOptions
+            );
+            foreach (var diagkun in syntaxTree.GetDiagnostics())
+            {
+                diag(diagkun);
+            }
+            var assemblyDirectoryPath = Path.GetDirectoryName(typeof(object).Assembly.Location);
+            var references = new MetadataReference[]
+            {
+            MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/mscorlib.dll"),
+        MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/System.Runtime.dll"),
+        MetadataReference.CreateFromFile(
+            $"{assemblyDirectoryPath}/System.Console.dll"),
+        MetadataReference.CreateFromFile(
+            typeof(object).Assembly.Location)
+            };
+
+
+            var compilationOptions = new CSharpCompilationOptions(
+                OutputKind.ConsoleApplication,
+                mainTypeName: $"{nsName}.{clsName}"
+            );
+
+            var compilation = CSharpCompilation.Create(
+                clsName,
+                new[] { syntaxTree },
+                references,
+                compilationOptions
+            );
+
+            using (var stream = new MemoryStream())
+            {
+                var emitResult = compilation.Emit(stream);
+
+                foreach (var diagnostic in emitResult.Diagnostics)
+                {
+                    diag(diagnostic);
+                }
             }
 
         }
@@ -334,11 +414,25 @@ namespace NodeAyano
             {
                 var emitResult = compilation.Emit(stream);
 
-                foreach (var diagnostic in emitResult.Diagnostics)
+                foreach (var d in emitResult.Diagnostics)
                 {
-                    var pos = diagnostic.Location.GetLineSpan();
+                    var pos = d.Location.GetLineSpan();
                     var location = "(" + pos.Path + "@Line" + (pos.StartLinePosition.Line + 1) + ":" + (pos.StartLinePosition.Character + 1) + ")";
-                    Console.WriteLine($"[{diagnostic.Severity}, {location}] {diagnostic.Id}, {diagnostic.GetMessage()}");
+                    switch (d.Severity)
+                    {
+                        case DiagnosticSeverity.Warning:
+                            Console.WriteLine($"\u001b[38;2;255;255;0m[{d.Severity}, {location}] {d.Id}, {d.GetMessage()}\u001b[0m");
+                            break;
+                        case DiagnosticSeverity.Error:
+                            Console.WriteLine($"\u001b[38;2;255;0;0m[{d.Severity}, {location}] {d.Id}, {d.GetMessage()}\u001b[0m");
+                            break;
+                        case DiagnosticSeverity.Hidden:
+                            Console.WriteLine($"\u001b[38;2;255;0;255m[{d.Severity}, {location}] {d.Id}, {d.GetMessage()}\u001b[0m");
+                            break;
+                        default:
+                            Console.WriteLine($"[{d.Severity}, {location}] {d.Id}, {d.GetMessage()}");
+                            break;
+                    }
                 }
 
                 if (!emitResult.Success)
