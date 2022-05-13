@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace AyanoPluginCommonAPI.Attributes
 {
     /// <summary>
-    /// Model Class Attribute
+    /// ViewModel Class Attribute
     /// </summary>
-    public class AyanoNodeModelClassAttribute :Attribute
+    public class AyanoNodeViewModelClassAttribute :Attribute
     {
         /// <summary>
         /// Model name
@@ -29,7 +29,7 @@ namespace AyanoPluginCommonAPI.Attributes
         /// <param name="name">name</param>
         /// <param name="category">category</param>
         /// <param name="description">description</param>
-        public AyanoNodeModelClassAttribute(string name, string category, string description):base()
+        public AyanoNodeViewModelClassAttribute(string name, string category, string description):base()
         {
             Name = name;
             Category = category;
