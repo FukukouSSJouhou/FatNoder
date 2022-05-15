@@ -9,6 +9,7 @@ namespace AyanoPluginCommonAPI.Attributes
     /// <summary>
     /// Model Class Attribute
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class)]
     public class AyanoNodeModelClassAttribute :Attribute
     {
         /// <summary>
@@ -34,6 +35,14 @@ namespace AyanoPluginCommonAPI.Attributes
             Name = name;
             Category = category;
             Description = description;
+        }
+        /// <summary>
+        /// Initializer Attribute
+        /// </summary>
+        [AttributeUsage(AttributeTargets.Method)]
+        public sealed class InitializerAttribute : Attribute
+        {
+
         }
     }
 }
