@@ -9,6 +9,7 @@ namespace AyanoPluginCommonAPI.Attributes
     /// <summary>
     /// Model Class Attribute
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class)]
     public class AyanoNodeModelClassAttribute :Attribute
     {
         /// <summary>
