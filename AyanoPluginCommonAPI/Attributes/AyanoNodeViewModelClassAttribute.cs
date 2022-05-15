@@ -9,6 +9,7 @@ namespace AyanoPluginCommonAPI.Attributes
     /// <summary>
     /// ViewModel Class Attribute
     /// </summary>
+    [AttributeUsage(AttributeTargets.Class)]
     public class AyanoNodeViewModelClassAttribute :Attribute
     {
         /// <summary>
