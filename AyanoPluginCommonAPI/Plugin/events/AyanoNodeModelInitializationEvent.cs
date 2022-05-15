@@ -11,5 +11,6 @@ namespace AyanoPluginCommonAPI.Plugin.events
     /// </summary>
     public class AyanoNodeModelInitializationEvent
     {
+
     }
 }
