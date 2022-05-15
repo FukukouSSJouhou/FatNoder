@@ -36,5 +36,13 @@ namespace AyanoPluginCommonAPI.Attributes
             Category = category;
             Description = description;
         }
+        /// <summary>
+        /// Initializer Attribute
+        /// </summary>
+        [AttributeUsage(AttributeTargets.Method)]
+        public sealed class InitializerAttribute : Attribute
+        {
+
+        }
     }
 }
