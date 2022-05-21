@@ -96,7 +96,7 @@ namespace {NSName}
         private void InitAyanoVMB()
         {{
             this.{fName}.TYPE = typeof({CLSName}).AssemblyQualifiedName;
-            this.{fName}.MODELTYPE = typeof({CLSName}).AssemblyQualifiedName;
+            this.{fName}.MODELTYPE = fName.GetType().AssemblyQualifiedName;
             this.UUIDChanged.Subscribe(newvalue =>
             {{
                 {fName}.UUID = newvalue;
