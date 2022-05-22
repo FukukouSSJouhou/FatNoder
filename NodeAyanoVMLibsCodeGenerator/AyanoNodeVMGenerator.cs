@@ -95,7 +95,7 @@ namespace {NSName}
         /// Model
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute({assemblyName.Name}, {assemblyName.Version})]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute(""{assemblyName.Name}"", ""{assemblyName.Version}"")]
         public {XMLModelSymbol} model {{
             get {{
                 return this.{fName};
@@ -108,7 +108,7 @@ namespace {NSName}
         /// Initialize ViewModel Component
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [System.CodeDom.Compiler.GeneratedCodeAttribute({assemblyName.Name}, {assemblyName.Version})]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute(""{assemblyName.Name}"", ""{assemblyName.Version}"")]
         private void InitAyanoVMB()
         {{
             this.{fName}.TYPE = typeof({CLSName}).AssemblyQualifiedName;
