@@ -26,6 +26,7 @@ namespace AyanoNodeVM
     }
 }
 ";
+        readonly System.Reflection.AssemblyName assemblyName = System.Reflection.Assembly.GetExecutingAssembly().GetName();
         public void Initialize(GeneratorInitializationContext context)
         {
             context.RegisterForPostInitialization((i) => i.AddSource("ModelAyanoAttribute.g.cs", attributeText));
@@ -68,6 +69,9 @@ using System.Reactive.Linq;
 using System;
 namespace {NSName}
 {{
+    /// <summary>
+    /// {CLSName} のViewModel簡略化用ロジック
+    /// </summary>
     public partial class {CLSName}
     {{
 ");
@@ -86,6 +90,12 @@ namespace {NSName}
             ITypeSymbol fType = fSymbol.Type;
             if (fName == "model") return;
             src.Append($@"
+        
+        /// <summary>
+        /// Model
+        /// </summary>
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute(""{assemblyName.Name}"", ""{assemblyName.Version}"")]
         public {XMLModelSymbol} model {{
             get {{
                 return this.{fName};
@@ -93,10 +103,16 @@ namespace {NSName}
         }}
 ");
             src.Append($@"
+        
+        /// <summary>
+        /// Initialize ViewModel Component
+        /// </summary>
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute(""{assemblyName.Name}"", ""{assemblyName.Version}"")]
         private void InitAyanoVMB()
         {{
             this.{fName}.TYPE = typeof({CLSName}).AssemblyQualifiedName;
-            this.{fName}.MODELTYPE = typeof({CLSName}).AssemblyQualifiedName;
+            this.{fName}.MODELTYPE = this.{fName}.GetType().AssemblyQualifiedName;
             this.UUIDChanged.Subscribe(newvalue =>
             {{
                 {fName}.UUID = newvalue;
