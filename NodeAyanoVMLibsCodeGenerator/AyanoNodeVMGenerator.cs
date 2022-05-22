@@ -68,6 +68,9 @@ using System.Reactive.Linq;
 using System;
 namespace {NSName}
 {{
+    /// <summary>
+    /// {CLSName} のViewModel簡略化用ロジック
+    /// </summary>
     public partial class {CLSName}
     {{
 ");
@@ -86,6 +89,10 @@ namespace {NSName}
             ITypeSymbol fType = fSymbol.Type;
             if (fName == "model") return;
             src.Append($@"
+        
+        /// <summary>
+        /// Model
+        /// </summary>
         public {XMLModelSymbol} model {{
             get {{
                 return this.{fName};
@@ -93,6 +100,10 @@ namespace {NSName}
         }}
 ");
             src.Append($@"
+        
+        /// <summary>
+        /// Initialize ViewModel Component
+        /// </summary>
         private void InitAyanoVMB()
         {{
             this.{fName}.TYPE = typeof({CLSName}).AssemblyQualifiedName;
