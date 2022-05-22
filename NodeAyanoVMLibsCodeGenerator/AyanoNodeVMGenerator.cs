@@ -26,6 +26,7 @@ namespace AyanoNodeVM
     }
 }
 ";
+        readonly System.Reflection.AssemblyName assemblyName = System.Reflection.Assembly.GetExecutingAssembly().GetName();
         public void Initialize(GeneratorInitializationContext context)
         {
             context.RegisterForPostInitialization((i) => i.AddSource("ModelAyanoAttribute.g.cs", attributeText));
@@ -93,6 +94,8 @@ namespace {NSName}
         /// <summary>
         /// Model
         /// </summary>
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute({assemblyName.Name}, {assemblyName.Version})]
         public {XMLModelSymbol} model {{
             get {{
                 return this.{fName};
@@ -104,6 +107,8 @@ namespace {NSName}
         /// <summary>
         /// Initialize ViewModel Component
         /// </summary>
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute({assemblyName.Name}, {assemblyName.Version})]
         private void InitAyanoVMB()
         {{
             this.{fName}.TYPE = typeof({CLSName}).AssemblyQualifiedName;
