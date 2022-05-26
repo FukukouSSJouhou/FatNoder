@@ -38,15 +38,16 @@ namespace AyanoPluginCommonAPI.Tests
                         var pluginClass = typeattr as Attributes.AyanoNodeModelClassAttribute;
                         if(pluginClass != null)
                         {
-                            names.Add(pluginClass.Name);
+                            foreach(var m in clsType.GetMethods())
+                            {
+                                var tattr = m.GetCustomAttributes(typeof(Attributes.AyanoNodeModelClassAttribute.InitializerAttribute));
+                                if (tattr == null || tattr.Count() == 0) continue;
+                                
+                            }
                         }
                         methods.Add(new PlugInMethod(clsType, names));
                     }
                 }
-            }
-            foreach(var m in methods)
-            {
-                Console.WriteLine(m.MethodNames);
             }
             Assert.Pass();
         }
