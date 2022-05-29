@@ -48,6 +48,7 @@ namespace AyanoPluginCommonAPI.Tests
                                     var pCls = tattr as Attributes.AyanoNodeModelClassAttribute.InitializerAttribute;
                                     if(pCls != null)
                                     {
+                                        if(m.GetGenericArguments().Length != 0) continue;
                                         names.Add(m.Name);
                                     }
                                 }
