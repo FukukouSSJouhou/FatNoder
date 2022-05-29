@@ -67,9 +67,18 @@ namespace AyanoPluginCommonAPI.Tests
             evkun.ModelRegistered += (sender,evar)=>{
                 Assert.That(evar.modeltype, Is.EqualTo(typeof(string)));
             };
+            object[] argslistkun = { evkun };
             foreach(var met in Get_PluginModel_Methods())
             {
-
+                var objkun = Activator.CreateInstance(met.ExeType);
+                foreach(var metstr in met.MethodNames)
+                {
+                    var methodcaller = met.ExeType.GetMethod(metstr);
+                    if(methodcaller != null)
+                    {
+                        methodcaller.Invoke(objkun, argslistkun);
+                    }
+                }
             }
             Console.WriteLine("TDN");
             Assert.Pass();
