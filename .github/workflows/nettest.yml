@@ -27,11 +27,20 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    - name: Install dependencies
+    - name: Install dependencies NodeAyanoTest
       run: dotnet restore NodeAyanoTest
+
+    - name: Install dependencies AyanoPluginCommonAPI.Tests
+      run: dotnet restore AyanoPluginCommonAPI.Tests
       
-    - name: Build
+    - name: Build NodeAyanoTest
       run: dotnet build --configuration Release --no-restore NodeAyanoTest
+
+    - name: Build AyanoPluginCommonAPI.Tests
+      run: dotnet build --configuration Release --no-restore AyanoPluginCommonAPI.Tests
     
-    - name: Test
+    - name: Test NodeAyanoTest
       run: dotnet test --no-restore --verbosity normal NodeAyanoTest
+
+    - name: Test AyanoPluginCommonAPI.Tests
+      run: dotnet test --no-restore --verbosity normal AyanoPluginCommonAPI.Tests
