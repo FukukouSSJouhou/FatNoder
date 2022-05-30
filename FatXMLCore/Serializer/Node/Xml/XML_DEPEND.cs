@@ -9,9 +9,9 @@ namespace FatXMLCore.Serializer.Node.Xml
 {
 
     /// <summary>
-    /// Depend
+    /// dependency
     /// </summary>
-    [DataContract(Name = "depend")]
+    [DataContract(Name = "dependency")]
     public class XML_DEPEND
     {
     }
