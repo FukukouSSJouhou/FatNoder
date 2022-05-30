@@ -13,6 +13,7 @@ namespace FatNoder.Serializer.Node.Xml
     [DataContract(Name = "root")]
     public class XmlRootN
     {
+
         /// <summary>
         /// Nodes
         /// </summary>
