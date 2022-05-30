@@ -14,7 +14,14 @@ namespace FatNoder.Serializer.Node.Xml
     [DataContract(Name = "root")]
     public class XmlRootN
     {
-
+        /// <summary>
+        /// dependencies
+        /// </summary>
+        [DataMember(Name ="dependencies")]
+        public XMLRoot_DependsCLskun dependencies
+        {
+            get;set;
+        }
         /// <summary>
         /// Nodes
         /// </summary>
