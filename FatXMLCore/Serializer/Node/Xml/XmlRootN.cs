@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FatXMLCore.Serializer.Node.Xml;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -28,6 +29,14 @@ namespace FatNoder.Serializer.Node.Xml
     /// </summary>
     [CollectionDataContract(Name = "nodes", ItemName = "Node")]
     public class XMLRoot_NodesCLskun : List<XML_NodeModel>
+    {
+
+    }
+    /// <summary>
+    /// depends
+    /// </summary>
+    [CollectionDataContract(Name ="depends",ItemName ="depend")]
+    public class XMLRoot_DependsCLskun:List<XML_DEPEND>
     {
 
     }
