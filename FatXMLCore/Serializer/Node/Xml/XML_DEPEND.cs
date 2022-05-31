@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -15,5 +16,8 @@ namespace FatXMLCore.Serializer.Node.Xml
     public class XML_DEPEND
     {
         public string name { get; set; }
+        private FileVersionInfo _minver;
+
+
     }
 }
