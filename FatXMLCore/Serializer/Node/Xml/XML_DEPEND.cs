@@ -14,5 +14,6 @@ namespace FatXMLCore.Serializer.Node.Xml
     [DataContract(Name = "dependency")]
     public class XML_DEPEND
     {
+        public string name { get; set; }
     }
 }
