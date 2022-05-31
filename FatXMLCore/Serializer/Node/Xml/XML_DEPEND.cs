@@ -18,7 +18,7 @@ namespace FatXMLCore.Serializer.Node.Xml
         /// <summary>
         /// Name
         /// </summary>
-        public string name { get; set; }
+        public string Name { get; set; }
         private FileVersionInfo _minver;
         /// <summary>
         /// Min Version
