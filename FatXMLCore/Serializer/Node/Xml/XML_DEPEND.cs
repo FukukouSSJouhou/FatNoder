@@ -20,6 +20,9 @@ namespace FatXMLCore.Serializer.Node.Xml
         /// </summary>
         public string name { get; set; }
         private FileVersionInfo _minver;
+        /// <summary>
+        /// Min Version
+        /// </summary>
         public string MinVersion
         {
             get
@@ -31,6 +34,9 @@ namespace FatXMLCore.Serializer.Node.Xml
                 _minver = FileVersionInfo.GetVersionInfo(value);
             }
         }
+        /// <summary>
+        /// Min Version FileVer
+        /// </summary>
         [IgnoreDataMember]
         public FileVersionInfo MinVersion_Fileinfo
         {
@@ -44,6 +50,9 @@ namespace FatXMLCore.Serializer.Node.Xml
             }
         }
         private FileVersionInfo _maxver;
+        /// <summary>
+        /// Max version
+        /// </summary>
         public string MaxVersion
         {
             get
@@ -55,6 +64,9 @@ namespace FatXMLCore.Serializer.Node.Xml
                 _maxver = FileVersionInfo.GetVersionInfo(value);
             }
         }
+        /// <summary>
+        /// Max version FileInfo
+        /// </summary>
         [IgnoreDataMember]
         public FileVersionInfo MaxVersion_Fileinfo
         {
