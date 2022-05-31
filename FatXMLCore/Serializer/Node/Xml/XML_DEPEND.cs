@@ -15,6 +15,9 @@ namespace FatXMLCore.Serializer.Node.Xml
     [DataContract(Name = "dependency")]
     public class XML_DEPEND
     {
+        /// <summary>
+        /// Name
+        /// </summary>
         public string name { get; set; }
         private FileVersionInfo _minver;
         public string MinVersion
@@ -38,6 +41,30 @@ namespace FatXMLCore.Serializer.Node.Xml
             set
             {
                 _minver = value;
+            }
+        }
+        private FileVersionInfo _maxver;
+        public string MaxVersion
+        {
+            get
+            {
+                return _maxver.ToString();
+            }
+            set
+            {
+                _maxver = FileVersionInfo.GetVersionInfo(value);
+            }
+        }
+        [IgnoreDataMember]
+        public FileVersionInfo MaxVersion_Fileinfo
+        {
+            get
+            {
+                return _maxver;
+            }
+            set
+            {
+                _maxver = value;
             }
         }
 
