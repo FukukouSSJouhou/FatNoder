@@ -55,6 +55,7 @@ namespace FatXMLCore.Serializer.Node.Xml
         /// <summary>
         /// Max version
         /// </summary>
+        [DataMember(Name = "max", Order = 3)]
         public string MaxVersion
         {
             get
