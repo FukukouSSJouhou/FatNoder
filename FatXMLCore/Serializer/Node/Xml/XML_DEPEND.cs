@@ -18,11 +18,13 @@ namespace FatXMLCore.Serializer.Node.Xml
         /// <summary>
         /// Name
         /// </summary>
+        [DataMember(Name = "Name", Order = 1)]
         public string Name { get; set; }
         private FileVersionInfo _minver;
         /// <summary>
         /// Min Version
         /// </summary>
+        [DataMember(Name = "min", Order = 2)]
         public string MinVersion
         {
             get
