@@ -28,6 +28,18 @@ namespace FatXMLCore.Serializer.Node.Xml
                 _minver = FileVersionInfo.GetVersionInfo(value);
             }
         }
+        [IgnoreDataMember]
+        public FileVersionInfo MinVersion_Fileinfo
+        {
+            get
+            {
+                return _minver;
+            }
+            set
+            {
+                _minver = value;
+            }
+        }
 
     }
 }
