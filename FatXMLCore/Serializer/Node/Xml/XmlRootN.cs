@@ -40,7 +40,7 @@ namespace FatNoder.Serializer.Node.Xml
 
     }
     /// <summary>
-    /// depends
+    /// dependencies
     /// </summary>
     [CollectionDataContract(Name = "dependencies", ItemName = "dependency")]
     public class XMLRoot_DependsCLskun:List<XML_DEPEND>
