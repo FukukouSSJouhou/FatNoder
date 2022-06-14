@@ -10,6 +10,10 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
+  <UsingTask TaskName="RC" AssemblyFile="$(VCTargetsPath)Microsoft.Build.CppTasks.Common.dll" />
+  <Target Name="ResourceCompile" BeforeTargets="BeforeCompile" Condition="'@(ResourceCompile)' != ''">
+    <RC Source="@(ResourceCompile)" SuppressStartupBanner="False" ResourceOutputFileName="%(RelativeDir)%(filename).res" />
+  </Target>
   <ItemGroup>
     <None Remove="splash.png" />
   </ItemGroup>
@@ -30,7 +34,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FatXMLCore\FatXMLCore.csproj" />
     <ProjectReference Include="..\IconLibrary\IconLibrary.csproj" />
-    <ProjectReference Include="..\NodeAyanoVMLibsCodeGenerator\NodeAyanoVMLibsCodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"  />
+    <ProjectReference Include="..\NodeAyanoVMLibsCodeGenerator\NodeAyanoVMLibsCodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\NodeAyanoVMLibs\NodeAyanoVMLibs.csproj" />
     <ProjectReference Include="..\NodeAyano\NodeAyano.csproj" />
   </ItemGroup>
@@ -43,6 +47,9 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <ResourceCompile Include="main_Resource.rc" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.ja.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
