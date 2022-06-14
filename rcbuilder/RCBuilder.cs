@@ -1,7 +1,11 @@
 ﻿namespace RCBuilderTasks
 {
-    public class RCBuilder
+    public class RCBuilder:Microsoft.Build.Utilities.Task
     {
+        public override bool Execute()
+        {
+            return true;
 
+        }
     }
 }
