@@ -13,11 +13,6 @@ namespace NodeAyano.Model.Nodes
         /// <summary>
         /// コンパイラメソッド
         /// </summary>
-        /// <returns>メンバー君</returns>
-        public abstract StatementSyntax[] CompileSyntax();
-        /// <summary>
-        /// コンパイラメソッド
-        /// </summary>
         /// <param name="xnodes">node list</param>
         /// <returns>メンバー君</returns>
         public abstract StatementSyntax[] CompileSyntax(IEnumerable<XML_NodeModel> xnodes);
