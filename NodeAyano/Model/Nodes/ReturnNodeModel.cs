@@ -33,12 +33,25 @@ namespace NodeAyano.Model.Nodes
                 {
                     foreach (XMLNodeInputConnect cn in xnode.connections)
                     {
-                        Console.WriteLine(cn.Target);
+                        foreach(XML_NodeModel modelkun in xnodes.Where(
+                            d =>
+                            {
+                                return d.UUID == cn.Target;
+                            }))
+                        {
+                            if(modelkun is ValueCompileNodeBase)
+                            {
+
+                                ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(((ValueCompileNodeBase)modelkun).CompileSyntax(xnodes));
+                                statementskun65656565.Add(retstatement);
+                                return statementskun65656565.ToArray();
+                            }
+                        }
                     }
                 }
             }
-                        ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(SyntaxFactory.IdentifierName("id_" + this.UUID.ToString().Replace("-", "_") + "_ValueRet"));
-            statementskun65656565.Add(retstatement);
+                        //ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(SyntaxFactory.IdentifierName("id_" + this.UUID.ToString().Replace("-", "_") + "_ValueRet"));
+           //statementskun65656565.Add(retstatement);
             return statementskun65656565.ToArray() ;
         }
     }
