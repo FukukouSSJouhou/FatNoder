@@ -27,22 +27,44 @@ namespace NodeAyano.Model.Nodes
         {
             List<StatementSyntax> returnstatements = new();
 
-            returnstatements.Add(
-                SyntaxFactory.ExpressionStatement(
-                SyntaxFactory.InvocationExpression(
-                    SyntaxFactory.MemberAccessExpression(
-                            SyntaxKind.SimpleMemberAccessExpression,
-                            SyntaxFactory.IdentifierName("Console"),
-                            SyntaxFactory.IdentifierName("WriteLine")
-                        ),
-                    SyntaxFactory.ArgumentList(
-                        SyntaxFactory.SeparatedList<ArgumentSyntax>(
-                            new ArgumentSyntax[1]{SyntaxFactory.Argument(
-                                SyntaxFactory.IdentifierName("id_" + UUID.ToString().Replace("-", "_") + "_Printcontent")
-                            ) }
+            foreach (XMLNodeInput xnode in Inputs)
+            {
+                if (xnode.Name == "Printcontent")
+                {
 
-                    )
-                ))));
+                    foreach (XMLNodeInputConnect cn in xnode.connections)
+                    {
+                        foreach (XML_NodeModel modelkun in xnodes.Where(
+                            d =>
+                            {
+                                return d.UUID == cn.Target;
+                            }))
+                        {
+                            if (modelkun is ValueCompileNodeBase)
+                            {
+
+                                returnstatements.Add(
+                                    SyntaxFactory.ExpressionStatement(
+                                        SyntaxFactory.InvocationExpression(
+                                            SyntaxFactory.MemberAccessExpression(
+                                                SyntaxKind.SimpleMemberAccessExpression,
+                                                SyntaxFactory.IdentifierName("Console"),
+                                                SyntaxFactory.IdentifierName("WriteLine")
+                                            ),
+                                        SyntaxFactory.ArgumentList(
+                                            SyntaxFactory.SeparatedList<ArgumentSyntax>(
+                                                new ArgumentSyntax[1]{SyntaxFactory.Argument(
+                                                    ((ValueCompileNodeBase)modelkun).CompileSyntax(xnodes)
+
+                                                ) }
+
+                                        )
+                            ))));
+                            }
+                        }
+                    }
+                }
+            }
             return returnstatements.ToArray();
         }
     }
