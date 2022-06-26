@@ -156,7 +156,7 @@ namespace FatNoder.ViewModels
                 }
                 var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
 
-                var SyntaxCompiled = NodeAyanoCompiler.TransCompileNode(ModelEnumerator);
+                var SyntaxCompiled = NodeAyanoCompiler.TransCompileNode(ModelEnumerator,roots);
                 CPreviewViewModel.Code = SyntaxCompiled;
             }
                 );
@@ -304,7 +304,7 @@ namespace FatNoder.ViewModels
                 }
                 var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
 
-                var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
+                var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator,roots);
                 Console.WriteLine(compilerstr);
 
             });

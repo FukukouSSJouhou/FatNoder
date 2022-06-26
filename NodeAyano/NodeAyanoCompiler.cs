@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using FatNoder.Serializer.Node.Xml;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Emit;
@@ -28,7 +29,7 @@ namespace NodeAyano
         /// <param name="clsName">clsName</param>
         /// <param name="nsName">Namespace Name</param>
         /// <returns>C# SyntaxNode</returns>
-        public static CompilationUnitSyntax TransCompileNode(NodeModelEnumerator NodeEnum, string clsName = "testMainCls", string nsName = "TEST123")
+        public static CompilationUnitSyntax TransCompileNode(NodeModelEnumerator NodeEnum, IEnumerable<XML_NodeModel> xnodes, string clsName = "testMainCls", string nsName = "TEST123")
         {
             var compUnit = SyntaxFactory.CompilationUnit();
             var CLSList = new List<MemberDeclarationSyntax>();
@@ -126,9 +127,9 @@ namespace NodeAyano
         /// <param name="clsName">clsName</param>
         /// <param name="nsName">Namespace Name</param>
         /// <returns>C# String</returns>
-        public static string TransCompile(NodeModelEnumerator NodeEnum, string clsName = "testMainCls", string nsName = "TEST123")
+        public static string TransCompile(NodeModelEnumerator NodeEnum, IEnumerable<XML_NodeModel> xnodes,string clsName = "testMainCls", string nsName = "TEST123")
         {
-            return TransCompileNode(NodeEnum, clsName, nsName).NormalizeWhitespace().ToString();
+            return TransCompileNode(NodeEnum, xnodes,clsName, nsName).NormalizeWhitespace().ToString();
         }
         private static ClassDeclarationSyntax CreateClass(string name)
         {
