@@ -100,7 +100,7 @@ namespace FatNoder.Serializer.Node.Xml
         /// <summary>
         /// Node Inputs
         /// </summary>
-        [DataMember(Name = "Outputs", Order = 5)]
+        [DataMember(Name = "Inputs", Order = 5)]
         public XMLNodeInputS Inputs
         {
             get; set;
