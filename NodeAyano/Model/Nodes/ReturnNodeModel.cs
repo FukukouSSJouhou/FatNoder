@@ -27,11 +27,11 @@ namespace NodeAyano.Model.Nodes
         public override StatementSyntax[] CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
         {
             List<StatementSyntax> statementskun65656565 = new();
-            foreach (XMLNodeOutput xnode in Outputs)
+            foreach (XMLNodeInput xnode in Inputs)
             {
                 if (xnode.Name == "Value")
                 {
-                    foreach (XMLNodeOutputConnect cn in xnode.connections)
+                    foreach (XMLNodeInputConnect cn in xnode.connections)
                     {
                     }
                 }

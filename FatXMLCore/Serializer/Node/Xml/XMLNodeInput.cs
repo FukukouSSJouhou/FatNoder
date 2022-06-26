@@ -30,6 +30,10 @@ namespace FatNoder.Serializer.Node.Xml
         {
             get; set;
         }
+        public bool InputOnly
+        {
+            get;set;
+        }
     }
 
     /// <summary>

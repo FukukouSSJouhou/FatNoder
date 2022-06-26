@@ -545,6 +545,42 @@ namespace FatNoder.ViewModels
                                                         }
                                                     }
                                             }
+                                        if (n.Inputs != null)
+                                            foreach (var outkun2344 in n.Inputs)
+                                            {
+                                                var SourceportName = outkun2344.Name;
+                                                if (outkun2344.connections != null)
+                                                    foreach (var xmlOC in outkun2344.connections)
+                                                    {
+                                                        if(xmlOC.InputOnly==true)
+                                                        foreach (var NVkun2 in Network.Nodes.Items)
+                                                        {
+                                                            if (NVkun2.UUID == n.UUID)
+                                                            {
+                                                                foreach (var origkun in Network.Nodes.Items)
+                                                                {
+                                                                    if (origkun.UUID == xmlOC.Target)
+                                                                    {
+                                                                        foreach (var OutObj in NVkun2.Inputs.Items)
+                                                                        {
+                                                                            if (OutObj.Name == outkun2344.Name)
+                                                                            {
+                                                                                foreach (var InObj in origkun.Outputs.Items)
+                                                                                {
+                                                                                    if (InObj.Name == xmlOC.Name)
+                                                                                    {
+                                                                                        Network.Connections.Add(Network.ConnectionFactory(OutObj, InObj));
+
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                            }
                                     }
                                 }
                             }
