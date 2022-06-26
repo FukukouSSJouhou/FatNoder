@@ -24,7 +24,7 @@ namespace NodeAyano.Model.Nodes
         }
 
         /// <inheritdoc/>
-        public override StatementSyntax[] CompileSyntax()
+        public override StatementSyntax[] CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
         {
             List<StatementSyntax> statementskun65656565 = new();
             ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(SyntaxFactory.IdentifierName("id_" + this.UUID.ToString().Replace("-", "_") + "_ValueRet"));

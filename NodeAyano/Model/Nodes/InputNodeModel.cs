@@ -24,7 +24,7 @@ namespace NodeAyano.Model.Nodes
         }
 /// <inheritdoc/>
 
-        public override StatementSyntax[] CompileSyntax()
+        public override StatementSyntax[] CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
         {
             List<StatementSyntax> statementskun222 = new();
             if (typeof(T) == typeof(int))
