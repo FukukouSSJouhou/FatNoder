@@ -51,6 +51,7 @@ namespace FatNoder.ViewModels.Nodes
         public InputNodeViewModel(Guid uuid) : base(uuid)
         {
             InitAyanoVMB();
+            _model.InputOnly = true;
             Output = new ValueNodeOutputViewModel<T?>
             {
                 Name = "Value",
@@ -62,6 +63,7 @@ namespace FatNoder.ViewModels.Nodes
         public InputNodeViewModel() : base()
         {
             InitAyanoVMB();
+            _model.InputOnly = true;
             Output = new ValueNodeOutputViewModel<T?>
             {
                 Name = "Value",

@@ -387,8 +387,14 @@ namespace FatNoder.ViewModels
                         {
                             documentrootkun.nodes.Add(ModelEnumerator.Current);
                         }
+                        foreach(var nodekun in roots.Where(d =>
+                        {
+                            return d.InputOnly;
+                        }))
+                        {
 
-
+                            documentrootkun.nodes.Add(nodekun);
+                        }
                         DataContractSerializer serializer =
                             new(typeof(XmlRootN), typelistkun);
                         return SaveXMLFileDialog.Handle(new SaveFileRequest()

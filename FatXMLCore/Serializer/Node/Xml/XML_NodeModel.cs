@@ -121,6 +121,14 @@ namespace FatNoder.Serializer.Node.Xml
         {
             get; set;
         }
+        /// <summary>
+        /// InputOnly
+        /// </summary>
+        [DataMember(Name = "InputOnly", Order = 8)]
+        public bool InputOnly
+        {
+            get; set;
+        } = false;
 
 
     }
