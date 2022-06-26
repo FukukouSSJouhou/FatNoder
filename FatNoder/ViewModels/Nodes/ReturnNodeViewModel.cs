@@ -71,10 +71,8 @@ namespace FatNoder.ViewModels.Nodes
             };
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement());
-            this.Inputs.Add(ReturnInput);
-            this.WhenAnyObservable(vm => vm.Inputs.CountChanged).Subscribe(newvalue =>
+            ReturnInput.Connections.CountChanged.Subscribe(newvalue =>
             {
-
                 foreach (XMLNodeInput xs in _model.Inputs.Where(d =>
                 {
                     return d.Name == ReturnInput.Name;
@@ -90,10 +88,12 @@ namespace FatNoder.ViewModels.Nodes
                                 Name = cv.Output.Name,
                                 Target = cv.Output.Parent.UUID,
                                 InputOnly = true
-                            }) ;
+                            });
                     }
                 }
+
             });
+            this.Inputs.Add(ReturnInput);
             this.Outputs.Add(Flow);
         }
         public ReturnNodeViewModel()
@@ -131,8 +131,7 @@ namespace FatNoder.ViewModels.Nodes
             };
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement());
-            this.Inputs.Add(ReturnInput);
-            this.WhenAnyObservable(vm => vm.Inputs.CountChanged).Subscribe(newvalue =>
+            ReturnInput.Connections.CountChanged.Subscribe(newvalue =>
             {
                 foreach (XMLNodeInput xs in _model.Inputs.Where(d =>
                 {
@@ -152,7 +151,9 @@ namespace FatNoder.ViewModels.Nodes
                             });
                     }
                 }
+
             });
+            this.Inputs.Add(ReturnInput);
             this.Outputs.Add(Flow);
         }
         /// <inheritdoc/>

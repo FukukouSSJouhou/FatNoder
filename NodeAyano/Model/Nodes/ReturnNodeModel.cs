@@ -29,10 +29,11 @@ namespace NodeAyano.Model.Nodes
             List<StatementSyntax> statementskun65656565 = new();
             foreach (XMLNodeInput xnode in Inputs)
             {
-                if (xnode.Name == "Value")
+                if (xnode.Name == "ValueRet")
                 {
                     foreach (XMLNodeInputConnect cn in xnode.connections)
                     {
+                        Console.WriteLine(cn.Target);
                     }
                 }
             }
