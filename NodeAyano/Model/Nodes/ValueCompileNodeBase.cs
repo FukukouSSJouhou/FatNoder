@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Nodes
 {
+    /// <summary>
+    /// For Value
+    /// </summary>
     public abstract class ValueCompileNodeBase : XML_NodeModel
     {
         /// <summary>
