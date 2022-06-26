@@ -113,6 +113,7 @@ namespace FatNoder.ViewModels
             Network.Nodes.Add(mainnodekun);
             NodeList.AddNodeType(() => new PrintNodeViewModel { Name = "PrintString" });
             NodeList.AddNodeType(() => new InputNodeViewModel<int> { Name = "IntInput" });
+            NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name = "StringInput" });
             this.WhenAnyObservable(vm => vm.Network.NetworkChanged).Subscribe(newvalue =>
             {
                 List<Type> typelistkun = new List<Type>();
