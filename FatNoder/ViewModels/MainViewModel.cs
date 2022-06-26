@@ -112,6 +112,7 @@ namespace FatNoder.ViewModels
             mainnodekun = new MethodEntryPointVIewModel { CanBeRemovedByUser = false, Name = "MainEntryPoint" };
             Network.Nodes.Add(mainnodekun);
             NodeList.AddNodeType(() => new PrintNodeViewModel { Name = "PrintString" });
+            NodeList.AddNodeType(() => new InputNodeViewModel<int> { Name = "IntInput" });
             this.WhenAnyObservable(vm => vm.Network.NetworkChanged).Subscribe(newvalue =>
             {
                 List<Type> typelistkun = new List<Type>();
