@@ -90,28 +90,6 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             };
-            /*
-            this.WhenAnyObservable(vm => vm.Output.Connections.CountChanged).Subscribe(newvalue =>
-            {
-
-                foreach (XMLNodeOutput xs in _model.Outputs.Where(d =>
-                {
-                    return d.Name == Output.Name;
-                }))
-                {
-                    xs.connections.Clear();
-                    foreach (ConnectionViewModel cv in Output.Connections.Items)
-                    {
-                        //Console.WriteLine($"{cv.Input.Name},{cv.Input.Parent.UUID}");
-                        xs.connections.Add(
-                            new XMLNodeOutputConnect
-                            {
-                                Name = cv.Input.Name,
-                                Target = cv.Input.Parent.UUID
-                            });
-                    }
-                }
-            });*/
 
             this.Outputs.Add(Output);
 
