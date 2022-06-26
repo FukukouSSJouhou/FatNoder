@@ -552,13 +552,12 @@ namespace FatNoder.ViewModels
                                                     }
                                             }
                                         if (n.Inputs != null)
-                                            foreach (var outkun2344 in n.Inputs)
+                                            foreach (var inkun2344 in n.Inputs)
                                             {
-                                                var SourceportName = outkun2344.Name;
-                                                if (outkun2344.connections != null)
-                                                    foreach (var xmlOC in outkun2344.connections)
+                                                var SourceportName = inkun2344.Name;
+                                                if (inkun2344.connections != null)
+                                                    foreach (var xmlOC in inkun2344.connections)
                                                     {
-                                                        if(xmlOC.InputOnly==true)
                                                         foreach (var NVkun2 in Network.Nodes.Items)
                                                         {
                                                             if (NVkun2.UUID == n.UUID)
@@ -567,15 +566,15 @@ namespace FatNoder.ViewModels
                                                                 {
                                                                     if (origkun.UUID == xmlOC.Target)
                                                                     {
-                                                                        foreach (var OutObj in NVkun2.Inputs.Items)
+                                                                        foreach (var InObj in NVkun2.Inputs.Items)
                                                                         {
-                                                                            if (OutObj.Name == outkun2344.Name)
+                                                                            if (InObj.Name == inkun2344.Name)
                                                                             {
-                                                                                foreach (var InObj in origkun.Outputs.Items)
+                                                                                foreach (var OutObj in origkun.Outputs.Items)
                                                                                 {
-                                                                                    if (InObj.Name == xmlOC.Name)
+                                                                                    if (OutObj.Name == xmlOC.Name)
                                                                                     {
-                                                                                        Network.Connections.Add(Network.ConnectionFactory(OutObj, InObj));
+                                                                                        Network.Connections.Add(Network.ConnectionFactory(InObj, OutObj));
 
                                                                                     }
                                                                                 }
