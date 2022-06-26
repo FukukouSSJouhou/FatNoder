@@ -24,11 +24,34 @@ namespace NodeAyano.Model.Nodes
         }
 
         /// <inheritdoc/>
-        public override StatementSyntax[] CompileSyntax()
+        public override StatementSyntax[] CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
         {
             List<StatementSyntax> statementskun65656565 = new();
-            ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(SyntaxFactory.IdentifierName("id_" + this.UUID.ToString().Replace("-", "_") + "_ValueRet"));
-            statementskun65656565.Add(retstatement);
+            foreach (XMLNodeInput xnode in Inputs)
+            {
+                if (xnode.Name == "ValueRet")
+                {
+                    foreach (XMLNodeInputConnect cn in xnode.connections)
+                    {
+                        foreach(XML_NodeModel modelkun in xnodes.Where(
+                            d =>
+                            {
+                                return d.UUID == cn.Target;
+                            }))
+                        {
+                            if(modelkun is ValueCompileNodeBase)
+                            {
+
+                                ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(((ValueCompileNodeBase)modelkun).CompileSyntax(xnodes));
+                                statementskun65656565.Add(retstatement);
+                                return statementskun65656565.ToArray();
+                            }
+                        }
+                    }
+                }
+            }
+                        //ReturnStatementSyntax retstatement = SyntaxFactory.ReturnStatement(SyntaxFactory.IdentifierName("id_" + this.UUID.ToString().Replace("-", "_") + "_ValueRet"));
+           //statementskun65656565.Add(retstatement);
             return statementskun65656565.ToArray() ;
         }
     }

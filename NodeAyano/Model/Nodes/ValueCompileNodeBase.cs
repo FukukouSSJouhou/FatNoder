@@ -8,14 +8,17 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Nodes
 {
-    public abstract class CompileNodeBase: XML_NodeModel
+    /// <summary>
+    /// For Value
+    /// </summary>
+    public abstract class ValueCompileNodeBase : XML_NodeModel
     {
         /// <summary>
         /// コンパイラメソッド
         /// </summary>
         /// <param name="xnodes">node list</param>
         /// <returns>メンバー君</returns>
-        public abstract StatementSyntax[] CompileSyntax(IEnumerable<XML_NodeModel> xnodes);
+        public abstract LiteralExpressionSyntax CompileSyntax(IEnumerable<XML_NodeModel> xnodes);
 
     }
 }

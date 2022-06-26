@@ -23,7 +23,7 @@ namespace NodeAyano.Model.Nodes
             get; set;
         }
         /// <inheritdoc/>
-        public override StatementSyntax[] CompileSyntax()
+        public override StatementSyntax[] CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
         {
             List<StatementSyntax> returnstatements = new();
 
