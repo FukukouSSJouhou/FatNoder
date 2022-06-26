@@ -60,6 +60,28 @@ namespace FatNoder.ViewModels.Nodes
             };
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement());
+            this.WhenAnyObservable(vm => vm.Inputs.CountChanged).Subscribe(newvalue =>
+            {
+
+                foreach (XMLNodeInput xs in _model.Inputs.Where(d =>
+                {
+                    return d.Name == ReturnInput.Name;
+                }))
+                {
+                    xs.connections.Clear();
+                    foreach (ConnectionViewModel cv in ReturnInput.Connections.Items)
+                    {
+                        //Console.WriteLine($"{cv.Input.Name},{cv.Input.Parent.UUID}");
+                        xs.connections.Add(
+                            new XMLNodeInputConnect
+                            {
+                                Name = cv.Output.Name,
+                                Target = cv.Output.Parent.UUID,
+                                InputOnly = true
+                            }) ;
+                    }
+                }
+            });
             this.Inputs.Add(ReturnInput);
             this.Outputs.Add(Flow);
         }
@@ -86,6 +108,28 @@ namespace FatNoder.ViewModels.Nodes
             };
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement());
+            this.WhenAnyObservable(vm => vm.Inputs.CountChanged).Subscribe(newvalue =>
+            {
+
+                foreach (XMLNodeInput xs in _model.Inputs.Where(d =>
+                {
+                    return d.Name == ReturnInput.Name;
+                }))
+                {
+                    xs.connections.Clear();
+                    foreach (ConnectionViewModel cv in ReturnInput.Connections.Items)
+                    {
+                        //Console.WriteLine($"{cv.Input.Name},{cv.Input.Parent.UUID}");
+                        xs.connections.Add(
+                            new XMLNodeInputConnect
+                            {
+                                Name = cv.Output.Name,
+                                Target = cv.Output.Parent.UUID,
+                                InputOnly = true
+                            });
+                    }
+                }
+            });
             this.Inputs.Add(ReturnInput);
             this.Outputs.Add(Flow);
         }
