@@ -25,6 +25,14 @@ namespace FatNoder.Serializer.Node.Xml
 
     }
     /// <summary>
+    /// XML Node Inputs
+    /// </summary>
+    [CollectionDataContract(Name = "Inputs")]
+    public class XMLNodeInputS : List<XMLNodeInput>
+    {
+
+    }
+    /// <summary>
     /// XML Node Point
     /// </summary>
     [DataContract(Name = "point")]
@@ -88,6 +96,14 @@ namespace FatNoder.Serializer.Node.Xml
         public XMLNodeOutputS Outputs
         {
             get;set;
+        }
+        /// <summary>
+        /// Node Inputs
+        /// </summary>
+        [DataMember(Name = "Outputs", Order = 5)]
+        public XMLNodeInputS Inputs
+        {
+            get; set;
         }
         /// <summary>
         /// Node Location
