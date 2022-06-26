@@ -13,6 +13,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AyanoNodeVM;
+using NodeNetworkJH.ViewModels;
+
 namespace FatNoder.ViewModels.Nodes
 {
     public partial class PrintNodeViewModel : StatementNodeViewModelBase, INodeViewModelBase
@@ -38,6 +40,17 @@ namespace FatNoder.ViewModels.Nodes
                 _model.Value = newvalue;
             });
 
+            _model.Inputs = new XMLNodeInputS
+            {
+                new XMLNodeInput()
+                {
+                    Name = PrintInput.Name,
+                    connections=new XMLNodeInputConnectS
+                    {
+
+                    }
+                }
+            };
             _model.InputStates = new XMLNodeInputStatement_VMLS();
             _model.InputStates.Add(new XMLNodeInputStatement()
             {
@@ -57,6 +70,28 @@ namespace FatNoder.ViewModels.Nodes
                         xs.States.Add(guidkun.UUID);
                     }
                 }
+            });
+            PrintInput.Connections.CountChanged.Subscribe(newvalue =>
+            {
+                foreach (XMLNodeInput xs in _model.Inputs.Where(d =>
+                {
+                    return d.Name == PrintInput.Name;
+                }))
+                {
+                    xs.connections.Clear();
+                    foreach (ConnectionViewModel cv in PrintInput.Connections.Items)
+                    {
+                        //Console.WriteLine($"{cv.Input.Name},{cv.Input.Parent.UUID}");
+                        xs.connections.Add(
+                            new XMLNodeInputConnect
+                            {
+                                Name = cv.Output.Name,
+                                Target = cv.Output.Parent.UUID,
+                                InputOnly = true
+                            });
+                    }
+                }
+
             });
             this.Inputs.Add(PrintInput);
         }
@@ -74,6 +109,17 @@ namespace FatNoder.ViewModels.Nodes
                 _model.Value = newvalue;
             });
 
+            _model.Inputs = new XMLNodeInputS
+            {
+                new XMLNodeInput()
+                {
+                    Name = PrintInput.Name,
+                    connections=new XMLNodeInputConnectS
+                    {
+
+                    }
+                }
+            };
             _model.InputStates = new XMLNodeInputStatement_VMLS();
             _model.InputStates.Add(new XMLNodeInputStatement()
             {
@@ -93,6 +139,28 @@ namespace FatNoder.ViewModels.Nodes
                         xs.States.Add(guidkun.UUID);
                     }
                 }
+            });
+            PrintInput.Connections.CountChanged.Subscribe(newvalue =>
+            {
+                foreach (XMLNodeInput xs in _model.Inputs.Where(d =>
+                {
+                    return d.Name == PrintInput.Name;
+                }))
+                {
+                    xs.connections.Clear();
+                    foreach (ConnectionViewModel cv in PrintInput.Connections.Items)
+                    {
+                        //Console.WriteLine($"{cv.Input.Name},{cv.Input.Parent.UUID}");
+                        xs.connections.Add(
+                            new XMLNodeInputConnect
+                            {
+                                Name = cv.Output.Name,
+                                Target = cv.Output.Parent.UUID,
+                                InputOnly = true
+                            });
+                    }
+                }
+
             });
             this.Inputs.Add(PrintInput);
         }
