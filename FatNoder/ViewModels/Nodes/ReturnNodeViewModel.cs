@@ -58,8 +58,20 @@ namespace FatNoder.ViewModels.Nodes
                 Value = this.WhenAnyValue(vm => vm.StatementIfce),
                 PortPosition = PortPosition.Left
             };
+            _model.Inputs = new XMLNodeInputS
+            {
+                new XMLNodeInput()
+                {
+                    Name = ReturnInput.Name,
+                    connections=new XMLNodeInputConnectS
+                    {
+
+                    }
+                }
+            };
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement());
+            this.Inputs.Add(ReturnInput);
             this.WhenAnyObservable(vm => vm.Inputs.CountChanged).Subscribe(newvalue =>
             {
 
@@ -82,7 +94,6 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
-            this.Inputs.Add(ReturnInput);
             this.Outputs.Add(Flow);
         }
         public ReturnNodeViewModel()
@@ -106,11 +117,23 @@ namespace FatNoder.ViewModels.Nodes
                 Value = this.WhenAnyValue(vm =>vm.StatementIfce),
                 PortPosition=PortPosition.Left
             };
+
+            _model.Inputs = new XMLNodeInputS
+            {
+                new XMLNodeInput()
+                {
+                    Name = ReturnInput.Name,
+                    connections=new XMLNodeInputConnectS
+                    {
+
+                    }
+                }
+            };
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement());
+            this.Inputs.Add(ReturnInput);
             this.WhenAnyObservable(vm => vm.Inputs.CountChanged).Subscribe(newvalue =>
             {
-
                 foreach (XMLNodeInput xs in _model.Inputs.Where(d =>
                 {
                     return d.Name == ReturnInput.Name;
@@ -130,7 +153,6 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
-            this.Inputs.Add(ReturnInput);
             this.Outputs.Add(Flow);
         }
         /// <inheritdoc/>
