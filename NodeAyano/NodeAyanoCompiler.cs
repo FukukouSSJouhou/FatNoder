@@ -56,7 +56,7 @@ namespace NodeAyano
                     {
                         if (NodeEnum.Current is CompileNodeBase)
                         {
-                            foreach (StatementSyntax sckun in ((CompileNodeBase)NodeEnum.Current).CompileSyntax())
+                            foreach (StatementSyntax sckun in ((CompileNodeBase)NodeEnum.Current).CompileSyntax(xnodes))
                             {
                                 statements.Add(sckun);
                             }
