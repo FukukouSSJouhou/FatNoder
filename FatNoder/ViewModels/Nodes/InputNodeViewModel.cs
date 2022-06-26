@@ -88,7 +88,7 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             };
-
+            /*
             this.WhenAnyObservable(vm => vm.Output.Connections.CountChanged).Subscribe(newvalue =>
             {
 
@@ -109,7 +109,8 @@ namespace FatNoder.ViewModels.Nodes
                             });
                     }
                 }
-            });
+            });*/
+
             this.Outputs.Add(Output);
 
         }
