@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AyanoNodeVM;
+using NodeAyano.Model.Nodes;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -14,6 +16,18 @@ namespace FatNoder.ViewModels.Nodes
         static GetValueNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(()=>new NodeView(),typeof(IViewFor<GetValueNodeViewModel<T>>));
+        }
+        [ModelAyano]
+        private GetValueNodeModel<T> _model = new GetValueNodeModel<T>();
+        ///<inheritdoc/>
+        public GetValueNodeViewModel(Guid uuid) : base(uuid)
+        {
+            InitAyanoVMB();
+        }
+        ///<inheritdoc/>
+        public GetValueNodeViewModel() : base()
+        {
+            InitAyanoVMB();
         }
     }
 }
