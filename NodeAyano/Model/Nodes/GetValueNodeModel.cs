@@ -1,4 +1,5 @@
 ﻿using FatNoder.Serializer.Node.Xml;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
@@ -27,8 +28,9 @@ namespace NodeAyano.Model.Nodes
             get; set;
         }
         ///<inheritdoc/>
-        public override LiteralExpressionSyntax CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
+        public override ExpressionSyntax CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
         {
+            return SyntaxFactory.IdentifierName(ValueName);
 
         }
     }
