@@ -9,26 +9,49 @@ using System.Threading.Tasks;
 using AyanoNodeVM;
 using NodeAyano.Model.Nodes;
 using FatNoder.Serializer.Node.Xml;
+using NodeNetworkJH.Toolkit.ValueNode;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public partial class GetValueNodeViewModel<T> : StatementNodeViewModelBase, INodeViewModelBase
+    public partial class GetValueNodeViewModel<T> : NodeVMBasekun, INodeViewModelBase
     {
         static GetValueNodeViewModel()
         {
-            Splat.Locator.CurrentMutable.Register(()=>new NodeView(),typeof(IViewFor<GetValueNodeViewModel<T>>));
+            Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<GetValueNodeViewModel<T>>));
         }
         [ModelAyano]
         private GetValueNodeModel<T> _model = new GetValueNodeModel<T>();
+        /// <summary>
+        /// Output Value?
+        /// </summary>
+        public ValueNodeOutputViewModel<T?> Output { get; }
+        /// <summary>
+        /// Name Input
+        /// </summary>
+        public ValueNodeInputViewModel<string?> NameInput { get; }
         ///<inheritdoc/>
         public GetValueNodeViewModel(Guid uuid) : base(uuid)
         {
             InitAyanoVMB();
+
+            _model.InputOnly = true;
+            Output = new ValueNodeOutputViewModel<T?>
+            {
+                Name = "Value"
+            };
+            InitConstructor();
         }
         ///<inheritdoc/>
         public GetValueNodeViewModel() : base()
         {
             InitAyanoVMB();
+
+            _model.InputOnly = true;
+            Output = new ValueNodeOutputViewModel<T?>
+            {
+                Name = "Value"
+            };
+            InitConstructor();
         }
         ///<inheritdoc/>
         public void ChangeStates(XML_NodeModel newmodelbs)
@@ -42,6 +65,11 @@ namespace FatNoder.ViewModels.Nodes
             };
             _model.ValueName = ((SetValueNodeModel<T>)newmodelbs).ValueName;
             ((HannyouValueEditorViewModel<string>)NameInput.Editor).Value = _model.ValueName;
+        }
+
+        private void InitConstructor()
+        {
+
         }
     }
 }
