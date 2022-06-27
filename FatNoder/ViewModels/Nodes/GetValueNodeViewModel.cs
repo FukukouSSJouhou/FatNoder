@@ -1,4 +1,5 @@
-﻿using NodeNetworkJH.Views;
+﻿using NodeAyanoVMLibs.ViewModels.Nodes;
+using NodeNetworkJH.Views;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
