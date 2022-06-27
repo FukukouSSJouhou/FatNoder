@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Nodes
 {
-    public class GetValueNodeModel
+    public class GetValueNodeModel<T>
     {
     }
 }
