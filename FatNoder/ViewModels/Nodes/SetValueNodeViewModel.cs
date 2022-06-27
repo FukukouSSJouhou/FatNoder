@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AyanoNodeVM;
 using FatNoder.Serializer.Node.Xml;
+using NodeNetworkJH.Toolkit.ValueNode;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -19,6 +20,7 @@ namespace FatNoder.ViewModels.Nodes
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<SetValueNodeViewModel<T>>));
         }
+        public ValueNodeInputViewModel<T?> HensuuInput { get; }
         [ModelAyano]
         private SetValueNodeModel<T> _model = new SetValueNodeModel<T>();
         ///<inheritdoc/>
