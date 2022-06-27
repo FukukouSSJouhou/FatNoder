@@ -10,6 +10,7 @@ using AyanoNodeVM;
 using NodeAyano.Model.Nodes;
 using FatNoder.Serializer.Node.Xml;
 using NodeNetworkJH.Toolkit.ValueNode;
+using DynamicData;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -92,6 +93,19 @@ namespace FatNoder.ViewModels.Nodes
         private void InitConstructor()
         {
 
+            _model.Outputs = new XMLNodeOutputS
+            {
+                new XMLNodeOutput()
+                {
+                    Name = Output.Name,
+                    connections=new XMLNodeOutputConnectS
+                    {
+
+                    }
+                }
+            };
+            Inputs.Add(NameInput);
+            Outputs.Add(Output);
         }
     }
 }
