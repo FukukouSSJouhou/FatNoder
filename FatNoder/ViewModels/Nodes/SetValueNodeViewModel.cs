@@ -24,6 +24,7 @@ namespace FatNoder.ViewModels.Nodes
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<SetValueNodeViewModel<T>>));
         }
         public ValueNodeInputViewModel<T?> HensuuInput { get; }
+        public ValueNodeInputViewModel<string?> NameInput { get; }
         [ModelAyano]
         private SetValueNodeModel<T> _model = new SetValueNodeModel<T>();
         ///<inheritdoc/>
@@ -39,6 +40,16 @@ namespace FatNoder.ViewModels.Nodes
             {
                 _model.Value = newvalue;
             });
+            NameInput = new ValueNodeInputViewModel<string?>
+            {
+                Name = "Name",
+                MaxConnections = 1
+            };
+            NameInput.ValueChanged.Subscribe(newvalue =>
+            {
+                _model.ValueName = newvalue;
+            });
+            NameInput.Editor = new HannyouValueEditorViewModel<string>();
 
             _model.Inputs = new XMLNodeInputS
             {
@@ -94,6 +105,8 @@ namespace FatNoder.ViewModels.Nodes
 
             });
             this.Inputs.Add(HensuuInput);
+            NameInput.Port.IsVisible = false;
+            this.Inputs.Add(NameInput);
         }
         ///<inheritdoc/>
         public SetValueNodeViewModel() : base()
@@ -109,6 +122,16 @@ namespace FatNoder.ViewModels.Nodes
                 _model.Value = newvalue;
             });
 
+            NameInput = new ValueNodeInputViewModel<string?>
+            {
+                Name = "Name",
+                MaxConnections = 1
+            };
+            NameInput.ValueChanged.Subscribe(newvalue =>
+            {
+                _model.ValueName = newvalue;
+            });
+            NameInput.Editor = new HannyouValueEditorViewModel<string>();
             _model.Inputs = new XMLNodeInputS
             {
                 new XMLNodeInput()
@@ -163,6 +186,8 @@ namespace FatNoder.ViewModels.Nodes
 
             });
             this.Inputs.Add(HensuuInput);
+            NameInput.Port.IsVisible = false;
+            this.Inputs.Add(NameInput);
         }
         ///<inheritdoc/>
         public void ChangeStates(XML_NodeModel newmodelbs)
