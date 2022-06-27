@@ -21,14 +21,17 @@ namespace FatNoder.ViewModels.Nodes
         }
         [ModelAyano]
         private SetValueNodeModel<T> _model = new SetValueNodeModel<T>();
+        ///<inheritdoc/>
         public SetValueNodeViewModel(Guid uuid) : base(uuid)
         {
             InitAyanoVMB();
         }
+        ///<inheritdoc/>
         public SetValueNodeViewModel() : base()
         {
             InitAyanoVMB();
         }
+        ///<inheritdoc/>
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
