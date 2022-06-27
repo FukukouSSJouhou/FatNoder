@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    internal class GetValueNodeViewModel
+    public partial class GetValueNodeViewModel<T> : StatementNodeViewModelBase, INodeViewModelBase
     {
     }
 }
