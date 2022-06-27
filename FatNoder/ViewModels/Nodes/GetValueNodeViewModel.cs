@@ -39,6 +39,17 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "Value"
             };
+            NameInput = new ValueNodeInputViewModel<string?>
+            {
+                Name = "Name",
+                MaxConnections = 1
+            };
+            NameInput.ValueChanged.Subscribe(newvalue =>
+            {
+                _model.ValueName = newvalue;
+            });
+            NameInput.Editor = new HannyouValueEditorViewModel<string>();
+            NameInput.Port.IsVisible = false;
             InitConstructor();
         }
         ///<inheritdoc/>
@@ -51,6 +62,17 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "Value"
             };
+            NameInput = new ValueNodeInputViewModel<string?>
+            {
+                Name = "Name",
+                MaxConnections = 1
+            };
+            NameInput.ValueChanged.Subscribe(newvalue =>
+            {
+                _model.ValueName = newvalue;
+            });
+            NameInput.Editor = new HannyouValueEditorViewModel<string>();
+            NameInput.Port.IsVisible = false;
             InitConstructor();
         }
         ///<inheritdoc/>
