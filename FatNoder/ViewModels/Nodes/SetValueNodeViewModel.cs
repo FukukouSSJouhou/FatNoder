@@ -201,6 +201,7 @@ namespace FatNoder.ViewModels.Nodes
             };
             _model.Value = ((SetValueNodeModel<T>)newmodelbs).Value;
             _model.ValueName = ((SetValueNodeModel<T>)newmodelbs).ValueName;
+            ((HannyouValueEditorViewModel<string>)NameInput.Editor).Value = _model.ValueName;
         }
     }
 }
