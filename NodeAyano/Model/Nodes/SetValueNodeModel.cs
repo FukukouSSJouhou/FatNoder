@@ -11,14 +11,24 @@ using System.Xml.Linq;
 
 namespace NodeAyano.Model.Nodes
 {
+    /// <summary>
+    /// Set value Node Model
+    /// </summary>
+    /// <typeparam name="T">Type</typeparam>
     public class SetValueNodeModel<T> : CompileNodeBase
     {
+        /// <summary>
+        /// Value
+        /// </summary>
         [DataMember(Name = "Value", Order = 8)]
 
         public T Value
         {
             get; set;
         }
+        /// <summary>
+        /// Value Name
+        /// </summary>
         [DataMember(Name = "ValueName", Order = 9)]
 
         public string ValueName
