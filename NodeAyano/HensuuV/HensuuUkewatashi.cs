@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.HensuuV
 {
+    /// <summary>
+    /// Ukewatashii
+    /// </summary>
     public class HensuuUkewatashi
     {
+        /// <summary>
+        /// Type
+        /// </summary>
+        public Type type { get; set; }
+        public HensuuUkewatashi(Type T)
+        {
+
+        }
     }
 }
