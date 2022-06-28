@@ -11,6 +11,7 @@ using NodeAyano.Model.Nodes;
 using FatNoder.Serializer.Node.Xml;
 using NodeNetworkJH.Toolkit.ValueNode;
 using DynamicData;
+using NodeAyano.HensuuV;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -25,7 +26,7 @@ namespace FatNoder.ViewModels.Nodes
         /// <summary>
         /// Output Value?
         /// </summary>
-        public ValueNodeOutputViewModel<T?> Output { get; }
+        public ValueNodeOutputViewModel<HensuuUkewatashi?> Output { get; }
         /// <summary>
         /// Name Input
         /// </summary>
@@ -36,7 +37,7 @@ namespace FatNoder.ViewModels.Nodes
             InitAyanoVMB();
 
             _model.InputOnly = true;
-            Output = new ValueNodeOutputViewModel<T?>
+            Output = new ValueNodeOutputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value"
             };
@@ -59,7 +60,7 @@ namespace FatNoder.ViewModels.Nodes
             InitAyanoVMB();
 
             _model.InputOnly = true;
-            Output = new ValueNodeOutputViewModel<T?>
+            Output = new ValueNodeOutputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value"
             };
