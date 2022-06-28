@@ -14,6 +14,7 @@ using NodeNetworkJH.Toolkit.ValueNode;
 using DynamicData;
 using FatNoder.Model.Transc;
 using NodeNetworkJH.ViewModels;
+using NodeAyano.HensuuV;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -23,22 +24,22 @@ namespace FatNoder.ViewModels.Nodes
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<SetValueNodeViewModel<T>>));
         }
-        public ValueNodeInputViewModel<T?> HensuuInput { get; }
+        public ValueNodeInputViewModel<HensuuUkewatashi?> HensuuInput { get; }
         public ValueNodeInputViewModel<string?> NameInput { get; }
         [ModelAyano]
         private SetValueNodeModel<T> _model = new SetValueNodeModel<T>();
         ///<inheritdoc/>
         public SetValueNodeViewModel(Guid uuid) : base(uuid)
         {
-            InitAyanoVMB();
-            HensuuInput = new ValueNodeInputViewModel<T?>
+InitAyanoVMB();
+            HensuuInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value",
                 MaxConnections = 1
             };
             HensuuInput.ValueChanged.Subscribe(newvalue =>
             {
-                _model.Value = newvalue;
+                //_model.Value = newvalue;
             });
             NameInput = new ValueNodeInputViewModel<string?>
             {
@@ -112,14 +113,14 @@ namespace FatNoder.ViewModels.Nodes
         public SetValueNodeViewModel() : base()
         {
             InitAyanoVMB();
-            HensuuInput = new ValueNodeInputViewModel<T?>
+            HensuuInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value",
                 MaxConnections = 1
             };
             HensuuInput.ValueChanged.Subscribe(newvalue =>
             {
-                _model.Value = newvalue;
+                //_model.Value = newvalue;
             });
 
             NameInput = new ValueNodeInputViewModel<string?>
