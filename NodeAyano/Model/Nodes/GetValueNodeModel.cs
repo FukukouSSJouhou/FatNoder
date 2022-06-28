@@ -15,7 +15,7 @@ namespace NodeAyano.Model.Nodes
     /// Get Value Node Model
     /// </summary>
     /// <typeparam name="T">Type</typeparam>
-    public class GetValueNodeModel<T> : ValueCompileNodeBase
+    public class GetValueNodeModel : ValueCompileNodeBase
     {
 
         /// <summary>

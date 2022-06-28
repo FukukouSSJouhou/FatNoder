@@ -15,14 +15,14 @@ using NodeAyano.HensuuV;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public partial class GetValueNodeViewModel<T> : NodeVMBasekun, INodeViewModelBase
+    public partial class GetValueNodeViewModel : NodeVMBasekun, INodeViewModelBase
     {
         static GetValueNodeViewModel()
         {
-            Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<GetValueNodeViewModel<T>>));
+            Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<GetValueNodeViewModel>));
         }
         [ModelAyano]
-        private GetValueNodeModel<T> _model = new GetValueNodeModel<T>();
+        private GetValueNodeModel _model = new GetValueNodeModel();
         /// <summary>
         /// Output Value?
         /// </summary>
@@ -90,7 +90,7 @@ namespace FatNoder.ViewModels.Nodes
                 X = newmodelbs.Points.X,
                 Y = newmodelbs.Points.Y
             };
-            _model.ValueName = ((SetValueNodeModel<T>)newmodelbs).ValueName;
+            _model.ValueName = ((SetValueNodeModel)newmodelbs).ValueName;
             ((HannyouValueEditorViewModel<string>)NameInput.Editor).Value = _model.ValueName;
         }
 
