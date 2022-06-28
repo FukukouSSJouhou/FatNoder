@@ -90,7 +90,7 @@ namespace FatNoder.ViewModels.Nodes
                 X = newmodelbs.Points.X,
                 Y = newmodelbs.Points.Y
             };
-            _model.ValueName = ((SetValueNodeModel)newmodelbs).ValueName;
+            _model.ValueName = ((GetValueNodeModel)newmodelbs).ValueName;
             ((HannyouValueEditorViewModel<string>)NameInput.Editor).Value = _model.ValueName;
         }
 
