@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AyanoNodeVM;
+using NodeAyano.HensuuV;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -31,7 +32,7 @@ namespace FatNoder.ViewModels.Nodes
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<ReturnNodeViewModel<T>>));
 
         }
-        public ValueNodeInputViewModel<T?> ReturnInput { get; }
+        public ValueNodeInputViewModel<HensuuUkewatashi?> ReturnInput { get; }
         public ValueNodeOutputViewModel<StatementCls> Flow { get; }
         public StatementCls StatementIfce { get; }
         [ModelAyano]
@@ -42,14 +43,14 @@ namespace FatNoder.ViewModels.Nodes
             InitAyanoVMB();
 
             StatementIfce = StatementCls.GenStatementCls(this.UUID);
-            ReturnInput = new ValueNodeInputViewModel<T?>
+            ReturnInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "ValueRet",
                 MaxConnections = 1
             };
             ReturnInput.ValueChanged.Subscribe(newvalue =>
             {
-                _model.Value = newvalue;
+                //_model.Value = newvalue;
             });
             Flow = new ValueNodeOutputViewModel<StatementCls>
             {
@@ -101,14 +102,14 @@ namespace FatNoder.ViewModels.Nodes
             InitAyanoVMB();
 
             StatementIfce = StatementCls.GenStatementCls(this.UUID);
-            ReturnInput = new ValueNodeInputViewModel<T?>
+            ReturnInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "ValueRet",
                 MaxConnections=1
             };
             ReturnInput.ValueChanged.Subscribe(newvalue =>
             {
-                _model.Value = newvalue;
+                //_model.Value = newvalue;
             });
             Flow = new ValueNodeOutputViewModel<StatementCls>
             {

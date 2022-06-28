@@ -27,6 +27,7 @@ namespace FatNoder.ViewModels.Nodes
         /// Output Value?
         /// </summary>
         public ValueNodeOutputViewModel<HensuuUkewatashi?> Output { get; }
+        private HensuuUkewatashi hkun = new HensuuUkewatashi();
         /// <summary>
         /// Name Input
         /// </summary>
@@ -39,7 +40,8 @@ namespace FatNoder.ViewModels.Nodes
             _model.InputOnly = true;
             Output = new ValueNodeOutputViewModel<HensuuUkewatashi?>
             {
-                Name = "Value"
+                Name = "Value",
+                Value = this.WhenAnyValue(vm => vm.hkun)
             };
             NameInput = new ValueNodeInputViewModel<string?>
             {
@@ -62,7 +64,8 @@ namespace FatNoder.ViewModels.Nodes
             _model.InputOnly = true;
             Output = new ValueNodeOutputViewModel<HensuuUkewatashi?>
             {
-                Name = "Value"
+                Name = "Value",
+                Value = this.WhenAnyValue(vm => vm.hkun)
             };
             NameInput = new ValueNodeInputViewModel<string?>
             {
