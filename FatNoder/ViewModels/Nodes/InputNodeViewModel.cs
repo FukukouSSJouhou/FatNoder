@@ -33,6 +33,7 @@ namespace FatNoder.ViewModels.Nodes
         /// Output Value?
         /// </summary>
         public ValueNodeOutputViewModel<HensuuUkewatashi?> Output { get; }
+        private HensuuUkewatashi hkun = new HensuuUkewatashi();
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
@@ -57,7 +58,7 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "Value",
                 Editor = ValueEditor,
-                Value = this.WhenAnyValue(vm=>new HensuuUkewatashi(typeof(T)))
+                Value = this.WhenAnyValue(vm => vm.hkun)
             };
             InitConstructor();
         }
@@ -69,7 +70,7 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "Value",
                 Editor = ValueEditor,
-                Value = this.WhenAnyValue(vm => new HensuuUkewatashi(typeof(T)))
+                Value = this.WhenAnyValue(vm => vm.hkun)
             };
             InitConstructor();
         }

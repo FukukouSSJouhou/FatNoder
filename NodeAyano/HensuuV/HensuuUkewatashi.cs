@@ -17,7 +17,12 @@ namespace NodeAyano.HensuuV
         public Type type { get; set; }
         public HensuuUkewatashi(Type T)
         {
-
+            type = T;
         }
+        public HensuuUkewatashi()
+        {
+            type = typeof(object);
+        }
+
     }
 }
