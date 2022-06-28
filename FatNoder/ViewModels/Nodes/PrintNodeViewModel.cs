@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AyanoNodeVM;
 using NodeNetworkJH.ViewModels;
+using NodeAyano.HensuuV;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -24,20 +25,20 @@ namespace FatNoder.ViewModels.Nodes
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<PrintNodeViewModel>));
         }
         
-        public ValueNodeInputViewModel<string?> PrintInput { get; }
+        public ValueNodeInputViewModel<HensuuUkewatashi?> PrintInput { get; }
         [ModelAyano]
         private PrintNodeModel _model = new PrintNodeModel();
         public PrintNodeViewModel(Guid UUID):base(UUID)
         {
             InitAyanoVMB();
-            PrintInput = new ValueNodeInputViewModel<string?>
+            PrintInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Printcontent",
                 MaxConnections = 1
             };
             PrintInput.ValueChanged.Subscribe(newvalue =>
             {
-                _model.Value = newvalue;
+                //_model.Value = newvalue;
             });
 
             _model.Inputs = new XMLNodeInputS
@@ -99,14 +100,14 @@ namespace FatNoder.ViewModels.Nodes
         public PrintNodeViewModel()
         {
             InitAyanoVMB();
-            PrintInput = new ValueNodeInputViewModel<string?>
+            PrintInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Printcontent",
                 MaxConnections = 1
             };
             PrintInput.ValueChanged.Subscribe(newvalue =>
             {
-                _model.Value = newvalue;
+                //_model.Value = newvalue;
             });
 
             _model.Inputs = new XMLNodeInputS

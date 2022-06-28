@@ -13,6 +13,7 @@ using FatNoder.Serializer.Node.Xml;
 using System.Xml.Linq;
 using DynamicData;
 using NodeNetworkJH.ViewModels;
+using NodeAyano.HensuuV;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -31,7 +32,8 @@ namespace FatNoder.ViewModels.Nodes
         /// <summary>
         /// Output Value?
         /// </summary>
-        public ValueNodeOutputViewModel<T?> Output { get; }
+        public ValueNodeOutputViewModel<HensuuUkewatashi?> Output { get; }
+        private HensuuUkewatashi hkun = new HensuuUkewatashi();
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
@@ -52,11 +54,11 @@ namespace FatNoder.ViewModels.Nodes
         {
             InitAyanoVMB();
             _model.InputOnly = true;
-            Output = new ValueNodeOutputViewModel<T?>
+            Output = new ValueNodeOutputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value",
                 Editor = ValueEditor,
-                Value = this.WhenAnyValue(vm => vm.ValueEditor.Value)
+                Value = this.WhenAnyValue(vm => vm.hkun)
             };
             InitConstructor();
         }
@@ -64,11 +66,11 @@ namespace FatNoder.ViewModels.Nodes
         {
             InitAyanoVMB();
             _model.InputOnly = true;
-            Output = new ValueNodeOutputViewModel<T?>
+            Output = new ValueNodeOutputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value",
                 Editor = ValueEditor,
-                Value = this.WhenAnyValue(vm => vm.ValueEditor.Value)
+                Value = this.WhenAnyValue(vm => vm.hkun)
             };
             InitConstructor();
         }
