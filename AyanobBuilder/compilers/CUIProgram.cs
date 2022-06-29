@@ -120,7 +120,7 @@ namespace AyanoBuilder.compilers
                             var ModelEnumerator = new NodeModelEnumerator(rootnode, roots);
                             ;
 
-                            var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
+                            var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator,roots);
                             using(var stream=new StreamWriter(OutArgument.Value))
                             {
                                 stream.Write(compilerstr);
@@ -229,11 +229,11 @@ namespace AyanoBuilder.compilers
                             if (ISColorEnabled)
                             {
 
-                                var compilernde = NodeAyanoCompiler.TransCompileNode(ModelEnumerator);
+                                var compilernde = NodeAyanoCompiler.TransCompileNode(ModelEnumerator,roots);
                             }
                             else
                             {
-                                var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator);
+                                var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator,roots);
                                 Console.Write(compilerstr);
                                 Console.Write("\n");
                             }
@@ -257,6 +257,7 @@ namespace tintin{
     static int Main(){
         int tdn=9;
         string tdn33=tdnx445;
+        tdn=tdn+23;
         Console.WriteLine(tdn33);
         Console.Error.WriteLine(tdn33);
         return tdn;
@@ -276,8 +277,8 @@ namespace tintin{
                 command.HelpOption("-h|--help");
                 command.OnExecute(() =>
                 {
-                    var compilerstr = NodeAyanoCompiler.TransCompile(null);
-                    Console.WriteLine(compilerstr);
+                    //var compilerstr = NodeAyanoCompiler.TransCompile(null);
+                    //Console.WriteLine(compilerstr);
                     return 0;
                 });
             });
