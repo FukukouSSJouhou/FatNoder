@@ -23,9 +23,10 @@ namespace NodeAyano.Model.Nodes
 
         /// <inheritdoc/>
 
-        public override LiteralExpressionSyntax CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
+        public override ExpressionSyntax CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
         {
-            ValueCompileNodeBase input1, input2;
+            ValueCompileNodeBase input1 = null;
+            ValueCompileNodeBase input2=null;
             foreach (XMLNodeInput xnode in Inputs)
             {
                 if (xnode.Name == "Input1")
@@ -65,6 +66,15 @@ namespace NodeAyano.Model.Nodes
                         }
                     }
                 }
+            }
+            if(input1 != null && input2 != null)
+            {
+                return SyntaxFactory.BinaryExpression(SyntaxKind.AddExpression, input1.CompileSyntax(xnodes), input2.CompileSyntax(xnodes));
+            }
+            else
+            {
+                return SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(
+                                        0));
             }
         }
     }
