@@ -88,7 +88,7 @@ namespace FatNoder
                             FileName = interaction.Input.FilePath,
                             Filter="XML File(*.xml)|*.xml|All Files(*)|*.*"
                         };
-                        if(dialog.ShowDialog(this)?? false)
+                        if(dialog.ShowDialog()?? false)
                         {
                             return dialog.FileName;
                         }
