@@ -73,7 +73,7 @@ namespace NodeAyano.Model.Nodes
             }
             else
             {
-                return SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(
+                return SyntaxFactory.LiteralExpression(SyntaxKind.NumericLiteralExpression, SyntaxFactory.Literal(
                                         0));
             }
         }
