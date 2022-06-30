@@ -29,6 +29,10 @@ namespace FatNoder.ViewModels.Nodes
         /// </summary>
         public ValueNodeOutputViewModel<HensuuUkewatashi?> Output { get; }
         private HensuuUkewatashi hkun = new HensuuUkewatashi();
+        public ValueNodeInputViewModel<HensuuUkewatashi?> Input1 { get; }
+
+        public ValueNodeInputViewModel<HensuuUkewatashi?> Input2 { get; }
+
         public AddeNodeViewModel(Guid uuid) : base(uuid)
         {
 
