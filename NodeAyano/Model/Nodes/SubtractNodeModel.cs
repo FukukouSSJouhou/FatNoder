@@ -11,6 +11,9 @@ using System.Xml.Linq;
 
 namespace NodeAyano.Model.Nodes
 {
+    /// <summary>
+    /// Subtract Node
+    /// </summary>
     public class SubtractNodeModel: ValueCompileNodeBase
     {
         [DataMember(Name = "Value", Order = 8)]
