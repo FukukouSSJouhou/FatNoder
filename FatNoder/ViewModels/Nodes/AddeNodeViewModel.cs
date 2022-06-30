@@ -12,6 +12,7 @@ using DynamicData;
 using NodeAyano.HensuuV;
 using NodeNetworkJH.Toolkit.ValueNode;
 using FatNoder.Serializer.Node.Xml;
+using NodeNetworkJH.ViewModels;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -29,6 +30,10 @@ namespace FatNoder.ViewModels.Nodes
         /// </summary>
         public ValueNodeOutputViewModel<HensuuUkewatashi?> Output { get; }
         private HensuuUkewatashi hkun = new HensuuUkewatashi();
+        public ValueNodeInputViewModel<HensuuUkewatashi?> Input1 { get; }
+
+        public ValueNodeInputViewModel<HensuuUkewatashi?> Input2 { get; }
+
         public AddeNodeViewModel(Guid uuid) : base(uuid)
         {
 
@@ -38,6 +43,16 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "Value",
                 Value = this.WhenAnyValue(vm => vm.hkun)
+            };
+            Input1 = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name="Input1",
+                MaxConnections=1
+            };
+            Input2 = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name = "Input2",
+                MaxConnections = 1
             };
             InitConstructor();
         }
@@ -50,6 +65,16 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "Value",
                 Value = this.WhenAnyValue(vm => vm.hkun)
+            };
+            Input1 = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name = "Input1",
+                MaxConnections = 1
+            };
+            Input2 = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name = "Input2",
+                MaxConnections = 1
             };
             InitConstructor();
         }
@@ -68,7 +93,72 @@ namespace FatNoder.ViewModels.Nodes
                 }
             };
 
+            _model.Inputs = new XMLNodeInputS
+            {
+                new XMLNodeInput()
+                {
+                    Name = Input1.Name,
+                    connections=new XMLNodeInputConnectS
+                    {
+
+                    }
+                },
+                new XMLNodeInput()
+                {
+                    Name = Input2.Name,
+                    connections=new XMLNodeInputConnectS
+                    {
+
+                    }
+                }
+            };
+            Input1.Connections.CountChanged.Subscribe(newvalue =>
+            {
+
+                foreach (XMLNodeInput xs in _model.Inputs.Where(d =>
+                {
+                    return d.Name == Input1.Name;
+                }))
+                {
+                    xs.connections.Clear();
+                    foreach (ConnectionViewModel cv in Input1.Connections.Items)
+                    {
+                        //Console.WriteLine($"{cv.Input.Name},{cv.Input.Parent.UUID}");
+                        xs.connections.Add(
+                            new XMLNodeInputConnect
+                            {
+                                Name = cv.Output.Name,
+                                Target = cv.Output.Parent.UUID,
+                                InputOnly = true
+                            });
+                    }
+                }
+            });
+            Input2.Connections.CountChanged.Subscribe(newvalue =>
+            {
+
+                foreach (XMLNodeInput xs in _model.Inputs.Where(d =>
+                {
+                    return d.Name == Input2.Name;
+                }))
+                {
+                    xs.connections.Clear();
+                    foreach (ConnectionViewModel cv in Input2.Connections.Items)
+                    {
+                        //Console.WriteLine($"{cv.Input.Name},{cv.Input.Parent.UUID}");
+                        xs.connections.Add(
+                            new XMLNodeInputConnect
+                            {
+                                Name = cv.Output.Name,
+                                Target = cv.Output.Parent.UUID,
+                                InputOnly = true
+                            });
+                    }
+                }
+            });
             this.Outputs.Add(Output);
+            this.Inputs.Add(Input1);
+            this.Inputs.Add(Input2);
 
         }
         ///<inheritdoc/>
