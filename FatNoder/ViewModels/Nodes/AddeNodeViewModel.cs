@@ -92,6 +92,25 @@ namespace FatNoder.ViewModels.Nodes
                 }
             };
 
+            _model.Inputs = new XMLNodeInputS
+            {
+                new XMLNodeInput()
+                {
+                    Name = Input1.Name,
+                    connections=new XMLNodeInputConnectS
+                    {
+
+                    }
+                },
+                new XMLNodeInput()
+                {
+                    Name = Input2.Name,
+                    connections=new XMLNodeInputConnectS
+                    {
+
+                    }
+                }
+            };
             this.Outputs.Add(Output);
 
         }
