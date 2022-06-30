@@ -69,7 +69,7 @@ namespace NodeAyano.Model.Nodes
             }
             if (input1 != null && input2 != null)
             {
-                return SyntaxFactory.BinaryExpression(SyntaxKind.AddExpression, input1.CompileSyntax(xnodes), input2.CompileSyntax(xnodes));
+                return SyntaxFactory.BinaryExpression(SyntaxKind.SubtractExpression, input1.CompileSyntax(xnodes), input2.CompileSyntax(xnodes));
             }
             else
             {
