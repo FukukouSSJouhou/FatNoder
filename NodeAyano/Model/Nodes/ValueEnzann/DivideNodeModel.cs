@@ -1,6 +1,6 @@
 ﻿using FatNoder.Serializer.Node.Xml;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.CSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +8,12 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-
-namespace NodeAyano.Model.Nodes
+namespace NodeAyano.Model.Nodes.ValueEnzann
 {
-    public class SubtractNodeModel: ValueCompileNodeBase
+/// <summary>
+/// Divide node Model
+/// </summary>
+    public class DivideNodeModel : ValueCompileNodeBase
     {
         [DataMember(Name = "Value", Order = 8)]
 
@@ -69,7 +71,7 @@ namespace NodeAyano.Model.Nodes
             }
             if (input1 != null && input2 != null)
             {
-                return SyntaxFactory.BinaryExpression(SyntaxKind.SubtractExpression, input1.CompileSyntax(xnodes), input2.CompileSyntax(xnodes));
+                return SyntaxFactory.BinaryExpression(SyntaxKind.DivideExpression, input1.CompileSyntax(xnodes), input2.CompileSyntax(xnodes));
             }
             else
             {
