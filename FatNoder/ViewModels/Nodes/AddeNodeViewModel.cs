@@ -43,6 +43,16 @@ namespace FatNoder.ViewModels.Nodes
                 Name = "Value",
                 Value = this.WhenAnyValue(vm => vm.hkun)
             };
+            Input1 = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name="Input1",
+                MaxConnections=1
+            };
+            Input2 = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name = "Input2",
+                MaxConnections = 1
+            };
             InitConstructor();
         }
         public AddeNodeViewModel():base()
@@ -54,6 +64,16 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "Value",
                 Value = this.WhenAnyValue(vm => vm.hkun)
+            };
+            Input1 = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name = "Input1",
+                MaxConnections = 1
+            };
+            Input2 = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name = "Input2",
+                MaxConnections = 1
             };
             InitConstructor();
         }
