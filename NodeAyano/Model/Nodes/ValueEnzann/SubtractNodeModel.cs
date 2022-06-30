@@ -9,12 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace NodeAyano.Model.Nodes
+namespace NodeAyano.Model.Nodes.ValueEnzann
 {
     /// <summary>
     /// Subtract Node
     /// </summary>
-    public class SubtractNodeModel: ValueCompileNodeBase
+    public class SubtractNodeModel : ValueCompileNodeBase
     {
         [DataMember(Name = "Value", Order = 8)]
 

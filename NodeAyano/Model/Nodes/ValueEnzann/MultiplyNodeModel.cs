@@ -1,6 +1,6 @@
 ﻿using FatNoder.Serializer.Node.Xml;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.CSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace NodeAyano.Model.Nodes
+namespace NodeAyano.Model.Nodes.ValueEnzann
 {
-    public class AddNodeModel : ValueCompileNodeBase
+    /// <summary>
+    /// Multiply Node Model
+    /// </summary>
+    public class MultiplyNodeModel : ValueCompileNodeBase
     {
-
         [DataMember(Name = "Value", Order = 8)]
 
         public string Value
@@ -26,7 +28,7 @@ namespace NodeAyano.Model.Nodes
         public override ExpressionSyntax CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
         {
             ValueCompileNodeBase input1 = null;
-            ValueCompileNodeBase input2=null;
+            ValueCompileNodeBase input2 = null;
             foreach (XMLNodeInput xnode in Inputs)
             {
                 if (xnode.Name == "Input1")
@@ -48,7 +50,8 @@ namespace NodeAyano.Model.Nodes
                         }
                     }
                 }
-                else if (xnode.Name == "Input2"){
+                else if (xnode.Name == "Input2")
+                {
 
                     foreach (XMLNodeInputConnect cn in xnode.connections)
                     {
@@ -67,9 +70,9 @@ namespace NodeAyano.Model.Nodes
                     }
                 }
             }
-            if(input1 != null && input2 != null)
+            if (input1 != null && input2 != null)
             {
-                return SyntaxFactory.BinaryExpression(SyntaxKind.AddExpression, input1.CompileSyntax(xnodes), input2.CompileSyntax(xnodes));
+                return SyntaxFactory.BinaryExpression(SyntaxKind.MultiplyExpression, input1.CompileSyntax(xnodes), input2.CompileSyntax(xnodes));
             }
             else
             {
