@@ -30,7 +30,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FatXMLCore\FatXMLCore.csproj" />
     <ProjectReference Include="..\IconLibrary\IconLibrary.csproj" />
-    <ProjectReference Include="..\NodeAyanoVMLibsCodeGenerator\NodeAyanoVMLibsCodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"  />
+    <ProjectReference Include="..\NodeAyanoVMLibsCodeGenerator\NodeAyanoVMLibsCodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\NodeAyanoVMLibs\NodeAyanoVMLibs.csproj" />
     <ProjectReference Include="..\NodeAyano\NodeAyano.csproj" />
   </ItemGroup>
