@@ -116,6 +116,7 @@ namespace FatNoder.ViewModels
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name = "StringInput" });
             NodeList.AddNodeType(() => new SetValueNodeViewModel<int> { Name = "IntSetValue" });
             NodeList.AddNodeType(() => new GetValueNodeViewModel { Name = "GetValue" });
+            NodeList.AddNodeType(() => new AddeNodeViewModel { Name = "Add" });
             this.WhenAnyObservable(vm => vm.Network.NetworkChanged).Subscribe(newvalue =>
             {
                 List<Type> typelistkun = new List<Type>();
