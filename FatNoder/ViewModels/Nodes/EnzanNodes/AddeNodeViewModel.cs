@@ -36,7 +36,6 @@ namespace FatNoder.ViewModels.Nodes
 
         public AddeNodeViewModel(Guid uuid) : base(uuid)
         {
-
             InitAyanoVMB();
             _model.InputOnly = true;
             Output = new ValueNodeOutputViewModel<HensuuUkewatashi?>
