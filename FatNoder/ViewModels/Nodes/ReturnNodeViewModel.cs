@@ -46,6 +46,7 @@ namespace FatNoder.ViewModels.Nodes
             ReturnInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "ValueRet",
+                Label = "ValueRet",
                 MaxConnections = 1
             };
             ReturnInput.ValueChanged.Subscribe(newvalue =>
@@ -55,6 +56,7 @@ namespace FatNoder.ViewModels.Nodes
             Flow = new ValueNodeOutputViewModel<StatementCls>
             {
                 Name = "In",
+                Label = "In",
                 MaxConnections = 1,
                 Value = this.WhenAnyValue(vm => vm.StatementIfce),
                 PortPosition = PortPosition.Left
@@ -105,7 +107,8 @@ namespace FatNoder.ViewModels.Nodes
             ReturnInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "ValueRet",
-                MaxConnections=1
+                Label = "ValueRet",
+                MaxConnections =1
             };
             ReturnInput.ValueChanged.Subscribe(newvalue =>
             {
@@ -114,6 +117,7 @@ namespace FatNoder.ViewModels.Nodes
             Flow = new ValueNodeOutputViewModel<StatementCls>
             {
                 Name = "In",
+                Label = "In",
                 MaxConnections = 1,
                 Value = this.WhenAnyValue(vm =>vm.StatementIfce),
                 PortPosition=PortPosition.Left

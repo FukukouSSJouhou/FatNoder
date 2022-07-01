@@ -57,6 +57,7 @@ namespace FatNoder.ViewModels.Nodes
             Output = new ValueNodeOutputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value",
+                Label="Value",
                 Editor = ValueEditor,
                 Value = this.WhenAnyValue(vm => vm.hkun)
             };
@@ -69,6 +70,7 @@ namespace FatNoder.ViewModels.Nodes
             Output = new ValueNodeOutputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value",
+                Label = "Value",
                 Editor = ValueEditor,
                 Value = this.WhenAnyValue(vm => vm.hkun)
             };
