@@ -61,6 +61,15 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
+        ///   Print content に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PrintNodeViewModel_PRINTCONTENT {
+            get {
+                return ResourceManager.GetString("PrintNodeViewModel_PRINTCONTENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Exit に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Ribbon_File_Exit {
