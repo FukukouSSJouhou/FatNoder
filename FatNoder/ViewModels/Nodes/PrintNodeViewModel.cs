@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using AyanoNodeVM;
 using NodeNetworkJH.ViewModels;
 using NodeAyano.HensuuV;
+using FatNoder.Properties;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -34,7 +35,7 @@ namespace FatNoder.ViewModels.Nodes
             PrintInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Printcontent",
-                Label = "Printcontent",
+                Label = Resources.PrintNodeViewModel_PRINTCONTENT,
                 MaxConnections = 1
             };
             PrintInput.ValueChanged.Subscribe(newvalue =>
@@ -104,7 +105,7 @@ namespace FatNoder.ViewModels.Nodes
             PrintInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Printcontent",
-                Label = "Printcontent",
+                Label = Resources.PrintNodeViewModel_PRINTCONTENT,
                 MaxConnections = 1
             };
             PrintInput.ValueChanged.Subscribe(newvalue =>

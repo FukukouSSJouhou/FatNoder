@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FatNoder.Properties {
+namespace NodeAyanoVMLibs {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace FatNoder.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace FatNoder.Properties {
         ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FatNoder.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NodeAyanoVMLibs.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace FatNoder.Properties {
         ///   現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,75 +61,20 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
-        ///   Print content に類似しているローカライズされた文字列を検索します。
+        ///   In に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string PrintNodeViewModel_PRINTCONTENT {
+        internal static string NODE_STATEMENT_IN {
             get {
-                return ResourceManager.GetString("PrintNodeViewModel_PRINTCONTENT", resourceCulture);
+                return ResourceManager.GetString("NODE_STATEMENT_IN", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Exit に類似しているローカライズされた文字列を検索します。
+        ///   Out に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string Ribbon_File_Exit {
+        internal static string NODE_STATEMENT_OUT {
             get {
-                return ResourceManager.GetString("Ribbon_File_Exit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Load As に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string Ribbon_File_Load_As {
-            get {
-                return ResourceManager.GetString("Ribbon_File_Load_As", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Save As に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string Ribbon_File_Save_As {
-            get {
-                return ResourceManager.GetString("Ribbon_File_Save_As", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Compile And Run に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string Ribbon_Home_CompileAndRunPhase {
-            get {
-                return ResourceManager.GetString("Ribbon_Home_CompileAndRunPhase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   File に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string Ribbon_Menu_File {
-            get {
-                return ResourceManager.GetString("Ribbon_Menu_File", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Home に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string Ribbon_Tab_Home {
-            get {
-                return ResourceManager.GetString("Ribbon_Tab_Home", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
-        public static System.Drawing.Bitmap splash {
-            get {
-                object obj = ResourceManager.GetObject("splash", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("NODE_STATEMENT_OUT", resourceCulture);
             }
         }
     }

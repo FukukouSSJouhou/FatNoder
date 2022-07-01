@@ -75,6 +75,7 @@ namespace FatNoder.ViewModels
 
         #endregion
         public ViewModelActivator Activator { get; }
+        private bool Lock_RefreshEvent = false;
         public void add_project(String Name)
         {
 
@@ -119,49 +120,7 @@ namespace FatNoder.ViewModels
             NodeList.AddNodeType(() => new AddeNodeViewModel { Name = "Add" });
             this.WhenAnyObservable(vm => vm.Network.NetworkChanged).Subscribe(newvalue =>
             {
-                List<Type> typelistkun = new List<Type>();
-                XML_NodeModel modelkun = mainnodekun.model;
-                typelistkun.Add(typeof(MethodEntryPoint));
-                typelistkun.Add(typeof(XmlRootN));
-                typelistkun.Add(typeof(CompileNodeBase));
-                XmlRootN documentrootkun = new XmlRootN()
-                {
-                    nodes = new XMLRoot_NodesCLskun()
-                };
-                var roots = GetNodeModels();
-                foreach (var root in roots)
-                {
-                    if (root.TYPE == "")
-                    {
-                        continue;
-                    }
-                    if (root.TYPE == null)
-                    {
-                        continue;
-                    }
-                    if (root.MODELTYPE == "")
-                    {
-                        continue;
-                    }
-                    if (root.MODELTYPE == null)
-                    {
-                        continue;
-                    }
-                    if (!typelistkun.Contains(Type.GetType(root.TYPE)))
-                    {
-                        if (Type.GetType(root.TYPE) != null)
-                            typelistkun.Add(Type.GetType(root.TYPE));
-                    }
-                    if (!typelistkun.Contains(Type.GetType(root.MODELTYPE)))
-                    {
-                        if (Type.GetType(root.MODELTYPE) != null)
-                            typelistkun.Add(Type.GetType(root.MODELTYPE));
-                    }
-                }
-                var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
-
-                var SyntaxCompiled = NodeAyanoCompiler.TransCompileNode(ModelEnumerator,roots);
-                CPreviewViewModel.Code = SyntaxCompiled;
+                if (!Lock_RefreshEvent) Refresh_Node();
             }
                 );
             CreateTest = ReactiveCommand.Create(() =>
@@ -429,6 +388,7 @@ namespace FatNoder.ViewModels
                     LoadXMLFileCommand.Select(x =>
                     {
                         #region XML Load and Struct
+                        Lock_RefreshEvent = true;
                         List<Type> knownlists = new();
                         if (x == null) return "";
                         using (var inputstream = new StreamReader(x))
@@ -594,6 +554,8 @@ namespace FatNoder.ViewModels
                                 }
                             }
                         }
+                        Lock_RefreshEvent = false;
+                        Refresh_Node();
                         #endregion
 
                         return "";
@@ -604,6 +566,53 @@ namespace FatNoder.ViewModels
                 }
             });
 
+        }
+        private void Refresh_Node()
+
+        {
+            List<Type> typelistkun = new List<Type>();
+            XML_NodeModel modelkun = mainnodekun.model;
+            typelistkun.Add(typeof(MethodEntryPoint));
+            typelistkun.Add(typeof(XmlRootN));
+            typelistkun.Add(typeof(CompileNodeBase));
+            XmlRootN documentrootkun = new XmlRootN()
+            {
+                nodes = new XMLRoot_NodesCLskun()
+            };
+            var roots = GetNodeModels();
+            foreach (var root in roots)
+            {
+                if (root.TYPE == "")
+                {
+                    continue;
+                }
+                if (root.TYPE == null)
+                {
+                    continue;
+                }
+                if (root.MODELTYPE == "")
+                {
+                    continue;
+                }
+                if (root.MODELTYPE == null)
+                {
+                    continue;
+                }
+                if (!typelistkun.Contains(Type.GetType(root.TYPE)))
+                {
+                    if (Type.GetType(root.TYPE) != null)
+                        typelistkun.Add(Type.GetType(root.TYPE));
+                }
+                if (!typelistkun.Contains(Type.GetType(root.MODELTYPE)))
+                {
+                    if (Type.GetType(root.MODELTYPE) != null)
+                        typelistkun.Add(Type.GetType(root.MODELTYPE));
+                }
+            }
+            var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
+
+            var SyntaxCompiled = NodeAyanoCompiler.TransCompileNode(ModelEnumerator, roots);
+            CPreviewViewModel.Code = SyntaxCompiled;
         }
 
     }

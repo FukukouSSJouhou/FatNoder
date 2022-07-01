@@ -117,25 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="PrintNodeViewModel_PRINTCONTENT" xml:space="preserve">
-    <value>表示コンテンツ</value>
+  <data name="NODE_STATEMENT_IN" xml:space="preserve">
+    <value>In</value>
   </data>
-  <data name="Ribbon_File_Exit" xml:space="preserve">
-    <value>終了</value>
-  </data>
-  <data name="Ribbon_File_Load_As" xml:space="preserve">
-    <value>読み込み</value>
-  </data>
-  <data name="Ribbon_File_Save_As" xml:space="preserve">
-    <value>名前を付けて保存</value>
-  </data>
-  <data name="Ribbon_Home_CompileAndRunPhase" xml:space="preserve">
-    <value>コンパイルして実行</value>
-  </data>
-  <data name="Ribbon_Menu_File" xml:space="preserve">
-    <value>ファイル</value>
-  </data>
-  <data name="Ribbon_Tab_Home" xml:space="preserve">
-    <value>ホーム</value>
+  <data name="NODE_STATEMENT_OUT" xml:space="preserve">
+    <value>Out</value>
   </data>
 </root>
