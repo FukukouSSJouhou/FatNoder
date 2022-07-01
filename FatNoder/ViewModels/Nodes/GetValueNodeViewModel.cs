@@ -41,11 +41,13 @@ namespace FatNoder.ViewModels.Nodes
             Output = new ValueNodeOutputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value",
+                Label = "Value",
                 Value = this.WhenAnyValue(vm => vm.hkun)
             };
             NameInput = new ValueNodeInputViewModel<string?>
             {
                 Name = "Name",
+                Label = "Name",
                 MaxConnections = 1
             };
             NameInput.ValueChanged.Subscribe(newvalue =>
@@ -65,11 +67,13 @@ namespace FatNoder.ViewModels.Nodes
             Output = new ValueNodeOutputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value",
+                Label = "Value",
                 Value = this.WhenAnyValue(vm => vm.hkun)
             };
             NameInput = new ValueNodeInputViewModel<string?>
             {
                 Name = "Name",
+                Label = "Name",
                 MaxConnections = 1
             };
             NameInput.ValueChanged.Subscribe(newvalue =>

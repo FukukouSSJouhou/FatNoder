@@ -43,16 +43,19 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
             Output = new ValueNodeOutputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value",
+                Label = "Value",
                 Value = this.WhenAnyValue(vm => vm.hkun)
             };
             Input1 = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Input1",
+                Label = "Input1",
                 MaxConnections = 1
             };
             Input2 = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Input2",
+                Label = "Input2",
                 MaxConnections = 1
             };
             InitConstructor();
@@ -65,16 +68,19 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
             Output = new ValueNodeOutputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value",
+                Label = "Value",
                 Value = this.WhenAnyValue(vm => vm.hkun)
             };
             Input1 = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Input1",
+                Label = "Input1",
                 MaxConnections = 1
             };
             Input2 = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Input2",
+                Label = "Input2",
                 MaxConnections = 1
             };
             InitConstructor();

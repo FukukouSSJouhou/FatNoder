@@ -34,6 +34,7 @@ namespace FatNoder.ViewModels.Nodes
             PrintInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Printcontent",
+                Label = "Printcontent",
                 MaxConnections = 1
             };
             PrintInput.ValueChanged.Subscribe(newvalue =>
@@ -103,6 +104,7 @@ namespace FatNoder.ViewModels.Nodes
             PrintInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Printcontent",
+                Label = "Printcontent",
                 MaxConnections = 1
             };
             PrintInput.ValueChanged.Subscribe(newvalue =>

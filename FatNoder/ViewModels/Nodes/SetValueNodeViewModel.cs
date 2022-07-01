@@ -35,6 +35,7 @@ InitAyanoVMB();
             HensuuInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value",
+                Label = "Value",
                 MaxConnections = 1
             };
             HensuuInput.ValueChanged.Subscribe(newvalue =>
@@ -44,6 +45,7 @@ InitAyanoVMB();
             NameInput = new ValueNodeInputViewModel<string?>
             {
                 Name = "Name",
+                Label = "Name",
                 MaxConnections = 1
             };
             NameInput.ValueChanged.Subscribe(newvalue =>
@@ -116,6 +118,7 @@ InitAyanoVMB();
             HensuuInput = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Value",
+                Label = "Value",
                 MaxConnections = 1
             };
             HensuuInput.ValueChanged.Subscribe(newvalue =>
@@ -126,6 +129,7 @@ InitAyanoVMB();
             NameInput = new ValueNodeInputViewModel<string?>
             {
                 Name = "Name",
+                Label = "Name",
                 MaxConnections = 1
             };
             NameInput.ValueChanged.Subscribe(newvalue =>

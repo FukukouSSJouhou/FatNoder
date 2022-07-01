@@ -36,6 +36,7 @@ namespace FatNoder.ViewModels.Nodes
             Input = new CoderListInputViewModel<StatementCls>(typeof(StatementCls))
             {
                 Name = "Out",
+                Label="Out",
                 PortPosition = PortPosition.Right,
                 MaxConnections = 1
             };
@@ -68,6 +69,7 @@ namespace FatNoder.ViewModels.Nodes
             Input = new CoderListInputViewModel<StatementCls>(typeof(StatementCls))
             {
                 Name = "Out",
+                Label = "Out",
                 PortPosition = PortPosition.Right,
                 MaxConnections = 1
             };

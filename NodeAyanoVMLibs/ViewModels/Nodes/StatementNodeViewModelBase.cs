@@ -44,6 +44,7 @@ namespace NodeAyanoVMLibs.ViewModels.Nodes
             OutputFlow = new ValueNodeOutputViewModel<StatementCls>
             {
                 Name = "In",
+                Label="In",
                 MaxConnections = 1,
                 Value = this.WhenAnyValue(vm => vm.StatementIfce),
                 PortPosition = PortPosition.Left
@@ -51,6 +52,7 @@ namespace NodeAyanoVMLibs.ViewModels.Nodes
             InputFlow = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Out",
+                Label="Out",
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
@@ -67,6 +69,7 @@ namespace NodeAyanoVMLibs.ViewModels.Nodes
             OutputFlow = new ValueNodeOutputViewModel<StatementCls>
             {
                 Name="In",
+                Label="In",
                 MaxConnections = 1,
                 Value= this.WhenAnyValue(vm => vm.StatementIfce),
                 PortPosition = PortPosition.Left
@@ -74,6 +77,7 @@ namespace NodeAyanoVMLibs.ViewModels.Nodes
             InputFlow = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Out",
+                Label="Out",
                 MaxConnections = 1,
                 PortPosition=PortPosition.Right
             };
