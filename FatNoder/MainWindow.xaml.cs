@@ -105,25 +105,24 @@ namespace FatNoder
                         RootXML=interaction.Input.RootXML
                     });
                 }).DisposeWith(d);
-                this.BindInteraction(ViewModel, vm => vm.LoadXMLFileDialog, async interaction =>
+                this.BindInteraction(ViewModel, vm => vm.LoadXMLFileDialog, interaction =>
                 {
-                    var result = await Task.Run(() =>
-                    {
                         var dialog = new Microsoft.Win32.OpenFileDialog()
                         {
                             FileName = interaction.Input,
                             Filter = "XML File(*.xml)|*.xml|All Files(*)|*.*"
                         };
+                    return Observable.Start(() =>
+                    {
                         if (dialog.ShowDialog() ?? false)
                         {
-                            return dialog.FileName;
+                            interaction.SetOutput(dialog.FileName);
                         }
                         else
                         {
-                            return null;
+                            interaction.SetOutput(null);
                         }
-                    });
-                    interaction.SetOutput(result);
+                    },RxApp.MainThreadScheduler);
 
                 }).DisposeWith(d);
             });
