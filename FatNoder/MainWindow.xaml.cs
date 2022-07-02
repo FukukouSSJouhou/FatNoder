@@ -1,4 +1,5 @@
-﻿using DynamicData;
+﻿using ControlzEx.Standard;
+using DynamicData;
 using FatNoder.ViewModels;
 using FatNoder.ViewModels.Nodes;
 using Fluent;
@@ -79,31 +80,36 @@ namespace FatNoder
                 this.BindCommand(ViewModel, vm => vm.CompileandrunPhasekun, v => v.compileandrunPhaseButton);
                 this.BindCommand(ViewModel, vm => vm.SaveXMLFileCommand, v => v.SaveAsRibbon);
                 this.BindCommand(ViewModel, vm => vm.LoadXMLFileCommand, v => v.LoadAsRibbon);
-                this.BindInteraction(ViewModel, vm => vm.SaveXMLFileDialog, async interaction =>
+                this.BindInteraction(ViewModel, vm => vm.SaveXMLFileDialog, interaction =>
                 {
-                    var result = await Task.Run(() =>
+                    var dialog = new Microsoft.Win32.SaveFileDialog()
                     {
-                        var dialog = new Microsoft.Win32.SaveFileDialog()
+                        FileName = interaction.Input.FilePath,
+                        Filter = "XML File(*.xml)|*.xml|All Files(*)|*.*"
+                    };
+                    return Observable.Start(() =>
+                    {
+
+                        if (dialog.ShowDialog() ?? false)
                         {
-                            FileName = interaction.Input.FilePath,
-                            Filter="XML File(*.xml)|*.xml|All Files(*)|*.*"
-                        };
-                        if(dialog.ShowDialog()?? false)
-                        {
-                            return dialog.FileName;
+                            interaction.SetOutput(new Model.SaveFileRequest()
+{
+                                FilePath = dialog.FileName,
+                                Serializer = interaction.Input.Serializer,
+                                RootXML = interaction.Input.RootXML
+                            });
                         }
                         else
                         {
-                            return null;
+                            interaction.SetOutput(new Model.SaveFileRequest()
+                            {
+                                FilePath = null,
+                                Serializer = interaction.Input.Serializer,
+                                RootXML = interaction.Input.RootXML
+                            });
                         }
-
-                    });
-                    interaction.SetOutput(new Model.SaveFileRequest()
-                    {
-                        FilePath= result,
-                        Serializer=interaction.Input.Serializer,
-                        RootXML=interaction.Input.RootXML
-                    });
+                    },
+                    RxApp.MainThreadScheduler);
                 }).DisposeWith(d);
                 this.BindInteraction(ViewModel, vm => vm.LoadXMLFileDialog, interaction =>
                 {
