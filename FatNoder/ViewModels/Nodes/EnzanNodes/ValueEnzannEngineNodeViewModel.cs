@@ -199,7 +199,7 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
                 Y = newmodelbs.Points.Y
             };
             _model.CalcType = ((ValueEnzannEngineNodeModel)newmodelbs).CalcType;
-            ((ValueEnzannEngineTypeEditorViewModel)ValueTypeInput.Editor).Value = _model.CalcType;
+            ((ValueEnzannEngineTypeEditorViewModel)ValueTypeInput.Editor).SelectViewKun(_model.CalcType);
         }
 
     }

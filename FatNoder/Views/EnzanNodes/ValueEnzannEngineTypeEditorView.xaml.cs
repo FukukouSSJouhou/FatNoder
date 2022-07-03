@@ -46,7 +46,8 @@ namespace FatNoder.Views.EnzanNodes
                 d(
                     this.Bind(ViewModel, vm => vm.Value, v => v.valuetypecombo.SelectedValue)
                     );
-
+                d(
+                    this.Bind(ViewModel, vm => vm.selectedIndexView, v => v.valuetypecombo.SelectedIndex));
                 valuetypecombo.ItemsSource = ViewModel.ValueEnzannEngineEnum;
             }
             ) ;

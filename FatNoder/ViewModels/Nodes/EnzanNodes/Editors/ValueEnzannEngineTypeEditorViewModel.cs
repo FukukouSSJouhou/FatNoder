@@ -18,12 +18,29 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes.Editors
         {
             Splat.Locator.CurrentMutable.Register(() => new ValueEnzannEngineTypeEditorView(), typeof(IViewFor<ValueEnzannEngineTypeEditorViewModel>));
         }
+        public int selectedIndexView { get; set; } = 0;
         public ValueEnzannEngineTypeEditorViewModel()
         {
             Value = ValueEnzannEngineType.Add;
             ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Add, "Add");
             ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Divide, "Divide");
             ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Multiply, "Multiply");
+        }
+        public void SelectViewKun(ValueEnzannEngineType indexkun)
+        {
+            switch (indexkun)
+            {
+                case ValueEnzannEngineType.Add:
+                    selectedIndexView = 0;
+                    break;
+                case ValueEnzannEngineType.Divide:
+                    selectedIndexView = 1;
+                    break;
+                case ValueEnzannEngineType.Multiply:
+                    selectedIndexView = 2;
+                    break;
+
+            }
         }
     }
 }
