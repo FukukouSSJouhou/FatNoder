@@ -38,9 +38,14 @@ namespace FatNoder.Views.EnzanNodes
             set => ViewModel = (ValueEnzannEngineTypeEditorViewModel)value;
         }
         #endregion
+        public Dictionary<ValueEnzannEngineType, string> ValueEnzannEngineEnum { get; } = new Dictionary<ValueEnzannEngineType, string>();
         public ValueEnzannEngineTypeEditorView()
         {
             InitializeComponent();
+            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Add, "Add");
+            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Divide, "Divide");
+            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Multiply, "Multiply");
+
         }
     }
 }
