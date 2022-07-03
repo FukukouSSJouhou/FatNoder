@@ -1,5 +1,6 @@
 ﻿using FatNoder.ViewModels;
 using FatNoder.ViewModels.Nodes.EnzanNodes.Editors;
+using NodeAyano.Model.Nodes.ValueEnzann;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -37,9 +38,21 @@ namespace FatNoder.Views.EnzanNodes
             set => ViewModel = (ValueEnzannEngineTypeEditorViewModel)value;
         }
         #endregion
+        private ValueEnzannEngineType _valuetypekun;
+        public ValueEnzannEngineType ValueType
+        {
+            get => _valuetypekun;
+            set{
+
+            }
+        }
         public ValueEnzannEngineTypeEditorView()
         {
+            _valuetypekun = ValueEnzannEngineType.Add;
             InitializeComponent();
+            this.WhenActivated(d => d(
+                this.Bind(ViewModel, vm => vm.Value, v => v.ValueType)
+                )) ;
         }
     }
 }
