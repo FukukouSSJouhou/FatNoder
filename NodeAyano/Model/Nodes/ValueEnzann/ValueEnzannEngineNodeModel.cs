@@ -8,17 +8,32 @@ using System.Xml.Linq;
 
 namespace NodeAyano.Model.Nodes.ValueEnzann
 {
+    /// <summary>
+    /// Calc Type Enum
+    /// </summary>
     [DataContract]
     public enum ValueEnzannEngineType
     {
+        /// <summary>
+        /// Add
+        /// </summary>
         [EnumMember]
         Add,
+        /// <summary>
+        /// Divide
+        /// </summary>
         [EnumMember]
         Divide,
+        /// <summary>
+        /// Multiply
+        /// </summary>
         [EnumMember]
         Multiply,
+        /// <summary>
+        /// Subtract
+        /// </summary>
         [EnumMember]
-        Subract
+        Subtract
     }
     public class ValueEnzannEngineNodeModel : ValueCompileNodeBase
     {
@@ -30,6 +45,13 @@ namespace NodeAyano.Model.Nodes.ValueEnzann
         {
             get; set;
         }
-        [DataMember]
+        /// <summary>
+        /// Calc Type
+        /// </summary>
+        [DataMember(Name="CalcType",Order =9)]
+        public ValueEnzannEngineType CalcType
+        {
+            get;set;
+        }
     }
 }
