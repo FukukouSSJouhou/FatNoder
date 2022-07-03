@@ -25,20 +25,17 @@ namespace FatNoder.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection enableplugin {
+        public global::System.Collections.Specialized.StringCollection disableplugin {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["enableplugin"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["disableplugin"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::System.Collections.Specialized.StringCollection recentlyfiles {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["recentlyfiles"]));
-            }
-            set {
-                this["recentlyfiles"] = value;
             }
         }
     }
