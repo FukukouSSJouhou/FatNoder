@@ -186,6 +186,7 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
             this.Inputs.Add(ValueTypeInput);
             this.Inputs.Add(Input1);
             this.Inputs.Add(Input2);
+            ValueTypeInput.Port.IsVisible = false;
 
         }
         ///<inheritdoc/>
