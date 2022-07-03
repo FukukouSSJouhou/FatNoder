@@ -16,5 +16,9 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes.Editors
         {
             Splat.Locator.CurrentMutable.Register(() => new ValueEnzannEngineTypeEditorView(), typeof(IViewFor<ValueEnzannEngineTypeEditorViewModel>));
         }
+        public ValueEnzannEngineTypeEditorViewModel()
+        {
+            Value = ValueEnzannEngineType.Add;
+        }
     }
 }
