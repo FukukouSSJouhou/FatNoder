@@ -118,7 +118,7 @@ namespace FatNoder.ViewModels
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name = "StringInput" });
             NodeList.AddNodeType(() => new SetValueNodeViewModel<int> { Name = "IntSetValue" });
             NodeList.AddNodeType(() => new GetValueNodeViewModel { Name = "GetValue" });
-            NodeList.AddNodeType(() => new ValueEnzannEngineNodeViewModel { Name = "Enzann" });
+            NodeList.AddNodeType(() => new ValueEnzannEngineNodeViewModel { Name = "Calc" });
             this.WhenAnyObservable(vm => vm.Network.NetworkChanged).Subscribe(newvalue =>
             {
                 if (!Lock_RefreshEvent) Refresh_Node();
