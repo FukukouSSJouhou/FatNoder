@@ -63,7 +63,7 @@ namespace NodeAyano.Model.Nodes.ValueEnzann
         }
         public ValueEnzannEngineNodeModel()
         {
-            CalcType = ValueEnzannEngineType.None;
+            CalcType = ValueEnzannEngineType.Add;
         }
 
 
@@ -117,7 +117,25 @@ namespace NodeAyano.Model.Nodes.ValueEnzann
             if (input1 != null && input2 != null)
             {
                 SyntaxKind ensankind = SyntaxKind.None;
-                return SyntaxFactory.BinaryExpression(SyntaxKind.AddExpression, input1.CompileSyntax(xnodes), input2.CompileSyntax(xnodes));
+                switch (CalcType)
+                {
+                    case ValueEnzannEngineType.Add:
+                        ensankind = SyntaxKind.AddExpression;
+                        break;
+                    case ValueEnzannEngineType.Subtract:
+                        ensankind = SyntaxKind.SubtractExpression;
+                        break;
+                    case ValueEnzannEngineType.Divide:
+                        ensankind = SyntaxKind.DivideExpression;
+                        break;
+                    case ValueEnzannEngineType.Multiply:
+                        ensankind = SyntaxKind.MultiplyExpression;
+                        break;
+                    case ValueEnzannEngineType.None:
+                        ensankind = SyntaxKind.None;
+                        break;
+                }
+                return SyntaxFactory.BinaryExpression(ensankind, input1.CompileSyntax(xnodes), input2.CompileSyntax(xnodes));
             }
             else
             {
