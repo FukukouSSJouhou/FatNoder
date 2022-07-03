@@ -61,6 +61,42 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
+        ///   Calc に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MainViewModel_Calc {
+            get {
+                return ResourceManager.GetString("MainViewModel_Calc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   GetValue に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MainViewModel_GetValue {
+            get {
+                return ResourceManager.GetString("MainViewModel_GetValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Main Entry Point に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MainViewModel_MainEntryPoint {
+            get {
+                return ResourceManager.GetString("MainViewModel_MainEntryPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Print String に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MainViewModel_PrintString {
+            get {
+                return ResourceManager.GetString("MainViewModel_PrintString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Print content に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string PrintNodeViewModel_PRINTCONTENT {

@@ -193,7 +193,7 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
-            Name = newmodelbs.Name;
+            Name = Properties.Resources.MainViewModel_Calc;
             Position = new System.Windows.Point
             {
                 X = newmodelbs.Points.X,
