@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FatNoder.ViewModels.Nodes.EnzanNodes.Editors;
+using ReactiveUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +20,7 @@ namespace FatNoder.Views.EnzanNodes
     /// <summary>
     /// ValueEnzannEngineTypeEditorView.xaml の相互作用ロジック
     /// </summary>
-    public partial class ValueEnzannEngineTypeEditorView : UserControl
+    public partial class ValueEnzannEngineTypeEditorView : UserControl,IViewFor<ValueEnzannEngineTypeEditorViewModel>
     {
         public ValueEnzannEngineTypeEditorView()
         {
