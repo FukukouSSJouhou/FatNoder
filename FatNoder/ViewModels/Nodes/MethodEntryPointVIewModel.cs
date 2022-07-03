@@ -99,7 +99,7 @@ namespace FatNoder.ViewModels.Nodes
 
         public void ChangeStates(XML_NodeModel mdel)
         {
-            Name = mdel.Name;
+            Name = Properties.Resources.MainViewModel_MainEntryPoint;
             Position = new System.Windows.Point
             {
                 X = mdel.Points.X,

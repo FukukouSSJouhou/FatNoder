@@ -111,14 +111,14 @@ namespace FatNoder.ViewModels
 
             returnnodekun = new ReturnNodeViewModel<int> { CanBeRemovedByUser = false, Name = "IntReturn" };
             Network.Nodes.Add(returnnodekun);
-            mainnodekun = new MethodEntryPointVIewModel { CanBeRemovedByUser = false, Name = "MainEntryPoint" };
+            mainnodekun = new MethodEntryPointVIewModel { CanBeRemovedByUser = false, Name = Properties.Resources.MainViewModel_MainEntryPoint };
             Network.Nodes.Add(mainnodekun);
-            NodeList.AddNodeType(() => new PrintNodeViewModel { Name = "PrintString" });
+            NodeList.AddNodeType(() => new PrintNodeViewModel { Name =Properties.Resources.MainViewModel_PrintString });
             NodeList.AddNodeType(() => new InputNodeViewModel<int> { Name = "IntInput" });
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name = "StringInput" });
             NodeList.AddNodeType(() => new SetValueNodeViewModel<int> { Name = "IntSetValue" });
-            NodeList.AddNodeType(() => new GetValueNodeViewModel { Name = "GetValue" });
-            NodeList.AddNodeType(() => new ValueEnzannEngineNodeViewModel { Name = "Enzann" });
+            NodeList.AddNodeType(() => new GetValueNodeViewModel { Name = Properties.Resources.MainViewModel_GetValue });
+            NodeList.AddNodeType(() => new ValueEnzannEngineNodeViewModel { Name = Properties.Resources.MainViewModel_Calc });
             this.WhenAnyObservable(vm => vm.Network.NetworkChanged).Subscribe(newvalue =>
             {
                 if (!Lock_RefreshEvent) Refresh_Node();

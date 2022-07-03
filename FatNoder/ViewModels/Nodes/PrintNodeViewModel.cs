@@ -173,7 +173,7 @@ namespace FatNoder.ViewModels.Nodes
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
-            Name = newmodelbs.Name;
+            Name = Properties.Resources.MainViewModel_PrintString;
             Position = new System.Windows.Point
             {
                 X = newmodelbs.Points.X,

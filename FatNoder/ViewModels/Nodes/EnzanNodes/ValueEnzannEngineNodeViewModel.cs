@@ -60,7 +60,7 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
             ValueTypeInput = new ValueNodeInputViewModel<ValueEnzannEngineType?>
             {
                 Name = "CalcType",
-                Label = "Calc Type",
+                Label = Properties.Resources.ValueEnzannEngineNodeViewModel_CalcType,
                 MaxConnections = 1
 
             };
@@ -92,7 +92,7 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
             ValueTypeInput = new ValueNodeInputViewModel<ValueEnzannEngineType?>
             {
                 Name = "CalcType",
-                Label = "Calc Type",
+                Label = Properties.Resources.ValueEnzannEngineNodeViewModel_CalcType,
                 MaxConnections = 1
 
             };
@@ -186,13 +186,14 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
             this.Inputs.Add(ValueTypeInput);
             this.Inputs.Add(Input1);
             this.Inputs.Add(Input2);
+            ValueTypeInput.Port.IsVisible = false;
 
         }
         ///<inheritdoc/>
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
-            Name = newmodelbs.Name;
+            Name = Properties.Resources.MainViewModel_Calc;
             Position = new System.Windows.Point
             {
                 X = newmodelbs.Points.X,
