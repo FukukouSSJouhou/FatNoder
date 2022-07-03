@@ -43,6 +43,9 @@ namespace NodeAyano.Model.Nodes.ValueEnzann
         [EnumMember]
         None
     }
+    /// <summary>
+    /// Calc Model
+    /// </summary>
     public class ValueEnzannEngineNodeModel : ValueCompileNodeBase
     {
 
