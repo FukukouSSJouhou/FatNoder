@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:FatNoder.Views.EnzanNodes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <ComboBox x:Name="valuetypecombo" Width="{Binding Width, ElementName=userControl}" 
-              ItemsSource="{Binding ValueEnzannEngineEnum}"
+    <ComboBox x:Name="valuetypecombo" Width="{Binding Width, ElementName=userControl}"
               DisplayMemberPath="Value"
               SelectedValuePath="Key">
     </ComboBox>

@@ -10,8 +10,10 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes.EnzanNodes.Editors
 {
-    public class ValueEnzannEngineTypeEditorViewModel: ValueEditorViewModel<ValueEnzannEngineType>
+    public class ValueEnzannEngineTypeEditorViewModel: ValueEditorViewModel<ValueEnzannEngineType?>
     {
+        public Dictionary<ValueEnzannEngineType, string> ValueEnzannEngineEnum { get; } = new Dictionary<ValueEnzannEngineType, string>();
+
         static ValueEnzannEngineTypeEditorViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new ValueEnzannEngineTypeEditorView(), typeof(IViewFor<ValueEnzannEngineTypeEditorViewModel>));
@@ -19,6 +21,9 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes.Editors
         public ValueEnzannEngineTypeEditorViewModel()
         {
             Value = ValueEnzannEngineType.Add;
+            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Add, "Add");
+            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Divide, "Divide");
+            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Multiply, "Multiply");
         }
     }
 }

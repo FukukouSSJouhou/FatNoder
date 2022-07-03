@@ -25,7 +25,6 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
         }
         [ModelAyano]
         private ValueEnzannEngineNodeModel _model = new ValueEnzannEngineNodeModel();
-
         /// <summary>
         /// Output Value?
         /// </summary>
@@ -104,6 +103,7 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
 
             ValueTypeInput.ValueChanged.Subscribe(newvalue =>
             {
+                if(newvalue != null)
                 _model.CalcType = newvalue.Value;
             });
             ValueTypeInput.Editor = new ValueEnzannEngineTypeEditorViewModel();
