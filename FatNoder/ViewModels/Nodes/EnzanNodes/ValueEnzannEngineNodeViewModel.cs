@@ -60,7 +60,7 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
             ValueTypeInput = new ValueNodeInputViewModel<ValueEnzannEngineType?>
             {
                 Name = "CalcType",
-                Label = "Calc Type",
+                Label = Properties.Resources.ValueEnzannEngineNodeViewModel_CalcType,
                 MaxConnections = 1
 
             };

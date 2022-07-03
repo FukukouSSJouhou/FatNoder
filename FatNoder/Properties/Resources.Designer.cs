@@ -170,6 +170,15 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
+        ///   Calc Type に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ValueEnzannEngineNodeViewModel_CalcType {
+            get {
+                return ResourceManager.GetString("ValueEnzannEngineNodeViewModel_CalcType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Add に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ValueEnzannEngineTypeEditorViewModel_ADD {
