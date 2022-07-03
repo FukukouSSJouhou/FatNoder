@@ -138,4 +138,16 @@
   <data name="Ribbon_Tab_Home" xml:space="preserve">
     <value>ホーム</value>
   </data>
+  <data name="ValueEnzannEngineTypeEditorViewModel_ADD" xml:space="preserve">
+    <value>足し算</value>
+  </data>
+  <data name="ValueEnzannEngineTypeEditorViewModel_Divide" xml:space="preserve">
+    <value>割り算</value>
+  </data>
+  <data name="ValueEnzannEngineTypeEditorViewModel_Multiply" xml:space="preserve">
+    <value>掛け算</value>
+  </data>
+  <data name="ValueEnzannEngineTypeEditorViewModel_Subtract" xml:space="preserve">
+    <value>引き算</value>
+  </data>
 </root>
