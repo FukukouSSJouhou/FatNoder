@@ -104,7 +104,7 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
 
             ValueTypeInput.ValueChanged.Subscribe(newvalue =>
             {
-
+                _model.CalcType = newvalue.Value;
             });
             ValueTypeInput.Editor = new ValueEnzannEngineTypeEditorViewModel();
             _model.Outputs = new XMLNodeOutputS
@@ -183,6 +183,7 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
                 }
             });
             this.Outputs.Add(Output);
+            this.Inputs.Add(ValueTypeInput);
             this.Inputs.Add(Input1);
             this.Inputs.Add(Input2);
 
@@ -198,6 +199,7 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
                 Y = newmodelbs.Points.Y
             };
             _model.CalcType = ((ValueEnzannEngineNodeModel)newmodelbs).CalcType;
+            ((ValueEnzannEngineTypeEditorViewModel)ValueTypeInput.Editor).Value = _model.CalcType;
         }
 
     }
