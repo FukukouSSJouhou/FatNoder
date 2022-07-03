@@ -13,6 +13,7 @@ using NodeNetworkJH.Toolkit.ValueNode;
 using FatNoder.Serializer.Node.Xml;
 using NodeNetworkJH.ViewModels;
 using NodeAyano.Model.Nodes.ValueEnzann;
+using FatNoder.ViewModels.Nodes.EnzanNodes.Editors;
 
 namespace FatNoder.ViewModels.Nodes.EnzanNodes
 {
@@ -33,6 +34,7 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
         public ValueNodeInputViewModel<HensuuUkewatashi?> Input1 { get; }
 
         public ValueNodeInputViewModel<HensuuUkewatashi?> Input2 { get; }
+        public ValueNodeInputViewModel<ValueEnzannEngineType?> ValueTypeInput { get; }
 
         public ValueEnzannEngineNodeViewModel(Guid uuid) : base(uuid)
         {
@@ -55,6 +57,13 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
                 Name = "Input2",
                 Label = "Input2",
                 MaxConnections = 1
+            };
+            ValueTypeInput = new ValueNodeInputViewModel<ValueEnzannEngineType?>
+            {
+                Name = "CalcType",
+                Label = "Calc Type",
+                MaxConnections = 1
+
             };
             InitConstructor();
         }
@@ -81,11 +90,23 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
                 Label = "Input2",
                 MaxConnections = 1
             };
+            ValueTypeInput = new ValueNodeInputViewModel<ValueEnzannEngineType?>
+            {
+                Name = "CalcType",
+                Label = "Calc Type",
+                MaxConnections = 1
+
+            };
             InitConstructor();
         }
         private void InitConstructor()
         {
 
+            ValueTypeInput.ValueChanged.Subscribe(newvalue =>
+            {
+
+            });
+            ValueTypeInput.Editor = new ValueEnzannEngineTypeEditorViewModel();
             _model.Outputs = new XMLNodeOutputS
             {
                 new XMLNodeOutput()
