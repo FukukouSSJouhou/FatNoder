@@ -1,4 +1,5 @@
-﻿using FatNoder.ViewModels.Nodes.EnzanNodes.Editors;
+﻿using FatNoder.ViewModels;
+using FatNoder.ViewModels.Nodes.EnzanNodes.Editors;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,20 @@ namespace FatNoder.Views.EnzanNodes
     /// </summary>
     public partial class ValueEnzannEngineTypeEditorView : UserControl,IViewFor<ValueEnzannEngineTypeEditorViewModel>
     {
+        #region ViewModel
+        public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(nameof(ViewModel),
+            typeof(ValueEnzannEngineTypeEditorViewModel), typeof(ValueEnzannEngineTypeEditorView), new PropertyMetadata(null));
+        public ValueEnzannEngineTypeEditorViewModel ViewModel
+        {
+            get => (ValueEnzannEngineTypeEditorViewModel)GetValue(ViewModelProperty);
+            set => SetValue(ViewModelProperty, value);
+        }
+        object IViewFor.ViewModel
+        {
+            get => ViewModel;
+            set => ViewModel = (ValueEnzannEngineTypeEditorViewModel)value;
+        }
+        #endregion
         public ValueEnzannEngineTypeEditorView()
         {
             InitializeComponent();
