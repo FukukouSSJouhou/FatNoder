@@ -141,6 +141,9 @@
   <data name="Ribbon_Tab_Home" xml:space="preserve">
     <value>ホーム</value>
   </data>
+  <data name="ValueEnzannEngineNodeViewModel_CalcType" xml:space="preserve">
+    <value>何算?</value>
+  </data>
   <data name="ValueEnzannEngineTypeEditorViewModel_ADD" xml:space="preserve">
     <value>足し算</value>
   </data>
