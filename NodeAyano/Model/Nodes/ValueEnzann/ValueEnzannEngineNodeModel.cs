@@ -14,7 +14,7 @@ namespace NodeAyano.Model.Nodes.ValueEnzann
     /// <summary>
     /// Calc Type Enum
     /// </summary>
-    [DataContract]
+    [DataContract(Name = "CalcType")]
     public enum ValueEnzannEngineType
     {
         /// <summary>
