@@ -5,7 +5,7 @@
     <Setting Name="disableplugin" Type="System.Collections.Specialized.StringCollection" Scope="Application">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="recentlyfiles" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+    <Setting Name="recentlyfiles" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>
