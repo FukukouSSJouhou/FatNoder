@@ -45,6 +45,9 @@ namespace FatNoder.Views.EnzanNodes
             ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Add, "Add");
             ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Divide, "Divide");
             ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Multiply, "Multiply");
+            this.WhenActivated(d => d(
+                this.Bind(ViewModel, vm => vm.Value, v => v.valuetypecombo.SelectedItem)
+                )) ;
 
         }
     }
