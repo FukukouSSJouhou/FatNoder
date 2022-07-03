@@ -13,7 +13,7 @@
         xmlns:breadcrumbBar="clr-namespace:NodeNetworkJH.Toolkit.BreadcrumbBar;assembly=NodeNetworkJHToolkit"
                      
         mc:Ignorable="d"
-        Title="MainWindow" Height="668" Width="800">
+        Title="MainWindow" Height="668" Width="800" Closed="RibbonWindow_Closed">
     <Grid>
 
         <Grid.RowDefinitions>

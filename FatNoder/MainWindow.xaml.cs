@@ -140,5 +140,10 @@ namespace FatNoder
             //viewmodelの設定
             this.ViewModel = new MainViewModel();
         }
+
+        private void RibbonWindow_Closed(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
     }
 }
