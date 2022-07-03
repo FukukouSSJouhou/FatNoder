@@ -8,11 +8,16 @@ using System.Xml.Linq;
 
 namespace NodeAyano.Model.Nodes.ValueEnzann
 {
+    [DataContract]
     public enum ValueEnzannEngineType
     {
+        [EnumMember]
         Add,
+        [EnumMember]
         Divide,
+        [EnumMember]
         Multiply,
+        [EnumMember]
         Subract
     }
     public class ValueEnzannEngineNodeModel : ValueCompileNodeBase
@@ -25,5 +30,6 @@ namespace NodeAyano.Model.Nodes.ValueEnzann
         {
             get; set;
         }
+        [DataMember]
     }
 }
