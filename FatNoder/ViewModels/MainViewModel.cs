@@ -4,6 +4,7 @@ using FatNoder.Model.Transc;
 using FatNoder.Serializer.Node.Xml;
 using FatNoder.ViewModels.Conv;
 using FatNoder.ViewModels.Nodes;
+using FatNoder.ViewModels.Nodes.EnzanNodes;
 using NodeAyano;
 using NodeAyano.Model.Enumerator;
 using NodeAyano.Model.Nodes;
@@ -117,7 +118,7 @@ namespace FatNoder.ViewModels
             NodeList.AddNodeType(() => new InputNodeViewModel<string> { Name = "StringInput" });
             NodeList.AddNodeType(() => new SetValueNodeViewModel<int> { Name = "IntSetValue" });
             NodeList.AddNodeType(() => new GetValueNodeViewModel { Name = "GetValue" });
-            NodeList.AddNodeType(() => new AddeNodeViewModel { Name = "Add" });
+            NodeList.AddNodeType(() => new ValueEnzannEngineNodeViewModel { Name = "Enzann" });
             this.WhenAnyObservable(vm => vm.Network.NetworkChanged).Subscribe(newvalue =>
             {
                 if (!Lock_RefreshEvent) Refresh_Node();

@@ -13,18 +13,18 @@ using NodeNetworkJH.Toolkit.ValueNode;
 using FatNoder.Serializer.Node.Xml;
 using NodeNetworkJH.ViewModels;
 using NodeAyano.Model.Nodes.ValueEnzann;
+using FatNoder.ViewModels.Nodes.EnzanNodes.Editors;
 
-namespace FatNoder.ViewModels.Nodes
+namespace FatNoder.ViewModels.Nodes.EnzanNodes
 {
-    public partial class AddeNodeViewModel: NodeVMBasekun, INodeViewModelBase
+    public partial class ValueEnzannEngineNodeViewModel : NodeVMBasekun, INodeViewModelBase
     {
-        static AddeNodeViewModel()
+        static ValueEnzannEngineNodeViewModel()
         {
-            Splat.Locator.CurrentMutable.Register(()=>new NodeView(),typeof(IViewFor<AddeNodeViewModel>));
+            Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<ValueEnzannEngineNodeViewModel>));
         }
         [ModelAyano]
-        private AddNodeModel _model = new AddNodeModel();
-
+        private ValueEnzannEngineNodeModel _model = new ValueEnzannEngineNodeModel();
         /// <summary>
         /// Output Value?
         /// </summary>
@@ -33,9 +33,9 @@ namespace FatNoder.ViewModels.Nodes
         public ValueNodeInputViewModel<HensuuUkewatashi?> Input1 { get; }
 
         public ValueNodeInputViewModel<HensuuUkewatashi?> Input2 { get; }
+        public ValueNodeInputViewModel<ValueEnzannEngineType?> ValueTypeInput { get; }
 
-
-        public AddeNodeViewModel(Guid uuid) : base(uuid)
+        public ValueEnzannEngineNodeViewModel(Guid uuid) : base(uuid)
         {
             InitAyanoVMB();
             _model.InputOnly = true;
@@ -47,9 +47,9 @@ namespace FatNoder.ViewModels.Nodes
             };
             Input1 = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
-                Name="Input1",
+                Name = "Input1",
                 Label = "Input1",
-                MaxConnections =1
+                MaxConnections = 1
             };
             Input2 = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
@@ -57,9 +57,16 @@ namespace FatNoder.ViewModels.Nodes
                 Label = "Input2",
                 MaxConnections = 1
             };
+            ValueTypeInput = new ValueNodeInputViewModel<ValueEnzannEngineType?>
+            {
+                Name = "CalcType",
+                Label = "Calc Type",
+                MaxConnections = 1
+
+            };
             InitConstructor();
         }
-        public AddeNodeViewModel():base()
+        public ValueEnzannEngineNodeViewModel() : base()
         {
 
             InitAyanoVMB();
@@ -82,10 +89,24 @@ namespace FatNoder.ViewModels.Nodes
                 Label = "Input2",
                 MaxConnections = 1
             };
+            ValueTypeInput = new ValueNodeInputViewModel<ValueEnzannEngineType?>
+            {
+                Name = "CalcType",
+                Label = "Calc Type",
+                MaxConnections = 1
+
+            };
             InitConstructor();
         }
         private void InitConstructor()
         {
+
+            ValueTypeInput.ValueChanged.Subscribe(newvalue =>
+            {
+                if(newvalue != null)
+                _model.CalcType = newvalue.Value;
+            });
+            ValueTypeInput.Editor = new ValueEnzannEngineTypeEditorViewModel();
             _model.Outputs = new XMLNodeOutputS
             {
                 new XMLNodeOutput()
@@ -162,6 +183,7 @@ namespace FatNoder.ViewModels.Nodes
                 }
             });
             this.Outputs.Add(Output);
+            this.Inputs.Add(ValueTypeInput);
             this.Inputs.Add(Input1);
             this.Inputs.Add(Input2);
 
@@ -176,6 +198,8 @@ namespace FatNoder.ViewModels.Nodes
                 X = newmodelbs.Points.X,
                 Y = newmodelbs.Points.Y
             };
+            _model.CalcType = ((ValueEnzannEngineNodeModel)newmodelbs).CalcType;
+            ((ValueEnzannEngineTypeEditorViewModel)ValueTypeInput.Editor).SelectViewKun(_model.CalcType);
         }
 
     }
