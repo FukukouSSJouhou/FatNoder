@@ -19,10 +19,14 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes.Editors
             Splat.Locator.CurrentMutable.Register(() => new ValueEnzannEngineTypeEditorView(), typeof(IViewFor<ValueEnzannEngineTypeEditorViewModel>));
         }
         public int selectedIndexView { get; set; } = 0;
+        /// <summary>
+        /// Value Enzann Type View Model Editor!!!
+        /// </summary>
         public ValueEnzannEngineTypeEditorViewModel()
         {
             Value = ValueEnzannEngineType.Add;
             ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Add, "Add");
+            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Subtract, "Subtract");
             ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Divide, "Divide");
             ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Multiply, "Multiply");
         }
@@ -33,11 +37,14 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes.Editors
                 case ValueEnzannEngineType.Add:
                     selectedIndexView = 0;
                     break;
-                case ValueEnzannEngineType.Divide:
+                case ValueEnzannEngineType.Subtract:
                     selectedIndexView = 1;
                     break;
-                case ValueEnzannEngineType.Multiply:
+                case ValueEnzannEngineType.Divide:
                     selectedIndexView = 2;
+                    break;
+                case ValueEnzannEngineType.Multiply:
+                    selectedIndexView = 3;
                     break;
 
             }
