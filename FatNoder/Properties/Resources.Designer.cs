@@ -132,5 +132,41 @@ namespace FatNoder.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Add に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ValueEnzannEngineTypeEditorViewModel_ADD {
+            get {
+                return ResourceManager.GetString("ValueEnzannEngineTypeEditorViewModel_ADD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Divide に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ValueEnzannEngineTypeEditorViewModel_Divide {
+            get {
+                return ResourceManager.GetString("ValueEnzannEngineTypeEditorViewModel_Divide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Multiply に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ValueEnzannEngineTypeEditorViewModel_Multiply {
+            get {
+                return ResourceManager.GetString("ValueEnzannEngineTypeEditorViewModel_Multiply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Subtract に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ValueEnzannEngineTypeEditorViewModel_Subtract {
+            get {
+                return ResourceManager.GetString("ValueEnzannEngineTypeEditorViewModel_Subtract", resourceCulture);
+            }
+        }
     }
 }

@@ -25,10 +25,10 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes.Editors
         public ValueEnzannEngineTypeEditorViewModel()
         {
             Value = ValueEnzannEngineType.Add;
-            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Add, "Add");
-            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Subtract, "Subtract");
-            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Divide, "Divide");
-            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Multiply, "Multiply");
+            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Add, Properties.Resources.ValueEnzannEngineTypeEditorViewModel_ADD);
+            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Subtract, Properties.Resources.ValueEnzannEngineTypeEditorViewModel_Subtract);
+            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Divide, Properties.Resources.ValueEnzannEngineTypeEditorViewModel_Divide);
+            ValueEnzannEngineEnum.Add(ValueEnzannEngineType.Multiply, Properties.Resources.ValueEnzannEngineTypeEditorViewModel_Multiply);
         }
         public void SelectViewKun(ValueEnzannEngineType indexkun)
         {
