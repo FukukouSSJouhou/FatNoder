@@ -176,6 +176,7 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
                 X = newmodelbs.Points.X,
                 Y = newmodelbs.Points.Y
             };
+            _model.CalcType = ((ValueEnzannEngineNodeModel)newmodelbs).CalcType;
         }
 
     }
