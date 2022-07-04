@@ -11,10 +11,11 @@ namespace FatNoder.Plugins
 {
     public class PluginLoader
     {
-        public void Load_Plugins()
+        public static void Load_Plugins()
         {
             string application_dir = System.AppDomain.CurrentDomain.BaseDirectory;
             string plugins_dir = System.IO.Path.Combine(application_dir, "plugins");
+            if(Directory.Exists(plugins_dir))
             foreach(DirectoryInfo subdir in new DirectoryInfo(plugins_dir).GetDirectories())
             {
                 foreach (FileInfo finfo in subdir.GetFiles("*.pluginmanifest"))
