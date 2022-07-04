@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FatXMLCore\FatXMLCore.csproj" />
+    <ProjectReference Include="..\NodeAyanoVMLibsCodeGenerator\NodeAyanoVMLibsCodeGenerator.csproj" />
+    <ProjectReference Include="..\NodeAyanoVMLibs\NodeAyanoVMLibs.csproj" />
+    <ProjectReference Include="..\NodeAyano\NodeAyano.csproj" />
+  </ItemGroup>
+
 </Project>
