@@ -151,6 +151,15 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
+        ///   Layout に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Ribbon_Menu_Layout {
+            get {
+                return ResourceManager.GetString("Ribbon_Menu_Layout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Home に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Ribbon_Tab_Home {
