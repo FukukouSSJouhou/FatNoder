@@ -46,6 +46,9 @@
                     <Fluent:Button Header="{x:Static Properties:Resources.Ribbon_Home_CompileAndRunPhase}" Name="compileandrunPhaseButton" KeyTip="R"></Fluent:Button>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
+            <Fluent:RibbonTabItem Header="{x:Static Properties:Resources.Ribbon_Menu_Layout}" KeyTip="L">
+                
+            </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
         <breadcrumbBar:BreadcrumbBarView x:Name="breadcrumbBar" Grid.Row="1" Grid.ColumnSpan="5" MinHeight="30"/>
         <Grid Grid.Row="2" Grid.Column="0">

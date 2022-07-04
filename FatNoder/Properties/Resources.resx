@@ -147,6 +147,9 @@
   <data name="Ribbon_Menu_File" xml:space="preserve">
     <value>File</value>
   </data>
+  <data name="Ribbon_Menu_Layout" xml:space="preserve">
+    <value>Layout</value>
+  </data>
   <data name="Ribbon_Tab_Home" xml:space="preserve">
     <value>Home</value>
   </data>
