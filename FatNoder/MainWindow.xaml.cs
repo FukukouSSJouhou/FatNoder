@@ -62,18 +62,18 @@ namespace FatNoder
                 this.OneWayBind(ViewModel, vm => vm.NodeList, v => v.nodeList.ViewModel).DisposeWith(d);
                 this.OneWayBind(ViewModel, vm => vm.NetworkBreadcrumbBar, v => v.breadcrumbBar.ViewModel).DisposeWith(d);
                 this.OneWayBind(ViewModel, vm => vm.CPreviewViewModel, v => v.CodePreviewViewkun.ViewModel).DisposeWith(d);
-                this.BindCommand(ViewModel, vm => vm.AutoLayout, v => v.autoLayoutButton);
+                this.BindCommand(ViewModel, vm => vm.AutoLayout, v => v.autoLayoutRibbonButton);
 
 
-                this.BindCommand(ViewModel, vm => vm.StartAutoLayoutLive, v => v.startAutoLayoutLiveButton);
+                this.BindCommand(ViewModel, vm => vm.StartAutoLayoutLive, v => v.startAutoLayoutLiveRibbonButton);
                 this.WhenAnyObservable(v => v.ViewModel.StartAutoLayoutLive.IsExecuting)
                     .Select((isRunning) => isRunning ? Visibility.Collapsed : Visibility.Visible)
-                    .BindTo(this, v => v.startAutoLayoutLiveButton.Visibility);
+                    .BindTo(this, v => v.startAutoLayoutLiveRibbonButton.Visibility);
 
-                this.BindCommand(ViewModel, vm => vm.StopAutoLayoutLive, v => v.stopAutoLayoutLiveButton);
+                this.BindCommand(ViewModel, vm => vm.StopAutoLayoutLive, v => v.stopAutoLayoutLiveRibbonButton);
                 this.WhenAnyObservable(v => v.ViewModel.StartAutoLayoutLive.IsExecuting)
                     .Select((isRunning) => isRunning ? Visibility.Visible : Visibility.Collapsed)
-                    .BindTo(this, v => v.stopAutoLayoutLiveButton.Visibility);
+                    .BindTo(this, v => v.stopAutoLayoutLiveRibbonButton.Visibility);
                 this.BindCommand(ViewModel, vm => vm.TestPhasekun, v => v.testPhaseButton);
                 this.BindCommand(ViewModel, vm => vm.CreateTest, v => v.CreateTestRibbon);
                 this.BindCommand(ViewModel, vm => vm.CompilePhasekun, v => v.compilePhaseButton);
