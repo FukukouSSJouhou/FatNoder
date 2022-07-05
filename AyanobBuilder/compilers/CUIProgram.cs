@@ -260,6 +260,18 @@ namespace tintin{
         tdn=tdn+23;
         Console.WriteLine(tdn33);
         Console.Error.WriteLine(tdn33);
+if(1 == 1){
+}
+if(1 > 1){
+}
+if(1 < 1){
+}
+if(1 <= 1){
+}
+if(1 >= 1){
+}
+if(1 != 1){
+}
         return tdn;
     }
     }
