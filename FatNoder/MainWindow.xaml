@@ -47,7 +47,11 @@
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
             <Fluent:RibbonTabItem Header="{x:Static Properties:Resources.Ribbon_Menu_Layout}" KeyTip="L">
-                
+                <Fluent:RibbonGroupBox Header="Main" KeyTip="A">
+                    <Fluent:Button Header="Auto-layout" x:Name="autoLayoutRibbonButton"></Fluent:Button>
+                    <Fluent:Button Header="Start live auto-layout" x:Name="startAutoLayoutLiveRibbonButton"></Fluent:Button>
+                    <Fluent:Button Header="Stop live auto-layout" x:Name="stopAutoLayoutLiveRibbonButton"></Fluent:Button>
+                </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
         <breadcrumbBar:BreadcrumbBarView x:Name="breadcrumbBar" Grid.Row="1" Grid.ColumnSpan="5" MinHeight="30"/>
