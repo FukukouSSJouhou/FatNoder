@@ -24,7 +24,11 @@ namespace FatNoder.ViewModels.Nodes
         private IfNodeModel _model = new IfNodeModel();
         public IfNodeViewModel(Guid uuid) : base(uuid)
         {
-
+            InitAyanoVMB();
+        }
+        public IfNodeViewModel() : base()
+        {
+            InitAyanoVMB();
         }
     }
 }
