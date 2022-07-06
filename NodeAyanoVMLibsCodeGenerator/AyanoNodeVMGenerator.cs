@@ -126,7 +126,7 @@ namespace {NSName}
                 {fName}.Points = new {XMLNodeXYName}()
                 {{
                     X = newvalue.X,
-                    Y = newvalue.Y
+                  D  Y = newvalue.Y
                 }};
             }});
    
