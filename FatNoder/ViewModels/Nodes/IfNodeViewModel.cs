@@ -20,7 +20,7 @@ namespace FatNoder.ViewModels.Nodes
     public partial class IfNodeViewModel : StatementNodeViewModelBase, INodeViewModelBase
     {
         public ValueNodeInputViewModel<HensuuUkewatashi?> InputX { get; }
-        public ValueNodeInputViewModel<StatementCls?> OutIfX { get; }
+        public ValueListNodeInputViewModel<StatementCls> OutIfX { get; }
         static IfNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<IfNodeViewModel>));
@@ -36,7 +36,7 @@ namespace FatNoder.ViewModels.Nodes
                 Label="Condition",
                 MaxConnections=1
             };
-            OutIfX = new ValueNodeInputViewModel<StatementCls?>
+            OutIfX = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Then",
                 Label = "Then",
@@ -56,7 +56,7 @@ namespace FatNoder.ViewModels.Nodes
                 Label = "Condition",
                 MaxConnections = 1
             };
-            OutIfX = new ValueNodeInputViewModel<StatementCls?>
+            OutIfX = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Then",
                 Label = "Then",
@@ -87,6 +87,11 @@ namespace FatNoder.ViewModels.Nodes
                 States = new XMLNodeInputStatementLS(),
                 Name = InputFlow.Name
             });
+            _model.InputStates.Add(new XMLNodeInputStatement()
+            {
+                States=new XMLNodeInputStatementLS(),
+                Name = OutIfX.Name
+            });
             this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
                 foreach (XMLNodeInputStatement xs in _model.InputStates.Where(d =>
@@ -96,6 +101,22 @@ namespace FatNoder.ViewModels.Nodes
                 {
                     xs.States.Clear();
                     foreach (StatementCls guidkun in InputFlow.Values.Items)
+                    {
+                        xs.States.Add(guidkun.UUID);
+                    }
+                }
+            });
+            this.WhenAnyObservable(vm => vm.OutIfX.Values.CountChanged).Subscribe(newvalue =>
+            {
+
+                foreach (XMLNodeInputStatement xs in _model.InputStates.Where(
+                    d =>
+                    {
+                        return d.Name == OutIfX.Name;
+                    }))
+                {
+                    xs.States.Clear();
+                    foreach (StatementCls guidkun in OutIfX.Values.Items)
                     {
                         xs.States.Add(guidkun.UUID);
                     }
