@@ -119,6 +119,7 @@ namespace FatNoder.ViewModels
             NodeList.AddNodeType(() => new SetValueNodeViewModel<int> { Name = "IntSetValue" });
             NodeList.AddNodeType(() => new GetValueNodeViewModel { Name = Properties.Resources.MainViewModel_GetValue });
             NodeList.AddNodeType(() => new ValueEnzannEngineNodeViewModel { Name = Properties.Resources.MainViewModel_Calc });
+            NodeList.AddNodeType(() => new IfNodeViewModel { Name = "IfNode" });
             Plugins.PluginLoader.Load_Plugins();
             this.WhenAnyObservable(vm => vm.Network.NetworkChanged).Subscribe(newvalue =>
             {
