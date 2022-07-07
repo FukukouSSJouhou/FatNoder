@@ -135,7 +135,7 @@ namespace FatNoder.ViewModels.Nodes
                             {
                                 Name = cv.Output.Name,
                                 Target = cv.Output.Parent.UUID,
-                                InputOnly = true
+                                InputOnly = false
                             });
                     }
                 }
