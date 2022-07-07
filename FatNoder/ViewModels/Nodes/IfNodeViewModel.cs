@@ -43,8 +43,6 @@ namespace FatNoder.ViewModels.Nodes
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
-            this.Inputs.Add(OutIfX);
-            this.Inputs.Add(InputX);
             Initkun();
         }
         public IfNodeViewModel() : base()
@@ -63,8 +61,6 @@ namespace FatNoder.ViewModels.Nodes
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
-            this.Inputs.Add(OutIfX);
-            this.Inputs.Add(InputX);
             Initkun();
         }
         public void Initkun()
@@ -122,6 +118,30 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
+            InputX.Connections.CountChanged.Subscribe(newvalue =>
+            {
+
+                foreach (XMLNodeInput xs in _model.Inputs.Where(d =>
+                {
+                    return d.Name == InputX.Name;
+                }))
+                {
+                    xs.connections.Clear();
+                    foreach (ConnectionViewModel cv in InputX.Connections.Items)
+                    {
+                        //Console.WriteLine($"{cv.Input.Name},{cv.Input.Parent.UUID}");
+                        xs.connections.Add(
+                            new XMLNodeInputConnect
+                            {
+                                Name = cv.Output.Name,
+                                Target = cv.Output.Parent.UUID,
+                                InputOnly = true
+                            });
+                    }
+                }
+            });
+            this.Inputs.Add(OutIfX);
+            this.Inputs.Add(InputX);
         }
     }
 }
