@@ -11,10 +11,13 @@ using NodeAyano.Model.Nodes;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeAyano.HensuuV;
 using FatNoder.Model.Transc;
+using NodeNetworkJH.ViewModels;
+using DynamicData;
+using FatNoder.Serializer.Node.Xml;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public partial class IfNodeViewModel : NodeVMBasekun, INodeViewModelBase
+    public partial class IfNodeViewModel : StatementNodeViewModelBase, INodeViewModelBase
     {
         public ValueNodeInputViewModel<HensuuUkewatashi?> InputX { get; }
         public ValueNodeInputViewModel<StatementCls?> OutIfX { get; }
@@ -27,10 +30,77 @@ namespace FatNoder.ViewModels.Nodes
         public IfNodeViewModel(Guid uuid) : base(uuid)
         {
             InitAyanoVMB();
+            InputX = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name = "Condition",
+                Label="Condition",
+                MaxConnections=1
+            };
+            OutIfX = new ValueNodeInputViewModel<StatementCls?>
+            {
+                Name = "Then",
+                Label = "Then",
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+            };
+            this.Inputs.Add(OutIfX);
+            this.Inputs.Add(InputX);
+            Initkun();
         }
         public IfNodeViewModel() : base()
         {
             InitAyanoVMB();
+            InputX = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name = "Condition",
+                Label = "Condition",
+                MaxConnections = 1
+            };
+            OutIfX = new ValueNodeInputViewModel<StatementCls?>
+            {
+                Name = "Then",
+                Label = "Then",
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+            };
+            this.Inputs.Add(OutIfX);
+            this.Inputs.Add(InputX);
+            Initkun();
+        }
+        public void Initkun()
+        {
+
+            _model.Inputs = new XMLNodeInputS
+            {
+                new XMLNodeInput()
+                {
+                    Name = InputX.Name,
+                    connections=new XMLNodeInputConnectS
+                    {
+
+                    }
+                }
+            };
+            _model.InputStates = new XMLNodeInputStatement_VMLS();
+            _model.InputStates.Add(new XMLNodeInputStatement()
+            {
+                States = new XMLNodeInputStatementLS(),
+                Name = InputFlow.Name
+            });
+            this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
+            {
+                foreach (XMLNodeInputStatement xs in _model.InputStates.Where(d =>
+                {
+                    return d.Name == InputFlow.Name;
+                }))
+                {
+                    xs.States.Clear();
+                    foreach (StatementCls guidkun in InputFlow.Values.Items)
+                    {
+                        xs.States.Add(guidkun.UUID);
+                    }
+                }
+            });
         }
     }
 }
