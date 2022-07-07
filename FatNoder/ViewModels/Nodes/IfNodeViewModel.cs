@@ -14,7 +14,7 @@ using FatNoder.Model.Transc;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class IfNodeViewModel : NodeVMBasekun, INodeViewModelBase
+    public partial class IfNodeViewModel : NodeVMBasekun, INodeViewModelBase
     {
         public ValueNodeInputViewModel<HensuuUkewatashi?> InputX { get; }
         public ValueNodeInputViewModel<StatementCls?> OutIfX { get; }
