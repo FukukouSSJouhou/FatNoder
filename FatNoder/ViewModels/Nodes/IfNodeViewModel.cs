@@ -16,6 +16,7 @@ namespace FatNoder.ViewModels.Nodes
     public class IfNodeViewModel : NodeVMBasekun, INodeViewModelBase
     {
         public ValueNodeInputViewModel<HensuuUkewatashi?> InputX { get; }
+        public ValueNodeInputViewModel<StatementCls?> OutIfX { get; }
         static IfNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<IfNodeViewModel>));
