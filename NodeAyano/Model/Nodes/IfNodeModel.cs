@@ -30,7 +30,7 @@ namespace NodeAyano.Model.Nodes
 
             foreach (XMLNodeInput xnode in Inputs)
             {
-                if (xnode.Name == "Input1")
+                if (xnode.Name == "Condition")
                 {
 
                     foreach (XMLNodeInputConnect cn in xnode.connections)
@@ -74,6 +74,7 @@ namespace NodeAyano.Model.Nodes
                     }
                 }
             }
+            if(input1 != null)
             returnstatements.Add(SyntaxFactory.IfStatement(input1.CompileSyntax(xnodes), bsy));
             return returnstatements.ToArray();
         }
