@@ -10,6 +10,7 @@ using AyanoNodeVM;
 using NodeAyano.Model.Nodes;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeAyano.HensuuV;
+using FatNoder.Model.Transc;
 
 namespace FatNoder.ViewModels.Nodes
 {
