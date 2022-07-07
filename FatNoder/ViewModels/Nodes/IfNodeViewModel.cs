@@ -148,7 +148,7 @@ namespace FatNoder.ViewModels.Nodes
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
-            Name = "IfNode;
+            Name = "IfNode";
             Position = new System.Windows.Point
             {
                 X = newmodelbs.Points.X,
