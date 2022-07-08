@@ -53,7 +53,7 @@ namespace NodeAyano.Model.Nodes
 
             List<StatementSyntax> returnstatements = new();
             BlockSyntax bsy = SyntaxFactory.Block(new List<StatementSyntax>());
-            BlockSyntax ThenSyntax = null;
+            BlockSyntax ElseSyntax = null;
             foreach(XMLNodeInputStatement st in InputStates)
             {
                 if(st.Name == "Then")
@@ -76,9 +76,9 @@ namespace NodeAyano.Model.Nodes
                 }
             }
             if (input1 != null)
-                if (ThenSyntax != null)
+                if (ElseSyntax != null)
                 {
-                    returnstatements.Add(SyntaxFactory.IfStatement(input1.CompileSyntax(xnodes), bsy, SyntaxFactory.ElseClause(ThenSyntax)));
+                    returnstatements.Add(SyntaxFactory.IfStatement(input1.CompileSyntax(xnodes), bsy, SyntaxFactory.ElseClause(ElseSyntax)));
                 }
                 else
                 {
