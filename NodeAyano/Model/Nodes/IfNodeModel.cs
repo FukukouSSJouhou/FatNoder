@@ -73,6 +73,24 @@ namespace NodeAyano.Model.Nodes
                             }
                         }
                     }
+                }else if(st.Name == "Else")
+                {
+
+                    foreach (Guid cnUUID in st.States)
+                    {
+                        foreach (XML_NodeModel modelkun in xnodes.Where(
+                            d =>
+                            {
+                                return d.UUID == cnUUID;
+                            }))
+                        {
+                            if (modelkun is CompileNodeBase)
+                            {
+                                ElseSyntax = SyntaxFactory.Block(((CompileNodeBase)modelkun).CompileSyntax(xnodes));
+
+                            }
+                        }
+                    }
                 }
             }
             if (input1 != null)
