@@ -21,6 +21,7 @@ namespace FatNoder.ViewModels.Nodes
     {
         public ValueNodeInputViewModel<HensuuUkewatashi?> InputX { get; }
         public ValueListNodeInputViewModel<StatementCls> OutIfX { get; }
+        public ValueListNodeInputViewModel<StatementCls> ElseIfX { get; }
         static IfNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<IfNodeViewModel>));
@@ -43,6 +44,13 @@ namespace FatNoder.ViewModels.Nodes
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
+            ElseIfX = new ValueListNodeInputViewModel<StatementCls>
+            {
+                Name = "Else",
+                Label = "Else",
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+            };
             Initkun();
         }
         public IfNodeViewModel() : base()
@@ -58,6 +66,13 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "Then",
                 Label = "Then",
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+            };
+            ElseIfX = new ValueListNodeInputViewModel<StatementCls>
+            {
+                Name = "Else",
+                Label = "Else",
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
