@@ -61,6 +61,15 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
+        ///   IfNode に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string IfNodeViewModel_IfNodeName {
+            get {
+                return ResourceManager.GetString("IfNodeViewModel_IfNodeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Calc に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MainViewModel_Calc {
