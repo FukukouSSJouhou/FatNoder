@@ -53,6 +53,7 @@ namespace NodeAyano.Model.Nodes
 
             List<StatementSyntax> returnstatements = new();
             BlockSyntax bsy = SyntaxFactory.Block(new List<StatementSyntax>());
+            BlockSyntax ElseSyntax = null;
             foreach(XMLNodeInputStatement st in InputStates)
             {
                 if(st.Name == "Then")
@@ -72,10 +73,35 @@ namespace NodeAyano.Model.Nodes
                             }
                         }
                     }
+                }else if(st.Name == "Else")
+                {
+
+                    foreach (Guid cnUUID in st.States)
+                    {
+                        foreach (XML_NodeModel modelkun in xnodes.Where(
+                            d =>
+                            {
+                                return d.UUID == cnUUID;
+                            }))
+                        {
+                            if (modelkun is CompileNodeBase)
+                            {
+                                ElseSyntax = SyntaxFactory.Block(((CompileNodeBase)modelkun).CompileSyntax(xnodes));
+
+                            }
+                        }
+                    }
                 }
             }
-            if(input1 != null)
-            returnstatements.Add(SyntaxFactory.IfStatement(input1.CompileSyntax(xnodes), bsy));
+            if (input1 != null)
+                if (ElseSyntax != null)
+                {
+                    returnstatements.Add(SyntaxFactory.IfStatement(input1.CompileSyntax(xnodes), bsy, SyntaxFactory.ElseClause(ElseSyntax)));
+                }
+                else
+                {
+                    returnstatements.Add(SyntaxFactory.IfStatement(input1.CompileSyntax(xnodes), bsy));
+                }
             return returnstatements.ToArray();
         }
     }

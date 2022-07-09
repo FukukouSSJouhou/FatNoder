@@ -21,6 +21,7 @@ namespace FatNoder.ViewModels.Nodes
     {
         public ValueNodeInputViewModel<HensuuUkewatashi?> InputX { get; }
         public ValueListNodeInputViewModel<StatementCls> OutIfX { get; }
+        public ValueListNodeInputViewModel<StatementCls> ElseIfX { get; }
         static IfNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<IfNodeViewModel>));
@@ -43,6 +44,13 @@ namespace FatNoder.ViewModels.Nodes
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
+            ElseIfX = new ValueListNodeInputViewModel<StatementCls>
+            {
+                Name = "Else",
+                Label = "Else",
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+            };
             Initkun();
         }
         public IfNodeViewModel() : base()
@@ -58,6 +66,13 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "Then",
                 Label = "Then",
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+            };
+            ElseIfX = new ValueListNodeInputViewModel<StatementCls>
+            {
+                Name = "Else",
+                Label = "Else",
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
@@ -87,6 +102,11 @@ namespace FatNoder.ViewModels.Nodes
             {
                 States=new XMLNodeInputStatementLS(),
                 Name = OutIfX.Name
+            });
+            _model.InputStates.Add(new XMLNodeInputStatement()
+            {
+                States=new XMLNodeInputStatementLS(),
+                Name = ElseIfX.Name
             });
             this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
@@ -118,6 +138,22 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
+            this.WhenAnyObservable(vm => vm.ElseIfX.Values.CountChanged).Subscribe(newvalue =>
+            {
+
+                foreach (XMLNodeInputStatement xs in _model.InputStates.Where(
+                    d =>
+                    {
+                        return d.Name == ElseIfX.Name;
+                    }))
+                {
+                    xs.States.Clear();
+                    foreach (StatementCls guidkun in ElseIfX.Values.Items)
+                    {
+                        xs.States.Add(guidkun.UUID);
+                    }
+                }
+            });
             InputX.Connections.CountChanged.Subscribe(newvalue =>
             {
 
@@ -141,6 +177,7 @@ namespace FatNoder.ViewModels.Nodes
                 }
             });
             this.Inputs.Add(OutIfX);
+            this.Inputs.Add(ElseIfX);
             this.Inputs.Add(InputX);
         } 
         /// <inheritdoc/>
