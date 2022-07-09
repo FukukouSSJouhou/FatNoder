@@ -11,6 +11,7 @@ namespace NodeAyano.Model.Nodes.Sentences
     /// <summary>
     /// Condition Type Enum
     /// </summary>
+    [DataContract(Name = "ConditionType")]
     public enum ConditionParamTypeEnum
     {
         /// <summary>
@@ -52,6 +53,10 @@ namespace NodeAyano.Model.Nodes.Sentences
         {
             get; set;
         }
+        /// <summary>
+        /// Condition Type
+        /// </summary>
+        [DataMember(Name= "ConditionType",Order =9)]
         public ConditionParamTypeEnum ConditionType
         {
             get;set;
