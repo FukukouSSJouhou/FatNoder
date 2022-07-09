@@ -138,6 +138,22 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
+            this.WhenAnyObservable(vm => vm.ElseIfX.Values.CountChanged).Subscribe(newvalue =>
+            {
+
+                foreach (XMLNodeInputStatement xs in _model.InputStates.Where(
+                    d =>
+                    {
+                        return d.Name == ElseIfX.Name;
+                    }))
+                {
+                    xs.States.Clear();
+                    foreach (StatementCls guidkun in ElseIfX.Values.Items)
+                    {
+                        xs.States.Add(guidkun.UUID);
+                    }
+                }
+            });
             InputX.Connections.CountChanged.Subscribe(newvalue =>
             {
 
