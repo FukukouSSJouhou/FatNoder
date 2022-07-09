@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FatNoder.Serializer.Node.Xml;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -68,6 +70,11 @@ namespace NodeAyano.Model.Nodes.Sentences
         {
             ConditionType = ConditionParamTypeEnum.Equals;
         }
-        
+        ///<inheritdoc/>
+        public override ExpressionSyntax CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
+        {
+
+        }
+
     }
 }
