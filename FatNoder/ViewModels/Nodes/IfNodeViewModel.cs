@@ -177,6 +177,7 @@ namespace FatNoder.ViewModels.Nodes
                 }
             });
             this.Inputs.Add(OutIfX);
+            this.Inputs.Add(ElseIfX);
             this.Inputs.Add(InputX);
         } 
         /// <inheritdoc/>
