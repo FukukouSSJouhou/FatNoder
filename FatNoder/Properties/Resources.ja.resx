@@ -123,6 +123,9 @@
   <data name="IfNodeViewModel_ElseLabel" xml:space="preserve">
     <value>でなければ</value>
   </data>
+  <data name="IfNodeViewModel_IfNodeName" xml:space="preserve">
+    <value>条件分岐</value>
+  </data>
   <data name="IfNodeViewModel_ThenLabel" xml:space="preserve">
     <value>~なら</value>
   </data>
