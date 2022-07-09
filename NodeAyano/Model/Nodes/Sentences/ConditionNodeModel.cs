@@ -50,6 +50,9 @@ namespace NodeAyano.Model.Nodes.Sentences
         [EnumMember]
         NotEquals
     }
+    /// <summary>
+    /// Condition Node Model
+    /// </summary>
     public class ConditionNodeModel: ValueCompileNodeBase
     {
 
