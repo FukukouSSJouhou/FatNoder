@@ -8,13 +8,40 @@ using System.Xml.Linq;
 
 namespace NodeAyano.Model.Nodes.Sentences
 {
+    /// <summary>
+    /// Condition Type Enum
+    /// </summary>
     public enum ConditionParamTypeEnum
     {
+        /// <summary>
+        /// Equals
+        /// </summary>
+        [EnumMember]
         Equals,
+        /// <summary>
+        /// GreaterThan
+        /// </summary>
+        [EnumMember]
         GreaterThan,
+        /// <summary>
+        /// LessThan
+        /// </summary>
+        [EnumMember]
         LessThan,
+        /// <summary>
+        /// LessThanOrEqual
+        /// </summary>
+        [EnumMember]
         LessThanOrEqual,
+        /// <summary>
+        /// GreaterThanOrEqual
+        /// </summary>
+        [EnumMember]
         GreaterThanOrEqual,
+        /// <summary>
+        /// NotEquals
+        /// </summary>
+        [EnumMember]
         NotEquals
     }
     public class ConditionNodeModel: ValueCompileNodeBase
