@@ -103,6 +103,11 @@ namespace FatNoder.ViewModels.Nodes
                 States=new XMLNodeInputStatementLS(),
                 Name = OutIfX.Name
             });
+            _model.InputStates.Add(new XMLNodeInputStatement()
+            {
+                States=new XMLNodeInputStatementLS(),
+                Name = ElseIfX.Name
+            });
             this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
                 foreach (XMLNodeInputStatement xs in _model.InputStates.Where(d =>
