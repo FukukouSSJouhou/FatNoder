@@ -147,7 +147,7 @@ namespace NodeAyano.Model.Nodes.Sentences
                         kindkun = SyntaxKind.EqualsExpression;
                         break;
                 }
-
+                return SyntaxFactory.BinaryExpression(kindkun, input1.CompileSyntax(xnodes), input2.CompileSyntax(xnodes));
 
             }
             else
