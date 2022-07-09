@@ -123,6 +123,9 @@
   <data name="IfNodeViewModel_IfNodeName" xml:space="preserve">
     <value>IfNode</value>
   </data>
+  <data name="IfNodeViewModel_ThenLabel" xml:space="preserve">
+    <value>Then</value>
+  </data>
   <data name="MainViewModel_Calc" xml:space="preserve">
     <value>Calc</value>
   </data>

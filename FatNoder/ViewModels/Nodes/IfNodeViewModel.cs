@@ -40,7 +40,7 @@ namespace FatNoder.ViewModels.Nodes
             OutIfX = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Then",
-                Label = "Then",
+                Label = Properties.Resources.IfNodeViewModel_ThenLabel,
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
@@ -65,7 +65,7 @@ namespace FatNoder.ViewModels.Nodes
             OutIfX = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Then",
-                Label = "Then",
+                Label = Properties.Resources.IfNodeViewModel_ThenLabel,
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };

@@ -79,6 +79,15 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
+        ///   Then に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string IfNodeViewModel_ThenLabel {
+            get {
+                return ResourceManager.GetString("IfNodeViewModel_ThenLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Calc に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MainViewModel_Calc {
