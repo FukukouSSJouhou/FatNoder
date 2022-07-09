@@ -34,7 +34,7 @@ namespace FatNoder.ViewModels.Nodes
             InputX = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Condition",
-                Label="Condition",
+                Label=Properties.Resources.IfNodeViewModel_ConditionLabel,
                 MaxConnections=1
             };
             OutIfX = new ValueListNodeInputViewModel<StatementCls>
