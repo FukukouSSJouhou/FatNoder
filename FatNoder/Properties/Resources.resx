@@ -120,6 +120,9 @@
   <data name="IfNodeViewModel_ConditionLabel" xml:space="preserve">
     <value>Condition</value>
   </data>
+  <data name="IfNodeViewModel_ElseLabel" xml:space="preserve">
+    <value>Else</value>
+  </data>
   <data name="IfNodeViewModel_IfNodeName" xml:space="preserve">
     <value>IfNode</value>
   </data>

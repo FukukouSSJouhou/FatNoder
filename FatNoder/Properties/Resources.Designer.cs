@@ -70,6 +70,15 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
+        ///   Else に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string IfNodeViewModel_ElseLabel {
+            get {
+                return ResourceManager.GetString("IfNodeViewModel_ElseLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   IfNode に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string IfNodeViewModel_IfNodeName {

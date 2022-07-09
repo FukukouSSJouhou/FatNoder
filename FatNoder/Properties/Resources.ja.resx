@@ -120,6 +120,12 @@
   <data name="IfNodeViewModel_ConditionLabel" xml:space="preserve">
     <value>条件</value>
   </data>
+  <data name="IfNodeViewModel_ElseLabel" xml:space="preserve">
+    <value>でなければ</value>
+  </data>
+  <data name="IfNodeViewModel_ThenLabel" xml:space="preserve">
+    <value>~なら</value>
+  </data>
   <data name="MainViewModel_MainEntryPoint" xml:space="preserve">
     <value>Mainエントリーポイント</value>
   </data>

@@ -47,7 +47,7 @@ namespace FatNoder.ViewModels.Nodes
             ElseIfX = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Else",
-                Label = "Else",
+                Label = Properties.Resources.IfNodeViewModel_ElseLabel,
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
@@ -72,7 +72,7 @@ namespace FatNoder.ViewModels.Nodes
             ElseIfX = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Else",
-                Label = "Else",
+                Label = Properties.Resources.IfNodeViewModel_ElseLabel,
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
