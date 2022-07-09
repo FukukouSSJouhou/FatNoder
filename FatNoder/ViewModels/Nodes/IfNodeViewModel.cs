@@ -34,20 +34,20 @@ namespace FatNoder.ViewModels.Nodes
             InputX = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Condition",
-                Label="Condition",
+                Label=Properties.Resources.IfNodeViewModel_ConditionLabel,
                 MaxConnections=1
             };
             OutIfX = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Then",
-                Label = "Then",
+                Label = Properties.Resources.IfNodeViewModel_ThenLabel,
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
             ElseIfX = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Else",
-                Label = "Else",
+                Label = Properties.Resources.IfNodeViewModel_ElseLabel,
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
@@ -59,20 +59,20 @@ namespace FatNoder.ViewModels.Nodes
             InputX = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Condition",
-                Label = "Condition",
+                Label = Properties.Resources.IfNodeViewModel_ConditionLabel,
                 MaxConnections = 1
             };
             OutIfX = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Then",
-                Label = "Then",
+                Label = Properties.Resources.IfNodeViewModel_ThenLabel,
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
             ElseIfX = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Else",
-                Label = "Else",
+                Label = Properties.Resources.IfNodeViewModel_ElseLabel,
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
@@ -185,7 +185,7 @@ namespace FatNoder.ViewModels.Nodes
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
-            Name = "IfNode";
+            Name = Properties.Resources.IfNodeViewModel_IfNodeName;
             Position = new System.Windows.Point
             {
                 X = newmodelbs.Points.X,

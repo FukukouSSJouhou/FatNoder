@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="IfNodeViewModel_ConditionLabel" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="IfNodeViewModel_ElseLabel" xml:space="preserve">
+    <value>Else</value>
+  </data>
+  <data name="IfNodeViewModel_IfNodeName" xml:space="preserve">
+    <value>IfNode</value>
+  </data>
+  <data name="IfNodeViewModel_ThenLabel" xml:space="preserve">
+    <value>Then</value>
+  </data>
   <data name="MainViewModel_Calc" xml:space="preserve">
     <value>Calc</value>
   </data>
