@@ -10,6 +10,9 @@ namespace FatNoder.ViewModels.Nodes.Sentences.Editors
 {
     public class ConditionNodeTypeEditorViewModel : ValueEditorViewModel<ConditionParamTypeEnum?>
     {
+        public Dictionary<ConditionParamTypeEnum, string> ConditionNodeTypeEnum { get; } = new Dictionary<ConditionParamTypeEnum, string>();
+
+
 
     }
 }
