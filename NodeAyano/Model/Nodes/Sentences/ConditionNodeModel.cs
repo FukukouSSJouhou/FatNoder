@@ -122,6 +122,32 @@ namespace NodeAyano.Model.Nodes.Sentences
             }
             if (input1 != null && input2 != null)
             {
+                SyntaxKind kindkun;
+                switch (ConditionType)
+                {
+                    case ConditionParamTypeEnum.Equals:
+                        kindkun = SyntaxKind.EqualsExpression;
+                        break;
+                    case ConditionParamTypeEnum.NotEquals:
+                        kindkun = SyntaxKind.NotEqualsExpression;
+                        break;
+                    case ConditionParamTypeEnum.GreaterThan:
+                        kindkun = SyntaxKind.GreaterThanExpression;
+                        break;
+                    case ConditionParamTypeEnum.GreaterThanOrEqual:
+                        kindkun = SyntaxKind.GreaterThanOrEqualExpression;
+                        break;
+                    case ConditionParamTypeEnum.LessThan:
+                        kindkun = SyntaxKind.LessThanExpression;
+                        break;
+                    case ConditionParamTypeEnum.LessThanOrEqual:
+                        kindkun = SyntaxKind.LessThanOrEqualExpression;
+                        break;
+                    default:
+                        kindkun = SyntaxKind.EqualsExpression;
+                        break;
+                }
+
 
             }
             else
