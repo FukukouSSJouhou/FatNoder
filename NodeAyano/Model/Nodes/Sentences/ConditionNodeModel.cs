@@ -122,13 +122,11 @@ namespace NodeAyano.Model.Nodes.Sentences
             }
             if (input1 != null && input2 != null)
             {
-                return SyntaxFactory.LiteralExpression(SyntaxKind.NumericLiteralExpression, SyntaxFactory.Literal(
-                                        0));
+
             }
             else
             {
-                return SyntaxFactory.LiteralExpression(SyntaxKind.NumericLiteralExpression, SyntaxFactory.Literal(
-                                        0));
+                return SyntaxFactory.LiteralExpression(SyntaxKind.TrueLiteralExpression);
             }
         }
 
