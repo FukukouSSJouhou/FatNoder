@@ -194,7 +194,7 @@ namespace FatNoder.ViewModels.Nodes.Sentences
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
-            Name = Properties.Resources.MainViewModel_Calc;
+            Name = "Compare";
             Position = new System.Windows.Point
             {
                 X = newmodelbs.Points.X,
