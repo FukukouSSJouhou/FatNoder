@@ -1,5 +1,7 @@
-﻿using NodeAyano.Model.Nodes.Sentences;
+﻿using FatNoder.Views.Sentences.Editors;
+using NodeAyano.Model.Nodes.Sentences;
 using NodeNetworkJH.Toolkit.ValueNode;
+using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,10 @@ namespace FatNoder.ViewModels.Nodes.Sentences.Editors
     public class ConditionNodeTypeEditorViewModel : ValueEditorViewModel<ConditionParamTypeEnum?>
     {
         public Dictionary<ConditionParamTypeEnum, string> ConditionNodeTypeEnum { get; } = new Dictionary<ConditionParamTypeEnum, string>();
-
+        static ConditionNodeTypeEditorViewModel()
+        {
+            Splat.Locator.CurrentMutable.Register(() => new ConditionNodeTypeEditorView(), typeof(IViewFor<ConditionNodeTypeEditorViewModel>));
+        }
         public int selectedIndexView { get; set; } = 0;
         public ConditionNodeTypeEditorViewModel()
         {
