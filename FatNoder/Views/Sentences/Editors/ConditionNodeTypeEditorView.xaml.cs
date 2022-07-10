@@ -41,6 +41,15 @@ namespace FatNoder.Views.Sentences.Editors
         public ConditionNodeTypeEditorView()
         {
             InitializeComponent();
+            this.WhenActivated(d => {
+                d(
+                    this.Bind(ViewModel, vm => vm.Value, v => v.valuetypecombo.SelectedValue)
+                    );
+                d(
+                    this.Bind(ViewModel, vm => vm.selectedIndexView, v => v.valuetypecombo.SelectedIndex));
+                valuetypecombo.ItemsSource = ViewModel.ConditionNodeTypeEnum;
+            }
+            );
         }
     }
 }
