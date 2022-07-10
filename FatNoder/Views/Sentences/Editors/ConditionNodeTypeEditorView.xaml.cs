@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FatNoder.ViewModels.Nodes.Sentences.Editors;
+using ReactiveUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +20,7 @@ namespace FatNoder.Views.Sentences.Editors
     /// <summary>
     /// ConditionNodeTypeEditorView.xaml の相互作用ロジック
     /// </summary>
-    public partial class ConditionNodeTypeEditorView : UserControl
+    public partial class ConditionNodeTypeEditorView : UserControl,IViewFor<ConditionNodeTypeEditorViewModel>
     {
         public ConditionNodeTypeEditorView()
         {
