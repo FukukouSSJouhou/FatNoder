@@ -16,6 +16,12 @@ namespace FatNoder.ViewModels.Nodes.Sentences.Editors
         public ConditionNodeTypeEditorViewModel()
         {
             Value = ConditionParamTypeEnum.Equals;
+            ConditionNodeTypeEnum.Add(ConditionParamTypeEnum.Equals, "==");
+            ConditionNodeTypeEnum.Add(ConditionParamTypeEnum.NotEquals, "!=");
+            ConditionNodeTypeEnum.Add(ConditionParamTypeEnum.GreaterThan, "<");
+            ConditionNodeTypeEnum.Add(ConditionParamTypeEnum.GreaterThanOrEqual, "<=");
+            ConditionNodeTypeEnum.Add(ConditionParamTypeEnum.LessThan, ">");
+            ConditionNodeTypeEnum.Add(ConditionParamTypeEnum.LessThanOrEqual, ">=");
         }
 
 
