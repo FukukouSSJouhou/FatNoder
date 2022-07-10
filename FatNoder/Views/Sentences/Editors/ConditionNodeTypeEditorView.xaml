@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:FatNoder.Views.Sentences.Editors"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+
+    <ComboBox x:Name="valuetypecombo" Width="{Binding Width, ElementName=userControl}"
+              DisplayMemberPath="Value"
+              SelectedValuePath="Key">
+    </ComboBox>
 </UserControl>
