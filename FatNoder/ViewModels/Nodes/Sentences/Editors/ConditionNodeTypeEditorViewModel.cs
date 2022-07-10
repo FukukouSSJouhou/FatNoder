@@ -23,7 +23,30 @@ namespace FatNoder.ViewModels.Nodes.Sentences.Editors
             ConditionNodeTypeEnum.Add(ConditionParamTypeEnum.LessThan, ">");
             ConditionNodeTypeEnum.Add(ConditionParamTypeEnum.LessThanOrEqual, ">=");
         }
-
+        public void SelectViewKun(ConditionParamTypeEnum indexkun)
+        {
+            switch (indexkun)
+            {
+                case ConditionParamTypeEnum.Equals:
+                    selectedIndexView = 0;
+                    break;
+                case ConditionParamTypeEnum.NotEquals:
+                    selectedIndexView = 1;
+                    break;
+                case ConditionParamTypeEnum.GreaterThan:
+                    selectedIndexView = 2;
+                    break;
+                case ConditionParamTypeEnum.GreaterThanOrEqual:
+                    selectedIndexView = 3;
+                    break;
+                case ConditionParamTypeEnum.LessThan:
+                    selectedIndexView = 4;
+                    break;
+                case ConditionParamTypeEnum.LessThanOrEqual:
+                    selectedIndexView = 5;
+                    break;
+            }
+        }
 
     }
 }
