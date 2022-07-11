@@ -22,6 +22,20 @@ namespace FatNoder.Views.Ports
     /// </summary>
     public partial class NodePortView : UserControl,IViewFor<NodePortViewModel>
     {
+        #region ViewModel
+        public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(nameof(ViewModel),
+            typeof(NodePortViewModel), typeof(NodePortView), new PropertyMetadata(null));
+        public NodePortViewModel ViewModel
+        {
+            get => (NodePortViewModel)GetValue(ViewModelProperty);
+            set => SetValue(ViewModelProperty, value);
+        }
+        object IViewFor.ViewModel
+        {
+            get => ViewModel;
+            set => ViewModel = (NodePortViewModel)value;
+        }
+        #endregion
         public NodePortView()
         {
             InitializeComponent();
