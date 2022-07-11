@@ -27,7 +27,15 @@ namespace FatNoder.ViewModels.Ports
     /// </summary>
     public class NodePortViewModel:PortViewModel
     {
+        static NodePortViewModel()
+        {
+
+        }
+        
         #region Port Type
+        /// <summary>
+        /// Node Port Type
+        /// </summary>
         public PortType Node_PortType
         {
             get => _porttype;
