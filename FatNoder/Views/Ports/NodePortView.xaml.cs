@@ -36,9 +36,22 @@ namespace FatNoder.Views.Ports
             set => ViewModel = (NodePortViewModel)value;
         }
         #endregion
+        #region Template Resource Keys
+        public const string StatementPortTemplateKey = "StatementPortTemplateKey";
+        public const string ValuablePortTemplateKey = "ValuablePortTemplateKey";
+        #endregion
         public NodePortView()
         {
             InitializeComponent();
+        }
+        public ControlTemplate GetTemplateFromPortType(PortType porttype)
+        {
+            switch (porttype)
+            {
+                case PortType.Statement: return (ControlTemplate)Resources[StatementPortTemplateKey];
+                case PortType.Valuable:  return (ControlTemplate)Resources[ValuablePortTemplateKey];
+                default:throw new Exception("Unknown Port Type");
+            }
         }
     }
 }
