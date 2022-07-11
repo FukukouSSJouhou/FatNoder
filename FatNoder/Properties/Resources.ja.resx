@@ -120,6 +120,9 @@
   <data name="ConditionNodeViewModel_ConditionType" xml:space="preserve">
     <value>条件タイプ</value>
   </data>
+  <data name="ConditionNodeViewModel_Conpare" xml:space="preserve">
+    <value>条件</value>
+  </data>
   <data name="IfNodeViewModel_ConditionLabel" xml:space="preserve">
     <value>条件</value>
   </data>
