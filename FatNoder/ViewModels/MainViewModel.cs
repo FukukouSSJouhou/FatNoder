@@ -121,7 +121,7 @@ namespace FatNoder.ViewModels
             NodeList.AddNodeType(() => new GetValueNodeViewModel { Name = Properties.Resources.MainViewModel_GetValue });
             NodeList.AddNodeType(() => new ValueEnzannEngineNodeViewModel { Name = Properties.Resources.MainViewModel_Calc });
             NodeList.AddNodeType(() => new IfNodeViewModel { Name = Properties.Resources.IfNodeViewModel_IfNodeName });
-            NodeList.AddNodeType(() => new ConditionNodeViewModel { Name = "Compare" }); 
+            NodeList.AddNodeType(() => new ConditionNodeViewModel { Name = Properties.Resources.ConditionNodeViewModel_Compare }); 
             Plugins.PluginLoader.Load_Plugins();
             this.WhenAnyObservable(vm => vm.Network.NetworkChanged).Subscribe(newvalue =>
             {

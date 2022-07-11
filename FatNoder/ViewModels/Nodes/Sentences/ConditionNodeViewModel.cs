@@ -61,7 +61,7 @@ namespace FatNoder.ViewModels.Nodes.Sentences
             ConditionTypeInput = new ValueNodeInputViewModel<ConditionParamTypeEnum?>
             {
                 Name = "ConditionType",
-                Label = "Condition Type",
+                Label = Properties.Resources.ConditionNodeViewModel_ConditionType,
                 MaxConnections = 1
 
             };
@@ -93,7 +93,7 @@ namespace FatNoder.ViewModels.Nodes.Sentences
             ConditionTypeInput = new ValueNodeInputViewModel<ConditionParamTypeEnum?>
             {
                 Name = "ConditionType",
-                Label = "Condition Type",
+                Label = Properties.Resources.ConditionNodeViewModel_ConditionType,
                 MaxConnections = 1
 
             };
@@ -194,7 +194,7 @@ namespace FatNoder.ViewModels.Nodes.Sentences
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
-            Name = "Compare";
+            Name = Properties.Resources.ConditionNodeViewModel_Compare;
             Position = new System.Windows.Point
             {
                 X = newmodelbs.Points.X,
