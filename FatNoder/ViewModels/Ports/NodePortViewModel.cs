@@ -1,4 +1,5 @@
 ﻿using NodeNetworkJH.ViewModels;
+using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,5 +27,13 @@ namespace FatNoder.ViewModels.Ports
     /// </summary>
     public class NodePortViewModel:PortViewModel
     {
+        #region Port Type
+        public PortType Node_PortType
+        {
+            get => _porttype;
+            set => this.RaiseAndSetIfChanged(ref _porttype, value);
+        }
+        private PortType _porttype;
+        #endregion
     }
 }
