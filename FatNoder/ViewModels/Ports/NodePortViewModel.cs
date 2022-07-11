@@ -1,4 +1,5 @@
-﻿using NodeNetworkJH.ViewModels;
+﻿using FatNoder.Views.Ports;
+using NodeNetworkJH.ViewModels;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace FatNoder.ViewModels.Ports
     {
         static NodePortViewModel()
         {
-
+            Splat.Locator.CurrentMutable.Register(() => new NodePortView(), typeof(IViewFor<NodePortViewModel>));
         }
         
         #region Port Type
