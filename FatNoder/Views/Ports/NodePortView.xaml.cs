@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FatNoder.ViewModels.Ports;
+using ReactiveUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +20,7 @@ namespace FatNoder.Views.Ports
     /// <summary>
     /// NodePortView.xaml の相互作用ロジック
     /// </summary>
-    public partial class NodePortView : UserControl
+    public partial class NodePortView : UserControl,IViewFor<NodePortViewModel>
     {
         public NodePortView()
         {
