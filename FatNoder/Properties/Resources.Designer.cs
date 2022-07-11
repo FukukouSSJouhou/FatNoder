@@ -61,6 +61,15 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
+        ///   Condition Type に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ConditionNodeViewModel_ConditionType {
+            get {
+                return ResourceManager.GetString("ConditionNodeViewModel_ConditionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Condition に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string IfNodeViewModel_ConditionLabel {

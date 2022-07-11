@@ -61,7 +61,7 @@ namespace FatNoder.ViewModels.Nodes.Sentences
             ConditionTypeInput = new ValueNodeInputViewModel<ConditionParamTypeEnum?>
             {
                 Name = "ConditionType",
-                Label = "Condition Type",
+                Label = Properties.Resources.ConditionNodeViewModel_ConditionType,
                 MaxConnections = 1
 
             };
@@ -93,7 +93,7 @@ namespace FatNoder.ViewModels.Nodes.Sentences
             ConditionTypeInput = new ValueNodeInputViewModel<ConditionParamTypeEnum?>
             {
                 Name = "ConditionType",
-                Label = "Condition Type",
+                Label = Properties.Resources.ConditionNodeViewModel_ConditionType,
                 MaxConnections = 1
 
             };
