@@ -15,6 +15,7 @@ using DynamicData;
 using FatNoder.Model.Transc;
 using NodeNetworkJH.ViewModels;
 using NodeAyano.HensuuV;
+using FatNoder.ViewModels.Ports;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -110,6 +111,14 @@ InitAyanoVMB();
             this.Inputs.Add(HensuuInput);
             NameInput.Port.IsVisible = false;
             this.Inputs.Add(NameInput);
+            InputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
+            OutputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
         }
         ///<inheritdoc/>
         public SetValueNodeViewModel() : base()
@@ -193,6 +202,14 @@ InitAyanoVMB();
             this.Inputs.Add(HensuuInput);
             NameInput.Port.IsVisible = false;
             this.Inputs.Add(NameInput);
+            InputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
+            OutputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
         }
         ///<inheritdoc/>
         public void ChangeStates(XML_NodeModel newmodelbs)

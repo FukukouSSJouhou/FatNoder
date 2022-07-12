@@ -97,6 +97,14 @@ namespace FatNoder.ViewModels.Nodes
 
             this.Outputs.Add(Output);
 
+            InputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
+            OutputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
         }
 
     }

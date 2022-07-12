@@ -14,6 +14,7 @@ using FatNoder.Model.Transc;
 using NodeNetworkJH.ViewModels;
 using DynamicData;
 using FatNoder.Serializer.Node.Xml;
+using FatNoder.ViewModels.Ports;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -179,6 +180,14 @@ namespace FatNoder.ViewModels.Nodes
             this.Inputs.Add(OutIfX);
             this.Inputs.Add(ElseIfX);
             this.Inputs.Add(InputX);
+            InputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
+            OutputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
         } 
         /// <inheritdoc/>
 
