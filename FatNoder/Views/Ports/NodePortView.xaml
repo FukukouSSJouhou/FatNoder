@@ -27,7 +27,5 @@
             </Viewbox>
         </ControlTemplate>
     </UserControl.Resources>
-    <Grid>
-            
-    </Grid>
+    <views:PortView x:Name="PortView" RenderTransformOrigin="0.5,0.5"/>
 </UserControl>
