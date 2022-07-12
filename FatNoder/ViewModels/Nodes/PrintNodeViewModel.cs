@@ -16,6 +16,7 @@ using AyanoNodeVM;
 using NodeNetworkJH.ViewModels;
 using NodeAyano.HensuuV;
 using FatNoder.Properties;
+using FatNoder.ViewModels.Ports;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -36,7 +37,11 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "Printcontent",
                 Label = Resources.PrintNodeViewModel_PRINTCONTENT,
-                MaxConnections = 1
+                MaxConnections = 1,
+                Port = new NodePortViewModel
+                {
+                    Node_PortType = PortType.Valuable
+                }
             };
             PrintInput.ValueChanged.Subscribe(newvalue =>
             {
@@ -97,6 +102,14 @@ namespace FatNoder.ViewModels.Nodes
 
             });
             this.Inputs.Add(PrintInput);
+            InputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
+            OutputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
         }
 
         public PrintNodeViewModel()
@@ -106,7 +119,11 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "Printcontent",
                 Label = Resources.PrintNodeViewModel_PRINTCONTENT,
-                MaxConnections = 1
+                MaxConnections = 1,
+                Port = new NodePortViewModel
+                {
+                    Node_PortType = PortType.Valuable
+                }
             };
             PrintInput.ValueChanged.Subscribe(newvalue =>
             {
@@ -167,6 +184,14 @@ namespace FatNoder.ViewModels.Nodes
 
             });
             this.Inputs.Add(PrintInput);
+            InputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
+            OutputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
         }
         /// <inheritdoc/>
 
