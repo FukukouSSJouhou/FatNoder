@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:views="clr-namespace:NodeNetworkJH.Views;assembly=NodeNetworkJH"
              xmlns:local="clr-namespace:FatNoder.Views.Ports"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
-        <ControlTemplate x:Key="{x:Static local:NodePortView.StatementPortTemplateKey}">
+        <ControlTemplate x:Key="{x:Static local:NodePortView.StatementPortTemplateKey}"  TargetType="views:PortView">
 
             <Viewbox StretchDirection="Both" Stretch="Uniform">
                 <Grid Width="20" Height="20">
@@ -16,7 +17,7 @@
                 </Grid>
             </Viewbox>
         </ControlTemplate>
-        <ControlTemplate x:Key="{x:Static local:NodePortView.ValuablePortTemplateKey}">
+        <ControlTemplate x:Key="{x:Static local:NodePortView.ValuablePortTemplateKey}"  TargetType="views:PortView">
 
             <Viewbox StretchDirection="Both" Stretch="Uniform">
                 <Grid Width="20" Height="20">

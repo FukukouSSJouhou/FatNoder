@@ -43,6 +43,10 @@ namespace FatNoder.Views.Ports
         public NodePortView()
         {
             InitializeComponent();
+            this.WhenActivated(d =>
+            {
+                this.WhenAnyValue(v => v.ViewModel).BindTo(this, v => v.PortView.ViewModel).DisposeWith(d);
+            });
         }
         public ControlTemplate GetTemplateFromPortType(PortType porttype)
         {
