@@ -77,7 +77,11 @@ namespace FatNoder.ViewModels.Nodes
                 Name = "Out",
                 Label = "Out",
                 PortPosition = PortPosition.Right,
-                MaxConnections = 1
+                MaxConnections = 1,
+                Port = new NodePortViewModel
+                {
+                    Node_PortType = PortType.Statement
+                }
             };
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement()
