@@ -47,6 +47,10 @@ namespace FatNoder.Views.Ports
             this.WhenActivated(d =>
             {
                 this.WhenAnyValue(v => v.ViewModel).BindTo(this, v => v.PortView.ViewModel).DisposeWith(d);
+                this.OneWayBind(ViewModel, vm => vm.Node_PortType, v => v.PortView.Template, GetTemplateFromPortType).DisposeWith(d);
+                this.OneWayBind(ViewModel, vm => vm.IsMirrored, v => v.PortView.RenderTransform,
+                    isMirrored => new ScaleTransform(isMirrored ? -1.0 : 1.0, 1.0))
+                .DisposeWith(d);
             });
         }
         public ControlTemplate GetTemplateFromPortType(PortType porttype)
