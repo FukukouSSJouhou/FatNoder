@@ -188,14 +188,6 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
             this.Inputs.Add(Input1);
             this.Inputs.Add(Input2);
             ValueTypeInput.Port.IsVisible = false;
-            InputFlow.Port = new NodePortViewModel
-            {
-                Node_PortType = PortType.Statement
-            };
-            OutputFlow.Port = new NodePortViewModel
-            {
-                Node_PortType = PortType.Statement
-            };
 
         }
         ///<inheritdoc/>

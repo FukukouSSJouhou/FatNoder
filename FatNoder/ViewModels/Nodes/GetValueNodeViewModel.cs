@@ -115,14 +115,6 @@ namespace FatNoder.ViewModels.Nodes
             };
             Inputs.Add(NameInput);
             Outputs.Add(Output);
-            InputFlow.Port = new NodePortViewModel
-            {
-                Node_PortType = PortType.Statement
-            };
-            OutputFlow.Port = new NodePortViewModel
-            {
-                Node_PortType = PortType.Statement
-            };
         }
     }
 }

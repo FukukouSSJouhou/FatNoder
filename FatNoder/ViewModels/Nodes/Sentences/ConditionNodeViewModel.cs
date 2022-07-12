@@ -189,14 +189,6 @@ namespace FatNoder.ViewModels.Nodes.Sentences
             this.Inputs.Add(Input1);
             this.Inputs.Add(Input2);
             ConditionTypeInput.Port.IsVisible = false;
-            InputFlow.Port = new NodePortViewModel
-            {
-                Node_PortType = PortType.Statement
-            };
-            OutputFlow.Port = new NodePortViewModel
-            {
-                Node_PortType = PortType.Statement
-            };
 
         }
         ///<inheritdoc/>
