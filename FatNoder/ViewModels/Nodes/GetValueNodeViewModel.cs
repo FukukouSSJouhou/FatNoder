@@ -12,6 +12,7 @@ using FatNoder.Serializer.Node.Xml;
 using NodeNetworkJH.Toolkit.ValueNode;
 using DynamicData;
 using NodeAyano.HensuuV;
+using FatNoder.ViewModels.Ports;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -114,6 +115,14 @@ namespace FatNoder.ViewModels.Nodes
             };
             Inputs.Add(NameInput);
             Outputs.Add(Output);
+            InputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
+            OutputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
         }
     }
 }

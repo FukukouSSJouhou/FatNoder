@@ -14,6 +14,7 @@ using FatNoder.Serializer.Node.Xml;
 using NodeNetworkJH.ViewModels;
 using NodeAyano.Model.Nodes.ValueEnzann;
 using FatNoder.ViewModels.Nodes.EnzanNodes.Editors;
+using FatNoder.ViewModels.Ports;
 
 namespace FatNoder.ViewModels.Nodes.EnzanNodes
 {
@@ -187,6 +188,14 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
             this.Inputs.Add(Input1);
             this.Inputs.Add(Input2);
             ValueTypeInput.Port.IsVisible = false;
+            InputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
+            OutputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
 
         }
         ///<inheritdoc/>

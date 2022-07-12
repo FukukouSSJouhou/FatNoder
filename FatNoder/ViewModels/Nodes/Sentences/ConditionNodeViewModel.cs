@@ -14,6 +14,7 @@ using DynamicData;
 using FatNoder.Serializer.Node.Xml;
 using NodeNetworkJH.ViewModels;
 using FatNoder.ViewModels.Nodes.Sentences.Editors;
+using FatNoder.ViewModels.Ports;
 
 namespace FatNoder.ViewModels.Nodes.Sentences
 {
@@ -188,6 +189,14 @@ namespace FatNoder.ViewModels.Nodes.Sentences
             this.Inputs.Add(Input1);
             this.Inputs.Add(Input2);
             ConditionTypeInput.Port.IsVisible = false;
+            InputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
+            OutputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
 
         }
         ///<inheritdoc/>

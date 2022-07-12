@@ -14,6 +14,7 @@ using System.Xml.Linq;
 using DynamicData;
 using NodeNetworkJH.ViewModels;
 using NodeAyano.HensuuV;
+using FatNoder.ViewModels.Ports;
 
 namespace FatNoder.ViewModels.Nodes
 {
