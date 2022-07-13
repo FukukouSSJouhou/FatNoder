@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 
 using AyanoNodeVM;
 using NodeAyano.HensuuV;
+using FatNoder.ViewModels.Ports;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -47,7 +48,11 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "ValueRet",
                 Label = "ValueRet",
-                MaxConnections = 1
+                MaxConnections = 1,
+                Port = new NodePortViewModel
+                {
+                    Node_PortType = PortType.Valuable
+                }
             };
             ReturnInput.ValueChanged.Subscribe(newvalue =>
             {
@@ -59,7 +64,11 @@ namespace FatNoder.ViewModels.Nodes
                 Label = "In",
                 MaxConnections = 1,
                 Value = this.WhenAnyValue(vm => vm.StatementIfce),
-                PortPosition = PortPosition.Left
+                PortPosition = PortPosition.Left,
+                Port = new NodePortViewModel
+                {
+                    Node_PortType = PortType.Statement
+                }
             };
             _model.Inputs = new XMLNodeInputS
             {
@@ -108,7 +117,11 @@ namespace FatNoder.ViewModels.Nodes
             {
                 Name = "ValueRet",
                 Label = "ValueRet",
-                MaxConnections =1
+                MaxConnections =1,
+                Port = new NodePortViewModel
+                {
+                    Node_PortType = PortType.Valuable
+                }
             };
             ReturnInput.ValueChanged.Subscribe(newvalue =>
             {
@@ -120,7 +133,11 @@ namespace FatNoder.ViewModels.Nodes
                 Label = "In",
                 MaxConnections = 1,
                 Value = this.WhenAnyValue(vm =>vm.StatementIfce),
-                PortPosition=PortPosition.Left
+                PortPosition=PortPosition.Left,
+                Port = new NodePortViewModel
+                {
+                    Node_PortType = PortType.Statement
+                }
             };
 
             _model.Inputs = new XMLNodeInputS

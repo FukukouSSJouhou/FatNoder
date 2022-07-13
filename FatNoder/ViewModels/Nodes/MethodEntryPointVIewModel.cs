@@ -17,6 +17,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AyanoNodeVM;
+using FatNoder.ViewModels.Ports;
+
 namespace FatNoder.ViewModels.Nodes
 {
     public partial class MethodEntryPointVIewModel : NodeVMBasekun, INodeViewModelBase
@@ -38,7 +40,11 @@ namespace FatNoder.ViewModels.Nodes
                 Name = "Out",
                 Label="Out",
                 PortPosition = PortPosition.Right,
-                MaxConnections = 1
+                MaxConnections = 1,
+                Port=new NodePortViewModel
+                {
+                    Node_PortType=PortType.Statement
+                }
             };
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement()
@@ -71,7 +77,11 @@ namespace FatNoder.ViewModels.Nodes
                 Name = "Out",
                 Label = "Out",
                 PortPosition = PortPosition.Right,
-                MaxConnections = 1
+                MaxConnections = 1,
+                Port = new NodePortViewModel
+                {
+                    Node_PortType = PortType.Statement
+                }
             };
             model.InputStates = new XMLNodeInputStatement_VMLS();
             model.InputStates.Add(new XMLNodeInputStatement()

@@ -14,6 +14,7 @@ using FatNoder.Serializer.Node.Xml;
 using NodeNetworkJH.ViewModels;
 using NodeAyano.Model.Nodes.ValueEnzann;
 using FatNoder.ViewModels.Nodes.EnzanNodes.Editors;
+using FatNoder.ViewModels.Ports;
 
 namespace FatNoder.ViewModels.Nodes.EnzanNodes
 {

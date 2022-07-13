@@ -14,6 +14,7 @@ using DynamicData;
 using FatNoder.Serializer.Node.Xml;
 using NodeNetworkJH.ViewModels;
 using FatNoder.ViewModels.Nodes.Sentences.Editors;
+using FatNoder.ViewModels.Ports;
 
 namespace FatNoder.ViewModels.Nodes.Sentences
 {
