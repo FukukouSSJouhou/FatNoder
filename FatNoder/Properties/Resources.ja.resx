@@ -153,6 +153,9 @@
   <data name="Ribbon_Home_CompileAndRunPhase" xml:space="preserve">
     <value>コンパイルして実行</value>
   </data>
+  <data name="Ribbon_Layout_Auto-layout" xml:space="preserve">
+    <value>自動レイアウト</value>
+  </data>
   <data name="Ribbon_Menu_File" xml:space="preserve">
     <value>ファイル</value>
   </data>

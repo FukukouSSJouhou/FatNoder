@@ -196,6 +196,15 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
+        ///   Auto-layout に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Ribbon_Layout_Auto_layout {
+            get {
+                return ResourceManager.GetString("Ribbon_Layout_Auto-layout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   File に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Ribbon_Menu_File {
