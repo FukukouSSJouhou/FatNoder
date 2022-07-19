@@ -11,7 +11,7 @@ namespace NodeAyano.Model.Nodes
     /// <summary>
     /// 変数定義用抽象クラス
     /// </summary>
-    public abstract class VariableDeclarationCompileNodeBase : XML_NodeModel
+    public abstract class VariableDeclarationCompileNodeBase : CompileNodeBase
     {
         /// <summary>
         /// コンパイラメソッド(変数定義用)
