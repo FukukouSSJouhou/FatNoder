@@ -157,7 +157,7 @@ namespace FatNoder.ViewModels.Nodes
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
-            Name = "While";
+            Name = Properties.Resources.WhileNodeViewModel_WhileNodeName;
             Position = new System.Windows.Point
             {
                 X = newmodelbs.Points.X,
