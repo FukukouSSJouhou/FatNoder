@@ -63,6 +63,7 @@ namespace NodeAyano.Model.Nodes
                     }
                 }
             }
+            if(input1!=null)
             returnstatements.Add(SyntaxFactory.WhileStatement(
                 input1.CompileSyntax(xnodes),
                 bsy));
