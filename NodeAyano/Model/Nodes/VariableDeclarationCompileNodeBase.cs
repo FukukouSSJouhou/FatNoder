@@ -10,7 +10,11 @@ namespace NodeAyano.Model.Nodes
 {
     public abstract class VariableDeclarationCompileNodeBase : XML_NodeModel
     {
-        
+        /// <summary>
+        /// コンパイラメソッド(変数定義用)
+        /// </summary>
+        /// <param name="xnodes">xnodes</param>
+        /// <returns>VariableDeclarationSyntax</returns>
         public abstract VariableDeclarationSyntax CompileSyntax_Variable(IEnumerable<XML_NodeModel> xnodes);
     }
 }
