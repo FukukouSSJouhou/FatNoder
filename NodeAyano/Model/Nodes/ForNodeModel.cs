@@ -23,6 +23,7 @@ namespace NodeAyano.Model.Nodes
         {
             VariableDeclarationSyntax input1 = null;
             ValueCompileNodeBase input2 = null;
+            List<ExpressionSyntax> incrsyntaxls = null;
             foreach (XMLNodeInput xnode in Inputs)
             {
                 if (xnode.Name == "Condition")
@@ -85,9 +86,9 @@ namespace NodeAyano.Model.Nodes
                     }
                 }
             }
-            returnstatements.Add(SyntaxFactory.ForStatement(input1, input2.CompileSyntax(xnodes), input2.CompileSyntax(xnodes), bsy);
-                
-                    
-                            
+            returnstatements.Add(SyntaxFactory.ForStatement(input1, SyntaxFactory.SeparatedList<ExpressionSyntax>(), input2.CompileSyntax(xnodes), SyntaxFactory.SeparatedList<ExpressionSyntax>(incrsyntaxls), bsy));
+
+            return returnstatements.ToArray();
+        }                    
     }
 }
