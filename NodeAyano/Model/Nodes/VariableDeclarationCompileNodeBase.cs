@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Nodes
 {
+    /// <summary>
+    /// 変数定義用抽象クラス
+    /// </summary>
     public abstract class VariableDeclarationCompileNodeBase : XML_NodeModel
     {
         /// <summary>
