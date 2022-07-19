@@ -1,4 +1,5 @@
 ﻿using FatNoder.Serializer.Node.Xml;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
@@ -20,7 +21,7 @@ namespace NodeAyano.Model.Nodes
         /// <inheritdoc/>
         public override StatementSyntax[] CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
         {
-            
+            VariableDeclarationSyntax input1 = null;
             ValueCompileNodeBase input2 = null;
             foreach (XMLNodeInput xnode in Inputs)
             {
@@ -64,9 +65,28 @@ namespace NodeAyano.Model.Nodes
                     }
                 }
             }
-            returnstatements.Add(SyntaxFactory.ForStatement(
-                SyntaxFactory.VariableDeclaration(
-                    SyntaxFactory.IdentifierName("var"),
+            foreach (XMLNodeInputStatement st in InputStates)
+            {
+                if (st.Name == "Define")
+                {
+                    foreach (Guid cnUUID in st.States)
+                    {
+                        foreach (XML_NodeModel modelkun in xnodes.Where(
+                            d =>
+                            {
+                                return d.UUID == cnUUID;
+                            }))
+                        {
+                            if (modelkun is VariableDeclarationCompileNodeBase)
+                            {
+                                input1 = ((VariableDeclarationCompileNodeBase)modelkun).CompileSyntax_Variable(xnodes);
+                            }
+                        }
+                    }
+                }
+            }
+            returnstatements.Add(SyntaxFactory.ForStatement(input1, input2.CompileSyntax(xnodes), input2.CompileSyntax(xnodes), bsy);
+                
                     
                             
     }
