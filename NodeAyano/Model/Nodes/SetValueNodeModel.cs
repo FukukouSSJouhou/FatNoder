@@ -15,7 +15,7 @@ namespace NodeAyano.Model.Nodes
     /// Set value Node Model
     /// </summary>
     /// <typeparam name="T">Type</typeparam>
-    public class SetValueNodeModel<T> : CompileNodeBase
+    public class SetValueNodeModel<T> : VariableDeclarationCompileNodeBase
     {
         /// <summary>
         /// Value
@@ -98,6 +98,67 @@ namespace NodeAyano.Model.Nodes
             }
             return returnstatements.ToArray();
         }
+        /// <inheritdoc/>
+        public override VariableDeclarationSyntax CompileSyntax_Variable(IEnumerable<XML_NodeModel> xnodes)
+        {
+            VariableDeclarationSyntax returnsyntax = null;
+            foreach (XMLNodeInput xnode in Inputs)
+            {
+                if (xnode.Name == "Value")
+                {
 
+                    foreach (XMLNodeInputConnect cn in xnode.connections)
+                    {
+                        foreach (XML_NodeModel modelkun in xnodes.Where(
+                            d =>
+                            {
+                                return d.UUID == cn.Target;
+                            }))
+                        {
+                            if (modelkun is ValueCompileNodeBase)
+                            {
+                                if (typeof(T) == typeof(int))
+                                {
+
+                                    PredefinedTypeSyntax predeftype = SyntaxFactory.PredefinedType(SyntaxFactory.ParseToken("int"));
+                                    List<VariableDeclaratorSyntax> vardecatorsynlist = new();
+                                    VariableDeclarationSyntax valdeckun = SyntaxFactory.VariableDeclaration(predeftype);
+                                    {
+                                        VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator(ValueName);
+                                        decr = decr.WithInitializer(
+                                            SyntaxFactory.EqualsValueClause(
+                                                    ((ValueCompileNodeBase)modelkun).CompileSyntax(xnodes))
+                                            );
+                                        vardecatorsynlist.Add(decr);
+                                    }
+                                    valdeckun = valdeckun.AddVariables(vardecatorsynlist.ToArray());
+                                    returnsyntax = valdeckun;
+                                }
+                                else if (typeof(T) == typeof(string))
+                                {
+
+                                    PredefinedTypeSyntax predeftype = SyntaxFactory.PredefinedType(SyntaxFactory.ParseToken("string"));
+                                    List<VariableDeclaratorSyntax> vardecatorsynlist = new();
+                                    VariableDeclarationSyntax valdeckun = SyntaxFactory.VariableDeclaration(predeftype);
+                                    {
+                                        VariableDeclaratorSyntax decr = SyntaxFactory.VariableDeclarator(ValueName);
+                                        decr = decr.WithInitializer(
+                                            SyntaxFactory.EqualsValueClause(
+                                                    ((ValueCompileNodeBase)modelkun).CompileSyntax(xnodes))
+                                            );
+                                        vardecatorsynlist.Add(decr);
+                                    }
+                                    valdeckun = valdeckun.AddVariables(vardecatorsynlist.ToArray());
+                                    LocalDeclarationStatementSyntax localdec = SyntaxFactory.LocalDeclarationStatement(valdeckun);
+
+                                    returnsyntax = valdeckun;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return returnsyntax;
         }
+    }
 }

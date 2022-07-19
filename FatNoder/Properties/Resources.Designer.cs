@@ -285,5 +285,23 @@ namespace FatNoder.Properties {
                 return ResourceManager.GetString("ValueEnzannEngineTypeEditorViewModel_Subtract", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Then に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WhileNodeViewModel_ThenLabel {
+            get {
+                return ResourceManager.GetString("WhileNodeViewModel_ThenLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   While に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WhileNodeViewModel_WhileNodeName {
+            get {
+                return ResourceManager.GetString("WhileNodeViewModel_WhileNodeName", resourceCulture);
+            }
+        }
     }
 }

@@ -193,4 +193,10 @@
   <data name="ValueEnzannEngineTypeEditorViewModel_Subtract" xml:space="preserve">
     <value>Subtract</value>
   </data>
+  <data name="WhileNodeViewModel_ThenLabel" xml:space="preserve">
+    <value>Then</value>
+  </data>
+  <data name="WhileNodeViewModel_WhileNodeName" xml:space="preserve">
+    <value>While</value>
+  </data>
 </root>

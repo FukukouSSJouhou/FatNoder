@@ -277,6 +277,13 @@ if(true){
 if(false)
 {
 }
+while(false){
+    Console.WriteLine(""a"");
+}
+for(int x=0;x<8;x++){
+    
+    Console.WriteLine(""a"");
+}
         return tdn;
     }
     }
