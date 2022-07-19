@@ -62,13 +62,6 @@ namespace FatNoder.ViewModels.Nodes
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
-            ElseIfX = new ValueListNodeInputViewModel<StatementCls>
-            {
-                Name = "Else",
-                Label = Properties.Resources.IfNodeViewModel_ElseLabel,
-                MaxConnections = 1,
-                PortPosition = PortPosition.Right
-            };
             Initkun();
         }
         public void Initkun()
@@ -95,11 +88,6 @@ namespace FatNoder.ViewModels.Nodes
             {
                 States = new XMLNodeInputStatementLS(),
                 Name = OutIfX.Name
-            });
-            _model.InputStates.Add(new XMLNodeInputStatement()
-            {
-                States = new XMLNodeInputStatementLS(),
-                Name = ElseIfX.Name
             });
             this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
@@ -131,22 +119,6 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
-            this.WhenAnyObservable(vm => vm.ElseIfX.Values.CountChanged).Subscribe(newvalue =>
-            {
-
-                foreach (XMLNodeInputStatement xs in _model.InputStates.Where(
-                    d =>
-                    {
-                        return d.Name == ElseIfX.Name;
-                    }))
-                {
-                    xs.States.Clear();
-                    foreach (StatementCls guidkun in ElseIfX.Values.Items)
-                    {
-                        xs.States.Add(guidkun.UUID);
-                    }
-                }
-            });
             InputX.Connections.CountChanged.Subscribe(newvalue =>
             {
 
@@ -170,7 +142,6 @@ namespace FatNoder.ViewModels.Nodes
                 }
             });
             this.Inputs.Add(OutIfX);
-            this.Inputs.Add(ElseIfX);
             this.Inputs.Add(InputX);
             InputFlow.Port = new NodePortViewModel
             {
@@ -192,7 +163,7 @@ namespace FatNoder.ViewModels.Nodes
                 X = newmodelbs.Points.X,
                 Y = newmodelbs.Points.Y
             };
-            _model.Value = ((IfNodeModel)newmodelbs).Value;
+            _model.Value = ((WhileNodeModel)newmodelbs).Value;
         }
     }
 }
