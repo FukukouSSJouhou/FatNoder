@@ -43,7 +43,6 @@ namespace NodeAyano.Model.Nodes
             }
             List<StatementSyntax> returnstatements = new();
             BlockSyntax bsy = SyntaxFactory.Block(new List<StatementSyntax>());
-            BlockSyntax ElseSyntax = null;
             foreach (XMLNodeInputStatement st in InputStates)
             {
                 if (st.Name == "Then")
@@ -56,9 +55,9 @@ namespace NodeAyano.Model.Nodes
                                 return d.UUID == cnUUID;
                             }))
                         {
-                            if (modelkun is ValueCompileNodeBase)
+                            if (modelkun is CompileNodeBase)
                             {
-                                input1 = (ValueCompileNodeBase)modelkun;
+                                bsy = SyntaxFactory.Block(((CompileNodeBase)modelkun).CompileSyntax(xnodes));
                             }
                         }
                     }
