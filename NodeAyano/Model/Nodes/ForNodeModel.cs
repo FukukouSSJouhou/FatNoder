@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using NodeAyano.Model.Nodes.basepac;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace NodeAyano.Model.Nodes
         public override StatementSyntax[] CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
         {
             VariableDeclarationSyntax input1 = null;
+            ExpressionSyntax[] input1_initls = null;
             ValueCompileNodeBase input2 = null;
             List<ExpressionSyntax> incrsyntaxls = null;
             foreach (XMLNodeInput xnode in Inputs)
@@ -81,6 +83,11 @@ namespace NodeAyano.Model.Nodes
                             if (modelkun is IVariableDeclarationCompileNodeBase)
                             {
                                 input1 = ((IVariableDeclarationCompileNodeBase)modelkun).CompileSyntax_Variable(xnodes);
+                            }
+                            else if (modelkun is IExpressionSyntaxCompileNodeModelBase)
+                            {
+                                //input1 = ((IVariableDeclarationCompileNodeBase)modelkun).CompileSyntax_Variable(xnodes);
+                                input1_initls = new[] {((IExpressionSyntaxCompileNodeModelBase)modelkun).CompileSyntax_ExpressionS(xnodes)};
                             }
                         }
                     }
