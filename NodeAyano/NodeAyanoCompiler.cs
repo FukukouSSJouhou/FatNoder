@@ -438,7 +438,10 @@ namespace NodeAyano
 
                 if (!emitResult.Success)
                 {
-                    throw new ArgumentException("Compile error occured.");
+                    //throw new ArgumentException("Compile error occured.");
+                    Console.Error.WriteLine("\u001b[38;2;255;0;0m[Compile error occured.\u001b[0m");
+                    wref = null;
+                    return;
                 }
                 stream.Seek(0, SeekOrigin.Begin);
                 var ASC = new AyanoAssemblyLoadContext();

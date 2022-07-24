@@ -15,7 +15,7 @@ namespace NodeAyano.Model.Nodes
     /// Set value Node Model
     /// </summary>
     /// <typeparam name="T">Type</typeparam>
-    public class SetValueNodeModel<T> : VariableDeclarationCompileNodeBase
+    public class SetValueNodeModel<T> : CompileNodeBase,IVariableDeclarationCompileNodeBase
     {
         /// <summary>
         /// Value
@@ -99,7 +99,7 @@ namespace NodeAyano.Model.Nodes
             return returnstatements.ToArray();
         }
         /// <inheritdoc/>
-        public override VariableDeclarationSyntax CompileSyntax_Variable(IEnumerable<XML_NodeModel> xnodes)
+        public VariableDeclarationSyntax CompileSyntax_Variable(IEnumerable<XML_NodeModel> xnodes)
         {
             VariableDeclarationSyntax returnsyntax = null;
             foreach (XMLNodeInput xnode in Inputs)

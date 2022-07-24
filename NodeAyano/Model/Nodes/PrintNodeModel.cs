@@ -1,6 +1,7 @@
 ﻿using FatNoder.Serializer.Node.Xml;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using NodeAyano.Model.Nodes.basepac;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace NodeAyano.Model.Nodes
     /// <summary>
     /// Print Node Model
     /// </summary>
-    public class PrintNodeModel : CompileNodeBase
+    public class PrintNodeModel : CompileNodeBase, IExpressionSyntaxCompileNodeModelBase
     {
 
         [DataMember(Name = "Value", Order = 8)]
@@ -66,6 +67,48 @@ namespace NodeAyano.Model.Nodes
                 }
             }
             return returnstatements.ToArray();
+        }
+        /// <inheritdoc/>
+        public ExpressionSyntax CompileSyntax_ExpressionS(IEnumerable<XML_NodeModel> xnodes)
+        {
+            ExpressionSyntax returnex = null;
+            foreach (XMLNodeInput xnode in Inputs)
+            {
+                if (xnode.Name == "Printcontent")
+                {
+
+                    foreach (XMLNodeInputConnect cn in xnode.connections)
+                    {
+                        foreach (XML_NodeModel modelkun in xnodes.Where(
+                            d =>
+                            {
+                                return d.UUID == cn.Target;
+                            }))
+                        {
+                            if (modelkun is ValueCompileNodeBase)
+                            {
+
+                                returnex=SyntaxFactory.InvocationExpression(
+                                            SyntaxFactory.MemberAccessExpression(
+                                                SyntaxKind.SimpleMemberAccessExpression,
+                                                SyntaxFactory.IdentifierName("Console"),
+                                                SyntaxFactory.IdentifierName("WriteLine")
+                                            ),
+                                        SyntaxFactory.ArgumentList(
+                                            SyntaxFactory.SeparatedList<ArgumentSyntax>(
+                                                new ArgumentSyntax[1]{SyntaxFactory.Argument(
+                                                    ((ValueCompileNodeBase)modelkun).CompileSyntax(xnodes)
+
+                                                ) }
+
+                                    )
+                            ));
+                            }
+                        }
+                    }
+                }
+            }
+            return returnex;
         }
     }
 }

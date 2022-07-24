@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace NodeAyano.Model.Nodes
 {
     /// <summary>
-    /// 変数定義用抽象クラス
+    /// 変数定義用interface
     /// </summary>
-    public abstract class VariableDeclarationCompileNodeBase : CompileNodeBase
+    public interface IVariableDeclarationCompileNodeBase
     {
         /// <summary>
         /// コンパイラメソッド(変数定義用)
