@@ -78,9 +78,9 @@ namespace NodeAyano.Model.Nodes
                                 return d.UUID == cnUUID;
                             }))
                         {
-                            if (modelkun is VariableDeclarationCompileNodeBase)
+                            if (modelkun is IVariableDeclarationCompileNodeBase)
                             {
-                                input1 = ((VariableDeclarationCompileNodeBase)modelkun).CompileSyntax_Variable(xnodes);
+                                input1 = ((IVariableDeclarationCompileNodeBase)modelkun).CompileSyntax_Variable(xnodes);
                             }
                         }
                     }
