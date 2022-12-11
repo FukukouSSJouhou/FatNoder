@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AyanoBuilder.nousecode
+namespace FatBuilder.nousecode
 {
     public class nouse1
     {
