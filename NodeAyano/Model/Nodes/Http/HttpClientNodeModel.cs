@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace NodeAyano.Model.Nodes.Http
 {
-    public class HttpClientNodeModel
+    public class HttpClientNodeModel: CompileNodeBase
     {
+        
     }
 }
