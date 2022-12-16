@@ -12,7 +12,7 @@ using System.Xml.Linq;
 
 namespace NodeAyano.Model.Nodes.Http
 {
-    public class HttpClientPostDataNodeModel : CompileNodeBase, IExpressionSyntaxCompileNodeModelBase
+    public class HttpClientPostDataNodeModel : CompileNodeBase
     {
 
         [DataMember(Name = "Value", Order = 8)]
@@ -26,6 +26,8 @@ namespace NodeAyano.Model.Nodes.Http
         {
             List<StatementSyntax> returnstatements = new();
 
+            BlockSyntax bsy = SyntaxFactory.Block(new List<StatementSyntax>());
+            /*
             foreach (XMLNodeInput xnode in Inputs)
             {
                 if (xnode.Name == "Printcontent")
@@ -63,50 +65,10 @@ namespace NodeAyano.Model.Nodes.Http
                         }
                     }
                 }
-            }
+            }*/
+
+            returnstatements.Add(bsy);
             return returnstatements.ToArray();
-        }
-        /// <inheritdoc/>
-        public ExpressionSyntax CompileSyntax_ExpressionS(IEnumerable<XML_NodeModel> xnodes)
-        {
-            ExpressionSyntax returnex = null;
-            foreach (XMLNodeInput xnode in Inputs)
-            {
-                if (xnode.Name == "Printcontent")
-                {
-
-                    foreach (XMLNodeInputConnect cn in xnode.connections)
-                    {
-                        foreach (XML_NodeModel modelkun in xnodes.Where(
-                            d =>
-                            {
-                                return d.UUID == cn.Target;
-                            }))
-                        {
-                            if (modelkun is ValueCompileNodeBase)
-                            {
-
-                                returnex = SyntaxFactory.InvocationExpression(
-                                            SyntaxFactory.MemberAccessExpression(
-                                                SyntaxKind.SimpleMemberAccessExpression,
-                                                SyntaxFactory.IdentifierName("Console"),
-                                                SyntaxFactory.IdentifierName("WriteLine")
-                                            ),
-                                        SyntaxFactory.ArgumentList(
-                                            SyntaxFactory.SeparatedList<ArgumentSyntax>(
-                                                new ArgumentSyntax[1]{SyntaxFactory.Argument(
-                                                    ((ValueCompileNodeBase)modelkun).CompileSyntax(xnodes)
-
-                                                ) }
-
-                                    )
-                            ));
-                            }
-                        }
-                    }
-                }
-            }
-            return returnex;
         }
     }
 }
