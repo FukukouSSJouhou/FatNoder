@@ -1,4 +1,8 @@
-﻿using System;
+﻿using FatNoder.Serializer.Node.Xml;
+using NodeAyano.Model.Nodes;
+using NodeAyano.Model.Nodes.Http;
+using NodeAyanoVMLibs.ViewModels.Nodes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +12,20 @@ namespace FatNoder.ViewModels.Nodes.Http
 {
     public partial class HttpClientPostDataNodeViewModel : StatementNodeViewModelBase, INodeViewModelBase
     {
+
+        private HttpClientPostDataNodeModel _model = new HttpClientPostDataNodeModel();
+        /// <inheritdoc/>
+
+        public void ChangeStates(XML_NodeModel newmodelbs)
+        {
+
+            Name = "HTTP NODE";
+            Position = new System.Windows.Point
+            {
+                X = newmodelbs.Points.X,
+                Y = newmodelbs.Points.Y
+            };
+            _model.Value = ((HttpClientPostDataNodeModel)newmodelbs).Value;
+        }
     }
 }
