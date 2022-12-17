@@ -28,12 +28,40 @@ namespace FatNoder.ViewModels.Nodes.Http
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<HttpClientPostDataNodeViewModel>));
         }
+        /// <summary>
+        /// constructor
+        /// </summary>
+        public HttpClientPostDataNodeViewModel() : base()
+        {
+            InitAyanoVMB();
+            InputURL = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name = "URL_INPUT",
+                Label ="URL",
+                MaxConnections = 1
+            };
+            Initkun();
+        }
+        /// <summary>
+        /// constructor
+        /// </summary>
+        public HttpClientPostDataNodeViewModel(Guid uuid) : base(uuid)
+        {
+            InitAyanoVMB();
+            InputURL = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name = "URL_INPUT",
+                Label = "URL",
+                MaxConnections = 1
+            };
+            Initkun();
+        }
         /// <inheritdoc/>
 
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
-            Name = "HTTP NODE";
+            Name = "HTTP_NODE";
             Position = new System.Windows.Point
             {
                 X = newmodelbs.Points.X,
