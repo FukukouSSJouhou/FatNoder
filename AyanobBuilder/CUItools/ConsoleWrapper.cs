@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AyanoBuilder.CUItools
+namespace FatBuilder.CUItools
 {
     /// <summary>
     /// ANSI Console API

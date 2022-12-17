@@ -1,4 +1,4 @@
-﻿using AyanoBuilder.CUItools;
+﻿using FatBuilder.CUItools;
 using FatNoder.Serializer.Node.Xml;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Classification;
@@ -16,7 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace AyanoBuilder.compilers
+namespace FatBuilder.compilers
 {
     /// <summary>
     /// Compiler CUI

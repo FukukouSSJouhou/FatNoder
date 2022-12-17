@@ -1,4 +1,4 @@
-﻿using AyanoBuilder.compilers;
+﻿using FatBuilder.compilers;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
@@ -11,7 +11,7 @@ using System.Linq.Expressions;
 namespace FatNoder
 {
     
-    public class AyanoBuilder
+    public class FatBuilder
     {
         static NamespaceDeclarationSyntax CreateNameSpaceSyntax(SyntaxList<AttributeListSyntax> attributeLists, SyntaxTokenList modifiers, string namekun, SyntaxList<ExternAliasDirectiveSyntax> externs, SyntaxList<UsingDirectiveSyntax> usings, SyntaxList<MemberDeclarationSyntax> members)
         {

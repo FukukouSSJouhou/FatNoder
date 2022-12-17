@@ -20,6 +20,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -79,5 +80,6 @@
         </views:NetworkView>
         <GridSplitter Grid.Row="2" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
         <views1:CSCodePreviewView  Grid.Row="2" Grid.Column="4" x:Name="CodePreviewViewkun"/>
+        <ListBox Grid.Row="3" MinHeight="40" ></ListBox>
     </Grid>
 </Fluent:RibbonWindow>

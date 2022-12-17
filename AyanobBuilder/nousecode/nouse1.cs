@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AyanoBuilder.nousecode
+namespace FatBuilder.nousecode
 {
     public class nouse1
     {
@@ -17,6 +18,13 @@ namespace AyanoBuilder.nousecode
                 {
                     
                 }
+            }
+        }
+        public void test22()
+        {
+            {
+
+                var dhdhduhu4y7dhs8ua8 = (new HttpClient()).PostAsync("https://www.google.com", new StringContent("a")).Result;
             }
         }
     }

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FatXMLCore", "FatXMLCore\Fa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyano", "NodeAyano\NodeAyano.csproj", "{D986B8EB-170E-459E-B28E-92ED25FA00C3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AyanoBuilder", "AyanobBuilder\AyanoBuilder.csproj", "{9EEF4A50-5816-4D13-9958-40617287EDF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FatBuilder", "AyanobBuilder\FatBuilder.csproj", "{9EEF4A50-5816-4D13-9958-40617287EDF8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoVMLibs", "NodeAyanoVMLibs\NodeAyanoVMLibs.csproj", "{0E9C6F7F-FF73-4D32-8A6A-377409AEE4E7}"
 EndProject
@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoTest", "NodeAyanoT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoVMLibsCodeGenerator", "NodeAyanoVMLibsCodeGenerator\NodeAyanoVMLibsCodeGenerator.csproj", "{4E17C562-44A2-4143-96FC-6ACB9D2916AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodeWPFModule", "NodeWPFModule\NodeWPFModule.csproj", "{4C0A9BBF-950C-442B-864D-FC4488D63321}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeWPFModule", "NodeWPFModule\NodeWPFModule.csproj", "{4C0A9BBF-950C-442B-864D-FC4488D63321}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

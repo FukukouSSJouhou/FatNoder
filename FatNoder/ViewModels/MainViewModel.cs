@@ -5,6 +5,7 @@ using FatNoder.Serializer.Node.Xml;
 using FatNoder.ViewModels.Conv;
 using FatNoder.ViewModels.Nodes;
 using FatNoder.ViewModels.Nodes.EnzanNodes;
+using FatNoder.ViewModels.Nodes.Http;
 using FatNoder.ViewModels.Nodes.Sentences;
 using NodeAyano;
 using NodeAyano.Model.Enumerator;
@@ -122,7 +123,9 @@ namespace FatNoder.ViewModels
             NodeList.AddNodeType(() => new ValueEnzannEngineNodeViewModel { Name = Properties.Resources.MainViewModel_Calc });
             NodeList.AddNodeType(() => new IfNodeViewModel { Name = Properties.Resources.IfNodeViewModel_IfNodeName });
             NodeList.AddNodeType(() => new WhileNodeViewModel { Name = Properties.Resources.WhileNodeViewModel_WhileNodeName });
-            NodeList.AddNodeType(() => new ConditionNodeViewModel { Name = Properties.Resources.ConditionNodeViewModel_Compare }); 
+            NodeList.AddNodeType(() => new ConditionNodeViewModel { Name = Properties.Resources.ConditionNodeViewModel_Compare });
+            NodeList.AddNodeType(() => new HttpClientPostDataNodeViewModel { Name = "HTTP NODE" });
+
             Plugins.PluginLoader.Load_Plugins();
             this.WhenAnyObservable(vm => vm.Network.NetworkChanged).Subscribe(newvalue =>
             {
