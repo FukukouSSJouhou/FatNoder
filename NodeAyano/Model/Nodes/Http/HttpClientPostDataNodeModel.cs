@@ -12,6 +12,9 @@ using System.Xml.Linq;
 
 namespace NodeAyano.Model.Nodes.Http
 {
+    /// <summary>
+    /// client node?
+    /// </summary>
     public class HttpClientPostDataNodeModel : CompileNodeBase
     {
 
@@ -27,10 +30,10 @@ namespace NodeAyano.Model.Nodes.Http
             List<StatementSyntax> returnstatements = new();
 
             BlockSyntax bsy = SyntaxFactory.Block(new List<StatementSyntax>());
-            /*
+            
             foreach (XMLNodeInput xnode in Inputs)
             {
-                if (xnode.Name == "Printcontent")
+                if (xnode.Name == "TargetURL")
                 {
 
                     foreach (XMLNodeInputConnect cn in xnode.connections)
@@ -43,7 +46,7 @@ namespace NodeAyano.Model.Nodes.Http
                         {
                             if (modelkun is ValueCompileNodeBase)
                             {
-
+                                /*
                                 returnstatements.Add(
                                     SyntaxFactory.ExpressionStatement(
                                         SyntaxFactory.InvocationExpression(
@@ -60,12 +63,13 @@ namespace NodeAyano.Model.Nodes.Http
                                                 ) }
 
                                     )
-                            ))));
+                            ))));*/
+                                
                             }
                         }
                     }
                 }
-            }*/
+            }
 
             returnstatements.Add(bsy);
             return returnstatements.ToArray();
