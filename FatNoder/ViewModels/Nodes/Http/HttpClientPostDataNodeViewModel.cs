@@ -4,6 +4,9 @@ using NodeAyano.Model.Nodes;
 using NodeAyano.Model.Nodes.Http;
 using NodeAyanoVMLibs.ViewModels.Nodes;
 using NodeNetworkJH.Toolkit.ValueNode;
+using NodeNetworkJH.Views;
+using ReactiveUI;
+using DynamicData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +20,10 @@ namespace FatNoder.ViewModels.Nodes.Http
 
         private HttpClientPostDataNodeModel _model = new HttpClientPostDataNodeModel();
         public ValueNodeInputViewModel<HensuuUkewatashi?> InputURL {get;}
+        static HttpClientPostDataNodeViewModel()
+        {
+            Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<HttpClientPostDataNodeViewModel>));
+        }
         /// <inheritdoc/>
 
         public void ChangeStates(XML_NodeModel newmodelbs)
