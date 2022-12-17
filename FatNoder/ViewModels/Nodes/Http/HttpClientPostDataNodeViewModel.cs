@@ -12,6 +12,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ControlzEx.Standard;
+using FatNoder.Model.Transc;
+using FatNoder.ViewModels.Ports;
+using NodeNetworkJH.ViewModels;
 
 namespace FatNoder.ViewModels.Nodes.Http
 {
@@ -36,6 +40,72 @@ namespace FatNoder.ViewModels.Nodes.Http
                 Y = newmodelbs.Points.Y
             };
             _model.Value = ((HttpClientPostDataNodeModel)newmodelbs).Value;
+        }
+        public void Initkun()
+        {
+
+            _model.Inputs = new XMLNodeInputS
+            {
+                new XMLNodeInput()
+                {
+                    Name = InputURL.Name,
+                    connections=new XMLNodeInputConnectS
+                    {
+
+                    }
+                }
+            };
+            _model.InputStates = new XMLNodeInputStatement_VMLS();
+            _model.InputStates.Add(new XMLNodeInputStatement()
+            {
+                States = new XMLNodeInputStatementLS(),
+                Name = InputFlow.Name
+            });
+            this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
+            {
+                foreach (XMLNodeInputStatement xs in _model.InputStates.Where(d =>
+                {
+                    return d.Name == InputFlow.Name;
+                }))
+                {
+                    xs.States.Clear();
+                    foreach (StatementCls guidkun in InputFlow.Values.Items)
+                    {
+                        xs.States.Add(guidkun.UUID);
+                    }
+                }
+            });
+            InputURL.Connections.CountChanged.Subscribe(newvalue =>
+            {
+
+                foreach (XMLNodeInput xs in _model.Inputs.Where(d =>
+                {
+                    return d.Name == InputURL.Name;
+                }))
+                {
+                    xs.connections.Clear();
+                    foreach (ConnectionViewModel cv in InputURL.Connections.Items)
+                    {
+                        //Console.WriteLine($"{cv.Input.Name},{cv.Input.Parent.UUID}");
+                        xs.connections.Add(
+                            new XMLNodeInputConnect
+                            {
+                                Name = cv.Output.Name,
+                                Target = cv.Output.Parent.UUID,
+                                InputOnly = false
+                            });
+                    }
+                }
+            });
+            this.Inputs.Add(InputURL);
+            InputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
+            OutputFlow.Port = new NodePortViewModel
+            {
+                Node_PortType = PortType.Statement
+            };
         }
     }
 }
