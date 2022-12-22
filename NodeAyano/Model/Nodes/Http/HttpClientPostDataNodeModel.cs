@@ -28,12 +28,12 @@ namespace NodeAyano.Model.Nodes.Http
         public override StatementSyntax[] CompileSyntax(IEnumerable<XML_NodeModel> xnodes)
         {
             List<StatementSyntax> returnstatements = new();
-
+            List<StatementSyntax> retBetaStatements = new();
             BlockSyntax bsy = SyntaxFactory.Block(new List<StatementSyntax>());
             
             foreach (XMLNodeInput xnode in Inputs)
             {
-                if (xnode.Name == "TargetURL")
+                if (xnode.Name == "URL_INPUT")
                 {
 
                     foreach (XMLNodeInputConnect cn in xnode.connections)
@@ -64,13 +64,33 @@ namespace NodeAyano.Model.Nodes.Http
 
                                     )
                             ))));*/
+                                retBetaStatements.Add(SyntaxFactory.ExpressionStatement(
+                                        SyntaxFactory.InvocationExpression(
+                                            SyntaxFactory.MemberAccessExpression(
+                                                SyntaxKind.SimpleMemberAccessExpression,
+                                                SyntaxFactory.IdentifierName("Console"),
+                                                SyntaxFactory.IdentifierName("WriteLine")
+                                            ),
+                                        SyntaxFactory.ArgumentList(
+                                            SyntaxFactory.SeparatedList<ArgumentSyntax>(
+                                                new ArgumentSyntax[1]{SyntaxFactory.Argument(
+                                                    ((ValueCompileNodeBase)modelkun).CompileSyntax(xnodes)
+
+                                                ) }
+
+                                    )
+                                            )
+                                        )
+                                    )
+                                    );
+                                
                                 
                             }
                         }
                     }
                 }
             }
-
+            bsy = SyntaxFactory.Block(retBetaStatements.ToArray());
             returnstatements.Add(bsy);
             return returnstatements.ToArray();
         }
