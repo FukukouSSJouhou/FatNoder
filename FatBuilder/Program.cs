@@ -3,7 +3,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using NodeAyano;
+using NodeCoreSystem;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -66,7 +66,7 @@ namespace tintin{
                 oldNode: namespaceNode,
                 newNode: namespaceNode2);
             //Console.WriteLine(newnode.NormalizeWhitespace());*/
-            /*var compilerstr = NodeAyanoCompiler.TransCompile(null);
+            /*var compilerstr = NodeCoreSystemCompiler.TransCompile(null);
             Console.WriteLine(compilerstr);
             return 0;*/
             return CUIProgram.MainCUI(args);

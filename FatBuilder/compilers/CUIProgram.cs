@@ -5,9 +5,9 @@ using Microsoft.CodeAnalysis.Classification;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Text;
 using Microsoft.Extensions.CommandLineUtils;
-using NodeAyano;
-using NodeAyano.Model.Enumerator;
-using NodeAyano.Model.Nodes;
+using NodeCoreSystem;
+using NodeCoreSystem.Model.Enumerator;
+using NodeCoreSystem.Model.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -301,7 +301,7 @@ for(int x=0;x<8;x++){
                 command.HelpOption("-h|--help");
                 command.OnExecute(() =>
                 {
-                    //var compilerstr = NodeAyanoCompiler.TransCompile(null);
+                    //var compilerstr = NodeCoreSystemCompiler.TransCompile(null);
                     //Console.WriteLine(compilerstr);
                     return 0;
                 });
