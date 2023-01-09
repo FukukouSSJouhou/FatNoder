@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace NodeAyanoVMLibs.ViewModels.Nodes
+namespace NodeCoreSystemVMLibs.ViewModels.Nodes
 {
     /// <summary>
     /// 基本機能を備えたNodeViewModelの基幹クラス

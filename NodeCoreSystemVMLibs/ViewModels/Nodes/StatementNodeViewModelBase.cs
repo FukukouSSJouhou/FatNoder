@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace NodeAyanoVMLibs.ViewModels.Nodes
+namespace NodeCoreSystemVMLibs.ViewModels.Nodes
 {
     /// <summary>
     /// Statement入出力を備えたNodeの基本形
