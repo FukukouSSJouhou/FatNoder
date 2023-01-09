@@ -15,12 +15,12 @@ using System.Runtime.Loader;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NodeAyano
+namespace NodeCoreSystem
 {
     /// <summary>
     /// Compiler??
     /// </summary>
-    public class NodeAyanoCompiler
+    public class NodeCoreSystemCompiler
     {
         /// <summary>
         /// Compile

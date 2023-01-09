@@ -120,14 +120,14 @@ namespace FatBuilder.compilers
                             var ModelEnumerator = new NodeModelEnumerator(rootnode, roots);
                             ;
 
-                            var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator,roots);
+                            var compilerstr = NodeCoreSystemCompiler.TransCompile(ModelEnumerator,roots);
                             using(var stream=new StreamWriter(OutArgument.Value))
                             {
                                 stream.Write(compilerstr);
                             }
                             if (analyzeOption.HasValue())
                             {
-                                NodeAyanoCompiler.AnalyzeAndTestCompilekun(compilerstr, d =>
+                                NodeCoreSystemCompiler.AnalyzeAndTestCompilekun(compilerstr, d =>
                                 {
                                     var pos = d.Location.GetLineSpan();
                                     var location = "(" + pos.Path + "@Line" + (pos.StartLinePosition.Line + 1) + ":" + (pos.StartLinePosition.Character + 1) + ")";
@@ -229,11 +229,11 @@ namespace FatBuilder.compilers
                             if (ISColorEnabled)
                             {
 
-                                var compilernde = NodeAyanoCompiler.TransCompileNode(ModelEnumerator,roots);
+                                var compilernde = NodeCoreSystemCompiler.TransCompileNode(ModelEnumerator,roots);
                             }
                             else
                             {
-                                var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator,roots);
+                                var compilerstr = NodeCoreSystemCompiler.TransCompile(ModelEnumerator,roots);
                                 Console.Write(compilerstr);
                                 Console.Write("\n");
                             }
