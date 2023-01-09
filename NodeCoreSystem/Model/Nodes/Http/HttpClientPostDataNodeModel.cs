@@ -1,7 +1,7 @@
 ﻿using FatNoder.Serializer.Node.Xml;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.CSharp;
-using NodeAyano.Model.Nodes.basepac;
+using NodeCoreSystem.Model.Nodes.basepac;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace NodeAyano.Model.Nodes.Http
+namespace NodeCoreSystem.Model.Nodes.Http
 {
     /// <summary>
     /// client node?

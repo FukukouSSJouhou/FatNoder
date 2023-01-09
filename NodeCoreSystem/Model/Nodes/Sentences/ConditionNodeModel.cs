@@ -2,7 +2,7 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.VisualBasic;
-using NodeAyano.Model.Nodes.ValueEnzann;
+using NodeCoreSystem.Model.Nodes.ValueEnzann;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace NodeAyano.Model.Nodes.Sentences
+namespace NodeCoreSystem.Model.Nodes.Sentences
 {
     /// <summary>
     /// Condition Type Enum

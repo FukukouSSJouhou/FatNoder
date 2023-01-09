@@ -364,7 +364,7 @@ namespace NodeCoreSystem
                     throw new ArgumentException("Compile error occured.");
                 }
                 stream.Seek(0, SeekOrigin.Begin);
-                var ASC = new AyanoAssemblyLoadContext();
+                var ASC = new CoreSystemAssemblyLoadContext();
                 var asm = ASC.LoadFromStream(stream);
                 wref = new WeakReference(ASC, trackResurrection: true);
                 asm.EntryPoint.Invoke(null, null);
@@ -444,7 +444,7 @@ namespace NodeCoreSystem
                     return;
                 }
                 stream.Seek(0, SeekOrigin.Begin);
-                var ASC = new AyanoAssemblyLoadContext();
+                var ASC = new CoreSystemAssemblyLoadContext();
                 var asm = ASC.LoadFromStream(stream);
                 wref = new WeakReference(ASC, trackResurrection: true);
                 asm.EntryPoint.Invoke(null, null);

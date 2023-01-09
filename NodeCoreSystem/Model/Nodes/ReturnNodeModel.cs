@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NodeAyano.Model.Nodes
+namespace NodeCoreSystem.Model.Nodes
 {
     /// <summary>
     /// ReturnNode Model

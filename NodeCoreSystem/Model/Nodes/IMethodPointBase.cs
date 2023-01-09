@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NodeAyano.Model.Nodes
+namespace NodeCoreSystem.Model.Nodes
 {
     /// <summary>
     /// Method Generate Interface

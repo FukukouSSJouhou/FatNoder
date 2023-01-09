@@ -1,7 +1,7 @@
 ﻿using FatNoder.Serializer.Node.Xml;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using NodeAyano.Model.Nodes.basepac;
+using NodeCoreSystem.Model.Nodes.basepac;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NodeAyano.Model.Nodes
+namespace NodeCoreSystem.Model.Nodes
 {
     /// <summary>
     /// Print Node Model

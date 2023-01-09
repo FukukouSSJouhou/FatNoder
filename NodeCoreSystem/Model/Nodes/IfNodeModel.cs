@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace NodeAyano.Model.Nodes
+namespace NodeCoreSystem.Model.Nodes
 {
     public class IfNodeModel : CompileNodeBase
     {

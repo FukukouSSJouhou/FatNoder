@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace NodeAyano.Model.Nodes.Http
+namespace NodeCoreSystem.Model.Nodes.Http
 {
     public class HttpClientNodeModel: CompileNodeBase
     {

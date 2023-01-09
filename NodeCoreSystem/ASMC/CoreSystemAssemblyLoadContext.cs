@@ -5,11 +5,11 @@ using System.Runtime.Loader;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NodeAyano.ASMC
+namespace NodeCoreSystem.ASMC
 {
-    public class AyanoAssemblyLoadContext:AssemblyLoadContext
+    public class CoreSystemAssemblyLoadContext:AssemblyLoadContext
     {
-        public AyanoAssemblyLoadContext() : base(isCollectible: true)
+        public CoreSystemAssemblyLoadContext() : base(isCollectible: true)
         {
 
         }

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace NodeAyano.Model.Nodes.ValueEnzann
+namespace NodeCoreSystem.Model.Nodes.ValueEnzann
 {
     /// <summary>
     /// Calc Type Enum

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NodeAyano.Model.Nodes.basepac
+namespace NodeCoreSystem.Model.Nodes.basepac
 {
     /// <summary>
     /// ExpressionSyntax Compile Node Interface
