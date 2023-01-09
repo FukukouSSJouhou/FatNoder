@@ -15,7 +15,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-using AyanoNodeVM;
+using NodeCoreSystemNodeVM;
 using NodeCoreSystem.HensuuV;
 using FatNoder.ViewModels.Ports;
 

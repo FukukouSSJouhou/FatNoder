@@ -12,7 +12,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AyanoNodeVM;
+using NodeCoreSystemNodeVM;
 using NodeNetworkJH.ViewModels;
 using NodeCoreSystem.HensuuV;
 using FatNoder.Properties;

@@ -7,7 +7,7 @@ using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.Views;
 using ReactiveUI;
 using DynamicData;
-using AyanoNodeVM;
+using NodeCoreSystemNodeVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -16,7 +16,7 @@ using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using AyanoNodeVM;
+using NodeCoreSystemNodeVM;
 using FatNoder.ViewModels.Ports;
 
 namespace FatNoder.ViewModels.Nodes
