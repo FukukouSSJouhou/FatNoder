@@ -1,6 +1,6 @@
 ﻿using FatNoder.Views;
-using NodeAyano.Model.Nodes;
-using NodeAyanoVMLibs.ViewModels.Nodes;
+using NodeCoreSystem.Model.Nodes;
+using NodeCoreSystemVMLibs.ViewModels.Nodes;
 using NodeNetworkJH.Views;
 using ReactiveUI;
 using System;
@@ -14,7 +14,7 @@ using NodeNetworkJH.Toolkit.ValueNode;
 using DynamicData;
 using FatNoder.Model.Transc;
 using NodeNetworkJH.ViewModels;
-using NodeAyano.HensuuV;
+using NodeCoreSystem.HensuuV;
 using FatNoder.ViewModels.Ports;
 
 namespace FatNoder.ViewModels.Nodes

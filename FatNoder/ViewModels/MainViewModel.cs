@@ -10,7 +10,7 @@ using FatNoder.ViewModels.Nodes.Sentences;
 using FatBuilder;
 using FatBuilder.Model.Enumerator;
 using FatBuilder.Model.Nodes;
-using NodeAyanoVMLibs.ViewModels.Nodes;
+using NodeCoreSystemVMLibs.ViewModels.Nodes;
 using NodeNetworkJH.Toolkit.BreadcrumbBar;
 using NodeNetworkJH.Toolkit.Layout.ForceDirected;
 using NodeNetworkJH.Toolkit.NodeList;
@@ -276,14 +276,14 @@ namespace FatNoder.ViewModels
                 }
                 var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
 
-                var compilerstr = NodeAyanoCompiler.TransCompile(ModelEnumerator,roots);
+                var compilerstr = NodeCoreSystemCompiler.TransCompile(ModelEnumerator,roots);
                 Console.WriteLine(compilerstr);
 
             });
             CompileandrunPhasekun = ReactiveCommand.Create(() =>
             {
 
-                NodeAyanoCompiler.CompileAndRunExec(CPreviewViewModel.Code, out WeakReference alcWeakRef);
+                NodeCoreSystemCompiler.CompileAndRunExec(CPreviewViewModel.Code, out WeakReference alcWeakRef);
                 int c = 0;
                 for (c = 0; alcWeakRef.IsAlive && (c < 10);c++)
                 {
@@ -620,7 +620,7 @@ namespace FatNoder.ViewModels
             }
             var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
 
-            var SyntaxCompiled = NodeAyanoCompiler.TransCompileNode(ModelEnumerator, roots);
+            var SyntaxCompiled = NodeCoreSystemCompiler.TransCompileNode(ModelEnumerator, roots);
             CPreviewViewModel.Code = SyntaxCompiled;
         }
 

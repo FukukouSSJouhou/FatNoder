@@ -1,5 +1,5 @@
-﻿using NodeAyano.Model.Nodes.Sentences;
-using NodeAyanoVMLibs.ViewModels.Nodes;
+﻿using NodeCoreSystem.Model.Nodes.Sentences;
+using NodeCoreSystemVMLibs.ViewModels.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using AyanoNodeVM;
 using NodeNetworkJH.Views;
 using ReactiveUI;
-using NodeAyano.HensuuV;
+using NodeCoreSystem.HensuuV;
 using NodeNetworkJH.Toolkit.ValueNode;
 using DynamicData;
 using FatNoder.Serializer.Node.Xml;

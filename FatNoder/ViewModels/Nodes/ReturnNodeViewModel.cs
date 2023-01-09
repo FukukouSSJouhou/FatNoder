@@ -1,8 +1,8 @@
 ﻿using DynamicData;
 using FatNoder.Model.Transc;
 using FatNoder.Serializer.Node.Xml;
-using NodeAyano.Model.Nodes;
-using NodeAyanoVMLibs.ViewModels.Nodes;
+using NodeCoreSystem.Model.Nodes;
+using NodeCoreSystemVMLibs.ViewModels.Nodes;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;
@@ -16,7 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AyanoNodeVM;
-using NodeAyano.HensuuV;
+using NodeCoreSystem.HensuuV;
 using FatNoder.ViewModels.Ports;
 
 namespace FatNoder.ViewModels.Nodes

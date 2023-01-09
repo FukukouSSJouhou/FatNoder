@@ -1,6 +1,6 @@
 ﻿using FatNoder.ViewModels;
 using FatNoder.ViewModels.Nodes.EnzanNodes.Editors;
-using NodeAyano.Model.Nodes.ValueEnzann;
+using NodeCoreSystem.Model.Nodes.ValueEnzann;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;

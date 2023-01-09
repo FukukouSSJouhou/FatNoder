@@ -1,4 +1,4 @@
-﻿using NodeAyanoVMLibs.ViewModels.Nodes;
+﻿using NodeCoreSystemVMLibs.ViewModels.Nodes;
 using NodeNetworkJH.Views;
 using ReactiveUI;
 using System;
@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using AyanoNodeVM;
 using DynamicData;
-using NodeAyano.HensuuV;
+using NodeCoreSystem.HensuuV;
 using NodeNetworkJH.Toolkit.ValueNode;
 using FatNoder.Serializer.Node.Xml;
 using NodeNetworkJH.ViewModels;
-using NodeAyano.Model.Nodes.ValueEnzann;
+using NodeCoreSystem.Model.Nodes.ValueEnzann;
 using FatNoder.ViewModels.Nodes.EnzanNodes.Editors;
 using FatNoder.ViewModels.Ports;
 

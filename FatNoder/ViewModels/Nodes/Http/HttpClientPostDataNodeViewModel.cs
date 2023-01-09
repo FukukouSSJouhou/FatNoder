@@ -1,8 +1,8 @@
 ﻿using FatNoder.Serializer.Node.Xml;
-using NodeAyano.HensuuV;
-using NodeAyano.Model.Nodes;
-using NodeAyano.Model.Nodes.Http;
-using NodeAyanoVMLibs.ViewModels.Nodes;
+using NodeCoreSystem.HensuuV;
+using NodeCoreSystem.Model.Nodes;
+using NodeCoreSystem.Model.Nodes.Http;
+using NodeCoreSystemVMLibs.ViewModels.Nodes;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.Views;
 using ReactiveUI;

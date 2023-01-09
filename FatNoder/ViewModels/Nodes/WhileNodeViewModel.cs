@@ -2,9 +2,9 @@
 using FatNoder.Model.Transc;
 using FatNoder.Serializer.Node.Xml;
 using FatNoder.ViewModels.Ports;
-using NodeAyano.HensuuV;
-using NodeAyano.Model.Nodes;
-using NodeAyanoVMLibs.ViewModels.Nodes;
+using NodeCoreSystem.HensuuV;
+using NodeCoreSystem.Model.Nodes;
+using NodeCoreSystemVMLibs.ViewModels.Nodes;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeNetworkJH.ViewModels;
 using NodeNetworkJH.Views;

@@ -1,5 +1,5 @@
 ﻿using FatNoder.Views.EnzanNodes;
-using NodeAyano.Model.Nodes.ValueEnzann;
+using NodeCoreSystem.Model.Nodes.ValueEnzann;
 using NodeNetworkJH.Toolkit.ValueNode;
 using ReactiveUI;
 using System;

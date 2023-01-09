@@ -1,5 +1,5 @@
 ﻿using FatNoder.Views.Sentences.Editors;
-using NodeAyano.Model.Nodes.Sentences;
+using NodeCoreSystem.Model.Nodes.Sentences;
 using NodeNetworkJH.Toolkit.ValueNode;
 using ReactiveUI;
 using System;
