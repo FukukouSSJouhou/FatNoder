@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginManagerXML", "PluginM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IconLibrary", "IconLibrary\IconLibrary.csproj", "{C3D56FED-C82D-4AEE-90C3-F7893DF8D918}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoTest", "NodeCoreSystemTest\NodeAyanoTest.csproj", "{17941C51-55F6-40B5-A72C-DA60BB718628}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeCoreSystemTest", "NodeCoreSystemTest\NodeCoreSystemTest.csproj", "{17941C51-55F6-40B5-A72C-DA60BB718628}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeCoreSystemVMLibsCodeGenerator", "NodeCoreSystemVMLibsCodeGenerator\NodeCoreSystemVMLibsCodeGenerator.csproj", "{4E17C562-44A2-4143-96FC-6ACB9D2916AD}"
 EndProject
