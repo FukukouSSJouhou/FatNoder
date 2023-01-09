@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeCoreSystem", "NodeCoreS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FatBuilder", "FatBuilder\FatBuilder.csproj", "{9EEF4A50-5816-4D13-9958-40617287EDF8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoVMLibs", "NodeCoreSystemVMLibs\NodeAyanoVMLibs.csproj", "{0E9C6F7F-FF73-4D32-8A6A-377409AEE4E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeCoreSystemVMLibs", "NodeCoreSystemVMLibs\NodeCoreSystemVMLibs.csproj", "{0E9C6F7F-FF73-4D32-8A6A-377409AEE4E7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginManagerXML", "PluginManagerXML\PluginManagerXML.csproj", "{F7A57F9D-3294-4817-97DD-C5E4CF2BF574}"
 EndProject

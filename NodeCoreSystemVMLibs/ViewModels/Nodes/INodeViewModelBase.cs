@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NodeAyanoVMLibs.ViewModels.Nodes
+namespace NodeCoreSystemVMLibs.ViewModels.Nodes
 {
     /// <summary>
     /// NodeViewModelの基礎インターフェース
