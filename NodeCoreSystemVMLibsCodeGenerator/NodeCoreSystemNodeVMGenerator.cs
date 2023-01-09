@@ -7,20 +7,20 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
-namespace NodeAyanoVMLibsCodeGenerator
+namespace NodeCoreSystemVMLibsCodeGenerator
 {
     [Generator]
-    public class AyanoNodeVMGenerator : ISourceGenerator
+    public class NodeCoreSystemNodeVMGenerator : ISourceGenerator
     {
         private const string attributeText = @"
 using System;
-namespace AyanoNodeVM
+namespace NodeCoreSystemNodeVM
 {
     [AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
-    [System.Diagnostics.Conditional(""AyanoNodeVMGenerator_DEBUG"")]
-    sealed class ModelAyanoAttribute:Attribute
+    [System.Diagnostics.Conditional(""NodeCoreSystemNodeVMGenerator_DEBUG"")]
+    sealed class ModelCoreSystemAttribute:Attribute
     {
-        public ModelAyanoAttribute(){
+        public ModelCoreSystemAttribute(){
             
         }
     }
@@ -29,20 +29,20 @@ namespace AyanoNodeVM
         readonly System.Reflection.AssemblyName assemblyName = System.Reflection.Assembly.GetExecutingAssembly().GetName();
         public void Initialize(GeneratorInitializationContext context)
         {
-            context.RegisterForPostInitialization((i) => i.AddSource("ModelAyanoAttribute.g.cs", attributeText));
+            context.RegisterForPostInitialization((i) => i.AddSource("ModelCoreSystemAttribute.g.cs", attributeText));
             context.RegisterForSyntaxNotifications(() => new SyntaxReciever());
         }
         public void Execute(GeneratorExecutionContext context)
         {
             if (!(context.SyntaxContextReceiver is SyntaxReciever reciever))
                 return;
-            INamedTypeSymbol attributeSymbol = context.Compilation.GetTypeByMetadataName("AyanoNodeVM.ModelAyanoAttribute");
+            INamedTypeSymbol attributeSymbol = context.Compilation.GetTypeByMetadataName("NodeCoreSystemNodeVM.ModelCoreSystemAttribute");
             INamedTypeSymbol XMLModelSymbol = context.Compilation.GetTypeByMetadataName("FatNoder.Serializer.Node.Xml.XML_NodeModel");
             INamedTypeSymbol XMLNodeXYSymbol = context.Compilation.GetTypeByMetadataName("FatNoder.Serializer.Node.Xml.XMLNodeXY");
             foreach (IGrouping<INamedTypeSymbol, IFieldSymbol> group in reciever.Fields.GroupBy<IFieldSymbol, INamedTypeSymbol>(f => f.ContainingType, SymbolEqualityComparer.Default))
             {
                 string src = ProcClass(group.Key,XMLModelSymbol, XMLNodeXYSymbol,group.ToList(), attributeSymbol, context);
-                context.AddSource($"{group.Key.Name}_AyanoNodeVM.g.cs", SourceText.From(src, Encoding.UTF8));
+                context.AddSource($"{group.Key.Name}_CoreSystemNodeVM.g.cs", SourceText.From(src, Encoding.UTF8));
             }
         }
         private string ProcClass(INamedTypeSymbol symbol, INamedTypeSymbol XMLModelSymbol,INamedTypeSymbol XMLNodeXYSymbol,List<IFieldSymbol> fields, ISymbol attributeSymbol, GeneratorExecutionContext context)
@@ -144,7 +144,7 @@ namespace {NSName}
                 foreach(VariableDeclaratorSyntax v in cNode.Declaration.Variables)
                 {
                     IFieldSymbol sym = context.SemanticModel.GetDeclaredSymbol(v) as IFieldSymbol;
-                    if(sym.GetAttributes().Any(ad=>ad.AttributeClass.ToDisplayString()== "AyanoNodeVM.ModelAyanoAttribute"))
+                    if(sym.GetAttributes().Any(ad=>ad.AttributeClass.ToDisplayString()== "NodeCoreSystemNodeVM.ModelCoreSystemAttribute"))
                     {
                         Fields.Add(sym);
                     }
