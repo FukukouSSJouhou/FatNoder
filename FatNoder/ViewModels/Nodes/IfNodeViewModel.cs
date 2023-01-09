@@ -27,7 +27,7 @@ namespace FatNoder.ViewModels.Nodes
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<IfNodeViewModel>));
         }
-        [ModelAyano]
+        [ModelCoreSystem]
         private IfNodeModel _model = new IfNodeModel();
         public IfNodeViewModel(Guid uuid) : base(uuid)
         {

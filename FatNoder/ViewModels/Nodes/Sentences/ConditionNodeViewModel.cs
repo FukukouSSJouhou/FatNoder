@@ -21,7 +21,7 @@ namespace FatNoder.ViewModels.Nodes.Sentences
     public partial class ConditionNodeViewModel : NodeVMBasekun, INodeViewModelBase
     {
 
-        [ModelAyano]
+        [ModelCoreSystem]
         private ConditionNodeModel _model = new ConditionNodeModel();
         static ConditionNodeViewModel()
         {

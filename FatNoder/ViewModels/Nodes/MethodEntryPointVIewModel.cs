@@ -30,7 +30,7 @@ namespace FatNoder.ViewModels.Nodes
         }
 
         public ValueListNodeInputViewModel<StatementCls> Input { get; }
-        [ModelAyano]
+        [ModelCoreSystem]
         private MethodEntryPoint _model = new MethodEntryPoint();
         public MethodEntryPointVIewModel()
         {

@@ -28,7 +28,7 @@ namespace FatNoder.ViewModels.Nodes
         }
         
         public ValueNodeInputViewModel<HensuuUkewatashi?> PrintInput { get; }
-        [ModelAyano]
+        [ModelCoreSystem]
         private PrintNodeModel _model = new PrintNodeModel();
         public PrintNodeViewModel(Guid UUID):base(UUID)
         {

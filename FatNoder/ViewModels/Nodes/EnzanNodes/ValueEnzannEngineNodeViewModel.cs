@@ -24,7 +24,7 @@ namespace FatNoder.ViewModels.Nodes.EnzanNodes
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<ValueEnzannEngineNodeViewModel>));
         }
-        [ModelAyano]
+        [ModelCoreSystem]
         private ValueEnzannEngineNodeModel _model = new ValueEnzannEngineNodeModel();
         /// <summary>
         /// Output Value?

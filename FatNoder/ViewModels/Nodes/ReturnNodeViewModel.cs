@@ -36,7 +36,7 @@ namespace FatNoder.ViewModels.Nodes
         public ValueNodeInputViewModel<HensuuUkewatashi?> ReturnInput { get; }
         public ValueNodeOutputViewModel<StatementCls> Flow { get; }
         public StatementCls StatementIfce { get; }
-        [ModelAyano]
+        [ModelCoreSystem]
         private ReturnNodeModel<T> _model = new ReturnNodeModel<T>();
 
         public ReturnNodeViewModel(Guid UUID):base(UUID)

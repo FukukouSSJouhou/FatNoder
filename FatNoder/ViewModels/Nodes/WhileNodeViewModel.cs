@@ -26,7 +26,7 @@ namespace FatNoder.ViewModels.Nodes
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<WhileNodeViewModel>));
         }
-        [ModelAyano]
+        [ModelCoreSystem]
         private WhileNodeModel _model = new WhileNodeModel();
         public WhileNodeViewModel(Guid uuid) : base(uuid)
         {

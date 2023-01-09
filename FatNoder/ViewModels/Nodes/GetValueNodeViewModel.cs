@@ -22,7 +22,7 @@ namespace FatNoder.ViewModels.Nodes
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<GetValueNodeViewModel>));
         }
-        [ModelAyano]
+        [ModelCoreSystem]
         private GetValueNodeModel _model = new GetValueNodeModel();
         /// <summary>
         /// Output Value?

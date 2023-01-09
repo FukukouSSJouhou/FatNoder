@@ -22,7 +22,7 @@ namespace FatNoder.ViewModels.Nodes.Http
 {
     public partial class HttpClientPostDataNodeViewModel : StatementNodeViewModelBase, INodeViewModelBase
     {
-        [ModelAyano]
+        [ModelCoreSystem]
         private HttpClientPostDataNodeModel _model = new HttpClientPostDataNodeModel();
         public ValueNodeInputViewModel<HensuuUkewatashi?> InputURL {get;}
         static HttpClientPostDataNodeViewModel()

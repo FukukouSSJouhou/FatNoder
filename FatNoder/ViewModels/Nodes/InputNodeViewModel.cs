@@ -28,7 +28,7 @@ namespace FatNoder.ViewModels.Nodes
         /// Value Editor
         /// </summary>
         public HannyouValueEditorViewModel<T> ValueEditor { get; } = new HannyouValueEditorViewModel<T>();
-        [ModelAyano]
+        [ModelCoreSystem]
         private InputNodeModel<T> _model = new InputNodeModel<T>();
         /// <summary>
         /// Output Value?

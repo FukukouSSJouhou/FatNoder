@@ -27,7 +27,7 @@ namespace FatNoder.ViewModels.Nodes
         }
         public ValueNodeInputViewModel<HensuuUkewatashi?> HensuuInput { get; }
         public ValueNodeInputViewModel<string?> NameInput { get; }
-        [ModelAyano]
+        [ModelCoreSystem]
         private SetValueNodeModel<T> _model = new SetValueNodeModel<T>();
         ///<inheritdoc/>
         public SetValueNodeViewModel(Guid uuid) : base(uuid)
