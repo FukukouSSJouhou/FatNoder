@@ -7,19 +7,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FatNoder", "FatNoder\FatNod
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FatXMLCore", "FatXMLCore\FatXMLCore.csproj", "{078A433E-188B-4654-A633-DE2F92AF1D8F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyano", "NodeAyano\NodeAyano.csproj", "{D986B8EB-170E-459E-B28E-92ED25FA00C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeCoreSystem", "NodeCoreSystem\NodeCoreSystem.csproj", "{D986B8EB-170E-459E-B28E-92ED25FA00C3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FatBuilder", "AyanobBuilder\FatBuilder.csproj", "{9EEF4A50-5816-4D13-9958-40617287EDF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FatBuilder", "FatBuilder\FatBuilder.csproj", "{9EEF4A50-5816-4D13-9958-40617287EDF8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoVMLibs", "NodeAyanoVMLibs\NodeAyanoVMLibs.csproj", "{0E9C6F7F-FF73-4D32-8A6A-377409AEE4E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoVMLibs", "NodeCoreSystemVMLibs\NodeAyanoVMLibs.csproj", "{0E9C6F7F-FF73-4D32-8A6A-377409AEE4E7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginManagerXML", "PluginManagerXML\PluginManagerXML.csproj", "{F7A57F9D-3294-4817-97DD-C5E4CF2BF574}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IconLibrary", "IconLibrary\IconLibrary.csproj", "{C3D56FED-C82D-4AEE-90C3-F7893DF8D918}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoTest", "NodeAyanoTest\NodeAyanoTest.csproj", "{17941C51-55F6-40B5-A72C-DA60BB718628}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoTest", "NodeCoreSystemTest\NodeAyanoTest.csproj", "{17941C51-55F6-40B5-A72C-DA60BB718628}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoVMLibsCodeGenerator", "NodeAyanoVMLibsCodeGenerator\NodeAyanoVMLibsCodeGenerator.csproj", "{4E17C562-44A2-4143-96FC-6ACB9D2916AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeAyanoVMLibsCodeGenerator", "NodeCoreSystemVMLibsCodeGenerator\NodeAyanoVMLibsCodeGenerator.csproj", "{4E17C562-44A2-4143-96FC-6ACB9D2916AD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodeWPFModule", "NodeWPFModule\NodeWPFModule.csproj", "{4C0A9BBF-950C-442B-864D-FC4488D63321}"
 EndProject

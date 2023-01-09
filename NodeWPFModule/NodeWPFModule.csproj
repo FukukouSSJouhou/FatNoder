@@ -10,7 +10,7 @@
     <ProjectReference Include="..\FatXMLCore\FatXMLCore.csproj" />
     <ProjectReference Include="..\NodeAyanoVMLibsCodeGenerator\NodeAyanoVMLibsCodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\NodeAyanoVMLibs\NodeAyanoVMLibs.csproj" />
-    <ProjectReference Include="..\NodeAyano\NodeAyano.csproj" />
+    <ProjectReference Include="..\NodeAyano\NodeCoreSystem.csproj" />
   </ItemGroup>
 
 </Project>

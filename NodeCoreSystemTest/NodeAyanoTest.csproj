@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NodeAyano\NodeAyano.csproj" />
+    <ProjectReference Include="..\NodeAyano\NodeCoreSystem.csproj" />
   </ItemGroup>
 
 </Project>
