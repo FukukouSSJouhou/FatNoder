@@ -11,6 +11,7 @@ using AyanoNodeVM;
 using NodeNetworkJH.Toolkit.ValueNode;
 using NodeAyano.HensuuV;
 using FatNoder.Model.Transc;
+using FatNoder.Serializer.Node.Xml;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -25,5 +26,16 @@ namespace FatNoder.ViewModels.Nodes
         }
         [ModelAyano]
         private ForNodeModel _model = new ForNodeModel();
+        public void ChangeStates(XML_NodeModel newmodelbs)
+        {
+
+            Name = Properties.Resources.;
+            Position = new System.Windows.Point
+            {
+                X = newmodelbs.Points.X,
+                Y = newmodelbs.Points.Y
+            };
+            _model.Value = ((ForNodeModel)newmodelbs).Value;
+        }
     }
 }
