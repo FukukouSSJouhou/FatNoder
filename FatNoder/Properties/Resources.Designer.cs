@@ -79,6 +79,15 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
+        ///   For に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ForNodeViewModel_ForNodeLabel {
+            get {
+                return ResourceManager.GetString("ForNodeViewModel_ForNodeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Condition に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string IfNodeViewModel_ConditionLabel {
