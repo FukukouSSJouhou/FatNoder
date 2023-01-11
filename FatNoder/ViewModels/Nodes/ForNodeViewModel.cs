@@ -34,20 +34,20 @@ namespace FatNoder.ViewModels.Nodes
             Condition = new ValueNodeInputViewModel<HensuuUkewatashi?>
             {
                 Name = "Condition",
-                Label = Properties.Resources.IfNodeViewModel_ConditionLabel,
+                Label = Properties.Resources.ForNodeViewModel_ConditionLabel,
                 MaxConnections = 1
             };
             DefineFor = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Define",
-                Label = Properties.Resources.IfNodeViewModel_ThenLabel,
+                Label = Properties.Resources.ForNodeViewModel_DefineLabel,
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
             OutFor = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Then",
-                Label = Properties.Resources.IfNodeViewModel_ElseLabel,
+                Label = Properties.Resources.ForNodeViewModel_ThenLabel,
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
