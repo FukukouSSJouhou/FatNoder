@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public class ForNodeViewModel
+    public partial class ForNodeViewModel
     {
     }
 }
