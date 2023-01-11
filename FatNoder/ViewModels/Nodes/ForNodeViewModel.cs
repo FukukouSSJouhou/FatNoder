@@ -26,6 +26,10 @@ namespace FatNoder.ViewModels.Nodes
         }
         [ModelAyano]
         private ForNodeModel _model = new ForNodeModel();
+        public ForNodeViewModel(Guid uuid) : base(uuid)
+        {
+            InitAyanoVMB();
+        }
         /// <inheritdoc/>
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
