@@ -123,6 +123,18 @@
   <data name="ConditionNodeViewModel_ConditionType" xml:space="preserve">
     <value>Condition Type</value>
   </data>
+  <data name="ForNodeViewModel_ConditionLabel" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="ForNodeViewModel_DefineLabel" xml:space="preserve">
+    <value>Define</value>
+  </data>
+  <data name="ForNodeViewModel_ForNodeLabel" xml:space="preserve">
+    <value>For</value>
+  </data>
+  <data name="ForNodeViewModel_ThenLabel" xml:space="preserve">
+    <value>Then</value>
+  </data>
   <data name="IfNodeViewModel_ConditionLabel" xml:space="preserve">
     <value>Condition</value>
   </data>

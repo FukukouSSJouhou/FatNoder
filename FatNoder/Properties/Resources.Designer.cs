@@ -81,6 +81,42 @@ namespace FatNoder.Properties {
         /// <summary>
         ///   Condition に類似しているローカライズされた文字列を検索します。
         /// </summary>
+        public static string ForNodeViewModel_ConditionLabel {
+            get {
+                return ResourceManager.GetString("ForNodeViewModel_ConditionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Define に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ForNodeViewModel_DefineLabel {
+            get {
+                return ResourceManager.GetString("ForNodeViewModel_DefineLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   For に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ForNodeViewModel_ForNodeLabel {
+            get {
+                return ResourceManager.GetString("ForNodeViewModel_ForNodeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Then に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ForNodeViewModel_ThenLabel {
+            get {
+                return ResourceManager.GetString("ForNodeViewModel_ThenLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Condition に類似しているローカライズされた文字列を検索します。
+        /// </summary>
         public static string IfNodeViewModel_ConditionLabel {
             get {
                 return ResourceManager.GetString("IfNodeViewModel_ConditionLabel", resourceCulture);
