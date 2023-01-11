@@ -9,6 +9,6 @@ namespace FatNoder.ViewModels.Nodes
 {
     public partial class ForNodeViewModel:StatementNodeViewModelBase,INodeViewModelBase
     {
-
+        
     }
 }
