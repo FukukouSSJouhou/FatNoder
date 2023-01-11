@@ -26,6 +26,7 @@ namespace FatNoder.ViewModels.Nodes
         }
         [ModelAyano]
         private ForNodeModel _model = new ForNodeModel();
+        /// <inheritdoc/>
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
 
