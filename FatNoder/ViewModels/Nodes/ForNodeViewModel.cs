@@ -8,11 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AyanoNodeVM;
+using NodeNetworkJH.Toolkit.ValueNode;
+using NodeAyano.HensuuV;
 
 namespace FatNoder.ViewModels.Nodes
 {
     public partial class ForNodeViewModel:StatementNodeViewModelBase,INodeViewModelBase
     {
+        private ValueNodeInputViewModel<HensuuUkewatashi?> Condition { get; }
         static ForNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<ForNodeViewModel>));
