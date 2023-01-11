@@ -12,6 +12,8 @@ using NodeNetworkJH.Toolkit.ValueNode;
 using NodeAyano.HensuuV;
 using FatNoder.Model.Transc;
 using FatNoder.Serializer.Node.Xml;
+using ControlzEx.Standard;
+using NodeNetworkJH.ViewModels;
 
 namespace FatNoder.ViewModels.Nodes
 {
@@ -29,6 +31,26 @@ namespace FatNoder.ViewModels.Nodes
         public ForNodeViewModel(Guid uuid) : base(uuid)
         {
             InitAyanoVMB();
+            Condition = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name = "Condition",
+                Label = Properties.Resources.IfNodeViewModel_ConditionLabel,
+                MaxConnections = 1
+            };
+            DefineFor = new ValueListNodeInputViewModel<StatementCls>
+            {
+                Name = "Define",
+                Label = Properties.Resources.IfNodeViewModel_ThenLabel,
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+            };
+            OutFor = new ValueListNodeInputViewModel<StatementCls>
+            {
+                Name = "Then",
+                Label = Properties.Resources.IfNodeViewModel_ElseLabel,
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+            };
         }
         /// <inheritdoc/>
         public void ChangeStates(XML_NodeModel newmodelbs)
