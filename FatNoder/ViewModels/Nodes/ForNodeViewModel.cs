@@ -88,7 +88,7 @@ namespace FatNoder.ViewModels.Nodes
             {
                 new XMLNodeInput()
                 {
-                    Name = InputX.Name,
+                    Name = Condition.Name,
                     connections=new XMLNodeInputConnectS
                     {
 
