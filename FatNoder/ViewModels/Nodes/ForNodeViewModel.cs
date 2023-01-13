@@ -17,7 +17,7 @@ using NodeNetworkJH.ViewModels;
 
 namespace FatNoder.ViewModels.Nodes
 {
-    public partial class ForNodeViewModel:StatementNodeViewModelBase,INodeViewModelBase
+    public partial class ForNodeViewModel : StatementNodeViewModelBase, INodeViewModelBase
     {
         private ValueNodeInputViewModel<HensuuUkewatashi?> Condition { get; }
         public ValueListNodeInputViewModel<StatementCls> DefineFor { get; }
@@ -52,6 +52,31 @@ namespace FatNoder.ViewModels.Nodes
                 PortPosition = PortPosition.Right
             };
         }
+        public ForNodeViewModel() : base()
+        {
+            InitAyanoVMB();
+            Condition = new ValueNodeInputViewModel<HensuuUkewatashi?>
+            {
+                Name = "Condition",
+                Label = Properties.Resources.ForNodeViewModel_ConditionLabel,
+                MaxConnections = 1
+            };
+            DefineFor = new ValueListNodeInputViewModel<StatementCls>
+            {
+                Name = "Define",
+                Label = Properties.Resources.ForNodeViewModel_DefineLabel,
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+            };
+            OutFor = new ValueListNodeInputViewModel<StatementCls>
+            {
+                Name = "Then",
+                Label = Properties.Resources.ForNodeViewModel_ThenLabel,
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+            };
+        }
+
         /// <inheritdoc/>
         public void ChangeStates(XML_NodeModel newmodelbs)
         {
