@@ -24,6 +24,7 @@ namespace FatNoder.ViewModels.Nodes
         private ValueNodeInputViewModel<HensuuUkewatashi?> Condition { get; }
         public ValueListNodeInputViewModel<StatementCls> DefineFor { get; }
         public ValueListNodeInputViewModel<StatementCls> OutFor { get; }
+        public ValueListNodeInputViewModel<StatementCls> Incr { get; }
         static ForNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<ForNodeViewModel>));
