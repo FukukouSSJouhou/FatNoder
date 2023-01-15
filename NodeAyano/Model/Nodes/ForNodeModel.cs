@@ -111,11 +111,16 @@ namespace NodeAyano.Model.Nodes
             }
             if(input1 != null)
             {
-                returnstatements.Add(SyntaxFactory.ForStatement(input1, SyntaxFactory.SeparatedList<ExpressionSyntax>(), input2.CompileSyntax(xnodes), SyntaxFactory.SeparatedList<ExpressionSyntax>(incrsyntaxls), bsy));
+                if (input2 != null)
+                {
+                    returnstatements.Add(SyntaxFactory.ForStatement(input1, SyntaxFactory.SeparatedList<ExpressionSyntax>(), input2.CompileSyntax(xnodes), SyntaxFactory.SeparatedList<ExpressionSyntax>(incrsyntaxls), bsy));
+                }
             }else if(input1_initls != null)
             {
-                returnstatements.Add(SyntaxFactory.ForStatement(null, SyntaxFactory.SeparatedList<ExpressionSyntax>(input1_initls), input2.CompileSyntax(xnodes), SyntaxFactory.SeparatedList<ExpressionSyntax>(incrsyntaxls), bsy));
-
+                if (input2 != null)
+                {
+                    returnstatements.Add(SyntaxFactory.ForStatement(null, SyntaxFactory.SeparatedList<ExpressionSyntax>(input1_initls), input2.CompileSyntax(xnodes), SyntaxFactory.SeparatedList<ExpressionSyntax>(incrsyntaxls), bsy));
+                }
             }
             return returnstatements.ToArray();
         }                    
