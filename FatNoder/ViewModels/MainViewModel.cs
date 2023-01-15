@@ -124,6 +124,7 @@ namespace FatNoder.ViewModels
             NodeList.AddNodeType(() => new IfNodeViewModel { Name = Properties.Resources.IfNodeViewModel_IfNodeName });
             NodeList.AddNodeType(() => new WhileNodeViewModel { Name = Properties.Resources.WhileNodeViewModel_WhileNodeName });
             NodeList.AddNodeType(() => new ConditionNodeViewModel { Name = Properties.Resources.ConditionNodeViewModel_Compare });
+            NodeList.AddNodeType(() => new ForNodeViewModel { Name = Properties.Resources.ForNodeViewModel_ThenLabel });
             NodeList.AddNodeType(() => new HttpClientPostDataNodeViewModel { Name = "HTTP NODE" });
 
             Plugins.PluginLoader.Load_Plugins();
