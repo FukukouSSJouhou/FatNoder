@@ -104,12 +104,12 @@ namespace FatNoder.ViewModels.Nodes
             _model.InputStates.Add(new XMLNodeInputStatement()
             {
                 States = new XMLNodeInputStatementLS(),
-                Name = OutIfX.Name
+                Name = DefineFor.Name
             });
             _model.InputStates.Add(new XMLNodeInputStatement()
             {
                 States = new XMLNodeInputStatementLS(),
-                Name = ElseIfX.Name
+                Name = OutFor.Name
             });
             this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
@@ -125,17 +125,17 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
-            this.WhenAnyObservable(vm => vm.OutIfX.Values.CountChanged).Subscribe(newvalue =>
+            this.WhenAnyObservable(vm => vm.DefineFor.Values.CountChanged).Subscribe(newvalue =>
             {
 
                 foreach (XMLNodeInputStatement xs in _model.InputStates.Where(
                     d =>
                     {
-                        return d.Name == OutIfX.Name;
+                        return d.Name == DefineFor  .Name;
                     }))
                 {
                     xs.States.Clear();
-                    foreach (StatementCls guidkun in OutIfX.Values.Items)
+                    foreach (StatementCls guidkun in DefineFor.Values.Items)
                     {
                         xs.States.Add(guidkun.UUID);
                     }
