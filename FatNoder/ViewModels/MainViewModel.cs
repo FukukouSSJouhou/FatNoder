@@ -207,7 +207,7 @@ namespace FatNoder.ViewModels
                             typelistkun.Add(Type.GetType(root.MODELTYPE));
                     }
                 }
-                var ModelEnumerator = new NodeModelEnumerator(modelkun, roots);
+                var ModelEnumerator = new NodeModelEnumerator_ExSave(modelkun, roots);
                 ModelEnumerator.Reset();
                 while (ModelEnumerator.MoveNext())
                 {
