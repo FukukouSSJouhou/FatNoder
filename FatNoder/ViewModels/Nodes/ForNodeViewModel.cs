@@ -141,17 +141,17 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
-            this.WhenAnyObservable(vm => vm.ElseIfX.Values.CountChanged).Subscribe(newvalue =>
+            this.WhenAnyObservable(vm => vm.OutFor.Values.CountChanged).Subscribe(newvalue =>
             {
 
                 foreach (XMLNodeInputStatement xs in _model.InputStates.Where(
                     d =>
                     {
-                        return d.Name == ElseIfX.Name;
+                        return d.Name == OutFor.Name;
                     }))
                 {
                     xs.States.Clear();
-                    foreach (StatementCls guidkun in ElseIfX.Values.Items)
+                    foreach (StatementCls guidkun in OutFor.Values.Items)
                     {
                         xs.States.Add(guidkun.UUID);
                     }
