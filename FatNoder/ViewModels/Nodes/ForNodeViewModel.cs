@@ -140,7 +140,7 @@ namespace FatNoder.ViewModels.Nodes
                         xs.States.Add(guidkun.UUID);
                     }
                 }
-            });/*
+            });
             this.WhenAnyObservable(vm => vm.ElseIfX.Values.CountChanged).Subscribe(newvalue =>
             {
 
@@ -189,7 +189,7 @@ namespace FatNoder.ViewModels.Nodes
             OutputFlow.Port = new NodePortViewModel
             {
                 Node_PortType = PortType.Statement
-            };*/
+            };
         }
         /// <inheritdoc/>
         public void ChangeStates(XML_NodeModel newmodelbs)
