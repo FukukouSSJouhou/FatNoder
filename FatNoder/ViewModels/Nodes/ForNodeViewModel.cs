@@ -157,16 +157,16 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
-            InputX.Connections.CountChanged.Subscribe(newvalue =>
+            Condition.Connections.CountChanged.Subscribe(newvalue =>
             {
 
                 foreach (XMLNodeInput xs in _model.Inputs.Where(d =>
                 {
-                    return d.Name == InputX.Name;
+                    return d.Name == Condition.Name;
                 }))
                 {
                     xs.connections.Clear();
-                    foreach (ConnectionViewModel cv in InputX.Connections.Items)
+                    foreach (ConnectionViewModel cv in Condition.Connections.Items)
                     {
                         //Console.WriteLine($"{cv.Input.Name},{cv.Input.Parent.UUID}");
                         xs.connections.Add(
@@ -179,9 +179,9 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
-            this.Inputs.Add(OutIfX);
-            this.Inputs.Add(ElseIfX);
-            this.Inputs.Add(InputX);
+            this.Inputs.Add(OutFor);
+            this.Inputs.Add(DefineFor);
+            this.Inputs.Add(Condition);
             InputFlow.Port = new NodePortViewModel
             {
                 Node_PortType = PortType.Statement
