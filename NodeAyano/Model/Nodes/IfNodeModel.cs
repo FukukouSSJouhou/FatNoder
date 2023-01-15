@@ -1,6 +1,7 @@
 ﻿using FatNoder.Serializer.Node.Xml;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using NodeAyano.Model.Enumerator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,7 +71,8 @@ namespace NodeAyano.Model.Nodes
                             {
                                 /*
                                 bsy = SyntaxFactory.Block(((CompileNodeBase)modelkun).CompileSyntax(xnodes));*/
-                                
+                                NodeModelEnumerator enumkun = new NodeModelEnumerator(this, xnodes);
+                                enumkun.Reset();
 
                             }
                         }
