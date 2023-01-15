@@ -69,7 +69,7 @@ namespace NodeAyano.Model.Nodes
                         {
                             if (modelkun is CompileNodeBase)
                             {
-                                NodeModelEnumerator enumkun = new NodeModelEnumerator(this, xnodes);
+                                NodeModelEnumerator enumkun = new NodeModelEnumerator(modelkun, xnodes);
                                 enumkun.Reset();
                                 var statements = new List<StatementSyntax>();
                                 while (enumkun.MoveNext())
