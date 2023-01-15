@@ -61,6 +61,7 @@ namespace NodeAyano.Model.Enumerator
             {
                 foreach (XMLNodeInputStatement xns in _Current.InputStates)
                 {
+                    if(xns.States!=null)
                     foreach (Guid uuidkun in xns.States)
                     {
                         foreach (XML_NodeModel nm in _nodes.Where(d =>
