@@ -68,7 +68,9 @@ namespace NodeAyano.Model.Nodes
                         {
                             if (modelkun is CompileNodeBase)
                             {
-                                bsy = SyntaxFactory.Block(((CompileNodeBase)modelkun).CompileSyntax(xnodes));
+                                /*
+                                bsy = SyntaxFactory.Block(((CompileNodeBase)modelkun).CompileSyntax(xnodes));*/
+                                
 
                             }
                         }
