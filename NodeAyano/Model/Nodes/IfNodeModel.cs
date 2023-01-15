@@ -73,6 +73,10 @@ namespace NodeAyano.Model.Nodes
                                 bsy = SyntaxFactory.Block(((CompileNodeBase)modelkun).CompileSyntax(xnodes));*/
                                 NodeModelEnumerator enumkun = new NodeModelEnumerator(this, xnodes);
                                 enumkun.Reset();
+                                while (enumkun.MoveNext())
+                                {
+                                    
+                                }
 
                             }
                         }
