@@ -128,6 +128,11 @@ namespace FatNoder.ViewModels.Nodes
                 States = new XMLNodeInputStatementLS(),
                 Name = OutFor.Name
             });
+            _model.InputStates.Add(new XMLNodeInputStatement()
+            {
+                States = new XMLNodeInputStatementLS(),
+                Name = Incr.Name
+            });
             this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
                 foreach (XMLNodeInputStatement xs in _model.InputStates.Where(d =>
