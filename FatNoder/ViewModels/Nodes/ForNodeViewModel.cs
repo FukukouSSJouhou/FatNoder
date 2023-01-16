@@ -57,7 +57,7 @@ namespace FatNoder.ViewModels.Nodes
             Incr = new ValueListNodeInputViewModel<StatementCls>
             {
                 Name = "Incr",
-                Label = Properties.Resources.ForNodeViewModel_DefineLabel,
+                Label = Properties.Resources.ForNodeViewModel_IncrLabel,
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
 
@@ -86,6 +86,14 @@ namespace FatNoder.ViewModels.Nodes
                 Label = Properties.Resources.ForNodeViewModel_ThenLabel,
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
+            };
+            Incr = new ValueListNodeInputViewModel<StatementCls>
+            {
+                Name = "Incr",
+                Label = Properties.Resources.ForNodeViewModel_IncrLabel,
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+
             };
             Initkun();
         }
