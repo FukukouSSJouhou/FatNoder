@@ -106,7 +106,7 @@ namespace FatNoder.Properties {
         }
         
         /// <summary>
-        ///    に類似しているローカライズされた文字列を検索します。
+        ///   Increment に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ForNodeViewModel_IncrLabel {
             get {
