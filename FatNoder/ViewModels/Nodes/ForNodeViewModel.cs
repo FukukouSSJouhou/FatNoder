@@ -24,6 +24,7 @@ namespace FatNoder.ViewModels.Nodes
         private ValueNodeInputViewModel<HensuuUkewatashi?> Condition { get; }
         public ValueListNodeInputViewModel<StatementCls> DefineFor { get; }
         public ValueListNodeInputViewModel<StatementCls> OutFor { get; }
+        public ValueListNodeInputViewModel<StatementCls> Incr { get; }
         static ForNodeViewModel()
         {
             Splat.Locator.CurrentMutable.Register(() => new NodeView(), typeof(IViewFor<ForNodeViewModel>));
@@ -53,6 +54,14 @@ namespace FatNoder.ViewModels.Nodes
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
             };
+            Incr = new ValueListNodeInputViewModel<StatementCls>
+            {
+                Name = "Incr",
+                Label = Properties.Resources.ForNodeViewModel_IncrLabel,
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+
+            };
             Initkun();
         }
         public ForNodeViewModel() : base()
@@ -77,6 +86,14 @@ namespace FatNoder.ViewModels.Nodes
                 Label = Properties.Resources.ForNodeViewModel_ThenLabel,
                 MaxConnections = 1,
                 PortPosition = PortPosition.Right
+            };
+            Incr = new ValueListNodeInputViewModel<StatementCls>
+            {
+                Name = "Incr",
+                Label = Properties.Resources.ForNodeViewModel_IncrLabel,
+                MaxConnections = 1,
+                PortPosition = PortPosition.Right
+
             };
             Initkun();
         }
@@ -111,6 +128,11 @@ namespace FatNoder.ViewModels.Nodes
                 States = new XMLNodeInputStatementLS(),
                 Name = OutFor.Name
             });
+            _model.InputStates.Add(new XMLNodeInputStatement()
+            {
+                States = new XMLNodeInputStatementLS(),
+                Name = Incr.Name
+            });
             this.WhenAnyObservable(vm => vm.InputFlow.Values.CountChanged).Subscribe(newvalue =>
             {
                 foreach (XMLNodeInputStatement xs in _model.InputStates.Where(d =>
@@ -140,33 +162,49 @@ namespace FatNoder.ViewModels.Nodes
                         xs.States.Add(guidkun.UUID);
                     }
                 }
-            });/*
-            this.WhenAnyObservable(vm => vm.ElseIfX.Values.CountChanged).Subscribe(newvalue =>
+            });
+            this.WhenAnyObservable(vm => vm.OutFor.Values.CountChanged).Subscribe(newvalue =>
             {
 
                 foreach (XMLNodeInputStatement xs in _model.InputStates.Where(
                     d =>
                     {
-                        return d.Name == ElseIfX.Name;
+                        return d.Name == OutFor.Name;
                     }))
                 {
                     xs.States.Clear();
-                    foreach (StatementCls guidkun in ElseIfX.Values.Items)
+                    foreach (StatementCls guidkun in OutFor.Values.Items)
                     {
                         xs.States.Add(guidkun.UUID);
                     }
                 }
             });
-            InputX.Connections.CountChanged.Subscribe(newvalue =>
+            this.WhenAnyObservable(vm => vm.Incr.Values.CountChanged).Subscribe(newvalue =>
+            {
+
+                foreach (XMLNodeInputStatement xs in _model.InputStates.Where(
+                    d =>
+                    {
+                        return d.Name == Incr.Name;
+                    }))
+                {
+                    xs.States.Clear();
+                    foreach (StatementCls guidkun in Incr.Values.Items)
+                    {
+                        xs.States.Add(guidkun.UUID);
+                    }
+                }
+            });
+            Condition.Connections.CountChanged.Subscribe(newvalue =>
             {
 
                 foreach (XMLNodeInput xs in _model.Inputs.Where(d =>
                 {
-                    return d.Name == InputX.Name;
+                    return d.Name == Condition.Name;
                 }))
                 {
                     xs.connections.Clear();
-                    foreach (ConnectionViewModel cv in InputX.Connections.Items)
+                    foreach (ConnectionViewModel cv in Condition.Connections.Items)
                     {
                         //Console.WriteLine($"{cv.Input.Name},{cv.Input.Parent.UUID}");
                         xs.connections.Add(
@@ -179,9 +217,10 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
-            this.Inputs.Add(OutIfX);
-            this.Inputs.Add(ElseIfX);
-            this.Inputs.Add(InputX);
+            this.Inputs.Add(OutFor);
+            this.Inputs.Add(DefineFor);
+            this.Inputs.Add(Condition);
+            this.Inputs.Add(Incr);
             InputFlow.Port = new NodePortViewModel
             {
                 Node_PortType = PortType.Statement
@@ -189,7 +228,7 @@ namespace FatNoder.ViewModels.Nodes
             OutputFlow.Port = new NodePortViewModel
             {
                 Node_PortType = PortType.Statement
-            };*/
+            };
         }
         /// <inheritdoc/>
         public void ChangeStates(XML_NodeModel newmodelbs)

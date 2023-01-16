@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using NodeAyano.Model.Enumerator;
 using NodeAyano.Model.Nodes.basepac;
 using System;
 using System.Collections.Generic;
@@ -62,7 +63,22 @@ namespace NodeAyano.Model.Nodes
                         {
                             if (modelkun is CompileNodeBase)
                             {
-                                bsy = SyntaxFactory.Block(((CompileNodeBase)modelkun).CompileSyntax(xnodes));
+                                NodeModelEnumerator enumkun = new NodeModelEnumerator(modelkun, xnodes);
+                                enumkun.Reset();
+                                var statements = new List<StatementSyntax>();
+                                while (enumkun.MoveNext())
+                                {
+
+                                    if (enumkun.Current is CompileNodeBase)
+                                    {
+                                        foreach (StatementSyntax sckun in ((CompileNodeBase)enumkun.Current).CompileSyntax(xnodes))
+                                        {
+                                            statements.Add(sckun);
+                                        }
+                                    }
+                                }
+                                bsy = SyntaxFactory.Block(statements.ToArray());
+
                             }
                         }
                     }
@@ -95,11 +111,16 @@ namespace NodeAyano.Model.Nodes
             }
             if(input1 != null)
             {
-                returnstatements.Add(SyntaxFactory.ForStatement(input1, SyntaxFactory.SeparatedList<ExpressionSyntax>(), input2.CompileSyntax(xnodes), SyntaxFactory.SeparatedList<ExpressionSyntax>(incrsyntaxls), bsy));
+                if (input2 != null)
+                {
+                    returnstatements.Add(SyntaxFactory.ForStatement(input1, SyntaxFactory.SeparatedList<ExpressionSyntax>(), input2.CompileSyntax(xnodes), SyntaxFactory.SeparatedList<ExpressionSyntax>(incrsyntaxls), bsy));
+                }
             }else if(input1_initls != null)
             {
-                returnstatements.Add(SyntaxFactory.ForStatement(null, SyntaxFactory.SeparatedList<ExpressionSyntax>(input1_initls), input2.CompileSyntax(xnodes), SyntaxFactory.SeparatedList<ExpressionSyntax>(incrsyntaxls), bsy));
-
+                if (input2 != null)
+                {
+                    returnstatements.Add(SyntaxFactory.ForStatement(null, SyntaxFactory.SeparatedList<ExpressionSyntax>(input1_initls), input2.CompileSyntax(xnodes), SyntaxFactory.SeparatedList<ExpressionSyntax>(incrsyntaxls), bsy));
+                }
             }
             return returnstatements.ToArray();
         }                    

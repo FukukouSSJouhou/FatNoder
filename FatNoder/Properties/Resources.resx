@@ -132,6 +132,12 @@
   <data name="ForNodeViewModel_ForNodeLabel" xml:space="preserve">
     <value>For</value>
   </data>
+  <data name="ForNodeViewModel_IncrLabel" xml:space="preserve">
+    <value>Increment</value>
+  </data>
+  <data name="ForNodeViewModel_Label" xml:space="preserve">
+    <value>For</value>
+  </data>
   <data name="ForNodeViewModel_ThenLabel" xml:space="preserve">
     <value>Then</value>
   </data>
