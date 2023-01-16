@@ -179,6 +179,22 @@ namespace FatNoder.ViewModels.Nodes
                     }
                 }
             });
+            this.WhenAnyObservable(vm => vm.Incr.Values.CountChanged).Subscribe(newvalue =>
+            {
+
+                foreach (XMLNodeInputStatement xs in _model.InputStates.Where(
+                    d =>
+                    {
+                        return d.Name == Incr.Name;
+                    }))
+                {
+                    xs.States.Clear();
+                    foreach (StatementCls guidkun in Incr.Values.Items)
+                    {
+                        xs.States.Add(guidkun.UUID);
+                    }
+                }
+            });
             Condition.Connections.CountChanged.Subscribe(newvalue =>
             {
 
@@ -204,6 +220,7 @@ namespace FatNoder.ViewModels.Nodes
             this.Inputs.Add(OutFor);
             this.Inputs.Add(DefineFor);
             this.Inputs.Add(Condition);
+            this.Inputs.Add(Incr);
             InputFlow.Port = new NodePortViewModel
             {
                 Node_PortType = PortType.Statement
