@@ -26,7 +26,8 @@ namespace NodeAyano.Model.Nodes
             VariableDeclarationSyntax input1 = null;
             ExpressionSyntax[] input1_initls = null;
             ValueCompileNodeBase input2 = null;
-            List<ExpressionSyntax> incrsyntaxls = null;
+            VariableDeclarationSyntax incrsyn = null;
+            ExpressionSyntax[] incrsyntaxls = null;
             foreach (XMLNodeInput xnode in Inputs)
             {
                 if (xnode.Name == "Condition")
@@ -109,17 +110,40 @@ namespace NodeAyano.Model.Nodes
                     }
                 }
             }
-            if(input1 != null)
+            foreach (XMLNodeInputStatement st in InputStates)
+            {
+                if (st.Name == "Incr")
+                {
+                    foreach (Guid cnUUID in st.States)
+                    {
+                        foreach (XML_NodeModel modelkun in xnodes.Where(
+                            d =>
+                            {
+                                return d.UUID == cnUUID;
+                            }))
+                        {
+                            if (modelkun is IExpressionSyntaxCompileNodeModelBase)
+                            {
+                                //input1 = ((IVariableDeclarationCompileNodeBase)modelkun).CompileSyntax_Variable(xnodes);
+                                incrsyntaxls = new[] { ((IExpressionSyntaxCompileNodeModelBase)modelkun).CompileSyntax_ExpressionS(xnodes) };
+                            }
+                        }
+                    }
+                }
+            }
+            if (input1 != null)
             {
                 if (input2 != null)
                 {
+                    if(incrsyntaxls!=null)
                     returnstatements.Add(SyntaxFactory.ForStatement(input1, SyntaxFactory.SeparatedList<ExpressionSyntax>(), input2.CompileSyntax(xnodes), SyntaxFactory.SeparatedList<ExpressionSyntax>(incrsyntaxls), bsy));
                 }
             }else if(input1_initls != null)
             {
                 if (input2 != null)
                 {
-                    returnstatements.Add(SyntaxFactory.ForStatement(null, SyntaxFactory.SeparatedList<ExpressionSyntax>(input1_initls), input2.CompileSyntax(xnodes), SyntaxFactory.SeparatedList<ExpressionSyntax>(incrsyntaxls), bsy));
+                    if (incrsyntaxls != null)
+                        returnstatements.Add(SyntaxFactory.ForStatement(null, SyntaxFactory.SeparatedList<ExpressionSyntax>(input1_initls), input2.CompileSyntax(xnodes), SyntaxFactory.SeparatedList<ExpressionSyntax>(incrsyntaxls), bsy));
                 }
             }
             return returnstatements.ToArray();
